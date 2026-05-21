@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Env
+.env
+
+# graphify
+graphify-out/cache/
+graphify-out/*.html
+
+# OneDrive conflicts
+*\(#*conflict*\)*
+*\(#*Name clash*\)*
