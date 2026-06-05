@@ -1,3 +1,9 @@
+"""DEPRECATED — use src/homeai/tools/ package instead.
+
+Legacy tools module with outdated web_search, home_service, home_state implementations
+that return raw strings. Current typed implementations are in src/homeai/tools/.
+"""
+
 from __future__ import annotations
 
 import json

@@ -1,3 +1,9 @@
+"""DEPRECATED — use src/homeai/agent_brain.py instead.
+
+Legacy agent brain module containing older implementations of Memory, LLM dispatch,
+and ReAct pipeline logic. All active code is in the src/homeai/ package structure.
+"""
+
 from __future__ import annotations
 
 import asyncio

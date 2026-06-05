@@ -1,3 +1,10 @@
+"""One-off utility: merge infrastructure-plan nodes into the knowledge graph.
+
+Reads existing graphify-out/graph.json, merges hardcoded infrastructure node data,
+reclusters communities, and regenerates GRAPH_REPORT.md and graph.json exports.
+Uses graphify.{cache,build,cluster,analyze,report,export} and networkx.
+"""
+
 import json
 from graphify.cache import save_semantic_cache
 from graphify.build import build_from_json

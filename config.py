@@ -1,3 +1,10 @@
+"""DEPRECATED — use src/homeai/config.py instead.
+
+Legacy configuration module. Application-wide settings loaded from environment variables
+or .env file. This root-level copy is outdated and missing validators present in the
+package version at src/homeai/config.py.
+"""
+
 from __future__ import annotations
 
 from pydantic import Field

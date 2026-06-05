@@ -1,3 +1,9 @@
+"""One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.
+
+Connects to Uptime Kuma at 10.0.0.102:3001 and registers ping monitors for all
+homelab infrastructure nodes. Run manually; not imported by any module.
+"""
+
 import asyncio
 import socketio
 

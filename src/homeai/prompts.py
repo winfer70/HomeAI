@@ -1,3 +1,10 @@
+"""Tool schemas and system prompt template for the HomeAI ReAct agent.
+
+Defines TOOL_SCHEMAS (web_search, home_service, home_state specifications),
+_SYSTEM_PROMPT_TEMPLATE (bilingual EN/PL reasoning loop instructions), and
+build_tools_block() helper. Imported by src/homeai/agent_brain.py.
+"""
+
 from __future__ import annotations
 
 from typing import Any
