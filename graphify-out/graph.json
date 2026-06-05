@@ -4,6 +4,54 @@
   "graph": {},
   "nodes": [
     {
+      "label": "add_monitors.py",
+      "file_type": "code",
+      "source_file": "add_monitors.py",
+      "source_location": "L1",
+      "id": "add_monitors",
+      "community": 12
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "add_monitors.py",
+      "source_location": "L28",
+      "id": "add_monitors_main",
+      "community": 12
+    },
+    {
+      "label": "One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.  Conne",
+      "file_type": "rationale",
+      "source_file": "add_monitors.py",
+      "source_location": "L1",
+      "id": "add_monitors_rationale_1",
+      "community": 12
+    },
+    {
+      "label": "add_ping_monitors.py",
+      "file_type": "code",
+      "source_file": "add_ping_monitors.py",
+      "source_location": "L1",
+      "id": "add_ping_monitors",
+      "community": 13
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "add_ping_monitors.py",
+      "source_location": "L20",
+      "id": "add_ping_monitors_main",
+      "community": 13
+    },
+    {
+      "label": "One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.  Connects",
+      "file_type": "rationale",
+      "source_file": "add_ping_monitors.py",
+      "source_location": "L1",
+      "id": "add_ping_monitors_rationale_1",
+      "community": 13
+    },
+    {
       "label": "agent_brain.py",
       "file_type": "code",
       "source_file": "src\\homeai\\agent_brain.py",
@@ -15,7 +63,7 @@
       "label": "_build_tools_block()",
       "file_type": "code",
       "source_file": "agent_brain.py",
-      "source_location": "L79",
+      "source_location": "L85",
       "id": "agent_brain_build_tools_block",
       "community": 4
     },
@@ -92,35 +140,43 @@
       "community": 4
     },
     {
+      "label": "DEPRECATED \u2014 use src/homeai/agent_brain.py instead.\r \r Legacy agent brain module",
+      "file_type": "rationale",
+      "source_file": "agent_brain.py",
+      "source_location": "L1",
+      "id": "agent_brain_rationale_1",
+      "community": 4
+    },
+    {
       "label": "Persists conversation turns in SQLite; exposes a fixed-size context window.",
       "file_type": "rationale",
       "source_file": "agent_brain.py",
-      "source_location": "L94",
-      "id": "agent_brain_rationale_94",
+      "source_location": "L100",
+      "id": "agent_brain_rationale_100",
       "community": 1
     },
     {
       "label": "Return the last `window` user/assistant pairs in chronological order.",
       "file_type": "rationale",
       "source_file": "agent_brain.py",
-      "source_location": "L119",
-      "id": "agent_brain_rationale_119",
+      "source_location": "L125",
+      "id": "agent_brain_rationale_125",
       "community": 4
     },
     {
       "label": "One Ollama chat round; returns raw response text.",
       "file_type": "rationale",
       "source_file": "agent_brain.py",
-      "source_location": "L136",
-      "id": "agent_brain_rationale_136",
+      "source_location": "L142",
+      "id": "agent_brain_rationale_142",
       "community": 4
     },
     {
-      "label": "Run a full ReAct reasoning loop for one user turn.     Returns the final text re",
+      "label": "Run a full ReAct reasoning loop for one user turn.\r     Returns the final text r",
       "file_type": "rationale",
       "source_file": "agent_brain.py",
-      "source_location": "L225",
-      "id": "agent_brain_rationale_225",
+      "source_location": "L231",
+      "id": "agent_brain_rationale_231",
       "community": 4
     },
     {
@@ -129,7 +185,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L1",
       "id": "config",
-      "community": 4
+      "community": 0
     },
     {
       "label": "Settings",
@@ -148,12 +204,20 @@
       "community": 0
     },
     {
+      "label": "DEPRECATED \u2014 use src/homeai/config.py instead.\r \r Legacy configuration module. A",
+      "file_type": "rationale",
+      "source_file": "config.py",
+      "source_location": "L1",
+      "id": "config_rationale_1",
+      "community": 0
+    },
+    {
       "label": "run.py",
       "file_type": "code",
       "source_file": "run.py",
       "source_location": "L1",
       "id": "run",
-      "community": 10
+      "community": 14
     },
     {
       "label": "Project-root convenience runner; delegates to the homeai package entry point.",
@@ -161,7 +225,7 @@
       "source_file": "run.py",
       "source_location": "L1",
       "id": "run_rationale_1",
-      "community": 10
+      "community": 14
     },
     {
       "label": "__init__.py",
@@ -169,7 +233,7 @@
       "source_file": "tests\\__init__.py",
       "source_location": "L1",
       "id": "init",
-      "community": 6
+      "community": 7
     },
     {
       "label": "Tool implementations for web search and Home Assistant integration.",
@@ -177,7 +241,7 @@
       "source_file": "src\\homeai\\tools\\__init__.py",
       "source_location": "L1",
       "id": "init_rationale_1",
-      "community": 6
+      "community": 7
     },
     {
       "label": "__main__.py",
@@ -313,7 +377,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L47",
       "id": "config_validate_log_level",
-      "community": 4
+      "community": 0
     },
     {
       "label": "warn_if_no_search()",
@@ -321,7 +385,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L57",
       "id": "config_warn_if_no_search",
-      "community": 4
+      "community": 0
     },
     {
       "label": "Application-wide configuration loaded from environment variables or a .env file.",
@@ -337,7 +401,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L48",
       "id": "config_rationale_48",
-      "community": 11
+      "community": 16
     },
     {
       "label": "Emit a warning when no web-search backend is configured.",
@@ -345,7 +409,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L58",
       "id": "config_rationale_58",
-      "community": 12
+      "community": 17
     },
     {
       "label": "prompts.py",
@@ -353,23 +417,31 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L1",
       "id": "prompts",
-      "community": 9
+      "community": 11
     },
     {
       "label": "build_tools_block()",
       "file_type": "code",
       "source_file": "src\\homeai\\prompts.py",
-      "source_location": "L71",
+      "source_location": "L78",
       "id": "prompts_build_tools_block",
-      "community": 9
+      "community": 11
+    },
+    {
+      "label": "Tool schemas and system prompt template for the HomeAI ReAct agent.\r \r Defines T",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\prompts.py",
+      "source_location": "L1",
+      "id": "prompts_rationale_1",
+      "community": 11
     },
     {
       "label": "Render the tool registry as an indented text block for inclusion in the system p",
       "file_type": "rationale",
       "source_file": "src\\homeai\\prompts.py",
-      "source_location": "L72",
-      "id": "prompts_rationale_72",
-      "community": 9
+      "source_location": "L79",
+      "id": "prompts_rationale_79",
+      "community": 11
     },
     {
       "label": "base.py",
@@ -377,7 +449,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L1",
       "id": "base",
-      "community": 6
+      "community": 7
     },
     {
       "label": "ToolResult",
@@ -385,7 +457,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L7",
       "id": "base_toolresult",
-      "community": 6
+      "community": 7
     },
     {
       "label": ".to_llm_text()",
@@ -393,7 +465,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L14",
       "id": "base_toolresult_to_llm_text",
-      "community": 6
+      "community": 7
     },
     {
       "label": "Encapsulates the outcome of a single tool invocation.",
@@ -401,7 +473,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L8",
       "id": "base_rationale_8",
-      "community": 6
+      "community": 7
     },
     {
       "label": "Return the text representation of this result for LLM consumption.",
@@ -409,7 +481,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L15",
       "id": "base_rationale_15",
-      "community": 6
+      "community": 7
     },
     {
       "label": "home_assistant.py",
@@ -417,7 +489,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L1",
       "id": "home_assistant",
-      "community": 6
+      "community": 7
     },
     {
       "label": "_ha_headers()",
@@ -425,7 +497,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L15",
       "id": "home_assistant_ha_headers",
-      "community": 6
+      "community": 7
     },
     {
       "label": "home_service()",
@@ -433,7 +505,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L23",
       "id": "home_assistant_home_service",
-      "community": 6
+      "community": 7
     },
     {
       "label": "home_state()",
@@ -441,7 +513,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L54",
       "id": "home_assistant_home_state",
-      "community": 6
+      "community": 7
     },
     {
       "label": "Build standard Home Assistant API authorisation headers.",
@@ -449,7 +521,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L16",
       "id": "home_assistant_rationale_16",
-      "community": 6
+      "community": 7
     },
     {
       "label": "Call a Home Assistant service (e.g. light/turn_on, climate/set_temperature).",
@@ -457,7 +529,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L30",
       "id": "home_assistant_rationale_30",
-      "community": 6
+      "community": 7
     },
     {
       "label": "Get the current state and attributes of a Home Assistant entity.",
@@ -465,7 +537,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L58",
       "id": "home_assistant_rationale_58",
-      "community": 6
+      "community": 7
     },
     {
       "label": "search.py",
@@ -473,7 +545,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L1",
       "id": "search",
-      "community": 6
+      "community": 7
     },
     {
       "label": "web_search()",
@@ -481,7 +553,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L13",
       "id": "search_web_search",
-      "community": 6
+      "community": 7
     },
     {
       "label": "Search the web for real-time information supporting Polish and English queries.",
@@ -489,7 +561,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L14",
       "id": "search_rationale_14",
-      "community": 6
+      "community": 7
     },
     {
       "label": "conftest.py",
@@ -497,7 +569,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L1",
       "id": "conftest",
-      "community": 4
+      "community": 1
     },
     {
       "label": "mock_settings()",
@@ -505,7 +577,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L24",
       "id": "conftest_mock_settings",
-      "community": 4
+      "community": 1
     },
     {
       "label": "memory_db()",
@@ -513,7 +585,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L68",
       "id": "conftest_memory_db",
-      "community": 4
+      "community": 1
     },
     {
       "label": "tmp_memory_db()",
@@ -521,39 +593,39 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L79",
       "id": "conftest_tmp_memory_db",
-      "community": 4
+      "community": 1
     },
     {
-      "label": "conftest.py \u2014 shared pytest fixtures for the HomeAI test suite.  Fixtures provid",
+      "label": "conftest.py \u2014 shared pytest fixtures for the HomeAI test suite.\r \r Fixtures prov",
       "file_type": "rationale",
       "source_file": "tests\\conftest.py",
       "source_location": "L1",
       "id": "conftest_rationale_1",
-      "community": 4
+      "community": 1
     },
     {
-      "label": "Patch every external-service URL and credential in the global Settings     singl",
+      "label": "Patch every external-service URL and credential in the global Settings\r     sing",
       "file_type": "rationale",
       "source_file": "tests\\conftest.py",
       "source_location": "L25",
       "id": "conftest_rationale_25",
-      "community": 4
+      "community": 1
     },
     {
-      "label": "In-memory SQLite Memory instance with a sliding window of 3 turns.     Closed au",
+      "label": "In-memory SQLite Memory instance with a sliding window of 3 turns.\r     Closed a",
       "file_type": "rationale",
       "source_file": "tests\\conftest.py",
       "source_location": "L69",
       "id": "conftest_rationale_69",
-      "community": 4
+      "community": 1
     },
     {
-      "label": "Memory instance backed by a real temporary file, for testing persistence     acr",
+      "label": "Memory instance backed by a real temporary file, for testing persistence\r     ac",
       "file_type": "rationale",
       "source_file": "tests\\conftest.py",
       "source_location": "L80",
       "id": "conftest_rationale_80",
-      "community": 4
+      "community": 1
     },
     {
       "label": "test_agent_brain.py",
@@ -705,7 +777,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L188",
       "id": "test_agent_brain_testrunpipelinedirectanswer",
-      "community": 2
+      "community": 10
     },
     {
       "label": ".test_direct_final_answer_returns_text()",
@@ -713,7 +785,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L189",
       "id": "test_agent_brain_testrunpipelinedirectanswer_test_direct_final_answer_returns_text",
-      "community": 2
+      "community": 10
     },
     {
       "label": ".test_direct_final_answer_polish_input()",
@@ -721,7 +793,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L196",
       "id": "test_agent_brain_testrunpipelinedirectanswer_test_direct_final_answer_polish_input",
-      "community": 2
+      "community": 10
     },
     {
       "label": ".test_final_answer_stored_in_memory()",
@@ -729,7 +801,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L203",
       "id": "test_agent_brain_testrunpipelinedirectanswer_test_final_answer_stored_in_memory",
-      "community": 2
+      "community": 10
     },
     {
       "label": ".test_user_input_stored_in_memory()",
@@ -737,7 +809,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L212",
       "id": "test_agent_brain_testrunpipelinedirectanswer_test_user_input_stored_in_memory",
-      "community": 2
+      "community": 10
     },
     {
       "label": ".test_final_answer_action_input_as_string_not_dict()",
@@ -745,7 +817,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L221",
       "id": "test_agent_brain_testrunpipelinedirectanswer_test_final_answer_action_input_as_string_not_dict",
-      "community": 2
+      "community": 10
     },
     {
       "label": "TestRunPipelineToolCall",
@@ -857,7 +929,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L428",
       "id": "test_agent_brain_testrunpipelinellmerror",
-      "community": 2
+      "community": 1
     },
     {
       "label": ".test_llm_runtime_error_returns_bilingual_error_string()",
@@ -865,7 +937,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L429",
       "id": "test_agent_brain_testrunpipelinellmerror_test_llm_runtime_error_returns_bilingual_error_string",
-      "community": 2
+      "community": 1
     },
     {
       "label": ".test_llm_error_stores_error_string_in_memory()",
@@ -873,7 +945,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L438",
       "id": "test_agent_brain_testrunpipelinellmerror_test_llm_error_stores_error_string_in_memory",
-      "community": 2
+      "community": 1
     },
     {
       "label": "TestRunPipelineDispatchValidation",
@@ -932,7 +1004,7 @@
       "community": 1
     },
     {
-      "label": "test_agent_brain.py \u2014 unit tests for agent_brain internals and run_pipeline.  St",
+      "label": "test_agent_brain.py \u2014 unit tests for agent_brain internals and run_pipeline.",
       "file_type": "rationale",
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L1",
@@ -1044,7 +1116,7 @@
       "community": 1
     },
     {
-      "label": "Two separate JSON objects on the same line cause the greedy re.DOTALL         fa",
+      "label": "Two separate JSON objects on the same line cause the greedy re.DOTALL\r         f",
       "file_type": "rationale",
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L153",
@@ -1073,7 +1145,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L190",
       "id": "test_agent_brain_rationale_190",
-      "community": 2
+      "community": 10
     },
     {
       "label": "Polish-language user input and Polish answer text round-trip correctly.",
@@ -1081,7 +1153,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L197",
       "id": "test_agent_brain_rationale_197",
-      "community": 2
+      "community": 10
     },
     {
       "label": "The final answer text is added to memory with role='assistant'.",
@@ -1089,7 +1161,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L204",
       "id": "test_agent_brain_rationale_204",
-      "community": 2
+      "community": 10
     },
     {
       "label": "The user's input is added to memory before the LLM is called.",
@@ -1097,7 +1169,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L213",
       "id": "test_agent_brain_rationale_213",
-      "community": 2
+      "community": 10
     },
     {
       "label": "action_input that is a plain string (not dict) is converted via str().",
@@ -1105,7 +1177,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L222",
       "id": "test_agent_brain_rationale_222",
-      "community": 2
+      "community": 10
     },
     {
       "label": "Pipeline calls web_search once, feeds the observation, then returns the final an",
@@ -1193,7 +1265,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L430",
       "id": "test_agent_brain_rationale_430",
-      "community": 2
+      "community": 1
     },
     {
       "label": "The error message is stored in memory so context is preserved.",
@@ -1201,7 +1273,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L439",
       "id": "test_agent_brain_rationale_439",
-      "community": 2
+      "community": 1
     },
     {
       "label": "web_search called without 'query' key returns an error observation string.",
@@ -1393,7 +1465,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L113",
       "id": "test_config_testsettingsenvoverrides",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_ollama_model()",
@@ -1401,7 +1473,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L114",
       "id": "test_config_testsettingsenvoverrides_test_override_ollama_model",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_ollama_base_url()",
@@ -1409,7 +1481,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L120",
       "id": "test_config_testsettingsenvoverrides_test_override_ollama_base_url",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_llm_temperature_float()",
@@ -1417,7 +1489,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L126",
       "id": "test_config_testsettingsenvoverrides_test_override_llm_temperature_float",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_llm_timeout_int()",
@@ -1425,7 +1497,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L132",
       "id": "test_config_testsettingsenvoverrides_test_override_llm_timeout_int",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_ha_token()",
@@ -1433,7 +1505,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L138",
       "id": "test_config_testsettingsenvoverrides_test_override_ha_token",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_ha_url()",
@@ -1441,7 +1513,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L144",
       "id": "test_config_testsettingsenvoverrides_test_override_ha_url",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_searxng_url()",
@@ -1449,7 +1521,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L150",
       "id": "test_config_testsettingsenvoverrides_test_override_searxng_url",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_brave_api_key()",
@@ -1457,7 +1529,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L156",
       "id": "test_config_testsettingsenvoverrides_test_override_brave_api_key",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_search_results_int()",
@@ -1465,7 +1537,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L162",
       "id": "test_config_testsettingsenvoverrides_test_override_search_results_int",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_memory_window_int()",
@@ -1473,7 +1545,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L168",
       "id": "test_config_testsettingsenvoverrides_test_override_memory_window_int",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_log_level()",
@@ -1481,7 +1553,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L174",
       "id": "test_config_testsettingsenvoverrides_test_override_log_level",
-      "community": 0
+      "community": 5
     },
     {
       "label": ".test_override_memory_db_path()",
@@ -1489,7 +1561,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L180",
       "id": "test_config_testsettingsenvoverrides_test_override_memory_db_path",
-      "community": 0
+      "community": 5
     },
     {
       "label": "TestSettingsCaseInsensitivity",
@@ -1521,7 +1593,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L211",
       "id": "test_config_testsettingstypecoercion",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_float_field_accepts_integer_string()",
@@ -1529,7 +1601,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L212",
       "id": "test_config_testsettingstypecoercion_test_float_field_accepts_integer_string",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_int_field_rejects_non_numeric_string()",
@@ -1537,7 +1609,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L219",
       "id": "test_config_testsettingstypecoercion_test_int_field_rejects_non_numeric_string",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_float_field_rejects_non_numeric_string()",
@@ -1545,7 +1617,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L225",
       "id": "test_config_testsettingstypecoercion_test_float_field_rejects_non_numeric_string",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_react_max_iterations_zero_is_valid()",
@@ -1553,7 +1625,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L231",
       "id": "test_config_testsettingstypecoercion_test_react_max_iterations_zero_is_valid",
-      "community": 8
+      "community": 0
     },
     {
       "label": "TestSettingsSingleton",
@@ -1620,7 +1692,7 @@
       "community": 0
     },
     {
-      "label": "test_config.py \u2014 unit tests for config.Settings.  Coverage:     - All field defa",
+      "label": "test_config.py \u2014 unit tests for config.Settings.\r \r Coverage:\r     - All field d",
       "file_type": "rationale",
       "source_file": "tests\\test_config.py",
       "source_location": "L1",
@@ -1761,7 +1833,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L115",
       "id": "test_config_rationale_115",
-      "community": 0
+      "community": 5
     },
     {
       "label": "OLLAMA_BASE_URL env var is applied correctly.",
@@ -1769,7 +1841,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L121",
       "id": "test_config_rationale_121",
-      "community": 0
+      "community": 5
     },
     {
       "label": "LLM_TEMPERATURE is coerced from str to float.",
@@ -1777,7 +1849,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L127",
       "id": "test_config_rationale_127",
-      "community": 0
+      "community": 5
     },
     {
       "label": "LLM_TIMEOUT_S is coerced from str to int.",
@@ -1785,7 +1857,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L133",
       "id": "test_config_rationale_133",
-      "community": 0
+      "community": 5
     },
     {
       "label": "HA_TOKEN env var stores the provided token verbatim.",
@@ -1793,7 +1865,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L139",
       "id": "test_config_rationale_139",
-      "community": 0
+      "community": 5
     },
     {
       "label": "HA_URL env var points to a custom HA instance.",
@@ -1801,7 +1873,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L145",
       "id": "test_config_rationale_145",
-      "community": 0
+      "community": 5
     },
     {
       "label": "SEARXNG_URL env var is applied correctly.",
@@ -1809,7 +1881,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L151",
       "id": "test_config_rationale_151",
-      "community": 0
+      "community": 5
     },
     {
       "label": "BRAVE_API_KEY env var is stored as a plain string.",
@@ -1817,7 +1889,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L157",
       "id": "test_config_rationale_157",
-      "community": 0
+      "community": 5
     },
     {
       "label": "SEARCH_RESULTS is coerced from str to int.",
@@ -1825,7 +1897,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L163",
       "id": "test_config_rationale_163",
-      "community": 0
+      "community": 5
     },
     {
       "label": "MEMORY_WINDOW is coerced from str to int.",
@@ -1833,7 +1905,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L169",
       "id": "test_config_rationale_169",
-      "community": 0
+      "community": 5
     },
     {
       "label": "LOG_LEVEL env var is accepted as a plain string.",
@@ -1841,7 +1913,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L175",
       "id": "test_config_rationale_175",
-      "community": 0
+      "community": 5
     },
     {
       "label": "MEMORY_DB_PATH env var is applied verbatim.",
@@ -1849,7 +1921,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L181",
       "id": "test_config_rationale_181",
-      "community": 0
+      "community": 5
     },
     {
       "label": "Lowercase env var name is accepted (case_sensitive=False).",
@@ -1873,7 +1945,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L213",
       "id": "test_config_rationale_213",
-      "community": 8
+      "community": 0
     },
     {
       "label": "A non-numeric string for an int field raises ValidationError.",
@@ -1881,7 +1953,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L220",
       "id": "test_config_rationale_220",
-      "community": 8
+      "community": 0
     },
     {
       "label": "A non-numeric string for a float field raises ValidationError.",
@@ -1889,7 +1961,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L226",
       "id": "test_config_rationale_226",
-      "community": 8
+      "community": 0
     },
     {
       "label": "Zero is a valid (though degenerate) value for react_max_iterations.",
@@ -1897,7 +1969,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L232",
       "id": "test_config_rationale_232",
-      "community": 8
+      "community": 0
     },
     {
       "label": "The module-level `settings` object is a Settings instance.",
@@ -1953,7 +2025,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L1",
       "id": "test_memory",
-      "community": 5
+      "community": 6
     },
     {
       "label": "TestMemoryAddRecent",
@@ -1961,7 +2033,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L34",
       "id": "test_memory_testmemoryaddrecent",
-      "community": 1
+      "community": 8
     },
     {
       "label": ".test_single_add_is_retrievable()",
@@ -1969,7 +2041,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L35",
       "id": "test_memory_testmemoryaddrecent_test_single_add_is_retrievable",
-      "community": 1
+      "community": 8
     },
     {
       "label": ".test_two_turns_returned_in_chronological_order()",
@@ -1977,7 +2049,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L42",
       "id": "test_memory_testmemoryaddrecent_test_two_turns_returned_in_chronological_order",
-      "community": 1
+      "community": 8
     },
     {
       "label": ".test_role_field_preserved_exactly()",
@@ -1985,7 +2057,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L50",
       "id": "test_memory_testmemoryaddrecent_test_role_field_preserved_exactly",
-      "community": 1
+      "community": 8
     },
     {
       "label": ".test_content_with_polish_characters()",
@@ -1993,7 +2065,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L57",
       "id": "test_memory_testmemoryaddrecent_test_content_with_polish_characters",
-      "community": 1
+      "community": 8
     },
     {
       "label": ".test_content_with_mixed_unicode()",
@@ -2001,7 +2073,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L64",
       "id": "test_memory_testmemoryaddrecent_test_content_with_mixed_unicode",
-      "community": 1
+      "community": 8
     },
     {
       "label": ".test_empty_content_string_is_accepted()",
@@ -2009,7 +2081,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L70",
       "id": "test_memory_testmemoryaddrecent_test_empty_content_string_is_accepted",
-      "community": 1
+      "community": 8
     },
     {
       "label": ".test_very_long_content_stored_without_truncation()",
@@ -2017,7 +2089,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L76",
       "id": "test_memory_testmemoryaddrecent_test_very_long_content_stored_without_truncation",
-      "community": 1
+      "community": 8
     },
     {
       "label": "TestMemoryEmptyState",
@@ -2025,7 +2097,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L89",
       "id": "test_memory_testmemoryemptystate",
-      "community": 5
+      "community": 6
     },
     {
       "label": ".test_recent_on_empty_db_returns_empty_list()",
@@ -2033,7 +2105,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L90",
       "id": "test_memory_testmemoryemptystate_test_recent_on_empty_db_returns_empty_list",
-      "community": 5
+      "community": 6
     },
     {
       "label": ".test_recent_returns_list_type()",
@@ -2041,7 +2113,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L94",
       "id": "test_memory_testmemoryemptystate_test_recent_returns_list_type",
-      "community": 5
+      "community": 6
     },
     {
       "label": "TestMemorySlidingWindow",
@@ -2049,7 +2121,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L104",
       "id": "test_memory_testmemoryslidingwindow",
-      "community": 7
+      "community": 9
     },
     {
       "label": ".test_window_limits_returned_turns()",
@@ -2057,7 +2129,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L105",
       "id": "test_memory_testmemoryslidingwindow_test_window_limits_returned_turns",
-      "community": 7
+      "community": 9
     },
     {
       "label": ".test_window_returns_most_recent_turns()",
@@ -2065,7 +2137,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L115",
       "id": "test_memory_testmemoryslidingwindow_test_window_returns_most_recent_turns",
-      "community": 7
+      "community": 9
     },
     {
       "label": ".test_window_three_with_fewer_messages()",
@@ -2073,7 +2145,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L128",
       "id": "test_memory_testmemoryslidingwindow_test_window_three_with_fewer_messages",
-      "community": 7
+      "community": 9
     },
     {
       "label": ".test_window_exactly_full()",
@@ -2081,7 +2153,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L135",
       "id": "test_memory_testmemoryslidingwindow_test_window_exactly_full",
-      "community": 7
+      "community": 9
     },
     {
       "label": ".test_window_one_returns_at_most_two_messages()",
@@ -2089,7 +2161,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L145",
       "id": "test_memory_testmemoryslidingwindow_test_window_one_returns_at_most_two_messages",
-      "community": 7
+      "community": 9
     },
     {
       "label": ".test_window_zero_returns_empty_list()",
@@ -2097,7 +2169,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L158",
       "id": "test_memory_testmemoryslidingwindow_test_window_zero_returns_empty_list",
-      "community": 7
+      "community": 9
     },
     {
       "label": ".test_chronological_order_preserved_after_clamping()",
@@ -2105,7 +2177,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L166",
       "id": "test_memory_testmemoryslidingwindow_test_chronological_order_preserved_after_clamping",
-      "community": 7
+      "community": 9
     },
     {
       "label": "TestMemoryPersistence",
@@ -2113,7 +2185,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L185",
       "id": "test_memory_testmemorypersistence",
-      "community": 5
+      "community": 6
     },
     {
       "label": ".test_second_instance_sees_turns_from_first()",
@@ -2121,7 +2193,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L186",
       "id": "test_memory_testmemorypersistence_test_second_instance_sees_turns_from_first",
-      "community": 5
+      "community": 6
     },
     {
       "label": ".test_second_instance_can_add_turns()",
@@ -2129,7 +2201,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L199",
       "id": "test_memory_testmemorypersistence_test_second_instance_can_add_turns",
-      "community": 5
+      "community": 6
     },
     {
       "label": ".test_multiple_conversations_stored_sequentially()",
@@ -2137,7 +2209,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L216",
       "id": "test_memory_testmemorypersistence_test_multiple_conversations_stored_sequentially",
-      "community": 5
+      "community": 6
     },
     {
       "label": "TestMemoryClose",
@@ -2145,7 +2217,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L244",
       "id": "test_memory_testmemoryclose",
-      "community": 5
+      "community": 6
     },
     {
       "label": ".test_close_does_not_raise()",
@@ -2153,7 +2225,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L245",
       "id": "test_memory_testmemoryclose_test_close_does_not_raise",
-      "community": 5
+      "community": 6
     },
     {
       "label": ".test_table_created_on_init()",
@@ -2161,15 +2233,15 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L249",
       "id": "test_memory_testmemoryclose_test_table_created_on_init",
-      "community": 5
+      "community": 6
     },
     {
-      "label": "test_memory.py \u2014 unit tests for agent_brain.Memory.  The Memory class wraps SQLi",
+      "label": "test_memory.py \u2014 unit tests for agent_brain.Memory.\r \r The Memory class wraps SQ",
       "file_type": "rationale",
       "source_file": "tests\\test_memory.py",
       "source_location": "L1",
       "id": "test_memory_rationale_1",
-      "community": 5
+      "community": 6
     },
     {
       "label": "A single added turn is returned by recent().",
@@ -2177,7 +2249,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L36",
       "id": "test_memory_rationale_36",
-      "community": 1
+      "community": 8
     },
     {
       "label": "Two turns come back oldest-first (chronological), not newest-first.",
@@ -2185,7 +2257,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L43",
       "id": "test_memory_rationale_43",
-      "community": 1
+      "community": 8
     },
     {
       "label": "Role strings are stored and returned verbatim.",
@@ -2193,7 +2265,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L51",
       "id": "test_memory_rationale_51",
-      "community": 1
+      "community": 8
     },
     {
       "label": "Polish diacritics in content are stored and retrieved without corruption.",
@@ -2201,7 +2273,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L58",
       "id": "test_memory_rationale_58",
-      "community": 1
+      "community": 8
     },
     {
       "label": "Emoji and non-Latin characters round-trip correctly.",
@@ -2209,7 +2281,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L65",
       "id": "test_memory_rationale_65",
-      "community": 1
+      "community": 8
     },
     {
       "label": "add() with an empty string does not raise and is retrievable.",
@@ -2217,7 +2289,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L71",
       "id": "test_memory_rationale_71",
-      "community": 1
+      "community": 8
     },
     {
       "label": "Strings longer than typical column sizes are stored in full.",
@@ -2225,7 +2297,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L77",
       "id": "test_memory_rationale_77",
-      "community": 1
+      "community": 8
     },
     {
       "label": "recent() on a freshly created Memory returns [].",
@@ -2233,7 +2305,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L91",
       "id": "test_memory_rationale_91",
-      "community": 5
+      "community": 6
     },
     {
       "label": "recent() always returns a list, even when empty.",
@@ -2241,7 +2313,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L95",
       "id": "test_memory_rationale_95",
-      "community": 5
+      "community": 6
     },
     {
       "label": "With window=2, at most 4 messages (2 pairs) are returned.",
@@ -2249,7 +2321,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L106",
       "id": "test_memory_rationale_106",
-      "community": 7
+      "community": 9
     },
     {
       "label": "The returned turns are the N most recent, not the oldest.",
@@ -2257,7 +2329,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L116",
       "id": "test_memory_rationale_116",
-      "community": 7
+      "community": 9
     },
     {
       "label": "When fewer messages exist than window*2, all messages are returned.",
@@ -2265,7 +2337,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L129",
       "id": "test_memory_rationale_129",
-      "community": 7
+      "community": 9
     },
     {
       "label": "When the number of messages equals window*2, all are returned.",
@@ -2273,7 +2345,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L136",
       "id": "test_memory_rationale_136",
-      "community": 7
+      "community": 9
     },
     {
       "label": "window=1 means at most 1 user + 1 assistant message returned.",
@@ -2281,7 +2353,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L146",
       "id": "test_memory_rationale_146",
-      "community": 7
+      "community": 9
     },
     {
       "label": "window=0 edge case: LIMIT 0 returns no rows.",
@@ -2289,7 +2361,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L159",
       "id": "test_memory_rationale_159",
-      "community": 7
+      "community": 9
     },
     {
       "label": "After window clamping the surviving turns are still oldest-first.",
@@ -2297,15 +2369,15 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L167",
       "id": "test_memory_rationale_167",
-      "community": 7
+      "community": 9
     },
     {
-      "label": "Turns added by one Memory instance are visible to a second instance         open",
+      "label": "Turns added by one Memory instance are visible to a second instance\r         ope",
       "file_type": "rationale",
       "source_file": "tests\\test_memory.py",
       "source_location": "L187",
       "id": "test_memory_rationale_187",
-      "community": 5
+      "community": 6
     },
     {
       "label": "A second Memory instance can add new turns that a third instance sees.",
@@ -2313,7 +2385,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L200",
       "id": "test_memory_rationale_200",
-      "community": 5
+      "community": 6
     },
     {
       "label": "All turns from a multi-turn conversation persist to disk.",
@@ -2321,7 +2393,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L217",
       "id": "test_memory_rationale_217",
-      "community": 5
+      "community": 6
     },
     {
       "label": "close() on an open connection completes without raising.",
@@ -2329,7 +2401,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L246",
       "id": "test_memory_rationale_246",
-      "community": 5
+      "community": 6
     },
     {
       "label": "The 'turns' table exists after __init__ (schema migration is idempotent).",
@@ -2337,7 +2409,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L250",
       "id": "test_memory_rationale_250",
-      "community": 5
+      "community": 6
     },
     {
       "label": "test_tools.py",
@@ -2620,7 +2692,7 @@
       "community": 3
     },
     {
-      "label": "test_tools.py \u2014 unit tests for tools.web_search, tools.home_service, and tools.h",
+      "label": "test_tools.py \u2014 unit tests for tools.web_search, tools.home_service,\r and tools.",
       "file_type": "rationale",
       "source_file": "tests\\test_tools.py",
       "source_location": "L1",
@@ -2628,7 +2700,7 @@
       "community": 3
     },
     {
-      "label": "Redirect all outgoing URLs to test doubles and inject a dummy HA token.     auto",
+      "label": "Redirect all outgoing URLs to test doubles and inject a dummy HA token.\r     aut",
       "file_type": "rationale",
       "source_file": "tests\\test_tools.py",
       "source_location": "L59",
@@ -2641,7 +2713,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L81",
       "id": "test_tools_rationale_81",
-      "community": 13
+      "community": 18
     },
     {
       "label": "Only `search_results` (3) results are included even if SearXNG returns more.",
@@ -2649,7 +2721,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L103",
       "id": "test_tools_rationale_103",
-      "community": 14
+      "community": 19
     },
     {
       "label": "SearXNG 200 with empty results list returns a 'no results' string.",
@@ -2657,7 +2729,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L121",
       "id": "test_tools_rationale_121",
-      "community": 15
+      "community": 20
     },
     {
       "label": "When 'content' is absent, 'snippet' is used instead.",
@@ -2665,7 +2737,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L132",
       "id": "test_tools_rationale_132",
-      "community": 16
+      "community": 21
     },
     {
       "label": "A query containing Polish diacritics appears verbatim in the output.",
@@ -2673,7 +2745,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L148",
       "id": "test_tools_rationale_148",
-      "community": 17
+      "community": 22
     },
     {
       "label": "A 500 from SearXNG triggers a silent fallback to Brave Search.",
@@ -2681,7 +2753,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L172",
       "id": "test_tools_rationale_172",
-      "community": 18
+      "community": 23
     },
     {
       "label": "A ConnectError from SearXNG triggers the Brave fallback.",
@@ -2689,7 +2761,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L193",
       "id": "test_tools_rationale_193",
-      "community": 19
+      "community": 24
     },
     {
       "label": "When searxng_url is empty, Brave is the only path attempted.",
@@ -2697,7 +2769,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L214",
       "id": "test_tools_rationale_214",
-      "community": 20
+      "community": 25
     },
     {
       "label": "Brave 200 with empty web results returns 'No results found.",
@@ -2705,7 +2777,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L233",
       "id": "test_tools_rationale_233",
-      "community": 21
+      "community": 26
     },
     {
       "label": "When SearXNG is down and no Brave key, return an unavailability notice.",
@@ -2713,7 +2785,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L254",
       "id": "test_tools_rationale_254",
-      "community": 22
+      "community": 27
     },
     {
       "label": "The original query string appears in the unavailability fallback message.",
@@ -2721,7 +2793,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L267",
       "id": "test_tools_rationale_267",
-      "community": 23
+      "community": 28
     },
     {
       "label": "A 200 from HA services endpoint returns a success confirmation string.",
@@ -2729,7 +2801,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L287",
       "id": "test_tools_rationale_287",
-      "community": 24
+      "community": 29
     },
     {
       "label": "HA returning 401 Unauthorized is surfaced as a string with the status code.",
@@ -2737,7 +2809,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L299",
       "id": "test_tools_rationale_299",
-      "community": 25
+      "community": 30
     },
     {
       "label": "HA returning 403 Forbidden surfaces the status code in the return string.",
@@ -2745,7 +2817,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L312",
       "id": "test_tools_rationale_312",
-      "community": 26
+      "community": 31
     },
     {
       "label": "A ConnectError is returned as a human-readable connection-error string.",
@@ -2753,7 +2825,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L324",
       "id": "test_tools_rationale_324",
-      "community": 27
+      "community": 32
     },
     {
       "label": "Extra `data` kwargs are forwarded without error and success is reported.",
@@ -2761,7 +2833,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L334",
       "id": "test_tools_rationale_334",
-      "community": 28
+      "community": 33
     },
     {
       "label": "home_service works for arbitrary HA domains (e.g., cover/open_cover).",
@@ -2769,7 +2841,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L349",
       "id": "test_tools_rationale_349",
-      "community": 29
+      "community": 34
     },
     {
       "label": "The first 300 chars of HA error body appear in the returned error string.",
@@ -2777,7 +2849,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L360",
       "id": "test_tools_rationale_360",
-      "community": 30
+      "community": 35
     },
     {
       "label": "A ReadTimeout is treated as a RequestError and returns a connection-error string",
@@ -2785,7 +2857,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L372",
       "id": "test_tools_rationale_372",
-      "community": 31
+      "community": 36
     },
     {
       "label": "200 response is formatted as 'friendly_name (entity): state=X | attrs'.",
@@ -2793,7 +2865,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L389",
       "id": "test_tools_rationale_389",
-      "community": 32
+      "community": 37
     },
     {
       "label": "friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.",
@@ -2801,7 +2873,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L412",
       "id": "test_tools_rationale_412",
-      "community": 33
+      "community": 38
     },
     {
       "label": "A 404 from HA is surfaced as a string containing the status code.",
@@ -2809,7 +2881,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L434",
       "id": "test_tools_rationale_434",
-      "community": 34
+      "community": 39
     },
     {
       "label": "ConnectError returns a human-readable HA connection error string.",
@@ -2817,7 +2889,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L447",
       "id": "test_tools_rationale_447",
-      "community": 35
+      "community": 40
     },
     {
       "label": "Attribute summary JSON is capped at 400 characters.",
@@ -2825,7 +2897,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L459",
       "id": "test_tools_rationale_459",
-      "community": 36
+      "community": 41
     },
     {
       "label": "Entity with empty attributes dict returns state without crashing.",
@@ -2833,7 +2905,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L478",
       "id": "test_tools_rationale_478",
-      "community": 37
+      "community": 42
     },
     {
       "label": "Entity friendly_name containing Polish characters is not mangled.",
@@ -2841,7 +2913,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L492",
       "id": "test_tools_rationale_492",
-      "community": 38
+      "community": 43
     },
     {
       "label": "When friendly_name is absent, the entity_id is used as the display name.",
@@ -2849,7 +2921,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L508",
       "id": "test_tools_rationale_508",
-      "community": 39
+      "community": 44
     },
     {
       "label": "A 401 from the states endpoint surfaces the status code.",
@@ -2857,7 +2929,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L522",
       "id": "test_tools_rationale_522",
-      "community": 40
+      "community": 45
     },
     {
       "label": "tools.py",
@@ -2871,7 +2943,7 @@
       "label": "web_search()",
       "file_type": "code",
       "source_file": "tools.py",
-      "source_location": "L19",
+      "source_location": "L25",
       "id": "tools_web_search",
       "community": 4
     },
@@ -2879,7 +2951,7 @@
       "label": "home_service()",
       "file_type": "code",
       "source_file": "tools.py",
-      "source_location": "L77",
+      "source_location": "L83",
       "id": "tools_home_service",
       "community": 4
     },
@@ -2887,32 +2959,40 @@
       "label": "home_state()",
       "file_type": "code",
       "source_file": "tools.py",
-      "source_location": "L99",
+      "source_location": "L105",
       "id": "tools_home_state",
+      "community": 4
+    },
+    {
+      "label": "DEPRECATED \u2014 use src/homeai/tools/ package instead.\r \r Legacy tools module with",
+      "file_type": "rationale",
+      "source_file": "tools.py",
+      "source_location": "L1",
+      "id": "tools_rationale_1",
       "community": 4
     },
     {
       "label": "Search the web for real-time information. Supports Polish and English queries.",
       "file_type": "rationale",
       "source_file": "tools.py",
-      "source_location": "L20",
-      "id": "tools_rationale_20",
+      "source_location": "L26",
+      "id": "tools_rationale_26",
       "community": 4
     },
     {
       "label": "Call a Home Assistant service (e.g. light/turn_on, climate/set_temperature).",
       "file_type": "rationale",
       "source_file": "tools.py",
-      "source_location": "L83",
-      "id": "tools_rationale_83",
+      "source_location": "L89",
+      "id": "tools_rationale_89",
       "community": 4
     },
     {
       "label": "Get the current state and attributes of a Home Assistant entity.",
       "file_type": "rationale",
       "source_file": "tools.py",
-      "source_location": "L100",
-      "id": "tools_rationale_100",
+      "source_location": "L106",
+      "id": "tools_rationale_106",
       "community": 4
     },
     {
@@ -2921,15 +3001,71 @@
       "source_file": "update_graph.py",
       "source_location": "L1",
       "id": "update_graph",
-      "community": 41
+      "community": 15
+    },
+    {
+      "label": "One-off utility: merge infrastructure-plan nodes into the knowledge graph.\r \r Re",
+      "file_type": "rationale",
+      "source_file": "update_graph.py",
+      "source_location": "L1",
+      "id": "update_graph_rationale_1",
+      "community": 15
     }
   ],
   "links": [
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "add_monitors.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "add_monitors",
+      "_tgt": "add_monitors_main",
+      "source": "add_monitors",
+      "target": "add_monitors_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "add_monitors.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "add_monitors_rationale_1",
+      "_tgt": "add_monitors",
+      "source": "add_monitors",
+      "target": "add_monitors_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "add_ping_monitors.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "add_ping_monitors",
+      "_tgt": "add_ping_monitors_main",
+      "source": "add_ping_monitors",
+      "target": "add_ping_monitors_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "add_ping_monitors.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "add_ping_monitors_rationale_1",
+      "_tgt": "add_ping_monitors",
+      "source": "add_ping_monitors",
+      "target": "add_ping_monitors_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "agent_brain.py",
-      "source_location": "L13",
+      "source_location": "L19",
       "weight": 1.0,
       "_src": "agent_brain",
       "_tgt": "config",
@@ -2941,7 +3077,7 @@
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "agent_brain.py",
-      "source_location": "L14",
+      "source_location": "L20",
       "weight": 1.0,
       "_src": "agent_brain",
       "_tgt": "tools",
@@ -2953,7 +3089,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "agent_brain.py",
-      "source_location": "L79",
+      "source_location": "L85",
       "weight": 1.0,
       "_src": "agent_brain",
       "_tgt": "agent_brain_build_tools_block",
@@ -3022,6 +3158,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent_brain.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "agent_brain_rationale_1",
+      "_tgt": "agent_brain",
+      "source": "agent_brain",
+      "target": "agent_brain_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "tests\\conftest.py",
@@ -3061,7 +3209,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "agent_brain.py",
-      "source_location": "L229",
+      "source_location": "L235",
       "weight": 0.8,
       "_src": "agent_brain_run_pipeline",
       "_tgt": "agent_brain_build_tools_block",
@@ -3121,12 +3269,12 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "agent_brain.py",
-      "source_location": "L94",
+      "source_location": "L100",
       "weight": 1.0,
-      "_src": "agent_brain_rationale_94",
+      "_src": "agent_brain_rationale_100",
       "_tgt": "agent_brain_memory",
       "source": "agent_brain_memory",
-      "target": "agent_brain_rationale_94",
+      "target": "agent_brain_rationale_100",
       "confidence_score": 1.0
     },
     {
@@ -4177,12 +4325,12 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "agent_brain.py",
-      "source_location": "L119",
+      "source_location": "L125",
       "weight": 1.0,
-      "_src": "agent_brain_rationale_119",
+      "_src": "agent_brain_rationale_125",
       "_tgt": "agent_brain_memory_recent",
       "source": "agent_brain_memory_recent",
-      "target": "agent_brain_rationale_119",
+      "target": "agent_brain_rationale_125",
       "confidence_score": 1.0
     },
     {
@@ -4225,12 +4373,12 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "agent_brain.py",
-      "source_location": "L136",
+      "source_location": "L142",
       "weight": 1.0,
-      "_src": "agent_brain_rationale_136",
+      "_src": "agent_brain_rationale_142",
       "_tgt": "agent_brain_llm_step",
       "source": "agent_brain_llm_step",
-      "target": "agent_brain_rationale_136",
+      "target": "agent_brain_rationale_142",
       "confidence_score": 1.0
     },
     {
@@ -4297,12 +4445,12 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "agent_brain.py",
-      "source_location": "L225",
+      "source_location": "L231",
       "weight": 1.0,
-      "_src": "agent_brain_rationale_225",
+      "_src": "agent_brain_rationale_231",
       "_tgt": "agent_brain_run_pipeline",
       "source": "agent_brain_run_pipeline",
-      "target": "agent_brain_rationale_225",
+      "target": "agent_brain_rationale_231",
       "confidence_score": 1.0
     },
     {
@@ -4327,6 +4475,18 @@
       "_tgt": "config_settings",
       "source": "config",
       "target": "config_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "config.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "config_rationale_1",
+      "_tgt": "config",
+      "source": "config",
+      "target": "config_rationale_1",
       "confidence_score": 1.0
     },
     {
@@ -4381,7 +4541,7 @@
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "tools.py",
-      "source_location": "L9",
+      "source_location": "L15",
       "weight": 1.0,
       "_src": "tools",
       "_tgt": "config",
@@ -5173,7 +5333,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\homeai\\prompts.py",
-      "source_location": "L71",
+      "source_location": "L78",
       "weight": 1.0,
       "_src": "prompts",
       "_tgt": "prompts_build_tools_block",
@@ -5185,12 +5345,24 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src\\homeai\\prompts.py",
-      "source_location": "L72",
+      "source_location": "L1",
       "weight": 1.0,
-      "_src": "prompts_rationale_72",
+      "_src": "prompts_rationale_1",
+      "_tgt": "prompts",
+      "source": "prompts",
+      "target": "prompts_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\prompts.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_src": "prompts_rationale_79",
       "_tgt": "prompts_build_tools_block",
       "source": "prompts_build_tools_block",
-      "target": "prompts_rationale_72",
+      "target": "prompts_rationale_79",
       "confidence_score": 1.0
     },
     {
@@ -8881,7 +9053,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tools.py",
-      "source_location": "L19",
+      "source_location": "L25",
       "weight": 1.0,
       "_src": "tools",
       "_tgt": "tools_web_search",
@@ -8893,7 +9065,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tools.py",
-      "source_location": "L77",
+      "source_location": "L83",
       "weight": 1.0,
       "_src": "tools",
       "_tgt": "tools_home_service",
@@ -8905,7 +9077,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tools.py",
-      "source_location": "L99",
+      "source_location": "L105",
       "weight": 1.0,
       "_src": "tools",
       "_tgt": "tools_home_state",
@@ -8917,36 +9089,60 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "tools.py",
-      "source_location": "L20",
+      "source_location": "L1",
       "weight": 1.0,
-      "_src": "tools_rationale_20",
+      "_src": "tools_rationale_1",
+      "_tgt": "tools",
+      "source": "tools",
+      "target": "tools_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tools.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "tools_rationale_26",
       "_tgt": "tools_web_search",
       "source": "tools_web_search",
-      "target": "tools_rationale_20",
+      "target": "tools_rationale_26",
       "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "tools.py",
-      "source_location": "L83",
+      "source_location": "L89",
       "weight": 1.0,
-      "_src": "tools_rationale_83",
+      "_src": "tools_rationale_89",
       "_tgt": "tools_home_service",
       "source": "tools_home_service",
-      "target": "tools_rationale_83",
+      "target": "tools_rationale_89",
       "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "tools.py",
-      "source_location": "L100",
+      "source_location": "L106",
       "weight": 1.0,
-      "_src": "tools_rationale_100",
+      "_src": "tools_rationale_106",
       "_tgt": "tools_home_state",
       "source": "tools_home_state",
-      "target": "tools_rationale_100",
+      "target": "tools_rationale_106",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "update_graph.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "update_graph_rationale_1",
+      "_tgt": "update_graph",
+      "source": "update_graph",
+      "target": "update_graph_rationale_1",
       "confidence_score": 1.0
     }
   ],
