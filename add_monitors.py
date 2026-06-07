@@ -1,7 +1,8 @@
 """One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.
 
-Connects to Uptime Kuma at 10.0.0.102:3001, authenticates, and registers monitors
-for all homelab infrastructure nodes. Run manually; not imported by any module.
+Connects to Uptime Kuma at 10.0.0.101:3001 (REDACTED-HOST — REDACTED-HOST decommissioned),
+authenticates, and registers monitors for all homelab infrastructure nodes.
+Run manually; not imported by any module.
 """
 
 import asyncio
@@ -17,18 +18,19 @@ monitors = [
     {"type": "http", "name": "ProjectNemo HA", "url": "http://10.0.0.103:8123", "interval": 60},
     {"type": "http", "name": "Grafana", "url": "http://10.0.0.111:3000", "interval": 60},
     {"type": "http", "name": "Prometheus", "url": "http://10.0.0.111:9090", "interval": 60},
-    {"type": "http", "name": "swarm-api", "url": "http://10.0.0.103:8010/health", "interval": 60},
+    {"type": "http", "name": "swarm-api", "url": "http://10.0.0.104:8010/health", "interval": 60},
     {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.107", "interval": 60},
     {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.101", "interval": 60},
-    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.103", "interval": 60},
-    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.102", "interval": 60},
+    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.104", "interval": 60},
     {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.111", "interval": 60},
 ]
 
+KUMA_HOST = "http://10.0.0.101:3001"  # REDACTED-HOST (REDACTED-HOST decommissioned)
+
 async def main():
-    print("Connecting to Uptime Kuma at http://10.0.0.102:3001 ...")
+    print(f"Connecting to Uptime Kuma at {KUMA_HOST} ...")
     await sio.connect(
-        "http://10.0.0.102:3001",
+        KUMA_HOST,
         socketio_path="/socket.io",
         transports=["websocket"],
     )
