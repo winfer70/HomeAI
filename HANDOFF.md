@@ -1,49 +1,43 @@
-# HANDOFF — HomeAI / Infra Session
-Date: 2026-05-25
+# HANDOFF — HomeAI / Cross-Project Audit + ProjectNemo BLE
+Date: 2026-06-08
 
 ## What Was Accomplished
 
-### Cluster recovery after power outage
-- REDACTED-HOST: ethernet not in DHCP list — fixed netplan (added `dhcp4: true` to `eno1`), assigned new IP 10.0.0.104 (ethernet MAC `XX:XX:XX:XX:XX:XX`)
-- REDACTED-HOST: hardened — `restart=unless-stopped` on all containers, `systemctl enable docker tailscaled`, `wait-network.conf` added
-- REDACTED-HOST: came back online on ethernet (WiFi never worked). `wait-network.conf` added.
-- REDACTED-HOST: DNS broken — Tailscale MagicDNS returned SERVFAIL for all external domains. Fixed: `tailscale set --accept-dns=false`, `/etc/resolv.conf` → `8.8.8.8, 1.1.1.1`
-- cloudflared on REDACTED-HOST: was crash-looping — fixed by adding `dns: [8.8.8.8, 1.1.1.1]` to the cloudflared service in docker-compose.yml (committed + deployed)
+### ProjectNemo — BLE Fix
+- Root cause confirmed: Fluval Roma/Shaker 2.0 channels 03-06 use 0-100 scale, not 0-255. Old code applied `to255()` multiplier (×2.55), device silently dropped values >100.
+- Fix: removed `to255()` in `ui/src/services/bleService.js`. Channels now send `clamp(v)` directly (0-100).
+- Commit `5cdff82` deployed to REDACTED-HOST.
+- **PENDING VERIFICATION**: tablet hard-reload Chrome → `http://10.0.0.103:3000` → connect Fluval → move R slider → confirm `d1 a1 03 XX` where XX ≤ 0x64
 
-### ProjectNemo fixes (REDACTED-HOST)
-- nemo-mosquitto: crash-looping. Root causes: log dir owned by `kamilo` (not 1883), passwd file had placeholder hash. Fixed both — container now stable.
-- nemo-zigbee2mqtt: crash-looping (no ZBDongle-E connected). Stopped + `docker update --restart=no`. Will re-enable when dongle added.
+### ProjectNemo — SENSORS.md Rewrite
+- Full rewrite with hardware fixes: DS18B20 PVC-only warning, `attenuation: 11db` ESPHome fix, median+moving_average filter combo, ADS1115 Phase A upgrade, 5V/3A PSU, GFCI/RCD mandatory, ground loop Phase B warning, Ireland sourcing table, App UI logic requirements.
+- SNZB-02LD + ZBDongle-E already ordered — arriving Tuesday.
+- Git disaster (ce5aee3 deleted 85+ tracked files) recovered via commit `07a9daa`.
 
-### ai-agent-stack (REDACTED-HOST)
-- ai_agent_dashboard was perpetually unhealthy — root cause: monitor's `/status` runs 8 service checks sequentially with 10s timeouts each (40s+ worst case). Healthcheck timeout was only 10s.
-- Fix: parallelized `check_all_services()` with `asyncio.gather()` in `monitor/main.py`. Increased healthcheck timeout 10s → 30s in `docker-compose.yml`. Committed + deployed. Dashboard now healthy.
+### Graphify Improvements
+- HomeAI post-commit hook installed + patched (`PYTHONUTF8=1`, `python3`→`python`).
+- ProjectNemo isolated nodes: 107→35. HomeAI: 97→66.
 
-### Memory / config updates
-- All 5 memory files referencing REDACTED-HOST IP updated: .107 → .108
-- project_infrastructure.md: added switch speeds, DNS fix, updated Remaining Infra Tasks
-- project_services.md: major cleanup — removed stale KamiloPC Ollama / Kali Laptop sections
-- ai-agent-stack.md, project_nemo.md: updated to current state
-- PROJECT_REGISTRY.md: date + REDACTED-HOST IP updated
-
-### Analysis / planning
-- Switch link speeds: REDACTED-HOST 1Gbps ✅, REDACTED-HOST 100Mbps ⚠️, REDACTED-HOST 100Mbps ⚠️, REDACTED-HOST 10Mbps 🔴. Cause: bad cables.
-- Docker registry: approved plan — self-hosted `registry:2` on REDACTED-HOST, build on KamiloPC. Docs in `docker-registry.md`.
-- Backup: approved plan — restic to REDACTED-HOST HDD (UUID D607-6CE3) + B2. Docs in `homelab-backups.md`. Router USB rejected.
+### Deployment Audit (all projects)
+- Docker volume types documented: named volumes vs bind mounts per project.
+- SSH users: `kamilo420` on REDACTED-HOST, `kamilo` on REDACTED-HOST — no sudo needed for docker compose.
+- Migrations: tickerTap=Alembic (needs `alembic upgrade head`), ProjectNemo=create_all on startup, husariabeats/ai-agent-stack=none. No Prisma/Drizzle anywhere.
+- Pre-deploy backup strategy in `memory/deploy_ops.md`.
 
 ## Current State
-- All nodes online and healthy
-- All containers stable (no crash loops)
-- REDACTED-HOST DNS working
-- ai_agent_dashboard healthy
+- ProjectNemo: 6 containers running on REDACTED-HOST WiFi (.107). BLE fix deployed, tablet verification pending.
+- Obsada CRUD + Telegram power alerts: already implemented (previous session).
+- HomeAI swarm (Logician/Devil/Aggregator): NOT yet built.
 
 ## Exact Next Actions
 
-1. **Replace cables** on REDACTED-HOST and REDACTED-HOST (and REDACTED-HOST if still 100Mbps after autoneg reset). Use Cat5e/Cat6. Run `sudo ethtool -s <iface> autoneg on speed 1000 duplex full` first.
-2. **BIOS AC Recovery** — set "Restore on AC Power Loss → Power On" on REDACTED-HOST, REDACTED-HOST, REDACTED-HOST, REDACTED-HOST. Physical access required per machine.
-3. **Docker registry on REDACTED-HOST** — run `registry:2` container, add insecure-registries to all nodes, update compose files. See `docker-registry.md`.
-4. **Restic backups** — mount HDD on REDACTED-HOST, install restic on all nodes, write backup scripts + cron. See `homelab-backups.md`.
-5. **Uptime Kuma UI** — open http://10.0.0.102:3001 and configure monitors.
-6. **HomeAI swarm-api** — implement `SWARM_DESIGN.md` → FastAPI code, deploy to REDACTED-HOST.
+1. **Tablet**: Hard-reload Chrome → `http://10.0.0.103:3000` → connect Fluval → verify sliders
+2. **Tuesday**: SNZB-02LD + ZBDongle-E arrive → plug into REDACTED-HOST USB (1m extension) → Zigbee2MQTT pair → HA temp entity
+3. **ProjectNemo App UI**: Nitrate 60s timer, ammonia 24h suppression, iron tip, pH rate-of-change alert (see SENSORS.md App Logic Requirements)
+4. **n8n webhooks**: Telegram bot token + chat ID + 4 webhook IDs → `.env` on REDACTED-HOST before power alerts fire
+5. **HomeAI swarm**: Build SWARM_DESIGN.md advisory swarm (Logician/Devil/Aggregator)
 
 ## Blockers
-- None blocking. Cable replacement + BIOS = physical access only.
+- Tablet cache: BLE fix deployed, tablet verification not yet done
+- n8n webhooks: need Telegram bot token + chat ID configured
+- Zigbee: dongle arriving Tuesday

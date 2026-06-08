@@ -15,7 +15,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "add_monitors.py",
-      "source_location": "L28",
+      "source_location": "L30",
       "id": "add_monitors_main",
       "community": 12
     },
@@ -3017,7 +3017,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "add_monitors.py",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0,
       "_src": "add_monitors",
       "_tgt": "add_monitors_main",
