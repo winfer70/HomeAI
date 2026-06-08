@@ -66,6 +66,7 @@ async def main():
             data["accepted_statuscodes"] = ["200-299"]
         elif m["type"] == "ping":
             data["hostname"] = m["hostname"]
+            data["accepted_statuscodes"] = ["200-299"]
 
         try:
             res = await sio.call("add", data, timeout=15)
