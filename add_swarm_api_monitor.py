@@ -15,7 +15,7 @@ KUMA_HOST = "http://10.0.0.101:3001"  # REDACTED-HOST (REDACTED-HOST decommissio
 monitor = {
     "name": "swarm-api",
     "type": "http",
-    "url": "http://10.0.0.103:8010/health",
+    "url": "http://10.0.0.104:8010/health",
     "interval": 60,
 }
 

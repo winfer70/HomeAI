@@ -15,7 +15,7 @@ monitors = [
     {"type": "http", "name": "n8n", "url": "http://10.0.0.107:5678", "interval": 60},
     {"type": "http", "name": "ai-agent dashboard", "url": "https://dashboard.kamilon8n.win", "interval": 60},
     {"type": "http", "name": "REDACTED-HOST Ollama", "url": "http://10.0.0.101:11434", "interval": 60},
-    {"type": "http", "name": "ProjectNemo HA", "url": "http://10.0.0.103:8123", "interval": 60},
+    {"type": "http", "name": "ProjectNemo HA", "url": "http://10.0.0.104:8123", "interval": 60},
     {"type": "http", "name": "Grafana", "url": "http://10.0.0.111:3000", "interval": 60},
     {"type": "http", "name": "Prometheus", "url": "http://10.0.0.111:9090", "interval": 60},
     {"type": "http", "name": "swarm-api", "url": "http://10.0.0.104:8010/health", "interval": 60},

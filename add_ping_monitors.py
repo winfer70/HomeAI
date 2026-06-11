@@ -12,7 +12,7 @@ sio = socketio.AsyncClient(logger=False, engineio_logger=False)
 ping_monitors = [
     {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.107", "interval": 60},
     {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.101", "interval": 60},
-    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.103", "interval": 60},
+    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.104", "interval": 60},
     {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.102", "interval": 60},
     {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.111", "interval": 60},
 ]
