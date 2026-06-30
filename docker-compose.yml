@@ -1,0 +1,157 @@
+services:
+
+  # ── Infrastructure ─────────────────────────────────────────────────────────
+
+  nats:
+    image: nats:2.10-alpine
+    restart: unless-stopped
+    command: ["-js", "-m", "8222"]
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    volumes:
+      - nats-data:/data
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --save 60 1 --loglevel warning
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  chromadb:
+    image: chromadb/chroma:latest
+    restart: unless-stopped
+    ports:
+      - "8009:8000"
+    volumes:
+      - chroma-data:/chroma/chroma
+
+  # ── Home Automation ─────────────────────────────────────────────────────────
+  # Home Assistant runs as nemo-homeassistant on projectnemo_nemo-net (172.19.0.5:8123).
+  # matter-server uses network_mode: host → binds to 0.0.0.0:5580 on the REDACTED-HOST host.
+  # HA container reaches it via the bridge gateway: ws://172.19.0.1:5580/ws
+  # Configure in HA: Settings → Integrations → Matter → ws://172.19.0.1:5580/ws
+
+  matter-server:
+    image: ghcr.io/home-assistant-libs/python-matter-server:stable
+    restart: unless-stopped
+    network_mode: host          # required: mDNS commissioning for Matter devices on LAN
+    volumes:
+      - ./data/matter:/data
+      - /run/dbus:/run/dbus:ro  # Bluetooth (Matter over BLE commissioning)
+    environment:
+      - TZ=${TZ:-Europe/Warsaw}
+    # If using HA SkyConnect or SONOFF Thread dongle on this host for border router:
+    # devices:
+    #   - /dev/ttyACM0:/dev/ttyACM0
+
+  # ── AI / LLM ────────────────────────────────────────────────────────────────
+  # Ollama runs on REDACTED-HOST (10.0.0.101:11434) — not deployed here.
+
+  searxng:
+    image: searxng/searxng:latest
+    restart: unless-stopped
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./data/searxng:/etc/searxng
+    environment:
+      - SEARXNG_BASE_URL=https://${HOMEAI_DOMAIN:-localhost}/search
+
+  # ── Reverse Proxy ───────────────────────────────────────────────────────────
+  # Caddy disabled: port 80 is taken by nemo-homeassistant.
+  # Re-enable and configure a different port once HA port routing is resolved.
+  #
+  # caddy:
+  #   image: caddy:2-alpine
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8090:80"   # use 8090 to avoid conflict with nemo-homeassistant:80
+  #     - "8443:443"
+  #   volumes:
+  #     - ./infra/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+  #     - caddy-data:/data
+  #     - caddy-config:/config
+
+  # ── Application Services ────────────────────────────────────────────────────
+  # Uncomment each block as the service is implemented under services/
+  #
+  # gateway:
+  #   build: ./services/gateway
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8081:8080"
+  #   depends_on: [nats, redis]
+  #
+  # nlp-pipeline:
+  #   build: ./services/nlp-pipeline
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8001:8001"
+  #   depends_on: [nats]
+  #
+  # llm-service:
+  #   build: ./services/llm-service
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8002:8002"
+  #   depends_on: [nats]
+  #   environment:
+  #     - OLLAMA_BASE_URL=http://10.0.0.101:11434
+  #
+  # orchestrator:
+  #   build: ./services/orchestrator
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8003:8003"
+  #   depends_on: [nlp-pipeline, llm-service, safety-gate, automation-adapter]
+  #
+  # safety-gate:
+  #   build: ./services/safety-gate
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8004:8004"
+  #   depends_on: [nats, redis]
+  #
+  # automation-adapter:
+  #   build: ./services/automation-adapter
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8005:8005"
+  #   depends_on: [nats]  # HA is external at ${HA_URL}
+  #
+  # web-search:
+  #   build: ./services/web-search
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8006:8006"
+  #   depends_on: [nats, searxng]
+  #
+  # memory-store:
+  #   build: ./services/memory-store
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8007:8007"
+  #   depends_on: [redis, chromadb]
+  #
+  # scheduler:
+  #   build: ./services/scheduler
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8008:8008"
+  #   depends_on: [nats, redis]
+  #
+  # voice-io:
+  #   build: ./services/voice-io
+  #   restart: unless-stopped
+  #   devices:
+  #     - /dev/snd:/dev/snd
+  #   depends_on: [nats, gateway]
+
+volumes:
+  nats-data:
+  redis-data:
+  chroma-data:
