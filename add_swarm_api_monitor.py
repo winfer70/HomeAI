@@ -1,26 +1,52 @@
-"""One-off utility: add HTTP monitor for swarm-api to Uptime Kuma on REDACTED-HOST.
+"""One-off utility: add an HTTP monitor for a swarm-api endpoint to Uptime Kuma.
 
-Connects to Uptime Kuma at 10.0.0.102:3001 (REDACTED-HOST), authenticates via
-socket.io, and registers an HTTP monitor for the swarm-api health endpoint.
-Run manually; not imported by any module.
+Configure Uptime Kuma access with KUMA_HOST / KUMA_USERNAME / KUMA_PASSWORD.
+Set MONITORS_CONFIG to a local JSON file (kept out of git) containing either a
+monitor object for this script or an object with a "swarm_api_monitor" entry.
 """
 
+from __future__ import annotations
+
 import asyncio
+import json
+import os
+from pathlib import Path
+
 import socketio
 
 sio = socketio.AsyncClient(logger=False, engineio_logger=False)
 
-KUMA_HOST = "http://10.0.0.101:3001"  # REDACTED-HOST (REDACTED-HOST decommissioned)
-
-monitor = {
-    "name": "swarm-api",
-    "type": "http",
-    "url": "http://10.0.0.104:8010/health",
-    "interval": 60,
-}
+KUMA_HOST = os.environ.get("KUMA_HOST", "http://localhost:3001")
+KUMA_USERNAME = os.environ.get("KUMA_USERNAME", "")
+KUMA_PASSWORD = os.environ.get("KUMA_PASSWORD", "")
+MONITORS_CONFIG = os.environ.get("MONITORS_CONFIG", "")
 
 
-async def main():
+def load_monitor() -> dict[str, object]:
+    if not MONITORS_CONFIG:
+        return {}
+
+    config_path = Path(MONITORS_CONFIG)
+    config_data = json.loads(config_path.read_text(encoding="utf-8"))
+
+    if isinstance(config_data, dict):
+        monitor = config_data.get("swarm_api_monitor", config_data)
+        if isinstance(monitor, dict) and {"name", "type", "url"}.issubset(monitor):
+            return monitor
+    raise ValueError(
+        "MONITORS_CONFIG must contain a monitor object or a {'swarm_api_monitor': {...}} object"
+    )
+
+
+async def main() -> None:
+    monitor = load_monitor()
+    if not monitor:
+        print("No swarm-api monitor configured. Populate MONITORS_CONFIG locally before running this script.")
+        return
+    if not KUMA_USERNAME or not KUMA_PASSWORD:
+        print("Set KUMA_USERNAME and KUMA_PASSWORD before running this script.")
+        return
+
     print(f"Connecting to Uptime Kuma at {KUMA_HOST} ...")
     await sio.connect(
         KUMA_HOST,
@@ -31,7 +57,7 @@ async def main():
 
     result = await sio.call(
         "login",
-        {"username": "kamilo", "password": "REDACTED_PASSWORD", "token": ""},
+        {"username": KUMA_USERNAME, "password": KUMA_PASSWORD, "token": ""},
         timeout=15,
     )
     print(f"Login result: {result}")
@@ -47,14 +73,14 @@ async def main():
         "name": monitor["name"],
         "type": monitor["type"],
         "url": monitor["url"],
-        "method": "GET",
-        "interval": monitor["interval"],
+        "method": monitor.get("method", "GET"),
+        "interval": monitor.get("interval", 60),
         "retryInterval": 60,
         "maxretries": 3,
         "upsideDown": False,
         "active": True,
-        "ignoreTls": False,
-        "accepted_statuscodes": ["200-299"],
+        "ignoreTls": bool(monitor.get("ignoreTls", False)),
+        "accepted_statuscodes": monitor.get("accepted_statuscodes", ["200-299"]),
     }
 
     try:
@@ -64,8 +90,8 @@ async def main():
             print(f"  [OK]   {monitor['name']}  (id={res.get('id', '?')})")
         else:
             print(f"  [FAIL] {monitor['name']}  -> {res}")
-    except Exception as e:
-        print(f"  [ERR]  {monitor['name']}  -> {e}")
+    except Exception as exc:
+        print(f"  [ERR]  {monitor['name']}  -> {exc}")
 
     await sio.disconnect()
 

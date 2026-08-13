@@ -6,15 +6,15 @@
 
 ## Devices Configured
 
-### WR940N (192.168.0.2) — AP
+### WR940N (192.168.10.2) — AP
 - DHCP: disabled
-- LAN IP: 192.168.0.2
-- SSID: BezReklam (2.4GHz)
+- LAN IP: 192.168.10.2
+- SSID: LabLAN (2.4GHz)
 - Uplink: LAN port → AX5400
 
-### TL-WPA7517 (192.168.0.3) — Powerline AP
-- LAN IP: 192.168.0.3 (static)
-- 2.4GHz SSID: BezReklam-IOT / password: REDACTED_PASSWORD
+### TL-WPA7517 (192.168.10.3) — Powerline AP
+- LAN IP: 192.168.10.3 (static)
+- 2.4GHz SSID: Lab-IoT / password: <set-locally>
 - 5GHz: enabled (kept for range)
 - Use: IoT devices
 
@@ -22,43 +22,43 @@
 
 | Device | MAC | IP |
 |--------|-----|----|
-| REDACTED-HOST | XX:XX:XX:XX:XX:XX | 10.0.0.107 |
-| REDACTED-HOST | XX:XX:XX:XX:XX:XX | 10.0.0.101 |
-| REDACTED-HOST | XX:XX:XX:XX:XX:XX | 10.0.0.103 |
-| REDACTED-HOST | XX:XX:XX:XX:XX:XX | 10.0.0.111 |
-| REDACTED-HOST | XX:XX:XX:XX:XX:XX | 10.0.0.102 |
-| KamiloPC | XX:XX:XX:XX:XX:XX | 10.0.0.105 |
+| node-a | XX:XX:XX:XX:XX:XX | 10.0.1.107 |
+| node-b | XX:XX:XX:XX:XX:XX | 10.0.1.101 |
+| node-c | XX:XX:XX:XX:XX:XX | 10.0.1.103 |
+| node-e | XX:XX:XX:XX:XX:XX | 10.0.1.111 |
+| node-d | XX:XX:XX:XX:XX:XX | 10.0.1.102 |
+| workstation | XX:XX:XX:XX:XX:XX | 10.0.1.105 |
 
 ## IP Changes (old → new)
 
 | Node | Old IP | New IP |
 |------|--------|--------|
-| REDACTED-HOST | 10.0.0.112 | 10.0.0.101 |
-| REDACTED-HOST | 10.0.0.109 | 10.0.0.111 |
-| REDACTED-HOST | 10.0.0.108 | 10.0.0.102 |
-| REDACTED-HOST | 10.0.0.107 | 10.0.0.107 (unchanged) |
-| REDACTED-HOST | 10.0.0.103 | 10.0.0.103 (unchanged) |
+| node-b | 10.0.1.112 | 10.0.1.101 |
+| node-e | 10.0.1.109 | 10.0.1.111 |
+| node-d | 10.0.1.108 | 10.0.1.102 |
+| node-a | 10.0.1.107 | 10.0.1.107 (unchanged) |
+| node-c | 10.0.1.103 | 10.0.1.103 (unchanged) |
 
 ## Node Network Changes
 
-### REDACTED-HOST
+### node-b
 - WiFi disabled permanently via netplan (`/etc/netplan/00-installer-config.yaml`)
 - Ethernet only: enp0s31f6 (XX:XX:XX:XX:XX:XX)
 - Old WiFi MAC: XX:XX:XX:XX:XX:XX (reservation deleted)
 
-### REDACTED-HOST
-- Ethernet: enp1s0 (XX:XX:XX:XX:XX:XX) → 10.0.0.107
-- WiFi: wlp2s0 (XX:XX:XX:XX:XX:XX) → still active at 10.0.0.106 (disable later)
+### node-a
+- Ethernet: enp1s0 (XX:XX:XX:XX:XX:XX) → 10.0.1.107
+- WiFi: wlp2s0 (XX:XX:XX:XX:XX:XX) → still active at 10.0.1.106 (disable later)
 - Old duplicate reservation (.138) deleted from AX5400
 
 ## Pending
 
-- [ ] Disable WiFi on REDACTED-HOST (wlp2s0)
-- [ ] Update ai-agent-stack .env: OLLAMA_BASE_URL → http://10.0.0.101:11434
-- [ ] Monday: TL-SG108E switch arrives → connect REDACTED-HOST via ethernet → update reservation
-- [ ] Monday: verify REDACTED-HOST ethernet MAC → add to AX5400 reservations
+- [ ] Disable WiFi on node-a (wlp2s0)
+- [ ] Update ai-agent-stack .env: OLLAMA_BASE_URL → http://10.0.1.101:11434
+- [ ] Monday: TL-SG108E switch arrives → connect node-c via ethernet → update reservation
+- [ ] Monday: verify node-c ethernet MAC → add to AX5400 reservations
 - [ ] Configure SG108E (VLAN for IoT isolation — optional, later)
-- [ ] Uptime Kuma UI on REDACTED-HOST (10.0.0.102:3001)
+- [ ] Uptime Kuma UI on node-d (10.0.1.102:3001)
 
 ## Switch Purchase
 - TL-SG108E (managed, 8-port Gigabit) — arriving Monday

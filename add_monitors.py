@@ -1,33 +1,52 @@
 """One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.
 
-Connects to Uptime Kuma at 10.0.0.101:3001 (REDACTED-HOST — REDACTED-HOST decommissioned),
-authenticates, and registers monitors for all homelab infrastructure nodes.
-Run manually; not imported by any module.
+Configure Uptime Kuma access with KUMA_HOST / KUMA_USERNAME / KUMA_PASSWORD.
+Set MONITORS_CONFIG to a local JSON file (kept out of git) containing either a
+JSON array for this script or an object with a "monitors" array.
 """
 
+from __future__ import annotations
+
 import asyncio
+import json
+import os
+from pathlib import Path
+
 import socketio
 
 sio = socketio.AsyncClient(logger=False, engineio_logger=False)
 
-monitors = [
-    {"type": "http", "name": "REDACTED-HOST nginx", "url": "http://10.0.0.107", "interval": 60},
-    {"type": "http", "name": "n8n", "url": "http://10.0.0.107:5678", "interval": 60},
-    {"type": "http", "name": "ai-agent dashboard", "url": "https://dashboard.kamilon8n.win", "interval": 60},
-    {"type": "http", "name": "REDACTED-HOST Ollama", "url": "http://10.0.0.101:11434", "interval": 60},
-    {"type": "http", "name": "ProjectNemo HA", "url": "http://10.0.0.104:8123", "interval": 60},
-    {"type": "http", "name": "Grafana", "url": "http://10.0.0.111:3000", "interval": 60},
-    {"type": "http", "name": "Prometheus", "url": "http://10.0.0.111:9090", "interval": 60},
-    {"type": "http", "name": "swarm-api", "url": "http://10.0.0.104:8010/health", "interval": 60},
-    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.107", "interval": 60},
-    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.101", "interval": 60},
-    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.104", "interval": 60},
-    {"type": "ping", "name": "ping REDACTED-HOST", "hostname": "10.0.0.111", "interval": 60},
-]
+KUMA_HOST = os.environ.get("KUMA_HOST", "http://localhost:3001")
+KUMA_USERNAME = os.environ.get("KUMA_USERNAME", "")
+KUMA_PASSWORD = os.environ.get("KUMA_PASSWORD", "")
+MONITORS_CONFIG = os.environ.get("MONITORS_CONFIG", "")
 
-KUMA_HOST = "http://10.0.0.101:3001"  # REDACTED-HOST (REDACTED-HOST decommissioned)
 
-async def main():
+def load_monitors() -> list[dict[str, object]]:
+    if not MONITORS_CONFIG:
+        return []
+
+    config_path = Path(MONITORS_CONFIG)
+    config_data = json.loads(config_path.read_text(encoding="utf-8"))
+
+    if isinstance(config_data, list):
+        return config_data
+    if isinstance(config_data, dict):
+        monitors = config_data.get("monitors", [])
+        if isinstance(monitors, list):
+            return monitors
+    raise ValueError("MONITORS_CONFIG must contain a JSON array or a {'monitors': [...]} object")
+
+
+async def main() -> None:
+    monitors = load_monitors()
+    if not monitors:
+        print("No monitors configured. Populate MONITORS_CONFIG locally before running this script.")
+        return
+    if not KUMA_USERNAME or not KUMA_PASSWORD:
+        print("Set KUMA_USERNAME and KUMA_PASSWORD before running this script.")
+        return
+
     print(f"Connecting to Uptime Kuma at {KUMA_HOST} ...")
     await sio.connect(
         KUMA_HOST,
@@ -36,8 +55,11 @@ async def main():
     )
     print("Connected.")
 
-    # Login
-    result = await sio.call("login", {"username": "kamilo", "password": "REDACTED_PASSWORD", "token": ""}, timeout=15)
+    result = await sio.call(
+        "login",
+        {"username": KUMA_USERNAME, "password": KUMA_PASSWORD, "token": ""},
+        timeout=15,
+    )
     print(f"Login result: {result}")
 
     if not result.get("ok"):
@@ -46,43 +68,43 @@ async def main():
         return
 
     print("\nAdding monitors...\n")
-    success = []
-    failed = []
+    success: list[str] = []
+    failed: list[tuple[str, str]] = []
 
-    for m in monitors:
+    for monitor in monitors:
         data = {
-            "name": m["name"],
-            "type": m["type"],
-            "interval": m["interval"],
+            "name": monitor["name"],
+            "type": monitor["type"],
+            "interval": monitor.get("interval", 60),
             "retryInterval": 60,
             "maxretries": 3,
             "upsideDown": False,
             "active": True,
         }
-        if m["type"] == "http":
-            data["url"] = m["url"]
-            data["method"] = "GET"
-            data["ignoreTls"] = False
-            data["accepted_statuscodes"] = ["200-299"]
-        elif m["type"] == "ping":
-            data["hostname"] = m["hostname"]
-            data["accepted_statuscodes"] = ["200-299"]
+        if monitor["type"] == "http":
+            data["url"] = monitor["url"]
+            data["method"] = monitor.get("method", "GET")
+            data["ignoreTls"] = bool(monitor.get("ignoreTls", False))
+            data["accepted_statuscodes"] = monitor.get("accepted_statuscodes", ["200-299"])
+        elif monitor["type"] == "ping":
+            data["hostname"] = monitor["hostname"]
+            data["accepted_statuscodes"] = monitor.get("accepted_statuscodes", ["200-299"])
 
         try:
             res = await sio.call("add", data, timeout=15)
             if res and res.get("ok"):
-                print(f"  [OK]   {m['name']}  (id={res.get('id', '?')})")
-                success.append(m["name"])
+                print(f"  [OK]   {monitor['name']}  (id={res.get('id', '?')})")
+                success.append(str(monitor["name"]))
             else:
-                print(f"  [FAIL] {m['name']}  -> {res}")
-                failed.append((m["name"], str(res)))
-        except Exception as e:
-            print(f"  [ERR]  {m['name']}  -> {e}")
-            failed.append((m["name"], str(e)))
+                print(f"  [FAIL] {monitor['name']}  -> {res}")
+                failed.append((str(monitor["name"]), str(res)))
+        except Exception as exc:
+            print(f"  [ERR]  {monitor['name']}  -> {exc}")
+            failed.append((str(monitor["name"]), str(exc)))
 
     await sio.disconnect()
 
-    print(f"\n=== Summary ===")
+    print("\n=== Summary ===")
     print(f"Created: {len(success)}/{len(monitors)}")
     for name in success:
         print(f"  + {name}")
@@ -90,5 +112,6 @@ async def main():
         print(f"Failed:  {len(failed)}")
         for name, err in failed:
             print(f"  - {name}: {err}")
+
 
 asyncio.run(main())

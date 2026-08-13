@@ -13,7 +13,7 @@
 
 ## Project Overview
 - **Type**: Full-stack finance/trading web app
-- **Root**: `/home/kamilo420/projects/finance/tickerTap`
+- **Root**: `/home/user/projects/finance/tickerTap`
 - **Branch**: `tradingAI0.1` for Trading AI feature set
 - **Plan**: `TRADING_AI_PLAN.md` — all 6 phases (95 items) COMPLETED
 
@@ -39,7 +39,7 @@
 - **Improvements Master Plan**: ask user which phase (A-I) to work on next
 
 ## Ops Notes
-- [tickertap-prod-ops.md](tickertap-prod-ops.md) — CRITICAL: prod compose requirement, news AI worker on Kali, correct LAN IP (10.0.0.107), deploy commands
+- [tickertap-prod-ops.md](tickertap-prod-ops.md) — CRITICAL: prod compose requirement, news AI worker on prior Linux laptop, correct LAN IP (10.0.1.107), deploy commands
 
 ## User Preferences
 - Uses subagents for parallel work
@@ -48,22 +48,22 @@
 
 ---
 
-# AI Agent Stack (`/home/kamilo420/ai-agent-stack`)
-- [ai-agent-stack.md](ai-agent-stack.md) — full state: Docker services, lab nodes, Ollama on REDACTED-HOST (qwen3.5:9b + codestral:22b), workflow IDs (updated 2026-05-17)
+# AI Agent Stack (`/home/user/ai-agent-stack`)
+- [ai-agent-stack.md](ai-agent-stack.md) — full state: Docker services, lab nodes, Ollama on node-b (qwen3.5:9b + codestral:22b), workflow IDs (updated 2026-05-17)
 
-## REDACTED-HOST Dashboard — ✅ COMPLETE (2026-05-11)
-All 5 parts done. Ollama moved to REDACTED-HOST (10.0.0.112). Models: qwen3.5:9b (default/think/big) + codestral:22b (code). llava:13b + nomic-embed-text not yet pulled.
+## Node-A Dashboard — ✅ COMPLETE (2026-05-11)
+All 5 parts done. Ollama moved to node-b (10.0.1.112). Models: qwen3.5:9b (default/think/big) + codestral:22b (code). llava:13b + nomic-embed-text not yet pulled.
 
 ## Home Lab Migration — IN PROGRESS (2026-05-18)
-Checklist at `/home/kamilo420/MIGRATION_CHECKLIST.md`
+Checklist at `/home/user/MIGRATION_CHECKLIST.md`
 
-**DONE:** Phase 0 ✓, Phase 1.1–1.5 ✓ (including restic backups to external HDD), Phase 2 ✓ (REDACTED-HOST full stack), Phase 3a ✓ (REDACTED-HOST), Phase 3b ✓ (Prometheus+Grafana+tickertap-worker on REDACTED-HOST, reboot smoke test passed), Phase 4 mostly ✓ (REDACTED-HOST: Tailscale+WoL+node_exporter+Uptime Kuma container), Phase 5 ✓ (UptimeRobot: 5 monitors, email alerts)
+**DONE:** Phase 0 ✓, Phase 1.1–1.5 ✓ (including restic backups to external HDD), Phase 2 ✓ (node-b full stack), Phase 3a ✓ (node-c), Phase 3b ✓ (Prometheus+Grafana+tickertap-worker on node-e, reboot smoke test passed), Phase 4 mostly ✓ (node-d: Tailscale+WoL+node_exporter+Uptime Kuma container), Phase 5 ✓ (UptimeRobot: 5 monitors, email alerts)
 
 **REMAINING:**
-- `4.4.2–4.4.3` Uptime Kuma UI setup (needs REDACTED-HOST on network — REDACTED-HOST is ethernet-only, no cable available)
-- `4.1.2` BIOS AC Recovery on REDACTED-HOST (physical)
+- `4.4.2–4.4.3` Uptime Kuma UI setup (needs node-d on network — node-d is ethernet-only, no cable available)
+- `4.1.2` BIOS AC Recovery on node-d (physical)
 - `6.x` Final validation
 
 **Backup:** restic on external HDD (1TB, /mnt/backup, UUID D607-6CE3, fstab nofail). Repo ID 33c56e2979. Daily cron 03:00. Telegram alerts on success/failure. Password in /etc/restic-env.
 
-**SSH config on all nodes:** `ssh REDACTED-HOST/REDACTED-HOST/REDACTED-HOST/REDACTED-HOST` works from REDACTED-HOST (no username needed)
+**SSH config on all nodes:** `ssh node-b/node-c/node-d/node-e` works from node-a (no username needed)

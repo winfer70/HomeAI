@@ -2,7 +2,7 @@
 > Written 2026-05-15. Supersedes the Google AI conversation.
 > Addresses 10 specific failures in that advice.
 
-> **Node naming convention:** Witcher characters — REDACTED-HOST (main), REDACTED-HOST (AI), REDACTED-HOST (data/monitoring), REDACTED-HOST (aux). REDACTED-HOST and REDACTED-HOST are already live with their IPs assigned.
+> **Node naming convention:** generic placeholders — node-a (main), node-b (AI), node-c (data/monitoring), node-d (aux). node-b and node-c are already live with their example IPs assigned.
 
 ---
 
@@ -10,47 +10,47 @@
 
 | Label  | Hardware                          | RAM  | CPU | Battery | OS Target          |
 |--------|-----------------------------------|------|-----|---------|-------------------|
-| REDACTED-HOST | Old PC                            | 8 GB | i3  | wall    | Ubuntu Server 24.04 |
-| REDACTED-HOST | Ex-Kali Laptop                    | 16 GB| i5  | ok      | Ubuntu Server 24.04 |
-| REDACTED-HOST | Second Laptop                     | 8 GB | i5  | ok      | Ubuntu Server 24.04 |
-| REDACTED-HOST | Old Laptop                        | 4-6 GB | i3 | DEAD  | Ubuntu Server 24.04 |
+| node-a | Old PC                            | 8 GB | i3  | wall    | Ubuntu Server 24.04 |
+| node-b | Former Linux laptop                | 16 GB| i5  | ok      | Ubuntu Server 24.04 |
+| node-c | Second Laptop                     | 8 GB | i5  | ok      | Ubuntu Server 24.04 |
+| node-d | Old Laptop                        | 4-6 GB | i3 | DEAD  | Ubuntu Server 24.04 |
 | daily  | Windows Laptop (i9/32GB)          | 32 GB| i9  | ok      | Windows — NOT a server |
 
 ---
 
 ## 2. Final Node Role Assignments (these do not change)
 
-The original AI shifted the ex-Kali laptop through three different roles across the conversation.
+The original AI shifted the former Linux laptop through three different roles across the conversation.
 That oscillation ends here. Assignments are driven by two hard constraints:
 - DNS must run on the most reliable node (power-safe, no battery dependency).
 - AI inference needs the most RAM; it should not share a node with infrastructure services.
 
-### REDACTED-HOST — Primary / Orchestration
+### node-a — Primary / Orchestration
 **Services:** caddy, n8n, AdGuard Home, Uptime Kuma, cloudflared (Cloudflare Tunnel daemon),
 husariabeats.com, ticker-tap.com backend
 
-> **Current state (2026-05-15):** REDACTED-HOST already runs nginx (not Caddy) as the reverse proxy and already has a Cloudflare Tunnel running (REDACTED-HOST-n8n). Do not replace nginx with Caddy — extend what exists. Add AdGuard and Tailscale only.
+> **Current state (2026-05-15):** node-a already runs nginx (not Caddy) as the reverse proxy and already has a Cloudflare Tunnel running (node-a-n8n). Do not replace nginx with Caddy — extend what exists. Add AdGuard and Tailscale only.
 
-**Why AdGuard here, not on the weak node:** REDACTED-HOST is on wall power and already runs 24/7.
+**Why AdGuard here, not on the weak node:** node-a is on wall power and already runs 24/7.
 DNS is critical infrastructure. Putting it on the weakest or most unreliable node creates a
 single point of failure for every device on your network. AdGuard Home uses under 50 MB RAM
-at idle — it adds no meaningful load to REDACTED-HOST.
+at idle — it adds no meaningful load to node-a.
 
-### REDACTED-HOST — AI / Inference (dedicated)
+### node-b — AI / Inference (dedicated)
 **Services:** Ollama, HomeAI application stack, Redis, ChromaDB, NATS, SearXNG
 
 **Why nothing else here:** 16 GB RAM sounds like a lot until Ollama loads a 7B Q4 model
 (~4.5 GB), Redis, ChromaDB, and a few Python services. Leave this node for AI work only.
 No DNS, no monitoring dashboards, no reverse proxy.
 
-### REDACTED-HOST — Data / Secondary
+### node-c — Data / Secondary
 **Services:** news article scoring script, Prometheus, Grafana, ticker-tap data pipeline
 
 **Why here:** i5/8GB is strong enough for the scoring script plus a monitoring stack.
 Prometheus + Grafana use ~300-500 MB combined. This node also serves as hot standby
-if REDACTED-HOST needs maintenance.
+if node-a needs maintenance.
 
-### REDACTED-HOST — Auxiliary / Experiments (dead battery)
+### node-d — Auxiliary / Experiments (dead battery)
 **Services:** stateless workloads only — see Section 10 for the battery caveat.
 Candidates: WireGuard exit node (stateless config), secondary SearXNG instance,
 load test target. Never run DNS, databases, or monitoring here.
@@ -59,21 +59,21 @@ load test target. Never run DNS, databases, or monitoring here.
 
 ## 3. Network Topology — Server Room Move
 
-### Current (correct BezReklam setup, keep it)
+### Current (correct LabLAN setup, keep it)
 
 ```
 Internet
     |
-[Vodafone Router — 192.168.0.1] (downstairs)
+[Vodafone Router — 192.168.10.1] (downstairs)
     |  (WiFi backhaul or ethernet to extender)
 [Vodafone Extender] (office — has ethernet ports)
     |
-    +-- [BezReklam Office Router — WAN port]
+    +-- [LabLAN Office Router — WAN port]
             10.0.2.1 (separate subnet, DHCP on)
             WiFi for office devices
 ```
 
-This is already correct. The BezReklam WAN-in from the extender creates proper subnet
+This is already correct. The LabLAN WAN-in from the extender creates proper subnet
 separation. Do not change this.
 
 ### Adding the Server Room
@@ -87,15 +87,15 @@ Use one TP-Link router as a **dumb switch** — LAN port to LAN port, DHCP disab
     | ethernet run to server room
     |
 [TP-Link — DUMB SWITCH MODE]
-    LAN1 — REDACTED-HOST (10.0.0.107, static)
-    LAN2 — REDACTED-HOST (10.0.0.112, static)
-    LAN3 — REDACTED-HOST (10.0.0.103, static)
-    LAN4 — REDACTED-HOST (TBD, static)
+    LAN1 — node-a (10.0.1.107, static)
+    LAN2 — node-b (10.0.1.112, static)
+    LAN3 — node-c (10.0.1.103, static)
+    LAN4 — node-d (TBD, static)
 ```
 
 Dumb switch configuration on the TP-Link:
 1. Connect your laptop to TP-Link LAN port (not WAN).
-2. Open TP-Link admin (192.168.0.1 or 192.168.0.1 default).
+2. Open TP-Link admin (192.168.10.1 or 192.168.10.1 default).
 3. DHCP server: disabled.
 4. Do not configure the WAN port at all — leave it unplugged.
 5. Connect the cable from the Vodafone extender to any LAN port.
@@ -104,9 +104,9 @@ Servers now sit on the 192.168.0.x subnet (Vodafone DHCP range). Assign static I
 either via DHCP reservation in the Vodafone router or by setting them in
 /etc/netplan/ on each node.
 
-The BezReklam router (office devices, 192.168.2.x) stays separate as before.
+The LabLAN router (office devices, 192.168.2.x) stays separate as before.
 
-### Setting static IPs on nodes (netplan example for REDACTED-HOST)
+### Setting static IPs on nodes (netplan example for node-a)
 
 ```yaml
 # /etc/netplan/00-installer-config.yaml
@@ -115,12 +115,12 @@ network:
   ethernets:
     eth0:
       dhcp4: false
-      addresses: [10.0.0.107/24]
+      addresses: [10.0.1.107/24]
       routes:
         - to: default
-          via: 192.168.0.1
+          via: 192.168.10.1
       nameservers:
-        addresses: [10.0.0.107]   # REDACTED-HOST itself runs AdGuard
+        addresses: [10.0.1.107]   # node-a itself runs AdGuard
 ```
 
 ```bash
@@ -137,7 +137,7 @@ Port forwarding is the wrong appREDACTED-HOST for public websites. Cloudflare Tu
 - DDoS protection at Cloudflare edge.
 - Works behind CGNAT (which Vodafone Ireland likely uses).
 
-### Install and configure on REDACTED-HOST
+### Install and configure on node-a
 
 ```bash
 # Install cloudflared
@@ -149,7 +149,7 @@ echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] \
 sudo apt update && sudo apt install cloudflared
 
 # Authenticate (opens browser — do this from a machine with a browser, then
-# copy credentials to REDACTED-HOST or run directly if desktop is available)
+# copy credentials to node-a or run directly if desktop is available)
 cloudflared tunnel login
 
 # Create the tunnel
@@ -182,7 +182,7 @@ sudo cloudflared service install
 sudo systemctl enable --now cloudflared
 ```
 
-Caddy on REDACTED-HOST now listens on localhost only (no 0.0.0.0:443), and cloudflared
+Caddy on node-a now listens on localhost only (no 0.0.0.0:443), and cloudflared
 proxies inbound traffic to it. Your router firewall needs zero changes.
 
 ---
@@ -197,26 +197,26 @@ no port forwarding, works behind CGNAT, SSH built in.
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
-sudo tailscale up --ssh --hostname=REDACTED-HOST   # change per node
+sudo tailscale up --ssh --hostname=node-a   # change per node
 ```
 
 The `--ssh` flag enables Tailscale SSH. After enrollment in the Tailscale admin console,
 you SSH to any node from anywhere using:
 
 ```bash
-ssh REDACTED-HOST    # resolves via Tailscale MagicDNS — no IP needed
-ssh REDACTED-HOST
+ssh node-a    # resolves via Tailscale MagicDNS — no IP needed
+ssh node-b
 ```
 
 No keys to distribute, no jump hosts, no VPN config files.
 
 ### Subnet router (optional but useful)
 
-Run this on REDACTED-HOST to expose the full 192.168.0.0/24 server subnet over Tailscale:
+Run this on node-a to expose the full 192.168.10.0/24 server subnet over Tailscale:
 
 ```bash
-sudo tailscale up --ssh --hostname=REDACTED-HOST \
-  --advertise-routes=192.168.0.0/24
+sudo tailscale up --ssh --hostname=node-a \
+  --advertise-routes=192.168.10.0/24
 ```
 
 Approve the route in the Tailscale admin console. You can then reach any server room
@@ -246,12 +246,12 @@ The Telegram alert is sent from UptimeRobot's infrastructure, not yours.
 
 ### Internal (Uptime Kuma — keep it, different purpose)
 
-Uptime Kuma on REDACTED-HOST monitors internal services that are not internet-reachable:
-- http://REDACTED-HOST:11434 — Ollama API health
-- http://REDACTED-HOST:4222 — NATS
-- http://REDACTED-HOST:9090 — Prometheus
-- tcp://REDACTED-HOST:6379 — Redis (if running)
-- http://REDACTED-HOST:3000 — AdGuard Home admin
+Uptime Kuma on node-a monitors internal services that are not internet-reachable:
+- http://node-b:11434 — Ollama API health
+- http://node-b:4222 — NATS
+- http://node-c:9090 — Prometheus
+- tcp://node-a:6379 — Redis (if running)
+- http://node-a:3000 — AdGuard Home admin
 
 Internal monitoring catches service-level failures that the external checker cannot see.
 External monitoring catches "is the site up from the internet" failures.
@@ -262,15 +262,15 @@ Both are necessary.
 Your current Telegram monitoring is local-only — you confirmed it failed during the outage.
 The fix: configure Telegram notifications in UptimeRobot (Settings → Alert Contacts → Telegram).
 UptimeRobot sends the Telegram message from their servers when your site goes down.
-Your REDACTED-HOST does not need to be running for this to work.
+Your node-a does not need to be running for this to work.
 
 ---
 
 ## 7. AdGuard Home — DNS and Ad Blocking
 
-### Install on REDACTED-HOST as Docker container
+### Install on node-a as Docker container
 
-Add to REDACTED-HOST's docker-compose.yml:
+Add to node-a's docker-compose.yml:
 
 ```yaml
 services:
@@ -287,12 +287,12 @@ services:
       - ./adguard/conf:/opt/adguardhome/conf
 ```
 
-After first start, open http://REDACTED-HOST:3000 and complete the setup wizard.
+After first start, open http://node-a:3000 and complete the setup wizard.
 
 ### Point your routers at AdGuard
 
-On the BezReklam router admin panel:
-- DHCP DNS server 1: 10.0.0.107 (REDACTED-HOST)
+On the LabLAN router admin panel:
+- DHCP DNS server 1: 10.0.1.107 (node-a)
 - DHCP DNS server 2: 1.1.1.1 (Cloudflare fallback)
 
 On the Vodafone router (if you have admin access):
@@ -302,13 +302,13 @@ On the Vodafone router (if you have admin access):
 
 Under Filters → Custom filtering rules (or DNS Rewrites):
 ```
-REDACTED-HOST.home   10.0.0.107
-REDACTED-HOST.home   10.0.0.112
-REDACTED-HOST.home   10.0.0.103
-REDACTED-HOST.home   TBD
+node-a.home   10.0.1.107
+node-b.home   10.0.1.112
+node-c.home   10.0.1.103
+node-d.home   TBD
 ```
 
-Services can now reference each other by name (e.g., http://REDACTED-HOST.home:11434)
+Services can now reference each other by name (e.g., http://node-b.home:11434)
 instead of hardcoded IPs.
 
 ---
@@ -318,7 +318,7 @@ instead of hardcoded IPs.
 The original AI gave vague phases without addressing what actually runs on your hardware.
 Here is what works on an i5/16GB without a GPU.
 
-### Viable models on REDACTED-HOST (no GPU, 16GB RAM)
+### Viable models on node-b (no GPU, 16GB RAM)
 
 | Model                    | Pull command                      | RAM usage | Speed (CPU) | Use for             |
 |--------------------------|-----------------------------------|-----------|-------------|---------------------|
@@ -330,7 +330,7 @@ Here is what works on an i5/16GB without a GPU.
 Do not attempt 13B models on this hardware. They will either OOM or produce a response
 in 3-5 minutes, which is not usable. Start with mistral:7b-instruct-q4 or qwen3:4b.
 
-> **Real system context:** The existing ai-agent-stack on REDACTED-HOST currently uses Ollama on the Windows laptop (10.0.0.105) with qwen3:8b and codestral:22b. Moving Ollama to REDACTED-HOST eliminates the laptop sleep dependency. The /wake-laptop WoL endpoint in the AI worker becomes unnecessary once Ollama runs on REDACTED-HOST.
+> **Real system context:** The existing ai-agent-stack on node-a currently uses Ollama on the Windows laptop (10.0.1.105) with qwen3:8b and codestral:22b. Moving Ollama to node-b eliminates the laptop sleep dependency. The /wake-laptop WoL endpoint in the AI worker becomes unnecessary once Ollama runs on node-b.
 
 ### Why your current HomeAI stack is OOM
 
@@ -340,13 +340,13 @@ alone consume 13 GB, leaving 3 GB for the OS and all other services.
 That is why it crashes. Pick one model to start. qwen3:4b handles Polish adequately
 and leaves room to breathe.
 
-### Ollama setup on REDACTED-HOST
+### Ollama setup on node-b
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 sudo systemctl enable --now ollama
 
-# Set Ollama to listen on LAN (not just localhost) so n8n on REDACTED-HOST can reach it
+# Set Ollama to listen on LAN (not just localhost) so n8n on node-a can reach it
 sudo mkdir -p /etc/systemd/system/ollama.service.d
 sudo tee /etc/systemd/system/ollama.service.d/override.conf <<'EOF'
 [Service]
@@ -357,19 +357,19 @@ sudo systemctl daemon-reload && sudo systemctl restart ollama
 ollama pull qwen3:4b
 ```
 
-Verify from REDACTED-HOST:
+Verify from node-a:
 ```bash
-curl http://10.0.0.112:11434/api/tags
+curl http://10.0.1.112:11434/api/tags
 ```
 
 ### n8n to Ollama integration (the actual HomeAI pipeline)
 
-In n8n on REDACTED-HOST, the simplest working HomeAI workflow:
+In n8n on node-a, the simplest working HomeAI workflow:
 
 1. Trigger node (Telegram Message, Webhook, or Manual)
 2. HTTP Request node:
    - Method: POST
-   - URL: http://REDACTED-HOST.home:11434/api/chat
+   - URL: http://node-b.home:11434/api/chat
    - Body (JSON):
      ```json
      {
@@ -395,7 +395,7 @@ This is the functional baseline. The full pipeline in HOMEAI_ARCHITECTURE.md
 represents weeks of build time. Get this 4-node workflow running first, then layer
 complexity on top.
 
-### HomeAI service on REDACTED-HOST (docker-compose.yml)
+### HomeAI service on node-b (docker-compose.yml)
 
 ```yaml
 services:
@@ -479,21 +479,21 @@ sudo apt install ansible
 ```ini
 # ~/homelab/inventory.ini
 [all]
-REDACTED-HOST ansible_host=REDACTED-HOST  # resolves via Tailscale MagicDNS
-REDACTED-HOST ansible_host=REDACTED-HOST
-REDACTED-HOST ansible_host=REDACTED-HOST
-REDACTED-HOST ansible_host=REDACTED-HOST
+node-a ansible_host=node-a  # resolves via Tailscale MagicDNS
+node-b ansible_host=node-b
+node-c ansible_host=node-c
+node-d ansible_host=node-d
 
 [servers]
-REDACTED-HOST
-REDACTED-HOST
-REDACTED-HOST
+node-a
+node-b
+node-c
 
 [ai]
-REDACTED-HOST
+node-b
 
 [aux]
-REDACTED-HOST
+node-d
 ```
 
 ### Playbook: common setup (run once on fresh installs)
@@ -575,7 +575,7 @@ ansible-playbook -i inventory.ini playbooks/update.yml
 
 ---
 
-## 10. Dead Battery Node (REDACTED-HOST) — What Actually Works
+## 10. Dead Battery Node (node-d) — What Actually Works
 
 The original AI recommended setting `CriticalPowerAction=Ignore` in logind.conf
 and suggested BIOS "Restore on AC Power Loss". The logind fix is correct.
@@ -590,12 +590,12 @@ Boot into BIOS/UEFI. Look under:
 - Boot → Power On After AC Power Loss
 
 If you find "Power On After Power Failure" or "AC Recovery" and can set it to "Power On":
-REDACTED-HOST will auto-start when power is restored. You are done.
+node-d will auto-start when power is restored. You are done.
 
 ### Step 2: If BIOS has no such setting, use Wake-on-LAN
 
 ```bash
-# On REDACTED-HOST: enable WOL on the ethernet interface
+# On node-d: enable WOL on the ethernet interface
 sudo apt install ethtool
 IFACE=$(ip -br l | awk '$2 == "UP" {print $1}' | head -1)
 sudo ethtool -s $IFACE wol g
@@ -620,24 +620,24 @@ sudo systemctl enable --now wol.service
 ip link show $IFACE | awk '/ether/{print $2}'
 ```
 
-From REDACTED-HOST (which is always on after power restore), to wake REDACTED-HOST:
+From node-a (which is always on after power restore), to wake node-d:
 ```bash
 sudo apt install wakeonlan
-wakeonlan AA:BB:CC:DD:EE:FF   # replace with REDACTED-HOST MAC
+wakeonlan AA:BB:CC:DD:EE:FF   # replace with node-d MAC
 ```
 
-You can automate this with an n8n workflow: on Telegram command "wake REDACTED-HOST",
-n8n triggers a script on REDACTED-HOST via SSH that runs `wakeonlan`.
+You can automate this with an n8n workflow: on Telegram command "wake node-d",
+n8n triggers a script on node-a via SSH that runs `wakeonlan`.
 
 ### Step 3: If WOL is also unavailable
 
-Accept the constraint and run only stateless services on REDACTED-HOST:
+Accept the constraint and run only stateless services on node-d:
 - Services where losing the node loses no data and restarting is trivial.
 - No databases, no monitoring agents, no DNS, no AI models.
 - Candidates: SearXNG (no state), a test Ollama instance, a cron job that reads
   from other nodes.
 
-After every power outage, you manually press REDACTED-HOST's power button once.
+After every power outage, you manually press node-d's power button once.
 Budget this inconvenience accordingly — if it happens rarely (once a month),
 it may not be worth the WOL complexity.
 
@@ -655,7 +655,7 @@ and costs $6/TB/month beyond that. A home lab with configs and exports rarely ex
 10 GB.
 
 ```bash
-# Install restic on REDACTED-HOST
+# Install restic on node-a
 sudo apt install restic
 
 # Create B2 bucket in Backblaze console, then:
@@ -666,7 +666,7 @@ export RESTIC_PASSWORD=a_strong_encryption_passphrase
 # Initialize the repository
 restic -r b2:your-bucket-name:homelab init
 
-# Backup script — save to /opt/backup/backup.sh on REDACTED-HOST
+# Backup script — save to /opt/backup/backup.sh on node-a
 cat > /opt/backup/backup.sh <<'SCRIPT'
 #!/bin/bash
 set -euo pipefail
@@ -710,7 +710,7 @@ chmod +x /opt/backup/backup.sh
 n8n workflow JSON should be version-controlled separately from the binary backup:
 
 ```bash
-# On REDACTED-HOST, run nightly
+# On node-a, run nightly
 docker exec n8n n8n export:workflow --all --output=/opt/homelab/n8n-exports/
 cd /opt/homelab
 git add n8n-exports/
@@ -750,17 +750,17 @@ If you see the warning `the attribute version is obsolete`, that is what it mean
 
 Do not try to bring everything up at once. This sequence minimizes wasted effort:
 
-1. **Static IPs on all nodes** — netplan, then confirm with `ping REDACTED-HOST.home` etc.
+1. **Static IPs on all nodes** — netplan, then confirm with `ping node-b.home` etc.
 2. **Tailscale on all nodes** — `tailscale up --ssh`. SSH from Windows laptop to confirm.
-3. **REDACTED-HOST: Docker + AdGuard** — `docker compose up -d adguard`. Point router DNS at 10.0.0.107.
-4. **REDACTED-HOST: Cloudflare Tunnel** — already running (REDACTED-HOST-n8n) for n8n and dashboard. husariabeats.com and ticker-tap.com are served via nginx + Cloudflare DNS proxy (full strict SSL). Extend tunnel config only if adding new internal services that need zero-port exposure.
-5. **REDACTED-HOST: n8n** — migrate n8n from old PC if not already done.
+3. **node-a: Docker + AdGuard** — `docker compose up -d adguard`. Point router DNS at 10.0.1.107.
+4. **node-a: Cloudflare Tunnel** — already running (node-a-n8n) for n8n and dashboard. husariabeats.com and ticker-tap.com are served via nginx + Cloudflare DNS proxy (full strict SSL). Extend tunnel config only if adding new internal services that need zero-port exposure.
+5. **node-a: n8n** — migrate n8n from old PC if not already done.
 6. **External monitoring** — UptimeRobot checks on both sites. Telegram alert confirmed from a mobile with WiFi off.
-7. **REDACTED-HOST: Ollama + qwen3:4b** — `ollama pull qwen3:4b`, confirm `curl http://REDACTED-HOST:11434/api/tags` from REDACTED-HOST.
-8. **REDACTED-HOST: n8n Ollama workflow** — single HTTP Request node hitting REDACTED-HOST. Confirm end-to-end.
-9. **REDACTED-HOST: full HomeAI stack** — Redis, ChromaDB, NATS, SearXNG via docker-compose.
-10. **REDACTED-HOST: Prometheus + Grafana** — scrape all other nodes.
-11. **Ansible playbooks** — codify everything already done. Run on REDACTED-HOST fresh install.
+7. **node-b: Ollama + qwen3:4b** — `ollama pull qwen3:4b`, confirm `curl http://node-b:11434/api/tags` from node-a.
+8. **node-a: n8n Ollama workflow** — single HTTP Request node hitting node-b. Confirm end-to-end.
+9. **node-b: full HomeAI stack** — Redis, ChromaDB, NATS, SearXNG via docker-compose.
+10. **node-c: Prometheus + Grafana** — scrape all other nodes.
+11. **Ansible playbooks** — codify everything already done. Run on node-d fresh install.
 12. **Restic backup** — configure and run manually once to confirm before scheduling.
 
 ---
@@ -773,8 +773,8 @@ Do not try to bring everything up at once. This sequence minimizes wasted effort
 | Remote SSH to headless nodes | Not mentioned | Tailscale with --ssh flag |
 | Monitoring | Uptime Kuma (local only) | UptimeRobot external + Uptime Kuma internal |
 | Node roles | Shifted 3 times across conversation | Stable assignments defined above |
-| DNS placement | AdGuard on AI node (i5/16GB) | AdGuard on REDACTED-HOST (wall power, most reliable) |
-| AI node | Mixed with DNS/monitoring | REDACTED-HOST dedicated to inference only |
+| DNS placement | AdGuard on AI node (i5/16GB) | AdGuard on node-a (wall power, most reliable) |
+| AI node | Mixed with DNS/monitoring | node-b dedicated to inference only |
 | HomeAI models | Bielik-11B + Qwen3:8B simultaneously | Start with qwen3:4b or mistral:7b-q4 only |
 | n8n to AI integration | Not shown | HTTP Request node to Ollama /api/chat shown above |
 | Cluster management | Manual SSH to each node | Ansible inventory + 4 playbooks |

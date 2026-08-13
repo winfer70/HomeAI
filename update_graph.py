@@ -6,24 +6,25 @@ Uses graphify.{cache,build,cluster,analyze,report,export} and networkx.
 """
 
 import json
-from graphify.cache import save_semantic_cache
-from graphify.build import build_from_json
-from graphify.cluster import cluster, score_all
-from graphify.analyze import god_nodes, surprising_connections, suggest_questions
-from graphify.report import generate
-from graphify.export import to_json, to_html
-from networkx.readwrite import json_graph
 from pathlib import Path
+
+from graphify.analyze import god_nodes, surprising_connections, suggest_questions
+from graphify.build import build_from_json
+from graphify.cache import save_semantic_cache
+from graphify.cluster import cluster, score_all
+from graphify.export import to_html, to_json
+from graphify.report import generate
+from networkx.readwrite import json_graph
 
 new_extract = {
     "nodes": [
-        {"id": "infra_node_a", "label": "node-a (Primary / Orchestration, 192.168.0.10)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
-        {"id": "infra_node_b", "label": "node-b (AI / Inference, ex-Kali i5/16GB)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
+        {"id": "infra_node_a", "label": "node-a (Primary / Orchestration, 192.168.10.10)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
+        {"id": "infra_node_b", "label": "node-b (AI / Inference, prior Linux laptop i5/16GB)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
         {"id": "infra_node_c", "label": "node-c (Data / Secondary, i5/8GB)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
         {"id": "infra_node_d", "label": "node-d (Auxiliary, dead battery)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
         {"id": "infra_nginx", "label": "nginx (Existing Host Reverse Proxy on node-a)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
-        {"id": "infra_cloudflared", "label": "cloudflared / REDACTED-HOST-n8n Tunnel (Already Running)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
-        {"id": "infra_ollama_migration", "label": "Ollama Migration: Windows 10.0.0.105 to node-b", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
+        {"id": "infra_cloudflared", "label": "cloudflared / node-a-n8n Tunnel (Already Running)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
+        {"id": "infra_ollama_migration", "label": "Ollama Migration: Windows 10.0.1.105 to node-b", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
         {"id": "infra_adguard", "label": "AdGuard Home (DNS Ad-Blocker, to add on node-a)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
         {"id": "infra_tailscale", "label": "Tailscale --ssh (Remote Access to All 4 Nodes)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
         {"id": "infra_uptimerobot", "label": "UptimeRobot (External Monitoring, Survives Power Outage)", "file_type": "document", "source_file": "INFRASTRUCTURE_PLAN.md", "source_location": None, "source_url": None, "captured_at": None, "author": None, "contributor": None},
