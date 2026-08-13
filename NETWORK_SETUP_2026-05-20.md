@@ -6,14 +6,14 @@
 
 ## Devices Configured
 
-### WR940N (192.168.10.2) — AP
+### WR940N (<LAN_IP>) — AP
 - DHCP: disabled
-- LAN IP: 192.168.10.2
+- LAN IP: <LAN_IP>
 - SSID: LabLAN (2.4GHz)
 - Uplink: LAN port → AX5400
 
-### TL-WPA7517 (192.168.10.3) — Powerline AP
-- LAN IP: 192.168.10.3 (static)
+### TL-WPA7517 (<LAN_IP>) — Powerline AP
+- LAN IP: <LAN_IP> (static)
 - 2.4GHz SSID: Lab-IoT / password: <set-locally>
 - 5GHz: enabled (kept for range)
 - Use: IoT devices
@@ -22,22 +22,22 @@
 
 | Device | MAC | IP |
 |--------|-----|----|
-| node-a | XX:XX:XX:XX:XX:XX | 10.0.1.107 |
-| node-b | XX:XX:XX:XX:XX:XX | 10.0.1.101 |
-| node-c | XX:XX:XX:XX:XX:XX | 10.0.1.103 |
-| node-e | XX:XX:XX:XX:XX:XX | 10.0.1.111 |
-| node-d | XX:XX:XX:XX:XX:XX | 10.0.1.102 |
-| workstation | XX:XX:XX:XX:XX:XX | 10.0.1.105 |
+| node-a | XX:XX:XX:XX:XX:XX | <LAN_IP> |
+| node-b | XX:XX:XX:XX:XX:XX | <LAN_IP> |
+| node-c | XX:XX:XX:XX:XX:XX | <LAN_IP> |
+| node-e | XX:XX:XX:XX:XX:XX | <LAN_IP> |
+| node-d | XX:XX:XX:XX:XX:XX | <LAN_IP> |
+| workstation | XX:XX:XX:XX:XX:XX | <LAN_IP> |
 
 ## IP Changes (old → new)
 
 | Node | Old IP | New IP |
 |------|--------|--------|
-| node-b | 10.0.1.112 | 10.0.1.101 |
-| node-e | 10.0.1.109 | 10.0.1.111 |
-| node-d | 10.0.1.108 | 10.0.1.102 |
-| node-a | 10.0.1.107 | 10.0.1.107 (unchanged) |
-| node-c | 10.0.1.103 | 10.0.1.103 (unchanged) |
+| node-b | <LAN_IP> | <LAN_IP> |
+| node-e | <LAN_IP> | <LAN_IP> |
+| node-d | <LAN_IP> | <LAN_IP> |
+| node-a | <LAN_IP> | <LAN_IP> (unchanged) |
+| node-c | <LAN_IP> | <LAN_IP> (unchanged) |
 
 ## Node Network Changes
 
@@ -47,18 +47,18 @@
 - Old WiFi MAC: XX:XX:XX:XX:XX:XX (reservation deleted)
 
 ### node-a
-- Ethernet: enp1s0 (XX:XX:XX:XX:XX:XX) → 10.0.1.107
-- WiFi: wlp2s0 (XX:XX:XX:XX:XX:XX) → still active at 10.0.1.106 (disable later)
+- Ethernet: enp1s0 (XX:XX:XX:XX:XX:XX) → <LAN_IP>
+- WiFi: wlp2s0 (XX:XX:XX:XX:XX:XX) → still active at <LAN_IP> (disable later)
 - Old duplicate reservation (.138) deleted from AX5400
 
 ## Pending
 
 - [ ] Disable WiFi on node-a (wlp2s0)
-- [ ] Update ai-agent-stack .env: OLLAMA_BASE_URL → http://10.0.1.101:11434
+- [ ] Update ai-agent-stack .env: OLLAMA_BASE_URL → http://<LAN_IP>:11434
 - [ ] Monday: TL-SG108E switch arrives → connect node-c via ethernet → update reservation
 - [ ] Monday: verify node-c ethernet MAC → add to AX5400 reservations
 - [ ] Configure SG108E (VLAN for IoT isolation — optional, later)
-- [ ] Uptime Kuma UI on node-d (10.0.1.102:3001)
+- [ ] Uptime Kuma UI on node-d (<LAN_IP>:3001)
 
 ## Switch Purchase
 - TL-SG108E (managed, 8-port Gigabit) — arriving Monday

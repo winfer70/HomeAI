@@ -1,7 +1,7 @@
 # Home Lab Migration Checklist
 **Generated: 2026-05-15**
 **Goal: Move all devices to server room, fix broken Ollama dependency, add monitoring + backup**
-**Network: LabLAN AX5400 in router mode. Lab subnet: 192.168.0.x. Gateway: 192.168.10.1. LabLAN LAN = 192.168.0.x (confirmed from DHCP reservations).**
+**Network: LabLAN AX5400 in router mode. Lab subnet: 192.168.0.x. Gateway: <LAN_IP>. LabLAN LAN = 192.168.0.x (confirmed from DHCP reservations).**
 
 ---
 
@@ -35,13 +35,13 @@ Cable arrives → do step 0.2.5 then.
 [x] 0.2.1  DHCP reservations in LabLAN AX5400 router
             (NOT Vodafone router — lab devices connect through LabLAN)
             MAC → IP mapping (confirmed 2026-05-16):
-              node-a WiFi    08-D4-0C-77-38-0A → 10.0.1.106 ✓
-              node-a ETH     D8-CB-8A-DA-7D-D6 → 10.0.1.107 ✓
-              node-b (Ubuntu inst.) 28-16-AD-97-71-79 → 10.0.1.112 ✓  (LabLAN shows "ubuntu-server" — update to "node-b" after 2.1.1)
-              node-c (HP Pavil.)  48-5A-B6-03-F7-B1 → 10.0.1.103 ✓  (LabLAN label fixed to "node-c" ✓)
-              workstation             DC-97-BA-89-AD-FF → 10.0.1.105 ✓
-              node-e (MacBook)   A8-66-7F-1A-7C-69 → 10.0.1.109 ✓  (already reserved — keep .226 or renumber, see note)
-              node-d                B8-EE-65-F7-26-C2 → 10.0.1.108 ✓  (add reservation in LabLAN)
+              node-a WiFi    08-D4-0C-77-38-0A → <LAN_IP> ✓
+              node-a ETH     D8-CB-8A-DA-7D-D6 → <LAN_IP> ✓
+              node-b (Ubuntu inst.) 28-16-AD-97-71-79 → <LAN_IP> ✓  (LabLAN shows "ubuntu-server" — update to "node-b" after 2.1.1)
+              node-c (HP Pavil.)  48-5A-B6-03-F7-B1 → <LAN_IP> ✓  (LabLAN label fixed to "node-c" ✓)
+              workstation             DC-97-BA-89-AD-FF → <LAN_IP> ✓
+              node-e (MacBook)   A8-66-7F-1A-7C-69 → <LAN_IP> ✓  (already reserved — keep .226 or renumber, see note)
+              node-d                B8-EE-65-F7-26-C2 → <LAN_IP> ✓  (add reservation in LabLAN)
             NOTE node-e: .226 is valid but ugly. If you want a clean number (e.g. .105),
             change reservation in LabLAN before first-time setup on node-e.
             ⚠️  LabLAN label fix remaining:
@@ -75,14 +75,14 @@ Cable arrives → do step 0.2.5 then.
             node-a-n8n tunnel connects outbound from cloudflared container.
             No IP config in Cloudflare for tunnels — they work regardless of public IP.
 
-[x] 0.3.4  Port forwarding on LabLAN ✓ — 80/443 → 10.0.1.107 confirmed (public sites reachable)
+[x] 0.3.4  Port forwarding on LabLAN ✓ — 80/443 → <LAN_IP> confirmed (public sites reachable)
 
 [x] 0.3.5  Public sites verified ✓ — husariabeats.com 200, ticker-tap.com 200
 
 [x] 0.3.6  monitor/main.py and worker/main.py — NO ACTION NEEDED
             node-a keeps same IP (.139) on LabLAN. Hardcoded IPs in these files are already correct:
-              monitor/main.py: 10.0.1.107:8000/health ✓
-              worker/main.py:  WOL_BROADCAST_IP default 192.168.10.255 ✓
+              monitor/main.py: <LAN_IP>:8000/health ✓
+              worker/main.py:  WOL_BROADCAST_IP default <LAN_IP> ✓
 
 [x] 0.3.7  .env.production remaining IP vars — NO ACTION NEEDED
             SWISS_KNIFE_IP, KALI_TRADING_IP, WOL_BROADCAST_IP all already correct values.
@@ -92,25 +92,25 @@ Cable arrives → do step 0.2.5 then.
 ---
 
 ## PHASE 1 — node-a Changes (no reinstall, just config)
-**Host: 10.0.1.107 | i3-6100 | 7.7GB RAM | 913GB disk**
+**Host: <LAN_IP> | i3-6100 | 7.7GB RAM | 913GB disk**
 **Already running: nginx, TickerTap, HusariaBeats, ai-agent-stack (18 containers)**
 
 ### 1.1 Fix Broken Ollama Endpoint (HIGHEST PRIORITY — do this first after node-b Ollama is up)
 ```
 [x] 1.1.1  Update ai-agent-stack Ollama endpoint ✓
-            OLLAMA_PRIMARY_ENDPOINT=http://10.0.1.112:11434 confirmed
+            OLLAMA_PRIMARY_ENDPOINT=http://<LAN_IP>:11434 confirmed
 
 [x] 1.1.2  Restart ai-agent-stack worker ✓ — ai_agent_worker Up (healthy) 
 
 [x] 1.1.3  Telegram chat works end-to-end ✓ — bot responds (fixed corrupted shared_workflow PK index via REINDEX)
 
-[x] 1.1.4  Update TickerTap Ollama URL ✓ — OLLAMA_URL=http://10.0.1.112:11434, app restarted
+[x] 1.1.4  Update TickerTap Ollama URL ✓ — OLLAMA_URL=http://<LAN_IP>:11434, app restarted
 ```
 
 ### 1.2 Tailscale (remote access + subnet routing)
 ```
 [x] 1.2.1  Install Tailscale ✓
-[x] 1.2.2  Brought up with SSH + subnet routing (192.168.10.0/24) ✓ — 100.64.0.99
+[x] 1.2.2  Brought up with SSH + subnet routing (<LAN_IP>/24) ✓ — 100.64.0.99
             IPv6 forwarding enabled, UDP GRO fixed on enp1s0
 [x] 1.2.3  Tailscale subnet route approved ✓ (confirmed via tailscale status)
 [x] 1.2.4  Remote SSH via Tailscale verified ✓
@@ -119,10 +119,10 @@ Cable arrives → do step 0.2.5 then.
 ### 1.3 AdGuard Home (DNS ad blocker for whole LAN)
 ```
 [x] 1.3.1  Disable systemd-resolved stub listener ✓ — port 53 freed
-[x] 1.3.2  AdGuard Home deployed ✓ — container up, http://10.0.1.107:3000 → setup wizard
+[x] 1.3.2  AdGuard Home deployed ✓ — container up, http://<LAN_IP>:3000 → setup wizard
 [x] 1.3.3  Setup wizard complete ✓ — admin on :3000, DNS on :53, credentials set
             NOTE: wizard typo (port 300) fixed via docker exec sed on config
-[x] 1.3.4  LabLAN DNS → 10.0.1.107 ✓
+[x] 1.3.4  LabLAN DNS → <LAN_IP> ✓
 [x] 1.3.5  DNS verified from all 5 nodes ✓ — resolving via AdGuard (ProtonDNS upstream)
             Blocklists: AdGuard DNS filter (165k) + AdAway (6.5k) + OISD Full (402k) = 573k+ rules
             Upstream: ProtonDNS 194.242.2.4 / 193.110.81.2 (ad+malware blocking)
@@ -167,9 +167,9 @@ Cable arrives → do step 0.2.5 then.
 ---
 
 ## PHASE 2 — node-b Fresh Setup (was prior Linux laptop)
-**Host: 10.0.1.112 | username: deploy | i5 | 16GB RAM | headless laptop with battery backup**
+**Host: <LAN_IP> | username: deploy | i5 | 16GB RAM | headless laptop with battery backup**
 **Purpose: Ollama inference + Redis + ChromaDB + NATS + SearXNG**
-**Device: node-b — Ubuntu Server 24.04 installed ✓ (confirmed online at 10.0.1.112, hostname currently "ubuntu-server" — set to "node-b" in 2.1.1)**
+**Device: node-b — Ubuntu Server 24.04 installed ✓ (confirmed online at <LAN_IP>, hostname currently "ubuntu-server" — set to "node-b" in 2.1.1)**
 
 ### 2.0 Pre-wipe
 ```
@@ -179,7 +179,7 @@ Cable arrives → do step 0.2.5 then.
 
 ### 2.1 OS Install
 ```
-[x] 2.1.1  Ubuntu Server 24.04 LTS installed ✓ — online at 10.0.1.112
+[x] 2.1.1  Ubuntu Server 24.04 LTS installed ✓ — online at <LAN_IP>
             Hostname currently "ubuntu-server" — run to fix:
             sudo hostnamectl set-hostname node-b
             sudo sed -i 's/127.0.1.1.*/127.0.1.1\tREDACTED-HOST/' /etc/hosts
@@ -210,12 +210,12 @@ Cable arrives → do step 0.2.5 then.
             sudo ufw default deny incoming
             sudo ufw default allow outgoing
             sudo ufw allow 22/tcp comment 'SSH'
-            sudo ufw allow from 192.168.10.0/24 to any port 11434 proto tcp comment 'Ollama'
-            sudo ufw allow from 192.168.10.0/24 to any port 6379 proto tcp comment 'Redis'
-            sudo ufw allow from 192.168.10.0/24 to any port 8009 proto tcp comment 'ChromaDB'
-            sudo ufw allow from 192.168.10.0/24 to any port 4222 proto tcp comment 'NATS'
-            sudo ufw allow from 192.168.10.0/24 to any port 8222 proto tcp comment 'NATS monitor'
-            sudo ufw allow from 192.168.10.0/24 to any port 8888 proto tcp comment 'SearXNG'
+            sudo ufw allow from <LAN_IP>/24 to any port 11434 proto tcp comment 'Ollama'
+            sudo ufw allow from <LAN_IP>/24 to any port 6379 proto tcp comment 'Redis'
+            sudo ufw allow from <LAN_IP>/24 to any port 8009 proto tcp comment 'ChromaDB'
+            sudo ufw allow from <LAN_IP>/24 to any port 4222 proto tcp comment 'NATS'
+            sudo ufw allow from <LAN_IP>/24 to any port 8222 proto tcp comment 'NATS monitor'
+            sudo ufw allow from <LAN_IP>/24 to any port 8888 proto tcp comment 'SearXNG'
             sudo ufw allow from 100.64.0.0/10 comment 'Tailscale'
             sudo ufw --force enable
 
@@ -282,8 +282,8 @@ Cable arrives → do step 0.2.5 then.
 ---
 
 ## PHASE 3 — node-c + node-e Setup
-**node-c: 10.0.1.103 | username: deploy | i5 | 8GB RAM | already running lightly | Ubuntu Server**
-**node-e: 10.0.1.109 | MAC A8-66-7F-1A-7C-69 | MacBook Intel Core M 1.2GHz | 8GB DDR3 | Intel HD 5300 | macOS Big Sur**
+**node-c: <LAN_IP> | username: deploy | i5 | 8GB RAM | already running lightly | Ubuntu Server**
+**node-e: <LAN_IP> | MAC A8-66-7F-1A-7C-69 | MacBook Intel Core M 1.2GHz | 8GB DDR3 | Intel HD 5300 | macOS Big Sur**
 **⚠️ node-e uses Colima (not Docker Desktop — Big Sur not supported). No systemd — use Homebrew services + launchd.**
 
 ---
@@ -319,7 +319,7 @@ Cable arrives → do step 0.2.5 then.
 
 ### 3b.1 DHCP Reservation
 ```
-[x] 3b.1.1  MAC confirmed: A8-66-7F-1A-7C-69 → 10.0.1.109 (reservation exists in LabLAN as "Kamils-MacBook")
+[x] 3b.1.1  MAC confirmed: A8-66-7F-1A-7C-69 → <LAN_IP> (reservation exists in LabLAN as "Kamils-MacBook")
             Optionally rename label in LabLAN to "node-e".
             If you want cleaner IP (e.g. .105), update LabLAN reservation BEFORE running node-e setup.
 ```
@@ -344,8 +344,8 @@ Cable arrives → do step 0.2.5 then.
 
 [x] 3b.7.2  Grafana installed ✓ — native binary ~/grafana/bin/grafana v11.1.0
             launchd: com.grafana (auto-start, keep-alive)
-            Prometheus: http://10.0.1.109:9090 ✓ (200)
-            Grafana:    http://10.0.1.109:3000 ✓ (302 → login)
+            Prometheus: http://<LAN_IP>:9090 ✓ (200)
+            Grafana:    http://<LAN_IP>:3000 ✓ (302 → login)
 ```
 
 ### 3b.3 Install Homebrew
@@ -375,20 +375,20 @@ Cable arrives → do step 0.2.5 then.
             scrape_configs:
               - job_name: 'node_exporter'
                 static_configs:
-                  - targets: ['10.0.1.107:9100']
+                  - targets: ['<LAN_IP>:9100']
                     labels: {instance: 'node-a'}
-                  - targets: ['10.0.1.112:9100']
+                  - targets: ['<LAN_IP>:9100']
                     labels: {instance: 'node-b'}
-                  - targets: ['10.0.1.103:9100']
+                  - targets: ['<LAN_IP>:9100']
                     labels: {instance: 'node-c'}
-                  - targets: ['10.0.1.108:9100']
+                  - targets: ['<LAN_IP>:9100']
                     labels: {instance: 'node-d'}
-                  - targets: ['10.0.1.109:9100']
+                  - targets: ['<LAN_IP>:9100']
                     labels: {instance: 'node-e'}
               - job_name: 'n8n'
                 metrics_path: '/metrics'
                 static_configs:
-                  - targets: ['10.0.1.107:5678']
+                  - targets: ['<LAN_IP>:5678']
                     labels: {instance: 'node-a'}
             EOF
 ```
@@ -467,11 +467,11 @@ Cable arrives → do step 0.2.5 then.
 ---
 
 ## PHASE 4 — node-d Setup (fresh install, dead battery)
-**Host: 10.0.1.108 | MAC: B8-EE-65-F7-26-C2 | i3 | 4-6GB RAM | dead battery | stateless only**
+**Host: <LAN_IP> | MAC: B8-EE-65-F7-26-C2 | i3 | 4-6GB RAM | dead battery | stateless only**
 
 ### 4.1 OS Install
 ```
-[x] 4.1.1  Install Ubuntu Server 24.04 LTS ✓ — Ubuntu 26.04, hostname: node-d, username: deploy, online at 10.0.1.108
+[x] 4.1.1  Install Ubuntu Server 24.04 LTS ✓ — Ubuntu 26.04, hostname: node-d, username: deploy, online at <LAN_IP>
             - Hostname: node-d
             - Username: deploy
             - Enable OpenSSH: YES
@@ -538,7 +538,7 @@ Cable arrives → do step 0.2.5 then.
 
 ### 4.4 Uptime Kuma
 ```
-[x] 4.4.1  Create and start Uptime Kuma ✓ — healthy at 10.0.1.108:3001
+[x] 4.4.1  Create and start Uptime Kuma ✓ — healthy at <LAN_IP>:3001
             sudo mkdir -p /opt/uptime-kuma
             sudo chown -R $USER:$USER /opt/uptime-kuma
             cat > /opt/uptime-kuma/docker-compose.yml <<'EOF'
@@ -564,34 +564,34 @@ Cable arrives → do step 0.2.5 then.
 
             Monitor 1: "node-b Ollama"
               Type: HTTP(s)
-              URL: http://10.0.1.112:11434/api/tags
+              URL: http://<LAN_IP>:11434/api/tags
               Expected HTTP code: 200
 
             Monitor 2: "node-b NATS"
               Type: TCP Port
-              Host: 10.0.1.112  Port: 4222
+              Host: <LAN_IP>  Port: 4222
 
             Monitor 3: "node-b Redis"
               Type: TCP Port
-              Host: 10.0.1.112  Port: 6379
+              Host: <LAN_IP>  Port: 6379
 
             Monitor 4: "node-c Prometheus"
               Type: HTTP(s)
-              URL: http://10.0.1.103:9090/-/healthy
+              URL: http://<LAN_IP>:9090/-/healthy
               Expected HTTP code: 200
 
             Monitor 5: "node-a n8n"
               Type: HTTP(s)
-              URL: http://10.0.1.107:5678/healthz
+              URL: http://<LAN_IP>:5678/healthz
 
             Monitor 6: "node-a AdGuard"
               Type: HTTP(s)
-              URL: http://10.0.1.107:3000
+              URL: http://<LAN_IP>:3000
               Note: add AFTER AdGuard deployed (Phase 1.3)
 
             Monitor 7: "node-d Uptime-Kuma self"
               Type: HTTP(s)
-              URL: http://10.0.1.108:3001
+              URL: http://<LAN_IP>:3001
 ```
 
 ---
@@ -638,13 +638,13 @@ Cable arrives → do step 0.2.5 then.
             # Should show at least one snapshot
 
 [ ] 6.1.6  DNS via AdGuard test
-            nslookup google.com 10.0.1.107
+            nslookup google.com <LAN_IP>
             # Should resolve — confirm AdGuard logs show the query
 
 [ ] 6.1.7  Tailscale remote access test
             From phone/laptop off WiFi → ssh node-a via Tailscale IP
             Confirm: full LAN reachable through subnet route
-            ssh -J <tailscale-ip-node-a> kamilo420@10.0.1.103
+            ssh -J <tailscale-ip-node-a> kamilo420@<LAN_IP>
             # Should land on node-c without VPN configuration
 
 [ ] 6.1.8  Power outage simulation
@@ -657,7 +657,7 @@ Cable arrives → do step 0.2.5 then.
             Confirm all services recover automatically
 
 [ ] 6.1.9  Grafana dashboards populated (on node-e)
-            Open http://10.0.1.109:3000
+            Open http://<LAN_IP>:3000
             Confirm: all nodes showing CPU/RAM/disk metrics
 
 [ ] 6.1.10 node-e services fully operational
@@ -672,14 +672,14 @@ Cable arrives → do step 0.2.5 then.
 
 ### 6.2 IP Config Audit — Nothing Pointing to Old IPs
 ```
-[ ] 6.2.1  No reference to old node-b IP (10.0.1.112) anywhere
-            grep -r "10.0.1.112" \
+[ ] 6.2.1  No reference to old node-b IP (<LAN_IP>) anywhere
+            grep -r "<LAN_IP>" \
               /home/user/ai-agent-stack/ \
               /home/user/projects/ \
               2>/dev/null
 
-[ ] 6.2.2  No reference to Windows laptop Ollama (10.0.1.105) anywhere
-            grep -r "10.0.1.105" \
+[ ] 6.2.2  No reference to Windows laptop Ollama (<LAN_IP>) anywhere
+            grep -r "<LAN_IP>" \
               /home/user/ai-agent-stack/ \
               /home/user/projects/ \
               2>/dev/null
@@ -704,17 +704,17 @@ Cable arrives → do step 0.2.5 then.
 ## Quick Reference — All Static IPs
 | Node | IP | Role |
 |------|----|------|
-| node-a (node-a) | 10.0.1.107 | Main server — nginx, TickerTap, HusariaBeats, ai-agent-stack |
-| node-b | 10.0.1.112 | AI inference — Ollama, Redis, ChromaDB, NATS, SearXNG |
-| node-c | 10.0.1.103 | Compute — swarm-api, extra Ollama, HomeAI (future) (HP Pavilion 17, Ubuntu 26.04, healthy battery) |
-| node-d | 10.0.1.108 | Aux — Uptime Kuma |
-| node-e | 10.0.1.109 | Monitoring — Prometheus, Grafana, news worker (MacBook, macOS Big Sur) |
-| workstation (Windows) | 10.0.1.105 | Daily driver — Ollama until node-b ready |
+| node-a (node-a) | <LAN_IP> | Main server — nginx, TickerTap, HusariaBeats, ai-agent-stack |
+| node-b | <LAN_IP> | AI inference — Ollama, Redis, ChromaDB, NATS, SearXNG |
+| node-c | <LAN_IP> | Compute — swarm-api, extra Ollama, HomeAI (future) (HP Pavilion 17, Ubuntu 26.04, healthy battery) |
+| node-d | <LAN_IP> | Aux — Uptime Kuma |
+| node-e | <LAN_IP> | Monitoring — Prometheus, Grafana, news worker (MacBook, macOS Big Sur) |
+| workstation (Windows) | <LAN_IP> | Daily driver — Ollama until node-b ready |
 
 ## Quick Reference — Key Env Fixes Done
 | File | Old Value | New Value |
 |------|-----------|-----------|
-| ai-agent-stack/.env.production | `OLLAMA_PRIMARY_ENDPOINT=http://10.0.1.105:11434` | `http://10.0.1.112:11434` |
-| tickerTap/.env.prod | `OLLAMA_URL=http://10.0.1.112:11434` | `http://10.0.1.112:11434` |
-| node-e tickertap-worker (launchd) | `OLLAMA_URL=http://localhost:11434` | `http://10.0.1.112:11434` |
-| ai-agent-stack/.env.production (monitor) | `monitor TickerTap URL=http://10.0.1.107:8000/health` | `http://10.0.1.107:8000/health` |
+| ai-agent-stack/.env.production | `OLLAMA_PRIMARY_ENDPOINT=http://<LAN_IP>:11434` | `http://<LAN_IP>:11434` |
+| tickerTap/.env.prod | `OLLAMA_URL=http://<LAN_IP>:11434` | `http://<LAN_IP>:11434` |
+| node-e tickertap-worker (launchd) | `OLLAMA_URL=http://localhost:11434` | `http://<LAN_IP>:11434` |
+| ai-agent-stack/.env.production (monitor) | `monitor TickerTap URL=http://<LAN_IP>:8000/health` | `http://<LAN_IP>:8000/health` |

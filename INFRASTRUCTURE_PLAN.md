@@ -64,7 +64,7 @@ load test target. Never run DNS, databases, or monitoring here.
 ```
 Internet
     |
-[Vodafone Router — 192.168.10.1] (downstairs)
+[Vodafone Router — <LAN_IP>] (downstairs)
     |  (WiFi backhaul or ethernet to extender)
 [Vodafone Extender] (office — has ethernet ports)
     |
@@ -87,15 +87,15 @@ Use one TP-Link router as a **dumb switch** — LAN port to LAN port, DHCP disab
     | ethernet run to server room
     |
 [TP-Link — DUMB SWITCH MODE]
-    LAN1 — node-a (10.0.1.107, static)
-    LAN2 — node-b (10.0.1.112, static)
-    LAN3 — node-c (10.0.1.103, static)
+    LAN1 — node-a (<LAN_IP>, static)
+    LAN2 — node-b (<LAN_IP>, static)
+    LAN3 — node-c (<LAN_IP>, static)
     LAN4 — node-d (TBD, static)
 ```
 
 Dumb switch configuration on the TP-Link:
 1. Connect your laptop to TP-Link LAN port (not WAN).
-2. Open TP-Link admin (192.168.10.1 or 192.168.10.1 default).
+2. Open TP-Link admin (<LAN_IP> or <LAN_IP> default).
 3. DHCP server: disabled.
 4. Do not configure the WAN port at all — leave it unplugged.
 5. Connect the cable from the Vodafone extender to any LAN port.
@@ -115,12 +115,12 @@ network:
   ethernets:
     eth0:
       dhcp4: false
-      addresses: [10.0.1.107/24]
+      addresses: [<LAN_IP>/24]
       routes:
         - to: default
-          via: 192.168.10.1
+          via: <LAN_IP>
       nameservers:
-        addresses: [10.0.1.107]   # node-a itself runs AdGuard
+        addresses: [<LAN_IP>]   # node-a itself runs AdGuard
 ```
 
 ```bash
@@ -212,11 +212,11 @@ No keys to distribute, no jump hosts, no VPN config files.
 
 ### Subnet router (optional but useful)
 
-Run this on node-a to expose the full 192.168.10.0/24 server subnet over Tailscale:
+Run this on node-a to expose the full <LAN_IP>/24 server subnet over Tailscale:
 
 ```bash
 sudo tailscale up --ssh --hostname=node-a \
-  --advertise-routes=192.168.10.0/24
+  --advertise-routes=<LAN_IP>/24
 ```
 
 Approve the route in the Tailscale admin console. You can then reach any server room
@@ -292,7 +292,7 @@ After first start, open http://node-a:3000 and complete the setup wizard.
 ### Point your routers at AdGuard
 
 On the LabLAN router admin panel:
-- DHCP DNS server 1: 10.0.1.107 (node-a)
+- DHCP DNS server 1: <LAN_IP> (node-a)
 - DHCP DNS server 2: 1.1.1.1 (Cloudflare fallback)
 
 On the Vodafone router (if you have admin access):
@@ -302,9 +302,9 @@ On the Vodafone router (if you have admin access):
 
 Under Filters → Custom filtering rules (or DNS Rewrites):
 ```
-node-a.home   10.0.1.107
-node-b.home   10.0.1.112
-node-c.home   10.0.1.103
+node-a.home   <LAN_IP>
+node-b.home   <LAN_IP>
+node-c.home   <LAN_IP>
 node-d.home   TBD
 ```
 
@@ -330,7 +330,7 @@ Here is what works on an i5/16GB without a GPU.
 Do not attempt 13B models on this hardware. They will either OOM or produce a response
 in 3-5 minutes, which is not usable. Start with mistral:7b-instruct-q4 or qwen3:4b.
 
-> **Real system context:** The existing ai-agent-stack on node-a currently uses Ollama on the Windows laptop (10.0.1.105) with qwen3:8b and codestral:22b. Moving Ollama to node-b eliminates the laptop sleep dependency. The /wake-laptop WoL endpoint in the AI worker becomes unnecessary once Ollama runs on node-b.
+> **Real system context:** The existing ai-agent-stack on node-a currently uses Ollama on the Windows laptop (<LAN_IP>) with qwen3:8b and codestral:22b. Moving Ollama to node-b eliminates the laptop sleep dependency. The /wake-laptop WoL endpoint in the AI worker becomes unnecessary once Ollama runs on node-b.
 
 ### Why your current HomeAI stack is OOM
 
@@ -359,7 +359,7 @@ ollama pull qwen3:4b
 
 Verify from node-a:
 ```bash
-curl http://10.0.1.112:11434/api/tags
+curl http://<LAN_IP>:11434/api/tags
 ```
 
 ### n8n to Ollama integration (the actual HomeAI pipeline)
@@ -752,7 +752,7 @@ Do not try to bring everything up at once. This sequence minimizes wasted effort
 
 1. **Static IPs on all nodes** — netplan, then confirm with `ping node-b.home` etc.
 2. **Tailscale on all nodes** — `tailscale up --ssh`. SSH from Windows laptop to confirm.
-3. **node-a: Docker + AdGuard** — `docker compose up -d adguard`. Point router DNS at 10.0.1.107.
+3. **node-a: Docker + AdGuard** — `docker compose up -d adguard`. Point router DNS at <LAN_IP>.
 4. **node-a: Cloudflare Tunnel** — already running (node-a-n8n) for n8n and dashboard. husariabeats.com and ticker-tap.com are served via nginx + Cloudflare DNS proxy (full strict SSL). Extend tunnel config only if adding new internal services that need zero-port exposure.
 5. **node-a: n8n** — migrate n8n from old PC if not already done.
 6. **External monitoring** — UptimeRobot checks on both sites. Telegram alert confirmed from a mobile with WiFi off.

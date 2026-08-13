@@ -39,7 +39,7 @@
 - **Improvements Master Plan**: ask user which phase (A-I) to work on next
 
 ## Ops Notes
-- [tickertap-prod-ops.md](tickertap-prod-ops.md) — CRITICAL: prod compose requirement, news AI worker on prior Linux laptop, correct LAN IP (10.0.1.107), deploy commands
+- [tickertap-prod-ops.md](tickertap-prod-ops.md) — CRITICAL: prod compose requirement, news AI worker on prior Linux laptop, correct LAN IP (<LAN_IP>), deploy commands
 
 ## User Preferences
 - Uses subagents for parallel work
@@ -52,7 +52,7 @@
 - [ai-agent-stack.md](ai-agent-stack.md) — full state: Docker services, lab nodes, Ollama on node-b (qwen3.5:9b + codestral:22b), workflow IDs (updated 2026-05-17)
 
 ## Node-A Dashboard — ✅ COMPLETE (2026-05-11)
-All 5 parts done. Ollama moved to node-b (10.0.1.112). Models: qwen3.5:9b (default/think/big) + codestral:22b (code). llava:13b + nomic-embed-text not yet pulled.
+All 5 parts done. Ollama moved to node-b (<LAN_IP>). Models: qwen3.5:9b (default/think/big) + codestral:22b (code). llava:13b + nomic-embed-text not yet pulled.
 
 ## Home Lab Migration — IN PROGRESS (2026-05-18)
 Checklist at `/home/user/MIGRATION_CHECKLIST.md`
