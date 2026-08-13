@@ -182,7 +182,7 @@ Cable arrives → do step 0.2.5 then.
 [x] 2.1.1  Ubuntu Server 24.04 LTS installed ✓ — online at <LAN_IP>
             Hostname currently "ubuntu-server" — run to fix:
             sudo hostnamectl set-hostname node-b
-            sudo sed -i 's/127.0.1.1.*/127.0.1.1\tREDACTED-HOST/' /etc/hosts
+            sudo sed -i 's/127.0.1.1.*/127.0.1.1\tnode-b/' /etc/hosts
             Then update LabLAN label "ubuntu-server" → "node-b" ✓ DONE
 
 [x] 2.1.2  First boot — system update ✓
