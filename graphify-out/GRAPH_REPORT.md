@@ -1,12 +1,12 @@
-# Graph Report - .  (2026-06-11)
+# Graph Report - .  (2026-08-15)
 
 ## Corpus Check
 - 23 files · ~0 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 379 nodes · 513 edges · 46 communities detected
-- Extraction: 66% EXTRACTED · 34% INFERRED · 0% AMBIGUOUS · INFERRED: 175 edges (avg confidence: 0.5)
+- 382 nodes · 519 edges · 46 communities detected
+- Extraction: 66% EXTRACTED · 34% INFERRED · 0% AMBIGUOUS · INFERRED: 178 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## God Nodes (most connected - your core abstractions)
@@ -36,60 +36,60 @@
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.03
-Nodes (50): BaseSettings, Application-wide configuration loaded from environment variables or a .env file., Settings, test_config.py — unit tests for config.Settings.  Coverage:     - All field d, Log file defaults to a local path., OLLAMA_MODEL env var replaces the default model name., OLLAMA_BASE_URL env var is applied correctly., LLM_TEMPERATURE is coerced from str to float. (+42 more)
+Cohesion: 0.04
+Nodes (45): BaseSettings, Application-wide configuration loaded from environment variables or a .env file., Settings, test_config.py — unit tests for config.Settings.  Coverage:     - All field d, Log file defaults to a local path., OLLAMA_MODEL env var replaces the default model name., OLLAMA_BASE_URL env var is applied correctly., LLM_TEMPERATURE is coerced from str to float. (+37 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.05
-Nodes (35): Memory, Persists conversation turns in SQLite; exposes a fixed-size context window., Persists conversation turns in SQLite and exposes a fixed-size context window., Initialise the SQLite store and create the turns table if absent., Close the underlying SQLite connection., main(), Configure the root logger from settings., Interactive REPL loop that processes user input through the ReAct pipeline. (+27 more)
+Nodes (38): Memory, Persists conversation turns in SQLite; exposes a fixed-size context window., Persists conversation turns in SQLite and exposes a fixed-size context window., Initialise the SQLite store and create the turns table if absent., Close the underlying SQLite connection., main(), Configure the root logger from settings., Interactive REPL loop that processes user input through the ReAct pipeline. (+30 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.06
 Nodes (32): _final_answer(), _make_llm_response(), mem(), patch_settings_pipeline(), test_agent_brain.py — unit tests for agent_brain internals and run_pipeline., Fresh in-memory Memory instance for pipeline tests., Ensure react_max_iterations is at the documented default of 6., LLM responds with final_answer on the first iteration; pipeline returns the text (+24 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.06
-Nodes (30): _build_tools_block(), _dispatch(), _extract_json(), _llm_step(), DEPRECATED — use src/homeai/agent_brain.py instead.  Legacy agent brain module, Return the last `window` user/assistant pairs in chronological order., Route a parsed LLM action to the corresponding tool and return observation text., One Ollama chat round; returns raw response text. (+22 more)
-
-### Community 4 - "Community 4"
 Cohesion: 0.05
 Nodes (8): patch_settings(), test_tools.py — unit tests for tools.web_search, tools.home_service, and tools., Redirect all outgoing URLs to test doubles and inject a dummy HA token.     aut, TestHomeService, TestHomeState, TestWebSearchBothDown, TestWebSearchBraveFallback, TestWebSearchSearXNG
 
+### Community 4 - "Community 4"
+Cohesion: 0.08
+Nodes (23): _build_tools_block(), _dispatch(), _extract_json(), _llm_step(), DEPRECATED — use src/homeai/agent_brain.py instead.  Legacy agent brain module, Return the last `window` user/assistant pairs in chronological order., Route a parsed LLM action to the corresponding tool and return observation text., One Ollama chat round; returns raw response text. (+15 more)
+
 ### Community 5 - "Community 5"
-Cohesion: 0.15
-Nodes (12): Return the text representation of this result for LLM consumption., Encapsulates the outcome of a single tool invocation., ToolResult, _ha_headers(), home_service(), home_state(), Build standard Home Assistant API authorisation headers., Call a Home Assistant service (e.g. light/turn_on, climate/set_temperature). (+4 more)
+Cohesion: 0.11
+Nodes (11): test_memory.py — unit tests for agent_brain.Memory.  The Memory class wraps SQ, Turns added by one Memory instance are visible to a second instance         ope, A second Memory instance can add new turns that a third instance sees., All turns from a multi-turn conversation persist to disk., close() on an open connection completes without raising., The 'turns' table exists after __init__ (schema migration is idempotent)., recent() on a freshly created Memory returns []., recent() always returns a list, even when empty. (+3 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.13
-Nodes (8): A single added turn is returned by recent()., Two turns come back oldest-first (chronological), not newest-first., Role strings are stored and returned verbatim., Polish diacritics in content are stored and retrieved without corruption., Emoji and non-Latin characters round-trip correctly., add() with an empty string does not raise and is retrievable., Strings longer than typical column sizes are stored in full., TestMemoryAddRecent
+Cohesion: 0.15
+Nodes (12): Return the text representation of this result for LLM consumption., Encapsulates the outcome of a single tool invocation., ToolResult, _ha_headers(), home_service(), home_state(), Build standard Home Assistant API authorisation headers., Call a Home Assistant service (e.g. light/turn_on, climate/set_temperature). (+4 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.13
 Nodes (8): With window=2, at most 4 messages (2 pairs) are returned., The returned turns are the N most recent, not the oldest., When fewer messages exist than window*2, all messages are returned., When the number of messages equals window*2, all are returned., window=1 means at most 1 user + 1 assistant message returned., window=0 edge case: LIMIT 0 returns no rows., After window clamping the surviving turns are still oldest-first., TestMemorySlidingWindow
 
 ### Community 8 - "Community 8"
-Cohesion: 0.4
-Nodes (3): A RuntimeError from _llm_step returns the bilingual connection-error message., The error message is stored in memory so context is preserved., TestRunPipelineLlmError
+Cohesion: 0.22
+Nodes (5): An integer string is valid for a float field., A non-numeric string for an int field raises ValidationError., A non-numeric string for a float field raises ValidationError., Zero is a valid (though degenerate) value for react_max_iterations., TestSettingsTypeCoercion
 
 ### Community 9 - "Community 9"
-Cohesion: 0.4
-Nodes (3): Existing memory turns appear in the messages list sent to _llm_step., The system prompt is always the first message in the LLM call., TestRunPipelineMemoryContext
+Cohesion: 0.25
+Nodes (7): memory_db(), mock_settings(), conftest.py — shared pytest fixtures for the HomeAI test suite.  Fixtures prov, Patch every external-service URL and credential in the global Settings     sing, In-memory SQLite Memory instance with a sliding window of 3 turns.     Closed a, Memory instance backed by a real temporary file, for testing persistence     ac, tmp_memory_db()
 
 ### Community 10 - "Community 10"
-Cohesion: 0.5
-Nodes (3): build_tools_block(), Tool schemas and system prompt template for the HomeAI ReAct agent.  Defines T, Render the tool registry as an indented text block for inclusion in the system p
+Cohesion: 0.67
+Nodes (3): load_monitors(), main(), One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.  Con
 
 ### Community 11 - "Community 11"
 Cohesion: 0.67
-Nodes (1): One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.  Conne
+Nodes (3): load_ping_monitors(), main(), One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.  Configu
 
 ### Community 12 - "Community 12"
 Cohesion: 0.67
-Nodes (1): One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.  Connects
+Nodes (3): load_monitor(), main(), One-off utility: add an HTTP monitor for a swarm-api endpoint to Uptime Kuma.
 
 ### Community 13 - "Community 13"
-Cohesion: 0.67
-Nodes (1): One-off utility: add HTTP monitor for swarm-api to Uptime Kuma on REDACTED-HOST.  Connec
+Cohesion: 0.5
+Nodes (3): build_tools_block(), Tool schemas and system prompt template for the HomeAI ReAct agent.  Defines T, Render the tool registry as an indented text block for inclusion in the system p
 
 ### Community 14 - "Community 14"
 Cohesion: 1.0
@@ -220,7 +220,7 @@ Cohesion: 1.0
 Nodes (1): A 401 from the states endpoint surfaces the status code.
 
 ## Knowledge Gaps
-- **67 isolated node(s):** `One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.  Conne`, `One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.  Connects`, `One-off utility: add HTTP monitor for swarm-api to Uptime Kuma on REDACTED-HOST.  Connec`, `DEPRECATED — use src/homeai/agent_brain.py instead.  Legacy agent brain module`, `Persists conversation turns in SQLite; exposes a fixed-size context window.` (+62 more)
+- **67 isolated node(s):** `One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.  Con`, `One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.  Configu`, `One-off utility: add an HTTP monitor for a swarm-api endpoint to Uptime Kuma.`, `DEPRECATED — use src/homeai/agent_brain.py instead.  Legacy agent brain module`, `Persists conversation turns in SQLite; exposes a fixed-size context window.` (+62 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **Thin community `Community 14`** (2 nodes): `run.py`, `Project-root convenience runner; delegates to the homeai package entry point.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -290,12 +290,12 @@ Nodes (1): A 401 from the states endpoint surfaces the status code.
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Memory` connect `Community 1` to `Community 2`, `Community 3`, `Community 5`, `Community 6`, `Community 7`, `Community 8`, `Community 9`?**
-  _High betweenness centrality (0.498) - this node is a cross-community bridge._
-- **Why does `Settings` connect `Community 0` to `Community 3`, `Community 5`?**
-  _High betweenness centrality (0.357) - this node is a cross-community bridge._
-- **Why does `Tool implementations for web search and Home Assistant integration.` connect `Community 5` to `Community 0`, `Community 1`?**
-  _High betweenness centrality (0.235) - this node is a cross-community bridge._
+- **Why does `Memory` connect `Community 1` to `Community 2`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 9`?**
+  _High betweenness centrality (0.491) - this node is a cross-community bridge._
+- **Why does `Settings` connect `Community 0` to `Community 8`, `Community 4`, `Community 6`?**
+  _High betweenness centrality (0.351) - this node is a cross-community bridge._
+- **Why does `Tool implementations for web search and Home Assistant integration.` connect `Community 6` to `Community 0`, `Community 1`?**
+  _High betweenness centrality (0.232) - this node is a cross-community bridge._
 - **Are the 82 inferred relationships involving `Memory` (e.g. with `Tool implementations for web search and Home Assistant integration.` and `Configure the root logger from settings.`) actually correct?**
   _`Memory` has 82 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 52 inferred relationships involving `Settings` (e.g. with `Tool implementations for web search and Home Assistant integration.` and `Build standard Home Assistant API authorisation headers.`) actually correct?**

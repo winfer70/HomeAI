@@ -67,3 +67,9 @@ Checklist at `/home/user/MIGRATION_CHECKLIST.md`
 **Backup:** restic on external HDD (1TB, /mnt/backup, UUID D607-6CE3, fstab nofail). Repo ID 33c56e2979. Daily cron 03:00. Telegram alerts on success/failure. Password in /etc/restic-env.
 
 **SSH config on all nodes:** `ssh node-b/node-c/node-d/node-e` works from node-a (no username needed)
+
+---
+
+# HomeAI Project
+- **2026-08-15** — Public-repo safety remediation completed: second full `git-filter-repo` pass covered all remaining branches/history, GitHub `main` was aligned to sanitized `dev`, sanitized `feature/matter-server` was left unmerged intentionally, and stale secret-bearing remote branches were deleted. Repo is now safe to make public.
+- **Follow-up:** rotate the real WiFi password that was previously exposed in GitHub history; rewritten history may still persist in caches, forks, or scrapers.
