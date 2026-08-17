@@ -1,0 +1,33 @@
+name: Heimdall Guardrail
+
+on:
+  pull_request:
+    paths:
+      - "heimdall/**"
+      - ".github/workflows/heimdall-guardrail.yml"
+
+jobs:
+  alarm-guardrail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check Heimdall changes for forbidden alarm exposure
+        shell: bash
+        run: |
+          set -euo pipefail
+          files="$(git diff --name-only --diff-filter=ACMRT "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'heimdall/**')"
+          if [[ -z "${files}" ]]; then
+            python heimdall/scripts/check_no_alarm_exposure.py
+          else
+            python heimdall/scripts/check_no_alarm_exposure.py ${files}
+          fi
+

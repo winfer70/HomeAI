@@ -41,8 +41,9 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 log_cli = true
 log_cli_level = "WARNING"
-# Project root on sys.path so "import config", "import tools" etc. resolve
-pythonpath = ["."]
+# Project root on sys.path so "import config", "import tools" etc. resolve;
+# src/ so "import homeai" resolves for the new heimdall/ guardrail tests.
+pythonpath = ["src", "."]
 
 # ---------------------------------------------------------------------------
 # mypy
