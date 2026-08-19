@@ -572,3 +572,81 @@ was fully met.)
   `logger.set_level` (in-memory only) and explicitly reverted to
   `warning` afterward.
 
+## 9. Entity-registry fixes found by Task 7's test matrix (M6)
+
+Task 7's `heimdall/tests/test_matrix.py` — a live regression suite exercising
+every domain × language × agent combination via `conversation.process` — was
+run for the first time and surfaced two real entity-naming bugs, plus two
+accepted qwen-only limitations that were investigated but not chased further.
+
+### 9.1 Phantom Tuya fixture winning fuzzy match over the real relay — FIXED
+
+A Tuya-integration light/fan pair, `light.office_light` +
+`fan.office_light` (same `device_id`), was exposed to Assist with the clean
+friendly name "Office light". This is a **real fixture**, not dead junk — its
+power is physically wired downstream of the office's Zigbee relay
+(`switch.0x54ef4410016759d1_up`, friendly name "BiuroSwiatłoGłówne Up"), so
+it reports `unavailable` whenever the relay is off. Its cleaner English name
+was winning Assist's fuzzy name-match over the actual relay for **both**
+agents and **both** languages — "turn on the office light" appeared to
+succeed (HA reports `turn_on` against an unavailable entity as a success in
+`data.success`) while the real relay never toggled.
+
+Fix: added both entities to `ENTITIES_TO_HIDE` in
+`heimdall/scripts/expose_entities.py` with a comment explaining the
+power-dependency (not decommissioned junk). Re-ran the script live; both
+confirmed hidden. Voice control now correctly reaches the relay for Gemini in
+both languages (see 9.3 below for the remaining qwen-only gap).
+
+### 9.2 Bedroom radiator alias — added, then reverted (no net effect for qwen)
+
+`climate.0xa4c138b1ad7dfd57`'s only name is the Polish compound word
+"GrzejnikSypialniaGóra" with no English alias. Gemini already resolves "the
+bedroom radiator" correctly in both languages without one; qwen initially
+failed with "I couldn't find the correct entity."
+
+Tried adding an English alias via `config/entity_registry/update`
+(`aliases: ["Bedroom radiator", "bedroom heater"]`) — qwen's response then
+showed it had **concatenated both aliases into one malformed search string**
+rather than trying them independently, so HA's server-side matcher still
+found no match. Reverted to a single alias
+(`aliases: ["Bedroom radiator"]`) and retested — qwen **still** failed to
+resolve it, this time asking the user to confirm the Polish name instead.
+
+Conclusion: entity-registry aliases appear to only feed HA's **built-in
+intent fuzzy matcher** (used by Gemini's built-in tools), not whatever tool
+schema qwen's Ollama-based conversation agent actually queries — so no
+amount of aliasing was going to fix this for qwen specifically. The single
+alias was left in place (harmless, doesn't hurt Gemini, no downside), but
+this is now documented as an accepted qwen limitation rather than pursued
+further — see 9.3.
+
+### 9.3 Accepted qwen-only limitations (not fixed further, per user's call)
+
+- **`switch.office_led`** ("Office LED") is a third, separate, real TP-Link
+  device (a lamp/LED strip, confirmed by the user — genuinely controllable,
+  distinct from both the relay and the now-hidden Tuya fixture). qwen's
+  literal name-matching resolves "office light" to this device instead of
+  the intended relay, in both languages; Gemini's fuzzier matching correctly
+  picks the relay. This is accepted as a **known qwen limitation**, not
+  fixed by further hiding/renaming, since `office_led` is a real, distinct,
+  wanted device that must stay exposed and named.
+- **Climate alias garbling** (9.2 above) — also accepted as a known qwen
+  limitation.
+
+Both are asserted directly in `test_matrix.py` (marked `KNOWN-LIM` in its
+report, not silently hidden and not counted as a suite failure) — see that
+file's module docstring and `KNOWN_QWEN_LIMITATIONS` dict for the exact
+wording kept in sync with this doc.
+
+### 9.4 Gemini free-tier rate limit (observed, not an HA config issue)
+
+A full `test_matrix.py` run makes ~13 Gemini calls in quick succession,
+which sits close to the free tier's `generate_content_free_tier_requests`
+ceiling (15 requests/minute for `gemini-3.1-flash-lite`, confirmed via the
+literal `429 RESOURCE_EXHAUSTED` error body during one run). A retry after
+waiting cleared it; noted here so a spurious single-row Gemini failure
+during a full-suite run isn't mistaken for a real regression. Soak-cadence
+runs (via `ntfy_failure_logger.py`'s poller, not a tight test-matrix loop)
+run far slower than this ceiling and are not expected to trigger it.
+

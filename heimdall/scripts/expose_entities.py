@@ -132,6 +132,20 @@ ENTITIES_TO_HIDE = {
     "switch.0x54ef44100156879e_multi_click_right_down": (
         "WłącznikDółDrzwi button-click sensor (drives a night-light automation)"
     ),
+    # Task 7 (M6) test-matrix discovery, 2026-08-19: a real Tuya light fixture
+    # in the office (light.office_light + its paired fan.office_light, same
+    # device_id) sits *downstream* of switch.0x54ef4410016759d1_up
+    # (BiuroSwiatłoGłówne) - the relay physically gates its power, so the
+    # Tuya entity reports "unavailable" whenever the relay is off. Its clean
+    # English friendly name ("Office light") was winning Assist's fuzzy
+    # name-match over the relay's Polish compound name for BOTH agents in
+    # BOTH languages, so "turn on the office light" silently "succeeded"
+    # (HA reports turn_on on an unavailable entity as success) against a
+    # target that can never actually respond while gated off - the real
+    # relay never got toggled. Hiding both routes voice control to the
+    # relay, the only entity that can actually turn the light on from off.
+    "light.office_light": "Office light (Tuya fixture, powered via BiuroSwiatłoGłówne relay - not the switch itself)",
+    "fan.office_light": "Office light's paired fan entity (same Tuya device, same power dependency)",
 }
 
 # Guardrail: reject anything from the alarm domain even if accidentally added
