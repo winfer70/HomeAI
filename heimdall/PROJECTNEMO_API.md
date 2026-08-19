@@ -197,3 +197,13 @@ not fixing preemptively.
   root cause (HA's `influxdb:` config), not worked around.
 - Setpoint-write → InfluxDB assertion test: see
   `heimdall/scripts/verify_aquarium_influx_write.py`.
+- **History-by-voice tool** (`rest_command.heimdall_aquarium_temp_history` +
+  `script.heimdall_aquarium_temp_history`, exposed to Assist). Added after
+  live voice testing showed the agent could read the *current* temperature
+  but had no way to answer "has it changed recently" — the original Task 4
+  scope fixed the history endpoint's bug but never wired a tool to call it.
+  Returns a min/max/latest summary rather than raw JSON points, matching
+  the Task 8 memory tools' pattern. Full YAML, three bugs found while
+  wiring it up (JSON auto-parsing, `stop:` vs `response_variable`, dict vs.
+  string response shape), and live verification steps are in
+  `heimdall/HA_CONFIG_CHANGES.md` section 7.

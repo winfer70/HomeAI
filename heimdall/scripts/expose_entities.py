@@ -92,6 +92,15 @@ ENTITIES_TO_EXPOSE = {
     "switch.pompka": "Pompka (aquarium air pump)",
     "binary_sensor.0x54ef441001548c9b_water_leak": "CzujkaWodyAkwarium (read-only water leak sensor)",
     "switch.0xa4c1380f6229ffff": "WtyczkaAkwarium (aquarium smart plug)",
+    # Task 4 (M3) follow-up — the local voice agent could read/toggle the
+    # entities above but had no way to answer "has the temperature changed
+    # recently" style questions (confirmed live: it just repeated the
+    # current value and admitted it had no historical data). This script
+    # calls nemo-api's now-fixed /api/sensors/history endpoint (see
+    # heimdall/PROJECTNEMO_API.md and HA_CONFIG_CHANGES.md #6/#7) and
+    # returns a min/max/latest summary instead of raw points, to keep the
+    # tool result small.
+    "script.heimdall_aquarium_temp_history": "Heimdall: Aquarium temperature history",
 }
 
 # HA exposes entire domains (switch, climate, light, ...) to Assist by
