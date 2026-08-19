@@ -101,6 +101,24 @@ ENTITIES_TO_EXPOSE = {
     # returns a min/max/latest summary instead of raw points, to keep the
     # tool result small.
     "script.heimdall_aquarium_temp_history": "Heimdall: Aquarium temperature history",
+    # Task 5 (M4) — Google Calendar integration. HA's built-in `calendar`
+    # domain services (get_events, create_event) are auto-exposed as Assist
+    # LLM tools for any exposed calendar entity - no custom script needed.
+    # Of the two "Holidays in Ireland" entities the Google account produced,
+    # only one is exposed - confirmed via /api/states that both return
+    # identical next-event data (duplicate calendar subscription in the
+    # Google account itself, not a distinct calendar), so exposing both
+    # would just risk duplicate/confusing answers with no extra information.
+    "calendar.kamil_koterba95_gmail_com": "Heimdall: Main calendar",
+    "calendar.birthdays": "Heimdall: Birthdays calendar",
+    "calendar.holidays_in_ireland": "Heimdall: Holidays in Ireland calendar",
+    # HA's built-in Assist LLM API only exposes a read tool
+    # (CalendarGetEventsTool) for calendars - confirmed via conversation
+    # debug logs and Gemini itself refusing "I can only check existing
+    # calendar events" when asked to create one. This script wraps
+    # calendar.create_event so writes are possible too, same pattern as
+    # the aquarium history tool and Task 8's memory tools.
+    "script.heimdall_create_calendar_event": "Heimdall: Create calendar event",
 }
 
 # HA exposes entire domains (switch, climate, light, ...) to Assist by
