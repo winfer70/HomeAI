@@ -181,3 +181,182 @@ with the fact-insertion call):
   kolor to fioletowy."* ✅
 
 Both test facts were deleted from the memory store's SQLite DB afterward.
+
+## 6. `configuration.yaml` — `component_config:` override for aquarium temp sensor (Task 4 / M3)
+
+`nemo-api`'s `/api/sensors/history` endpoint (queries InfluxDB directly, see
+`heimdall/PROJECTNEMO_API.md`) filters on `_measurement == "temperature"`, but
+HA's native `influxdb:` integration (the actual writer — `nemo-api`'s own
+InfluxDB write path is dead code, never called) uses
+`measurement_attr: unit_of_measurement` by default, so the water-temp
+sensor's data was actually being written under measurement `"°C"`, not
+`"temperature"` — the history endpoint always returned an empty list
+regardless of time window.
+
+Fixed with a **per-entity** override (the top-level `override_measurement`
+option is global and would have collapsed the working `W`/`kWh`
+power-tracking sensors into the same measurement — wrong tool). Added under
+the existing `influxdb:` key, right after `include.entities`:
+
+```yaml
+influxdb:
+  # ... existing config (api_version, host, token, org, bucket, include, etc.) ...
+  component_config:
+    # Heimdall (Task 4 / M3) — nemo-api's /api/sensors/history filters on
+    # measurement "temperature"; without this override the default
+    # unit-of-measurement-based naming ("°C") makes that endpoint always
+    # return empty. Scoped to just this one entity so the power-tracking
+    # sensors' existing "W"/"kWh" measurements are untouched.
+    sensor.0xa4c138060885ffff_temperature:
+      override_measurement: temperature
+```
+
+The `influxdb` integration has **no reload service** (confirmed via
+`GET /api/services` — the `influxdb` domain returns zero registered
+services), so this required a full HA restart, same as item 4 above.
+
+### Verification (2026-08-19)
+
+1. Backed up `configuration.yaml`
+   (`configuration.yaml.bak-heimdall-20260819-204556`), inserted the block,
+   diffed backup vs. new file — clean, isolated diff.
+2. Validated via `POST /api/config/core/check_config` → `"result": "valid"`.
+3. Restarted HA (`homeassistant.restart` service), waited for it to come
+   back up.
+4. The Zigbee temp sensor reported `"unknown"` immediately after restart
+   (sleepy device, hadn't re-reported yet) — HA's `influxdb` integration
+   doesn't write `unknown`/`unavailable` states, so waited ~3 min for a real
+   reading (`26.3°C`).
+5. Re-queried InfluxDB (`schema.measurements(bucket: "aquarium")`) —
+   `temperature` now appears alongside `W`/`kWh`/`°C`.
+6. Re-hit `nemo-api`'s `GET /api/sensors/history?measurement=temperature&hours=1`
+   → returned 1 point (`{"time": "2026-08-19T19:48:15.681639Z", "value": 26.3}`),
+   confirming the fix end-to-end through the actual API consumers will use.
+
+
+## 7. `configuration.yaml` — `rest_command`/`script` for aquarium temperature history (Task 4 / M3 addendum)
+
+Manual voice testing after item 6 above surfaced a real gap: the local agent
+could read the *current* aquarium temperature and toggle switches, but asked
+"has the temperature changed recently?" it just restated the live value and
+(on a follow-up) admitted historical data wasn't available. Task 4 bypassed
+`nemo-api`'s previously-broken history endpoint (see `PROJECTNEMO_API.md`)
+but never built a replacement tool for the agent to call it — closing that
+gap here, using the same `rest_command`/`script` pattern as Task 8's memory
+tools.
+
+Added a new `rest_command` (scoped to `measurement=temperature` only —
+`ph`/`tds`/`orp` measurement names were never fixed, so exposing those would
+let the agent silently get misleading empty results):
+
+```yaml
+rest_command:
+  # ... existing entries (set_fluval_channels, heimdall_remember_fact, etc.) ...
+  heimdall_aquarium_temp_history:
+    url: "http://nemo-api:8000/api/sensors/history?measurement=temperature&hours={{ hours | default(24) }}"
+    method: GET
+```
+
+And a new `script` that calls it, computes a min/max/latest summary (kept
+deliberately small/human-readable rather than handing the LLM a raw JSON
+array), and returns it via `response_variable`:
+
+```yaml
+script:
+  # ... existing entries (heimdall_remember_fact, heimdall_recall_facts, etc.) ...
+  heimdall_aquarium_temp_history:
+    alias: "Heimdall: Aquarium temperature history"
+    description: >-
+      Get a summary of the aquarium water temperature over a recent time
+      window (min/max/latest reading), not just the current value. Use this
+      when asked about temperature trends or "has it changed recently" -
+      the current-state read alone cannot answer that.
+    fields:
+      hours:
+        description: "How many hours back to look (1-168, default 24)"
+        example: "24"
+        required: false
+        selector:
+          number:
+            min: 1
+            max: 168
+    sequence:
+      - action: rest_command.heimdall_aquarium_temp_history
+        data:
+          hours: "{{ hours | default(24) | int }}"
+        response_variable: history_result
+      - variables:
+          points: "{{ history_result.content if history_result.content is iterable and history_result.content is not string else [] }}"
+          history_summary:
+            summary: >-
+              {% if points | count == 0 %}
+              No aquarium temperature history available for that time range.
+              {% else %}
+              Over the last {{ hours | default(24) | int }} hour(s): {{ points | count }} readings,
+              min {{ points | map(attribute='value') | min }}°C,
+              max {{ points | map(attribute='value') | max }}°C,
+              latest {{ points[-1].value }}°C at {{ points[-1].time }}.
+              {% endif %}
+      - stop: "Temperature history retrieved"
+        response_variable: history_summary
+```
+
+Both domains reload live (`rest_command.reload` + `script.reload`) — no HA
+restart needed, unlike item 6 above.
+
+### Three real bugs found and fixed while wiring this up
+
+1. **`from_json` on an already-parsed response.** HA's `rest_command`
+   `response_variable` auto-parses `application/json` responses into a
+   native Python list/dict — `history_result.content` was never a raw
+   string. The first version of this script called
+   `history_result.content | from_json` anyway, which failed because
+   Jinja's implicit stringification of a Python list uses `repr()`
+   (single-quoted), which isn't valid JSON. Fixed by using
+   `history_result.content` directly (with an `is iterable and is not
+   string` guard for safety).
+2. **`stop:` message text vs. `response_variable`.** The first fix put the
+   computed summary directly in the `stop:` message string with no
+   `response_variable:` set. That looked fine in isolated Jinja testing,
+   but `stop:`'s message is only a completion/log message — the actual
+   value returned to callers (the LLM tool-call result, and the
+   `?return_response` REST API) comes from `response_variable`, which
+   matches how the working Task 8 memory scripts are built (`stop: "..."`
+   + `response_variable: <var>`). Fixed by computing the summary into a
+   `variables:` entry and pointing `stop:`'s `response_variable` at it.
+3. **`response_variable` must resolve to a dict.** Setting
+   `response_variable` to a plain string still failed
+   `?return_response` REST calls with `"expected a dictionary, but got
+   <class 'str'>"`. Wrapped the summary in a one-key dict
+   (`{"summary": "..."}`) to match the shape the memory scripts return
+   (their `response_variable` is the raw `rest_command` response dict).
+
+### Verification (2026-08-19)
+
+1. Backed up `configuration.yaml` before each of the 4 patch iterations
+   (initial add + 3 bugfixes above), diffed backup vs. new file each time —
+   clean, isolated diffs throughout.
+2. Validated via `POST /api/config/core/check_config` after each iteration
+   → `"result": "valid"` every time.
+3. Reloaded `rest_command` and `script` domains after each change (no
+   restart needed).
+4. Added `script.heimdall_aquarium_temp_history` to
+   `heimdall/scripts/expose_entities.py`'s `ENTITIES_TO_EXPOSE`, ran the
+   Task 0 guardrail check on the diff (clean), ran the script live —
+   entity exposed to Assist.
+5. Called the script directly via
+   `POST /api/services/script/heimdall_aquarium_temp_history?return_response`
+   → confirmed real computed output, e.g.
+   `{"summary": "Over the last 6 hour(s): 1 readings, min 26.3°C, max 26.3°C, latest 26.3°C at 2026-08-19T19:50:00Z."}`.
+6. Re-tested the original failing scenario live via
+   `conversation.process` against `conversation.heimdall_local_qwen2_5`:
+   - EN: "What was the aquarium water temperature exactly 3 hours ago, and
+     has it changed recently?" → "Over the last 3 hours, the aquarium
+     water temperature has remained constant at 26.3°C."
+   - PL: "Czy temperatura wody w akwarium zmieniła się ostatnio?" →
+     correctly answered in Polish, citing 26.3°C.
+   Confirmed via the script entity's `last_triggered` attribute
+   (`21:57:29` local, matching the voice test's timestamp to the second)
+   that the agent genuinely invoked the new tool rather than restating a
+   plausible-sounding guess.
+
