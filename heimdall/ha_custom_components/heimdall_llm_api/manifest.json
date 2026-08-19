@@ -1,0 +1,9 @@
+{
+  "domain": "heimdall_llm_api",
+  "name": "Heimdall Restricted LLM API",
+  "version": "1.0.0",
+  "dependencies": ["llm"],
+  "codeowners": [],
+  "iot_class": "calculated",
+  "documentation": "https://github.com/winfer70/HomeAI/blob/dev/heimdall/HA_CONFIG_CHANGES.md"
+}

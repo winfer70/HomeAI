@@ -1,0 +1,224 @@
+{
+  "name": "Heimdall AI Task Router",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "heimdall/route",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "heimdall-router-webhook",
+      "name": "Heimdall Route Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "webhookId": "heimdall-route"
+    },
+    {
+      "parameters": {
+        "functionCode": "// Classify the incoming text as device-control (routed to the local\n// jaskier Ollama model) or open-domain (routed to Gemini via HA's\n// existing conversation.process, reusing the agent already built in\n// Tasks 2/5). Keyword-based on purpose: deterministic, no extra LLM\n// call needed just to decide where to send the real one, and it never\n// touches the alarm/security-panel domain (Task 0's guardrail applies to\n// those entities regardless, not to this classifier).\n//\n// Both keyword lists are checked regardless of the declared language,\n// since Task 7's test matrix includes an ambiguous/mixed-language row\n// and users often mix PL/EN mid-sentence.\nconst body = $json.body || {};\nconst text = (body.text || '').toString();\nconst language = (body.language || 'en').toString();\nconst lower = text.toLowerCase();\n\nconst deviceKeywordsEn = [\n  'light', 'lights', 'switch', 'turn on', 'turn off',\n  'gate', 'open the gate', 'close the gate',\n  'temperature', 'thermostat', 'heating', 'radiator', 'trv',\n  'aquarium', 'heater', 'filter', 'tank', 'fish'\n];\nconst deviceKeywordsPl = [\n  'światło', 'swiatlo', 'włącz', 'wlacz', 'wyłącz', 'wylacz',\n  'brama', 'otwórz bramę', 'otworz brame', 'zamknij bramę', 'zamknij brame',\n  'temperatura', 'ogrzewanie', 'grzejnik', 'kaloryfer',\n  'akwarium', 'grzałka', 'grzalka', 'filtr', 'ryb'\n];\n\nconst isDeviceControl = deviceKeywordsEn.some((kw) => lower.includes(kw))\n  || deviceKeywordsPl.some((kw) => lower.includes(kw));\n\nreturn {\n  json: {\n    text,\n    language,\n    intent: isDeviceControl ? 'device-control' : 'open-domain',\n    route: isDeviceControl ? 'local' : 'cloud'\n  }\n};"
+      },
+      "id": "heimdall-classify-intent",
+      "name": "Classify Intent",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "route-is-local",
+              "leftValue": "={{ $json.route }}",
+              "rightValue": "local",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "heimdall-route-decision",
+      "name": "Route Decision",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.0.125:11434/api/chat",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: \"qwen2.5:7b-instruct\", stream: false, messages: [ { role: \"user\", content: $json.text } ] }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "heimdall-call-local-ollama",
+      "name": "Call Local Ollama (jaskier)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Ollama /api/chat (non-streaming) shape: { message: { role, content }, ... }\nreturn {\n  json: {\n    branch: 'local',\n    intent: $('Classify Intent').first().json.intent,\n    model: 'qwen2.5:7b-instruct',\n    response: ($json.message && $json.message.content) || ''\n  }\n};"
+      },
+      "id": "heimdall-format-local-response",
+      "name": "Format Local Response",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "heimdall-response-local",
+      "name": "Response - Local",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.0.108:8123/api/conversation/process",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: $json.text, language: $json.language, agent_id: \"conversation.google_ai_conversation\" }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "heimdall-call-gemini-via-ha",
+      "name": "Call Gemini (via HA conversation.process)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 400],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "__HEIMDALL_HA_CREDENTIAL_ID__",
+          "name": "Heimdall HA Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// HA conversation.process REST response shape:\n// { response: { speech: { plain: { speech: \"...\" } }, ... }, conversation_id }\nconst speech = $json.response\n  && $json.response.speech\n  && $json.response.speech.plain\n  && $json.response.speech.plain.speech;\nreturn {\n  json: {\n    branch: 'cloud',\n    intent: $('Classify Intent').first().json.intent,\n    model: 'gemini (conversation.google_ai_conversation)',\n    response: speech || ''\n  }\n};"
+      },
+      "id": "heimdall-format-cloud-response",
+      "name": "Format Cloud Response",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "heimdall-response-cloud",
+      "name": "Response - Cloud",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1340, 400]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "heimdall-error-handler",
+      "name": "Error Handler",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [680, 560]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"error\": \"Heimdall router failed\", \"message\": $json.error?.message || \"Unknown error\" } }}",
+        "responseCode": 500,
+        "options": {}
+      },
+      "id": "heimdall-error-response",
+      "name": "Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 560]
+    }
+  ],
+  "connections": {
+    "Heimdall Route Webhook": {
+      "main": [
+        [{ "node": "Classify Intent", "type": "main", "index": 0 }]
+      ]
+    },
+    "Classify Intent": {
+      "main": [
+        [{ "node": "Route Decision", "type": "main", "index": 0 }]
+      ]
+    },
+    "Route Decision": {
+      "main": [
+        [{ "node": "Call Local Ollama (jaskier)", "type": "main", "index": 0 }],
+        [{ "node": "Call Gemini (via HA conversation.process)", "type": "main", "index": 0 }]
+      ]
+    },
+    "Call Local Ollama (jaskier)": {
+      "main": [
+        [{ "node": "Format Local Response", "type": "main", "index": 0 }]
+      ]
+    },
+    "Format Local Response": {
+      "main": [
+        [{ "node": "Response - Local", "type": "main", "index": 0 }]
+      ]
+    },
+    "Call Gemini (via HA conversation.process)": {
+      "main": [
+        [{ "node": "Format Cloud Response", "type": "main", "index": 0 }]
+      ]
+    },
+    "Format Cloud Response": {
+      "main": [
+        [{ "node": "Response - Cloud", "type": "main", "index": 0 }]
+      ]
+    },
+    "Error Handler": {
+      "main": [
+        [{ "node": "Error Response", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

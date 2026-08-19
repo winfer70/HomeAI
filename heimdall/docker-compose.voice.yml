@@ -1,0 +1,36 @@
+services:
+  heimdall-whisper:
+    # rhasspy/wyoming-faster-whisper was renamed upstream; the maintained
+    # image is now rhasspy/wyoming-whisper (verified on Docker Hub 2026-08-18,
+    # current tag 3.6.0). Pinned rather than :latest for reproducibility.
+    image: rhasspy/wyoming-whisper:3.6.0
+    container_name: heimdall-whisper
+    # small chosen per heimdall/BENCHMARKS.md Task 1 go/no-go decision:
+    # ~3x faster than medium (2.87s vs 8.68s avg) with no observed accuracy
+    # loss on the PL/EN test set.
+    command: --model small-int8 --language auto --uri tcp://0.0.0.0:10300 --data-dir /data --download-dir /data
+    volumes:
+      - ./data/whisper:/data
+    ports:
+      - "10300:10300"
+    restart: unless-stopped
+
+  heimdall-piper:
+    # rhasspy/wyoming-piper is still the correct/maintained image (org moved
+    # to github.com/OHF-Voice, Docker Hub name unchanged). Current tag 2.4.2.
+    image: rhasspy/wyoming-piper:2.4.2
+    container_name: heimdall-piper
+    # --voice only accepts ONE value (verified against wyoming_piper's
+    # argparse setup) — passing it twice as in earlier drafts would silently
+    # keep only the last one. Set en_GB-alba-medium as the default voice;
+    # pl_PL-darkman-medium is still fully usable because wyoming-piper
+    # resolves/downloads whichever voice name is sent per-request in the
+    # Synthesize event's `voice` field (confirmed in wyoming_piper/handler.py
+    # and download.py) — HA's TTS call will pass the correct voice per
+    # language, this default is only used when no voice is specified.
+    command: --voice en_GB-alba-medium --uri tcp://0.0.0.0:10200 --data-dir /data --download-dir /data
+    volumes:
+      - ./data/piper:/data
+    ports:
+      - "10200:10200"
+    restart: unless-stopped
