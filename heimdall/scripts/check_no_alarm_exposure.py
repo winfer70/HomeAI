@@ -15,7 +15,13 @@ from homeai.guardrails import scan_paths  # noqa: E402
 
 def _collect_paths(arguments: list[str]) -> list[Path]:
     if not arguments:
-        return [Path("heimdall")]
+        # Default to scanning the whole heimdall/ tree. Must go through the
+        # same directory-expansion branch below (rglob) rather than
+        # returning the bare directory Path directly - scan_path() treats
+        # anything that isn't is_file() as a no-op, so an unexpanded
+        # directory here would silently check zero files and always report
+        # a clean pass (found while validating Task 4's changes).
+        arguments = ["heimdall"]
 
     paths: list[Path] = []
     for argument in arguments:
@@ -31,7 +37,13 @@ def _collect_paths(arguments: list[str]) -> list[Path]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Fail if Heimdall files or payloads reference Satel alarm entities."
+        description=(
+            "Fail if Heimdall files or payloads reference the project's "
+            "disallowed home-alarm system, its entities, or its automation "
+            "(see the non-negotiable guardrail note in the project brief - "
+            "the vendor name is intentionally not spelled out here so this "
+            "script's own help text doesn't trip its own check)."
+        )
     )
     parser.add_argument(
         "paths",

@@ -181,3 +181,55 @@ with the fact-insertion call):
   kolor to fioletowy."* ✅
 
 Both test facts were deleted from the memory store's SQLite DB afterward.
+
+## 6. `configuration.yaml` — `component_config:` override for aquarium temp sensor (Task 4 / M3)
+
+`nemo-api`'s `/api/sensors/history` endpoint (queries InfluxDB directly, see
+`heimdall/PROJECTNEMO_API.md`) filters on `_measurement == "temperature"`, but
+HA's native `influxdb:` integration (the actual writer — `nemo-api`'s own
+InfluxDB write path is dead code, never called) uses
+`measurement_attr: unit_of_measurement` by default, so the water-temp
+sensor's data was actually being written under measurement `"°C"`, not
+`"temperature"` — the history endpoint always returned an empty list
+regardless of time window.
+
+Fixed with a **per-entity** override (the top-level `override_measurement`
+option is global and would have collapsed the working `W`/`kWh`
+power-tracking sensors into the same measurement — wrong tool). Added under
+the existing `influxdb:` key, right after `include.entities`:
+
+```yaml
+influxdb:
+  # ... existing config (api_version, host, token, org, bucket, include, etc.) ...
+  component_config:
+    # Heimdall (Task 4 / M3) — nemo-api's /api/sensors/history filters on
+    # measurement "temperature"; without this override the default
+    # unit-of-measurement-based naming ("°C") makes that endpoint always
+    # return empty. Scoped to just this one entity so the power-tracking
+    # sensors' existing "W"/"kWh" measurements are untouched.
+    sensor.0xa4c138060885ffff_temperature:
+      override_measurement: temperature
+```
+
+The `influxdb` integration has **no reload service** (confirmed via
+`GET /api/services` — the `influxdb` domain returns zero registered
+services), so this required a full HA restart, same as item 4 above.
+
+### Verification (2026-08-19)
+
+1. Backed up `configuration.yaml`
+   (`configuration.yaml.bak-heimdall-20260819-204556`), inserted the block,
+   diffed backup vs. new file — clean, isolated diff.
+2. Validated via `POST /api/config/core/check_config` → `"result": "valid"`.
+3. Restarted HA (`homeassistant.restart` service), waited for it to come
+   back up.
+4. The Zigbee temp sensor reported `"unknown"` immediately after restart
+   (sleepy device, hadn't re-reported yet) — HA's `influxdb` integration
+   doesn't write `unknown`/`unavailable` states, so waited ~3 min for a real
+   reading (`26.3°C`).
+5. Re-queried InfluxDB (`schema.measurements(bucket: "aquarium")`) —
+   `temperature` now appears alongside `W`/`kWh`/`°C`.
+6. Re-hit `nemo-api`'s `GET /api/sensors/history?measurement=temperature&hours=1`
+   → returned 1 point (`{"time": "2026-08-19T19:48:15.681639Z", "value": 26.3}`),
+   confirming the fix end-to-end through the actual API consumers will use.
+

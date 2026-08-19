@@ -78,6 +78,20 @@ ENTITIES_TO_EXPOSE = {
     # it, for both conversation agents.
     "script.heimdall_remember_fact": "Heimdall: Remember a fact",
     "script.heimdall_recall_facts": "Heimdall: Recall facts",
+    # Task 4 (M3) — aquarium tools. All five of these are plain HA
+    # entities; investigation showed nemo-api's /api/devices toggle is a
+    # thin proxy over ha_client.toggle_entity() with no logic beyond an
+    # allowlist, and two of these entities (CzujkaWodyAkwarium,
+    # WtyczkaAkwarium) aren't in nemo-api's device map at all - so exposing
+    # them directly to Assist (same mechanism as the lights/TRVs above)
+    # covers read+toggle with no custom tool code needed. See
+    # heimdall/PROJECTNEMO_API.md for the full investigation.
+    "sensor.0xa4c138060885ffff_temperature": "Termometr (aquarium water temp)",
+    "switch.grzalka": "Grzałka (aquarium heater)",
+    "switch.filtr": "Filtr (aquarium filter)",
+    "switch.pompka": "Pompka (aquarium air pump)",
+    "binary_sensor.0x54ef441001548c9b_water_leak": "CzujkaWodyAkwarium (read-only water leak sensor)",
+    "switch.0xa4c1380f6229ffff": "WtyczkaAkwarium (aquarium smart plug)",
 }
 
 # HA exposes entire domains (switch, climate, light, ...) to Assist by
