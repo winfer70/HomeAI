@@ -360,3 +360,215 @@ restart needed, unlike item 6 above.
    that the agent genuinely invoked the new tool rather than restating a
    plausible-sounding guess.
 
+## 8. Google Calendar integration (Task 5 / M4)
+
+### OAuth app setup (one-time, Google Cloud Console)
+
+1. Created a Google Cloud project, enabled the **Google Calendar API**.
+2. OAuth consent screen: "External" type, added the account as a **Test
+   user** (required — without this, sign-in fails with "Access blocked...
+   has not completed Google verification" even with correct
+   client_id/secret), scope `.../auth/calendar` (full read+write).
+3. Created an OAuth **Web application** client, redirect URI
+   `https://my.home-assistant.io/redirect/oauth` (HA's universal "My Home
+   Assistant" redirect — works for LAN-only or externally-reachable
+   instances; on first use it asks the browser for the real instance URL,
+   stored client-side only).
+4. Registered the resulting `client_id`/`client_secret` as an HA
+   Application Credential via `heimdall/scripts/add_google_calendar_credentials.py`
+   (uses the `application_credentials/create` WebSocket command — there is
+   no REST equivalent for registering credentials).
+5. Completed the interactive OAuth consent flow via HA UI → Settings →
+   Devices & Services → Add Integration → Google Calendar.
+
+### Entities created
+
+Google Calendar integration created 4 entities:
+- `calendar.kamil_koterba95_gmail_com` — main calendar (read+write)
+- `calendar.birthdays`
+- `calendar.holidays_in_ireland`
+- `calendar.holidays_in_ireland_2` — **true duplicate** of the one above
+  (identical event data); left unexposed since exposing both adds no
+  value.
+
+Exposed to Assist (via `expose_entities.py`): the main calendar,
+birthdays, and one "Holidays in Ireland" instance.
+
+### Finding: HA's built-in Assist LLM API is calendar READ-ONLY
+
+Confirmed via conversation debug logs' "Tools:" list — only
+`<CalendarGetEventsTool - calendar_get_events>` exists for any exposed
+calendar entity; there is no built-in create/write tool. This is a genuine
+HA platform limitation. Writing requires a custom `script:` wrapper.
+
+### `configuration.yaml` — new `script:` entry (calendar write tool)
+
+```yaml
+script:
+  heimdall_create_calendar_event:
+    alias: "Heimdall: Create calendar event"
+    description: >-
+      Create a new event on the main calendar. You MUST call the
+      GetDateTime tool first to get today's real current date before
+      computing any date for this tool - never guess or assume the year
+      from your training data. Requires exact start/end date-times in
+      "YYYY-MM-DD HH:MM:SS" format, computed from GetDateTime's result plus
+      the user's relative term (e.g. "tomorrow", "next Tuesday").
+    fields:
+      summary:
+        description: "Event title"
+        example: "Dentist appointment"
+        required: true
+        selector:
+          text:
+      start_date_time:
+        description: "Event start, e.g. 2026-08-25 10:00:00"
+        example: "2026-08-25 10:00:00"
+        required: true
+        selector:
+          text:
+      end_date_time:
+        description: "Event end, e.g. 2026-08-25 11:00:00"
+        example: "2026-08-25 11:00:00"
+        required: true
+        selector:
+          text:
+      description:
+        description: "Optional event description"
+        required: false
+        selector:
+          text:
+    sequence:
+      - if:
+          - condition: template
+            value_template: "{{ (summary | default('')) | trim == '' }}"
+        then:
+          - stop: "summary is required and was empty/missing - refusing to create a blank event"
+            error: true
+      - action: calendar.create_event
+        target:
+          entity_id: calendar.kamil_koterba95_gmail_com
+        data:
+          summary: "{{ summary }}"
+          start_date_time: "{{ start_date_time }}"
+          end_date_time: "{{ end_date_time }}"
+```
+
+The `if`/`stop` guard was added after a real bug (see below) where the
+local model called this script with a missing `summary`, silently creating
+a blank all-day event — `fields:`/`required: true` is only a UI/LLM-schema
+hint, HA does **not** enforce it at runtime, so an explicit template guard
+is required to actually block it.
+
+There is no `calendar.delete_event` service in this HA version
+(`2026.8.1`) — confirmed via `GET /api/services` (calendar domain lists
+only `create_event`/`get_events`). Stray test events created during
+development had to be deleted manually via Google Calendar's own UI.
+
+### Three real qwen2.5:7b-instruct bugs found, and what actually fixed them
+
+1. **Wrong date-range keyword.** Called `calendar_get_events` with
+   `range: 'today'` for a "what's on tomorrow" question.
+2. **Wrong absolute year.** Computed `2023` instead of the real year when
+   creating an event, without calling the available `GetDateTime` tool
+   first — even after the tool's `description` was strengthened to
+   mandate calling `GetDateTime` first. **Strengthening the tool
+   description did not reliably fix this** (tested twice, failed both
+   times). **What did fix it**: injecting the real date directly into the
+   conversation agent's **system prompt** (not the tool description) via
+   the subentry reconfigure flow — see prompt text below. Verified correct
+   year across 3 repeated tests after this fix.
+3. **Wrong tool selection + wrong relative-day math.** Even after the
+   date-grounding fix, qwen sometimes called the *write* tool
+   (`heimdall_create_calendar_event`) with no `summary` when asked a pure
+   *read* question — silently creating a blank all-day event (this is what
+   the `if`/`stop` guard above prevents) — and separately miscalculated
+   the Polish relative-date word "pojutrze" (day-after-tomorrow),
+   landing the event on the wrong day. Gemini has never shown any of these
+   three bugs in any test.
+
+### Fix 1: system-prompt date grounding (both agents)
+
+Prepended to both the Ollama/qwen and Gemini conversation subentries'
+`prompt` field via the subentry reconfigure flow (same mechanism as
+section 5 above):
+
+```
+Today's real date and time is {{ now().strftime('%Y-%m-%d %H:%M %A') }}. Always use this as the current date/time - never assume or guess a year from your training data, especially when creating calendar events or resolving relative dates like "tomorrow".
+```
+
+This alone fixed bug #2 (wrong year) reliably, but did **not** fix bug #3
+(wrong tool / wrong relative-day math for Polish) — those needed the
+architectural fix below.
+
+### Fix 2: `heimdall_llm_api` custom component — per-agent tool restriction
+
+HA's entity-exposure system has **no per-conversation-agent scoping** —
+every agent selecting the `assist` LLM API sees an identical tool set.
+Bug #3 showed the local model could not be trusted with write access to
+the calendar (silent blank-event creation), but simply removing the tool
+would also remove it for Gemini, which has never misused it.
+
+Built a new custom HA integration,
+`heimdall/ha_custom_components/heimdall_llm_api/` (deploy by copying to
+HA's own `config/custom_components/heimdall_llm_api/` — requires a full HA
+restart, custom integrations are only discovered at startup). It registers
+a second LLM API, `heimdall_restricted`, that internally reuses the exact
+same tool-gathering logic as the built-in `assist` API (every integration's
+`llm.py` platform — script, calendar, homeassistant/GetLiveContext, etc. —
+still contributes tools normally, since they're queried with the real
+`assist` api_id) but filters out an explicit blocklist of tool names
+(currently just `heimdall_create_calendar_event`) before returning the
+tool list.
+
+`configuration.yaml` — new bare domain key to load it:
+
+```yaml
+heimdall_llm_api:
+```
+
+The local model's (`qwen2.5:7b-instruct`) conversation subentry then has
+`llm_hass_api` switched from `assist` to `heimdall_restricted`; Gemini's
+subentry is untouched (`assist`), so it keeps full calendar read+write.
+
+Verified via debug logs (`"Tools:"` list) that
+`heimdall_create_calendar_event` is completely absent from qwen's tool set
+after this change, while every other tool (lights, gate, aquarium, memory,
+`calendar_get_events`, `GetDateTime`, etc.) remains present. Confirmed
+across multiple write-attempt tests that **zero events were ever created**
+after this fix (previously silent blank/wrong-year events were created).
+
+### Fix 3: honest-refusal prompt wording (qwen only)
+
+With the write tool hidden, qwen's first response to a write request was
+to **hallucinate a false "I've added it" success message** rather than
+admit it lacks the capability — a known small-model failure mode. Fixed by
+adding to qwen's system prompt (appended after the date-grounding line):
+
+```
+IMPORTANT: You do not have a tool to create, modify, or delete calendar events - you can only read the calendar. If asked to add, change, or remove a calendar event, do NOT claim you did it. Honestly tell the user you cannot modify the calendar and suggest they ask Gemini instead. Never state that an action succeeded unless a tool call actually confirmed it.
+```
+
+Verified across 3 repeated tests (2 EN phrasings + 1 PL) — qwen now
+honestly refuses every time instead of claiming false success. (Minor,
+non-blocking observed quirk: the Polish-phrased test got an English
+refusal instead of a Polish one — content was still correct/honest, just
+not language-matched. Not chased further given the actual data-safety goal
+was fully met.)
+
+### Final verified state
+
+- **Gemini** (`conversation.google_ai_conversation`): full calendar
+  read+write, correct date/year every time, never misused the tool.
+  Recommended for any calendar-write voice request.
+- **qwen2.5:7b-instruct** (`conversation.heimdall_local_qwen2_5`):
+  calendar read-only (via `heimdall_restricted` LLM API), reliably and
+  honestly refuses write requests, correct year for date-grounded reads.
+  This is an accepted, documented model limitation, not a Heimdall config
+  gap — consistent with Task 3's bake-off findings that qwen2.5:7b is the
+  weakest of the surviving candidates on precision-sensitive tasks.
+- Debug logging (`conversation`/`llm`/`calendar` components) used
+  throughout this investigation was temporarily raised via
+  `logger.set_level` (in-memory only) and explicitly reverted to
+  `warning` afterward.
+
