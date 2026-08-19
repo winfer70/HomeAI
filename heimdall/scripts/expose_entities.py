@@ -56,21 +56,38 @@ ENTITIES_TO_EXPOSE = {
     # 2026-08-19, added to exposure.
     "switch.0x54ef44100156879e_left": "WłącznikDółDrzwi (light, left relay)",
     "switch.0x54ef44100156879e_right": "WłącznikDółDrzwi (light, right relay)",
-}
-
-# HA exposes entire domains (switch, climate, light, ...) to Assist by
-# default unless an entity is explicitly hidden. That default sweeps in
-# things this project must NOT expose: the gate relay, and the physical
-# button-click-type entities on WłącznikDółDrzwi whose state changes drive
-# an automation that toggles the gate. Explicitly hide these regardless of
-# their current default-exposed state - this is a narrower, unrelated
-# concern from the alarm guardrail, but same spirit: don't let voice touch
-# anything gate-adjacent.
-ENTITIES_TO_HIDE = {
+    # Gate relay + its button-click sensor were originally hidden (see
+    # ENTITIES_TO_HIDE's old comment, still below in git history) to keep
+    # physical access control away from the local 7B model. Re-exposed to
+    # BOTH conversation agents at the user's explicit, informed request
+    # (2026-08-19) after a full risk discussion covering: HA has no
+    # per-conversation-agent exposure scoping (so this can't be Gemini-only),
+    # no confirmation step exists before a tool call executes, and the
+    # button-click sensor is an equally capable trigger for the same
+    # gate-toggle automation. The user's call: "convenience matters more
+    # here." Confirmed working live via voice (opens and closes the gate).
+    # Do not silently re-hide this - if it needs revisiting, that's a new
+    # decision to make with the user, not a default to restore.
     "switch.brama_sonoff_100254194e_1": "Brama (gate relay)",
     "switch.0x54ef44100156879e_multi_click_left_down": (
         "WłącznikDółDrzwi button-click sensor (drives a gate-toggle automation)"
     ),
+    # Task 8 (M7) — persistent memory tool-calling scripts. Exposing a
+    # script entity with `fields` to the "conversation" assistant is what
+    # makes HA's built-in Assist LLM API auto-generate a callable tool from
+    # it, for both conversation agents.
+    "script.heimdall_remember_fact": "Heimdall: Remember a fact",
+    "script.heimdall_recall_facts": "Heimdall: Recall facts",
+}
+
+# HA exposes entire domains (switch, climate, light, ...) to Assist by
+# default unless an entity is explicitly hidden. That default sweeps in
+# things this project must NOT expose: the physical button-click-type
+# entity that drives an unrelated night-light automation. Explicitly hide
+# it regardless of its current default-exposed state - this is a narrower,
+# unrelated concern from the alarm guardrail, but same spirit: don't let
+# voice touch things it has no reason to.
+ENTITIES_TO_HIDE = {
     "switch.0x54ef44100156879e_multi_click_right_down": (
         "WłącznikDółDrzwi button-click sensor (drives a night-light automation)"
     ),
@@ -122,6 +139,11 @@ async def authenticate(ws: websockets.WebSocketClientProtocol, token: str) -> No
 
 
 async def main() -> int:
+    # Windows' default cp1252 console can't print Polish diacritics in the
+    # entity labels above - force UTF-8 stdout so this runs cleanly there too.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+
     assert_no_alarm_entities()
 
     token = os.environ.get("HEIMDALL_HA_TOKEN")
