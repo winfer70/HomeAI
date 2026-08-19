@@ -9,7 +9,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L1",
       "id": "add_monitors",
-      "community": 10
+      "community": 16
     },
     {
       "label": "load_monitors()",
@@ -17,7 +17,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L25",
       "id": "add_monitors_load_monitors",
-      "community": 10
+      "community": 16
     },
     {
       "label": "main()",
@@ -25,7 +25,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L41",
       "id": "add_monitors_main",
-      "community": 10
+      "community": 16
     },
     {
       "label": "One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.\r \r Con",
@@ -33,7 +33,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L1",
       "id": "add_monitors_rationale_1",
-      "community": 10
+      "community": 16
     },
     {
       "label": "add_ping_monitors.py",
@@ -41,7 +41,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L1",
       "id": "add_ping_monitors",
-      "community": 11
+      "community": 17
     },
     {
       "label": "load_ping_monitors()",
@@ -49,7 +49,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L25",
       "id": "add_ping_monitors_load_ping_monitors",
-      "community": 11
+      "community": 17
     },
     {
       "label": "main()",
@@ -57,7 +57,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L41",
       "id": "add_ping_monitors_main",
-      "community": 11
+      "community": 17
     },
     {
       "label": "One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.\r \r Configu",
@@ -65,7 +65,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L1",
       "id": "add_ping_monitors_rationale_1",
-      "community": 11
+      "community": 17
     },
     {
       "label": "add_swarm_api_monitor.py",
@@ -73,7 +73,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L1",
       "id": "add_swarm_api_monitor",
-      "community": 12
+      "community": 18
     },
     {
       "label": "load_monitor()",
@@ -81,7 +81,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L25",
       "id": "add_swarm_api_monitor_load_monitor",
-      "community": 12
+      "community": 18
     },
     {
       "label": "main()",
@@ -89,7 +89,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L41",
       "id": "add_swarm_api_monitor_main",
-      "community": 12
+      "community": 18
     },
     {
       "label": "One-off utility: add an HTTP monitor for a swarm-api endpoint to Uptime Kuma.",
@@ -97,7 +97,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L1",
       "id": "add_swarm_api_monitor_rationale_1",
-      "community": 12
+      "community": 18
     },
     {
       "label": "agent_brain.py",
@@ -105,7 +105,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L1",
       "id": "agent_brain",
-      "community": 4
+      "community": 3
     },
     {
       "label": "_build_tools_block()",
@@ -113,7 +113,7 @@
       "source_file": "agent_brain.py",
       "source_location": "L85",
       "id": "agent_brain_build_tools_block",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Memory",
@@ -137,7 +137,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L44",
       "id": "agent_brain_memory_add",
-      "community": 4
+      "community": 3
     },
     {
       "label": ".recent()",
@@ -145,7 +145,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L52",
       "id": "agent_brain_memory_recent",
-      "community": 4
+      "community": 3
     },
     {
       "label": ".close()",
@@ -161,7 +161,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L70",
       "id": "agent_brain_llm_step",
-      "community": 4
+      "community": 3
     },
     {
       "label": "_extract_json()",
@@ -169,7 +169,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L98",
       "id": "agent_brain_extract_json",
-      "community": 4
+      "community": 3
     },
     {
       "label": "_dispatch()",
@@ -177,7 +177,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L127",
       "id": "agent_brain_dispatch",
-      "community": 4
+      "community": 3
     },
     {
       "label": "run_pipeline()",
@@ -185,7 +185,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L164",
       "id": "agent_brain_run_pipeline",
-      "community": 4
+      "community": 3
     },
     {
       "label": "DEPRECATED \u2014 use src/homeai/agent_brain.py instead.\r \r Legacy agent brain module",
@@ -193,7 +193,7 @@
       "source_file": "agent_brain.py",
       "source_location": "L1",
       "id": "agent_brain_rationale_1",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Persists conversation turns in SQLite; exposes a fixed-size context window.",
@@ -209,7 +209,7 @@
       "source_file": "agent_brain.py",
       "source_location": "L125",
       "id": "agent_brain_rationale_125",
-      "community": 4
+      "community": 3
     },
     {
       "label": "One Ollama chat round; returns raw response text.",
@@ -217,7 +217,7 @@
       "source_file": "agent_brain.py",
       "source_location": "L142",
       "id": "agent_brain_rationale_142",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Run a full ReAct reasoning loop for one user turn.\r     Returns the final text r",
@@ -225,7 +225,7 @@
       "source_file": "agent_brain.py",
       "source_location": "L231",
       "id": "agent_brain_rationale_231",
-      "community": 4
+      "community": 3
     },
     {
       "label": "config.py",
@@ -233,7 +233,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L1",
       "id": "config",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Settings",
@@ -257,7 +257,639 @@
       "source_file": "config.py",
       "source_location": "L1",
       "id": "config_rationale_1",
-      "community": 4
+      "community": 3
+    },
+    {
+      "label": "app.py",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L1",
+      "id": "app",
+      "community": 5
+    },
+    {
+      "label": "_now()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L35",
+      "id": "app_now",
+      "community": 5
+    },
+    {
+      "label": "_db()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L40",
+      "id": "app_db",
+      "community": 5
+    },
+    {
+      "label": "_init_db()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L51",
+      "id": "app_init_db",
+      "community": 5
+    },
+    {
+      "label": "_require_token()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L90",
+      "id": "app_require_token",
+      "community": 5
+    },
+    {
+      "label": "FactIn",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L98",
+      "id": "app_factin",
+      "community": 5
+    },
+    {
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "basemodel",
+      "community": 5
+    },
+    {
+      "label": "Fact",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L107",
+      "id": "app_fact",
+      "community": 5
+    },
+    {
+      "label": "MemoryContext",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L116",
+      "id": "app_memorycontext",
+      "community": 5
+    },
+    {
+      "label": "TranscriptTurn",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L122",
+      "id": "app_transcriptturn",
+      "community": 5
+    },
+    {
+      "label": "ExtractIn",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L127",
+      "id": "app_extractin",
+      "community": 5
+    },
+    {
+      "label": "ExtractOut",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L133",
+      "id": "app_extractout",
+      "community": 5
+    },
+    {
+      "label": "on_startup()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L139",
+      "id": "app_on_startup",
+      "community": 5
+    },
+    {
+      "label": "health()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L144",
+      "id": "app_health",
+      "community": 5
+    },
+    {
+      "label": "upsert_fact()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L149",
+      "id": "app_upsert_fact",
+      "community": 5
+    },
+    {
+      "label": "search_facts()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L178",
+      "id": "app_search_facts",
+      "community": 5
+    },
+    {
+      "label": "_load_context()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L193",
+      "id": "app_load_context",
+      "community": 5
+    },
+    {
+      "label": "get_context()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L206",
+      "id": "app_get_context",
+      "community": 5
+    },
+    {
+      "label": "_run_extraction()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L244",
+      "id": "app_run_extraction",
+      "community": 5
+    },
+    {
+      "label": "extract()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L274",
+      "id": "app_extract",
+      "community": 5
+    },
+    {
+      "label": "ProcessedRunCheck",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L314",
+      "id": "app_processedruncheck",
+      "community": 5
+    },
+    {
+      "label": "is_run_processed()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L320",
+      "id": "app_is_run_processed",
+      "community": 5
+    },
+    {
+      "label": "mark_run_processed()",
+      "file_type": "code",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L330",
+      "id": "app_mark_run_processed",
+      "community": 5
+    },
+    {
+      "label": "Heimdall memory service.\r \r FastAPI app backing Heimdall's persistent cross-sess",
+      "file_type": "rationale",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L1",
+      "id": "app_rationale_1",
+      "community": 5
+    },
+    {
+      "label": "bakeoff_harness.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L1",
+      "id": "bakeoff_harness",
+      "community": 12
+    },
+    {
+      "label": "PromptResult",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L149",
+      "id": "bakeoff_harness_promptresult",
+      "community": 12
+    },
+    {
+      "label": "call_ollama()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L163",
+      "id": "bakeoff_harness_call_ollama",
+      "community": 12
+    },
+    {
+      "label": "evaluate()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L185",
+      "id": "bakeoff_harness_evaluate",
+      "community": 12
+    },
+    {
+      "label": "run_bakeoff()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L230",
+      "id": "bakeoff_harness_run_bakeoff",
+      "community": 12
+    },
+    {
+      "label": "write_results_md()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L256",
+      "id": "bakeoff_harness_write_results_md",
+      "community": 12
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L310",
+      "id": "bakeoff_harness_main",
+      "community": 12
+    },
+    {
+      "label": "benchmark_gpu_baseline.ps1",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_gpu_baseline.ps1",
+      "source_location": "L1",
+      "id": "benchmark_gpu_baseline",
+      "community": 23
+    },
+    {
+      "label": "benchmark_stt_latency.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L1",
+      "id": "benchmark_stt_latency",
+      "community": 10
+    },
+    {
+      "label": "BenchmarkResult",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L23",
+      "id": "benchmark_stt_latency_benchmarkresult",
+      "community": 10
+    },
+    {
+      "label": "_parse_args()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L31",
+      "id": "benchmark_stt_latency_parse_args",
+      "community": 10
+    },
+    {
+      "label": "_expected_language()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L47",
+      "id": "benchmark_stt_latency_expected_language",
+      "community": 10
+    },
+    {
+      "label": "_collect_samples()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L52",
+      "id": "benchmark_stt_latency_collect_samples",
+      "community": 10
+    },
+    {
+      "label": "_load_model()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L64",
+      "id": "benchmark_stt_latency_load_model",
+      "community": 10
+    },
+    {
+      "label": "_transcribe_sample()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L76",
+      "id": "benchmark_stt_latency_transcribe_sample",
+      "community": 10
+    },
+    {
+      "label": "_print_result()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L91",
+      "id": "benchmark_stt_latency_print_result",
+      "community": 10
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L100",
+      "id": "benchmark_stt_latency_main",
+      "community": 10
+    },
+    {
+      "label": "check_no_alarm_exposure.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
+      "source_location": "L1",
+      "id": "check_no_alarm_exposure",
+      "community": 20
+    },
+    {
+      "label": "_collect_paths()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
+      "source_location": "L16",
+      "id": "check_no_alarm_exposure_collect_paths",
+      "community": 20
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
+      "source_location": "L32",
+      "id": "check_no_alarm_exposure_main",
+      "community": 20
+    },
+    {
+      "label": "create_assist_pipeline.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L1",
+      "id": "create_assist_pipeline",
+      "community": 13
+    },
+    {
+      "label": "HaWebSocket",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L79",
+      "id": "create_assist_pipeline_hawebsocket",
+      "community": 13
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L82",
+      "id": "create_assist_pipeline_hawebsocket_init",
+      "community": 13
+    },
+    {
+      "label": ".call()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L86",
+      "id": "create_assist_pipeline_hawebsocket_call",
+      "community": 13
+    },
+    {
+      "label": "authenticate()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L97",
+      "id": "create_assist_pipeline_authenticate",
+      "community": 13
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L108",
+      "id": "create_assist_pipeline_main",
+      "community": 13
+    },
+    {
+      "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
+      "file_type": "rationale",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L80",
+      "id": "create_assist_pipeline_rationale_80",
+      "community": 13
+    },
+    {
+      "label": "create_local_pipelines.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L1",
+      "id": "create_local_pipelines",
+      "community": 14
+    },
+    {
+      "label": "HaWebSocket",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L76",
+      "id": "create_local_pipelines_hawebsocket",
+      "community": 14
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L79",
+      "id": "create_local_pipelines_hawebsocket_init",
+      "community": 14
+    },
+    {
+      "label": ".call()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L83",
+      "id": "create_local_pipelines_hawebsocket_call",
+      "community": 14
+    },
+    {
+      "label": "authenticate()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L94",
+      "id": "create_local_pipelines_authenticate",
+      "community": 14
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L105",
+      "id": "create_local_pipelines_main",
+      "community": 14
+    },
+    {
+      "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
+      "file_type": "rationale",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L77",
+      "id": "create_local_pipelines_rationale_77",
+      "community": 14
+    },
+    {
+      "label": "expose_entities.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L1",
+      "id": "expose_entities",
+      "community": 11
+    },
+    {
+      "label": "assert_no_alarm_entities()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L104",
+      "id": "expose_entities_assert_no_alarm_entities",
+      "community": 11
+    },
+    {
+      "label": "HaWebSocket",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L112",
+      "id": "expose_entities_hawebsocket",
+      "community": 11
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L115",
+      "id": "expose_entities_hawebsocket_init",
+      "community": 11
+    },
+    {
+      "label": ".call()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L119",
+      "id": "expose_entities_hawebsocket_call",
+      "community": 11
+    },
+    {
+      "label": "authenticate()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L130",
+      "id": "expose_entities_authenticate",
+      "community": 11
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L141",
+      "id": "expose_entities_main",
+      "community": 11
+    },
+    {
+      "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
+      "file_type": "rationale",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L113",
+      "id": "expose_entities_rationale_113",
+      "community": 11
+    },
+    {
+      "label": "memory_poller.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L1",
+      "id": "memory_poller",
+      "community": 9
+    },
+    {
+      "label": "HaWebSocket",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L57",
+      "id": "memory_poller_hawebsocket",
+      "community": 9
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L60",
+      "id": "memory_poller_hawebsocket_init",
+      "community": 9
+    },
+    {
+      "label": ".call()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L64",
+      "id": "memory_poller_hawebsocket_call",
+      "community": 9
+    },
+    {
+      "label": "authenticate()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L76",
+      "id": "memory_poller_authenticate",
+      "community": 9
+    },
+    {
+      "label": "_reconstruct_transcript()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L86",
+      "id": "memory_poller_reconstruct_transcript",
+      "community": 9
+    },
+    {
+      "label": "_is_processed()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L113",
+      "id": "memory_poller_is_processed",
+      "community": 9
+    },
+    {
+      "label": "_mark_processed()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L122",
+      "id": "memory_poller_mark_processed",
+      "community": 9
+    },
+    {
+      "label": "_extract()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L130",
+      "id": "memory_poller_extract",
+      "community": 9
+    },
+    {
+      "label": "poll_once()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L157",
+      "id": "memory_poller_poll_once",
+      "community": 9
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L215",
+      "id": "memory_poller_main",
+      "community": 9
+    },
+    {
+      "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
+      "file_type": "rationale",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L58",
+      "id": "memory_poller_rationale_58",
+      "community": 9
+    },
+    {
+      "label": "Extract (user_text, assistant_text, language, conversation_id) from a\r     pipel",
+      "file_type": "rationale",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L87",
+      "id": "memory_poller_rationale_87",
+      "community": 9
     },
     {
       "label": "run.py",
@@ -265,7 +897,7 @@
       "source_file": "run.py",
       "source_location": "L1",
       "id": "run",
-      "community": 14
+      "community": 21
     },
     {
       "label": "Project-root convenience runner; delegates to the homeai package entry point.",
@@ -273,7 +905,7 @@
       "source_file": "run.py",
       "source_location": "L1",
       "id": "run_rationale_1",
-      "community": 14
+      "community": 21
     },
     {
       "label": "__init__.py",
@@ -281,7 +913,7 @@
       "source_file": "tests\\__init__.py",
       "source_location": "L1",
       "id": "init",
-      "community": 6
+      "community": 8
     },
     {
       "label": "Tool implementations for web search and Home Assistant integration.",
@@ -289,7 +921,7 @@
       "source_file": "src\\homeai\\tools\\__init__.py",
       "source_location": "L1",
       "id": "init_rationale_1",
-      "community": 6
+      "community": 8
     },
     {
       "label": "__main__.py",
@@ -369,7 +1001,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L45",
       "id": "agent_brain_rationale_45",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Return the last `window` user/assistant pairs in chronological order.",
@@ -377,7 +1009,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L53",
       "id": "agent_brain_rationale_53",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Close the underlying SQLite connection.",
@@ -393,7 +1025,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L71",
       "id": "agent_brain_rationale_71",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Parse the first valid JSON object out of a raw LLM response string.",
@@ -401,7 +1033,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L99",
       "id": "agent_brain_rationale_99",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Route a parsed LLM action to the corresponding tool and return observation text.",
@@ -409,7 +1041,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L128",
       "id": "agent_brain_rationale_128",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Run a full ReAct reasoning loop for one user turn and return the final text resp",
@@ -417,7 +1049,7 @@
       "source_file": "src\\homeai\\agent_brain.py",
       "source_location": "L165",
       "id": "agent_brain_rationale_165",
-      "community": 4
+      "community": 3
     },
     {
       "label": "validate_log_level()",
@@ -425,7 +1057,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L47",
       "id": "config_validate_log_level",
-      "community": 4
+      "community": 3
     },
     {
       "label": "warn_if_no_search()",
@@ -433,7 +1065,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L57",
       "id": "config_warn_if_no_search",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Application-wide configuration loaded from environment variables or a .env file.",
@@ -449,7 +1081,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L48",
       "id": "config_rationale_48",
-      "community": 16
+      "community": 24
     },
     {
       "label": "Emit a warning when no web-search backend is configured.",
@@ -457,7 +1089,159 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L58",
       "id": "config_rationale_58",
-      "community": 17
+      "community": 25
+    },
+    {
+      "label": "guardrails.py",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L1",
+      "id": "guardrails",
+      "community": 7
+    },
+    {
+      "label": "Violation",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L15",
+      "id": "guardrails_violation",
+      "community": 7
+    },
+    {
+      "label": ".format()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L24",
+      "id": "guardrails_violation_format",
+      "community": 7
+    },
+    {
+      "label": "AlarmExposureError",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L33",
+      "id": "guardrails_alarmexposureerror",
+      "community": 7
+    },
+    {
+      "label": "ValueError",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "valueerror",
+      "community": 7
+    },
+    {
+      "label": "_iter_patterns()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L37",
+      "id": "guardrails_iter_patterns",
+      "community": 7
+    },
+    {
+      "label": "scan_text()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L45",
+      "id": "guardrails_scan_text",
+      "community": 7
+    },
+    {
+      "label": "scan_path()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L62",
+      "id": "guardrails_scan_path",
+      "community": 7
+    },
+    {
+      "label": "scan_paths()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L70",
+      "id": "guardrails_scan_paths",
+      "community": 7
+    },
+    {
+      "label": "_scan_any()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L78",
+      "id": "guardrails_scan_any",
+      "community": 7
+    },
+    {
+      "label": "scan_payload()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L121",
+      "id": "guardrails_scan_payload",
+      "community": 7
+    },
+    {
+      "label": "assert_no_alarm_exposure()",
+      "file_type": "code",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L126",
+      "id": "guardrails_assert_no_alarm_exposure",
+      "community": 7
+    },
+    {
+      "label": "One forbidden alarm-reference match found during scanning.",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L16",
+      "id": "guardrails_rationale_16",
+      "community": 7
+    },
+    {
+      "label": "Raised when forbidden alarm-related content is detected.",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L34",
+      "id": "guardrails_rationale_34",
+      "community": 7
+    },
+    {
+      "label": "Scan raw text and return all forbidden matches.",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L46",
+      "id": "guardrails_rationale_46",
+      "community": 7
+    },
+    {
+      "label": "Scan one file path by reading it as text.",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L63",
+      "id": "guardrails_rationale_63",
+      "community": 7
+    },
+    {
+      "label": "Scan a sequence of file paths.",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L71",
+      "id": "guardrails_rationale_71",
+      "community": 7
+    },
+    {
+      "label": "Scan an arbitrary JSON-like payload for forbidden references.",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L122",
+      "id": "guardrails_rationale_122",
+      "community": 7
+    },
+    {
+      "label": "Raise if the payload contains any forbidden alarm references.",
+      "file_type": "rationale",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L127",
+      "id": "guardrails_rationale_127",
+      "community": 7
     },
     {
       "label": "prompts.py",
@@ -465,7 +1249,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L1",
       "id": "prompts",
-      "community": 13
+      "community": 19
     },
     {
       "label": "build_tools_block()",
@@ -473,7 +1257,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L78",
       "id": "prompts_build_tools_block",
-      "community": 13
+      "community": 19
     },
     {
       "label": "Tool schemas and system prompt template for the HomeAI ReAct agent.\r \r Defines T",
@@ -481,7 +1265,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L1",
       "id": "prompts_rationale_1",
-      "community": 13
+      "community": 19
     },
     {
       "label": "Render the tool registry as an indented text block for inclusion in the system p",
@@ -489,7 +1273,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L79",
       "id": "prompts_rationale_79",
-      "community": 13
+      "community": 19
     },
     {
       "label": "base.py",
@@ -497,7 +1281,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L1",
       "id": "base",
-      "community": 6
+      "community": 8
     },
     {
       "label": "ToolResult",
@@ -505,7 +1289,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L7",
       "id": "base_toolresult",
-      "community": 6
+      "community": 8
     },
     {
       "label": ".to_llm_text()",
@@ -513,7 +1297,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L14",
       "id": "base_toolresult_to_llm_text",
-      "community": 6
+      "community": 8
     },
     {
       "label": "Encapsulates the outcome of a single tool invocation.",
@@ -521,7 +1305,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L8",
       "id": "base_rationale_8",
-      "community": 6
+      "community": 8
     },
     {
       "label": "Return the text representation of this result for LLM consumption.",
@@ -529,7 +1313,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L15",
       "id": "base_rationale_15",
-      "community": 6
+      "community": 8
     },
     {
       "label": "home_assistant.py",
@@ -537,7 +1321,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L1",
       "id": "home_assistant",
-      "community": 6
+      "community": 8
     },
     {
       "label": "_ha_headers()",
@@ -545,7 +1329,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L15",
       "id": "home_assistant_ha_headers",
-      "community": 6
+      "community": 8
     },
     {
       "label": "home_service()",
@@ -553,7 +1337,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L23",
       "id": "home_assistant_home_service",
-      "community": 6
+      "community": 8
     },
     {
       "label": "home_state()",
@@ -561,7 +1345,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L54",
       "id": "home_assistant_home_state",
-      "community": 6
+      "community": 8
     },
     {
       "label": "Build standard Home Assistant API authorisation headers.",
@@ -569,7 +1353,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L16",
       "id": "home_assistant_rationale_16",
-      "community": 6
+      "community": 8
     },
     {
       "label": "Call a Home Assistant service (e.g. light/turn_on, climate/set_temperature).",
@@ -577,7 +1361,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L30",
       "id": "home_assistant_rationale_30",
-      "community": 6
+      "community": 8
     },
     {
       "label": "Get the current state and attributes of a Home Assistant entity.",
@@ -585,7 +1369,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L58",
       "id": "home_assistant_rationale_58",
-      "community": 6
+      "community": 8
     },
     {
       "label": "search.py",
@@ -593,7 +1377,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L1",
       "id": "search",
-      "community": 6
+      "community": 8
     },
     {
       "label": "web_search()",
@@ -601,7 +1385,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L13",
       "id": "search_web_search",
-      "community": 6
+      "community": 8
     },
     {
       "label": "Search the web for real-time information supporting Polish and English queries.",
@@ -609,7 +1393,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L14",
       "id": "search_rationale_14",
-      "community": 6
+      "community": 8
     },
     {
       "label": "conftest.py",
@@ -617,7 +1401,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L1",
       "id": "conftest",
-      "community": 9
+      "community": 3
     },
     {
       "label": "mock_settings()",
@@ -625,7 +1409,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L24",
       "id": "conftest_mock_settings",
-      "community": 9
+      "community": 3
     },
     {
       "label": "memory_db()",
@@ -633,7 +1417,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L68",
       "id": "conftest_memory_db",
-      "community": 9
+      "community": 3
     },
     {
       "label": "tmp_memory_db()",
@@ -641,7 +1425,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L79",
       "id": "conftest_tmp_memory_db",
-      "community": 9
+      "community": 3
     },
     {
       "label": "conftest.py \u2014 shared pytest fixtures for the HomeAI test suite.\r \r Fixtures prov",
@@ -649,7 +1433,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L1",
       "id": "conftest_rationale_1",
-      "community": 9
+      "community": 3
     },
     {
       "label": "Patch every external-service URL and credential in the global Settings\r     sing",
@@ -657,7 +1441,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L25",
       "id": "conftest_rationale_25",
-      "community": 9
+      "community": 3
     },
     {
       "label": "In-memory SQLite Memory instance with a sliding window of 3 turns.\r     Closed a",
@@ -665,7 +1449,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L69",
       "id": "conftest_rationale_69",
-      "community": 9
+      "community": 3
     },
     {
       "label": "Memory instance backed by a real temporary file, for testing persistence\r     ac",
@@ -673,7 +1457,7 @@
       "source_file": "tests\\conftest.py",
       "source_location": "L80",
       "id": "conftest_rationale_80",
-      "community": 9
+      "community": 3
     },
     {
       "label": "test_agent_brain.py",
@@ -705,7 +1489,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L68",
       "id": "test_agent_brain_testextractjson",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_plain_valid_json_object()",
@@ -713,7 +1497,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L69",
       "id": "test_agent_brain_testextractjson_test_plain_valid_json_object",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_json_in_json_fences()",
@@ -721,7 +1505,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L75",
       "id": "test_agent_brain_testextractjson_test_json_in_json_fences",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_json_in_plain_fences()",
@@ -729,7 +1513,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L81",
       "id": "test_agent_brain_testextractjson_test_json_in_plain_fences",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_json_buried_in_prose_before_and_after()",
@@ -737,7 +1521,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L87",
       "id": "test_agent_brain_testextractjson_test_json_buried_in_prose_before_and_after",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_nested_json_object_parsed_correctly()",
@@ -745,7 +1529,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L93",
       "id": "test_agent_brain_testextractjson_test_nested_json_object_parsed_correctly",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_completely_invalid_text_raises_value_error()",
@@ -753,7 +1537,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L108",
       "id": "test_agent_brain_testextractjson_test_completely_invalid_text_raises_value_error",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_empty_string_raises_value_error()",
@@ -761,7 +1545,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L113",
       "id": "test_agent_brain_testextractjson_test_empty_string_raises_value_error",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_whitespace_only_raises_value_error()",
@@ -769,7 +1553,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L118",
       "id": "test_agent_brain_testextractjson_test_whitespace_only_raises_value_error",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_polish_string_values_preserved()",
@@ -777,7 +1561,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L123",
       "id": "test_agent_brain_testextractjson_test_polish_string_values_preserved",
-      "community": 1
+      "community": 6
     },
     {
       "label": "test_various_fence_and_whitespace_variants()",
@@ -793,7 +1577,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L144",
       "id": "test_agent_brain_testextractjson_test_json_array_at_top_level_raises",
-      "community": 1
+      "community": 6
     },
     {
       "label": ".test_two_separate_json_objects_in_prose_raises()",
@@ -801,7 +1585,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L152",
       "id": "test_agent_brain_testextractjson_test_two_separate_json_objects_in_prose_raises",
-      "community": 1
+      "community": 6
     },
     {
       "label": "mem()",
@@ -1081,7 +1865,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L70",
       "id": "test_agent_brain_rationale_70",
-      "community": 1
+      "community": 6
     },
     {
       "label": "JSON wrapped in ```json ... ``` markdown fences is extracted.",
@@ -1089,7 +1873,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L76",
       "id": "test_agent_brain_rationale_76",
-      "community": 1
+      "community": 6
     },
     {
       "label": "JSON wrapped in plain ``` ... ``` fences is extracted.",
@@ -1097,7 +1881,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L82",
       "id": "test_agent_brain_rationale_82",
-      "community": 1
+      "community": 6
     },
     {
       "label": "When prose surrounds a JSON block, the first {...} is extracted.",
@@ -1105,7 +1889,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L88",
       "id": "test_agent_brain_rationale_88",
-      "community": 1
+      "community": 6
     },
     {
       "label": "Nested dicts in action_input survive parsing intact.",
@@ -1113,7 +1897,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L94",
       "id": "test_agent_brain_rationale_94",
-      "community": 1
+      "community": 6
     },
     {
       "label": "Non-JSON text raises ValueError with a descriptive message.",
@@ -1121,7 +1905,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L109",
       "id": "test_agent_brain_rationale_109",
-      "community": 1
+      "community": 6
     },
     {
       "label": "An empty string raises ValueError.",
@@ -1129,7 +1913,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L114",
       "id": "test_agent_brain_rationale_114",
-      "community": 1
+      "community": 6
     },
     {
       "label": "A string containing only whitespace raises ValueError.",
@@ -1137,7 +1921,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L119",
       "id": "test_agent_brain_rationale_119",
-      "community": 1
+      "community": 6
     },
     {
       "label": "Polish characters inside JSON values survive extraction.",
@@ -1145,7 +1929,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L124",
       "id": "test_agent_brain_rationale_124",
-      "community": 1
+      "community": 6
     },
     {
       "label": "Several fence and whitespace variants all parse to the same dict.",
@@ -1161,7 +1945,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L145",
       "id": "test_agent_brain_rationale_145",
-      "community": 1
+      "community": 6
     },
     {
       "label": "Two separate JSON objects on the same line cause the greedy re.DOTALL\r         f",
@@ -1169,7 +1953,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L153",
       "id": "test_agent_brain_rationale_153",
-      "community": 1
+      "community": 6
     },
     {
       "label": "Fresh in-memory Memory instance for pipeline tests.",
@@ -1641,7 +2425,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L211",
       "id": "test_config_testsettingstypecoercion",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_float_field_accepts_integer_string()",
@@ -1649,7 +2433,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L212",
       "id": "test_config_testsettingstypecoercion_test_float_field_accepts_integer_string",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_int_field_rejects_non_numeric_string()",
@@ -1657,7 +2441,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L219",
       "id": "test_config_testsettingstypecoercion_test_int_field_rejects_non_numeric_string",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_float_field_rejects_non_numeric_string()",
@@ -1665,7 +2449,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L225",
       "id": "test_config_testsettingstypecoercion_test_float_field_rejects_non_numeric_string",
-      "community": 8
+      "community": 0
     },
     {
       "label": ".test_react_max_iterations_zero_is_valid()",
@@ -1673,7 +2457,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L231",
       "id": "test_config_testsettingstypecoercion_test_react_max_iterations_zero_is_valid",
-      "community": 8
+      "community": 0
     },
     {
       "label": "TestSettingsSingleton",
@@ -1993,7 +2777,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L213",
       "id": "test_config_rationale_213",
-      "community": 8
+      "community": 0
     },
     {
       "label": "A non-numeric string for an int field raises ValidationError.",
@@ -2001,7 +2785,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L220",
       "id": "test_config_rationale_220",
-      "community": 8
+      "community": 0
     },
     {
       "label": "A non-numeric string for a float field raises ValidationError.",
@@ -2009,7 +2793,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L226",
       "id": "test_config_rationale_226",
-      "community": 8
+      "community": 0
     },
     {
       "label": "Zero is a valid (though degenerate) value for react_max_iterations.",
@@ -2017,7 +2801,7 @@
       "source_file": "tests\\test_config.py",
       "source_location": "L232",
       "id": "test_config_rationale_232",
-      "community": 8
+      "community": 0
     },
     {
       "label": "The module-level `settings` object is a Settings instance.",
@@ -2068,12 +2852,52 @@
       "community": 0
     },
     {
+      "label": "test_guardrails.py",
+      "file_type": "code",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L1",
+      "id": "test_guardrails",
+      "community": 15
+    },
+    {
+      "label": "test_scan_text_flags_forbidden_alarm_entity()",
+      "file_type": "code",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L8",
+      "id": "test_guardrails_test_scan_text_flags_forbidden_alarm_entity",
+      "community": 15
+    },
+    {
+      "label": "test_scan_payload_flags_satel_and_critical_reference()",
+      "file_type": "code",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L15",
+      "id": "test_guardrails_test_scan_payload_flags_satel_and_critical_reference",
+      "community": 15
+    },
+    {
+      "label": "test_assert_no_alarm_exposure_allows_clean_payload()",
+      "file_type": "code",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L27",
+      "id": "test_guardrails_test_assert_no_alarm_exposure_allows_clean_payload",
+      "community": 15
+    },
+    {
+      "label": "test_assert_no_alarm_exposure_raises_with_details()",
+      "file_type": "code",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L31",
+      "id": "test_guardrails_test_assert_no_alarm_exposure_raises_with_details",
+      "community": 15
+    },
+    {
       "label": "test_memory.py",
       "file_type": "code",
       "source_file": "tests\\test_memory.py",
       "source_location": "L1",
       "id": "test_memory",
-      "community": 5
+      "community": 1
     },
     {
       "label": "TestMemoryAddRecent",
@@ -2145,7 +2969,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L89",
       "id": "test_memory_testmemoryemptystate",
-      "community": 5
+      "community": 1
     },
     {
       "label": ".test_recent_on_empty_db_returns_empty_list()",
@@ -2153,7 +2977,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L90",
       "id": "test_memory_testmemoryemptystate_test_recent_on_empty_db_returns_empty_list",
-      "community": 5
+      "community": 1
     },
     {
       "label": ".test_recent_returns_list_type()",
@@ -2161,7 +2985,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L94",
       "id": "test_memory_testmemoryemptystate_test_recent_returns_list_type",
-      "community": 5
+      "community": 1
     },
     {
       "label": "TestMemorySlidingWindow",
@@ -2169,7 +2993,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L104",
       "id": "test_memory_testmemoryslidingwindow",
-      "community": 7
+      "community": 1
     },
     {
       "label": ".test_window_limits_returned_turns()",
@@ -2177,7 +3001,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L105",
       "id": "test_memory_testmemoryslidingwindow_test_window_limits_returned_turns",
-      "community": 7
+      "community": 1
     },
     {
       "label": ".test_window_returns_most_recent_turns()",
@@ -2185,7 +3009,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L115",
       "id": "test_memory_testmemoryslidingwindow_test_window_returns_most_recent_turns",
-      "community": 7
+      "community": 1
     },
     {
       "label": ".test_window_three_with_fewer_messages()",
@@ -2193,7 +3017,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L128",
       "id": "test_memory_testmemoryslidingwindow_test_window_three_with_fewer_messages",
-      "community": 7
+      "community": 1
     },
     {
       "label": ".test_window_exactly_full()",
@@ -2201,7 +3025,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L135",
       "id": "test_memory_testmemoryslidingwindow_test_window_exactly_full",
-      "community": 7
+      "community": 1
     },
     {
       "label": ".test_window_one_returns_at_most_two_messages()",
@@ -2209,7 +3033,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L145",
       "id": "test_memory_testmemoryslidingwindow_test_window_one_returns_at_most_two_messages",
-      "community": 7
+      "community": 1
     },
     {
       "label": ".test_window_zero_returns_empty_list()",
@@ -2217,7 +3041,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L158",
       "id": "test_memory_testmemoryslidingwindow_test_window_zero_returns_empty_list",
-      "community": 7
+      "community": 1
     },
     {
       "label": ".test_chronological_order_preserved_after_clamping()",
@@ -2225,7 +3049,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L166",
       "id": "test_memory_testmemoryslidingwindow_test_chronological_order_preserved_after_clamping",
-      "community": 7
+      "community": 1
     },
     {
       "label": "TestMemoryPersistence",
@@ -2233,7 +3057,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L185",
       "id": "test_memory_testmemorypersistence",
-      "community": 5
+      "community": 1
     },
     {
       "label": ".test_second_instance_sees_turns_from_first()",
@@ -2241,7 +3065,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L186",
       "id": "test_memory_testmemorypersistence_test_second_instance_sees_turns_from_first",
-      "community": 5
+      "community": 1
     },
     {
       "label": ".test_second_instance_can_add_turns()",
@@ -2249,7 +3073,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L199",
       "id": "test_memory_testmemorypersistence_test_second_instance_can_add_turns",
-      "community": 5
+      "community": 1
     },
     {
       "label": ".test_multiple_conversations_stored_sequentially()",
@@ -2257,7 +3081,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L216",
       "id": "test_memory_testmemorypersistence_test_multiple_conversations_stored_sequentially",
-      "community": 5
+      "community": 1
     },
     {
       "label": "TestMemoryClose",
@@ -2265,7 +3089,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L244",
       "id": "test_memory_testmemoryclose",
-      "community": 5
+      "community": 1
     },
     {
       "label": ".test_close_does_not_raise()",
@@ -2273,7 +3097,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L245",
       "id": "test_memory_testmemoryclose_test_close_does_not_raise",
-      "community": 5
+      "community": 1
     },
     {
       "label": ".test_table_created_on_init()",
@@ -2281,7 +3105,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L249",
       "id": "test_memory_testmemoryclose_test_table_created_on_init",
-      "community": 5
+      "community": 1
     },
     {
       "label": "test_memory.py \u2014 unit tests for agent_brain.Memory.\r \r The Memory class wraps SQ",
@@ -2289,7 +3113,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L1",
       "id": "test_memory_rationale_1",
-      "community": 5
+      "community": 1
     },
     {
       "label": "A single added turn is returned by recent().",
@@ -2353,7 +3177,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L91",
       "id": "test_memory_rationale_91",
-      "community": 5
+      "community": 1
     },
     {
       "label": "recent() always returns a list, even when empty.",
@@ -2361,7 +3185,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L95",
       "id": "test_memory_rationale_95",
-      "community": 5
+      "community": 1
     },
     {
       "label": "With window=2, at most 4 messages (2 pairs) are returned.",
@@ -2369,7 +3193,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L106",
       "id": "test_memory_rationale_106",
-      "community": 7
+      "community": 1
     },
     {
       "label": "The returned turns are the N most recent, not the oldest.",
@@ -2377,7 +3201,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L116",
       "id": "test_memory_rationale_116",
-      "community": 7
+      "community": 1
     },
     {
       "label": "When fewer messages exist than window*2, all messages are returned.",
@@ -2385,7 +3209,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L129",
       "id": "test_memory_rationale_129",
-      "community": 7
+      "community": 1
     },
     {
       "label": "When the number of messages equals window*2, all are returned.",
@@ -2393,7 +3217,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L136",
       "id": "test_memory_rationale_136",
-      "community": 7
+      "community": 1
     },
     {
       "label": "window=1 means at most 1 user + 1 assistant message returned.",
@@ -2401,7 +3225,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L146",
       "id": "test_memory_rationale_146",
-      "community": 7
+      "community": 1
     },
     {
       "label": "window=0 edge case: LIMIT 0 returns no rows.",
@@ -2409,7 +3233,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L159",
       "id": "test_memory_rationale_159",
-      "community": 7
+      "community": 1
     },
     {
       "label": "After window clamping the surviving turns are still oldest-first.",
@@ -2417,7 +3241,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L167",
       "id": "test_memory_rationale_167",
-      "community": 7
+      "community": 1
     },
     {
       "label": "Turns added by one Memory instance are visible to a second instance\r         ope",
@@ -2425,7 +3249,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L187",
       "id": "test_memory_rationale_187",
-      "community": 5
+      "community": 1
     },
     {
       "label": "A second Memory instance can add new turns that a third instance sees.",
@@ -2433,7 +3257,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L200",
       "id": "test_memory_rationale_200",
-      "community": 5
+      "community": 1
     },
     {
       "label": "All turns from a multi-turn conversation persist to disk.",
@@ -2441,7 +3265,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L217",
       "id": "test_memory_rationale_217",
-      "community": 5
+      "community": 1
     },
     {
       "label": "close() on an open connection completes without raising.",
@@ -2449,7 +3273,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L246",
       "id": "test_memory_rationale_246",
-      "community": 5
+      "community": 1
     },
     {
       "label": "The 'turns' table exists after __init__ (schema migration is idempotent).",
@@ -2457,7 +3281,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L250",
       "id": "test_memory_rationale_250",
-      "community": 5
+      "community": 1
     },
     {
       "label": "test_tools.py",
@@ -2465,7 +3289,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L1",
       "id": "test_tools",
-      "community": 3
+      "community": 4
     },
     {
       "label": "patch_settings()",
@@ -2473,7 +3297,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L58",
       "id": "test_tools_patch_settings",
-      "community": 3
+      "community": 4
     },
     {
       "label": "TestWebSearchSearXNG",
@@ -2481,7 +3305,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L78",
       "id": "test_tools_testwebsearchsearxng",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_searxng_success_returns_formatted_results()",
@@ -2489,7 +3313,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L80",
       "id": "test_tools_test_searxng_success_returns_formatted_results",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_searxng_result_count_capped_at_search_results_setting()",
@@ -2497,7 +3321,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L102",
       "id": "test_tools_test_searxng_result_count_capped_at_search_results_setting",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_searxng_empty_results_returns_no_results_message()",
@@ -2505,7 +3329,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L120",
       "id": "test_tools_test_searxng_empty_results_returns_no_results_message",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_searxng_uses_snippet_field_as_fallback_for_content()",
@@ -2513,7 +3337,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L131",
       "id": "test_tools_test_searxng_uses_snippet_field_as_fallback_for_content",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_searxng_query_preserved_with_polish_characters()",
@@ -2521,7 +3345,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L147",
       "id": "test_tools_test_searxng_query_preserved_with_polish_characters",
-      "community": 3
+      "community": 4
     },
     {
       "label": "TestWebSearchBraveFallback",
@@ -2529,7 +3353,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L169",
       "id": "test_tools_testwebsearchbravefallback",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_searxng_http_error_falls_back_to_brave()",
@@ -2537,7 +3361,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L171",
       "id": "test_tools_test_searxng_http_error_falls_back_to_brave",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_searxng_connection_refused_falls_back_to_brave()",
@@ -2545,7 +3369,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L192",
       "id": "test_tools_test_searxng_connection_refused_falls_back_to_brave",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_brave_used_directly_when_searxng_url_empty()",
@@ -2553,7 +3377,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L213",
       "id": "test_tools_test_brave_used_directly_when_searxng_url_empty",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_brave_no_results_returns_no_results_string()",
@@ -2561,7 +3385,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L232",
       "id": "test_tools_test_brave_no_results_returns_no_results_string",
-      "community": 3
+      "community": 4
     },
     {
       "label": "TestWebSearchBothDown",
@@ -2569,7 +3393,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L251",
       "id": "test_tools_testwebsearchbothdown",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_both_unavailable_returns_graceful_message()",
@@ -2577,7 +3401,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L253",
       "id": "test_tools_test_both_unavailable_returns_graceful_message",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_both_sources_error_query_preserved_in_message()",
@@ -2585,7 +3409,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L266",
       "id": "test_tools_test_both_sources_error_query_preserved_in_message",
-      "community": 3
+      "community": 4
     },
     {
       "label": "TestHomeService",
@@ -2593,7 +3417,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L284",
       "id": "test_tools_testhomeservice",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_success_returns_ok_string()",
@@ -2601,7 +3425,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L286",
       "id": "test_tools_test_success_returns_ok_string",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_http_401_returns_error_with_status_code()",
@@ -2609,7 +3433,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L298",
       "id": "test_tools_test_http_401_returns_error_with_status_code",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_http_403_returns_error_with_status_code()",
@@ -2617,7 +3441,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L311",
       "id": "test_tools_test_http_403_returns_error_with_status_code",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_connection_refused_returns_connection_error_string()",
@@ -2625,7 +3449,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L323",
       "id": "test_tools_test_connection_refused_returns_connection_error_string",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_extra_data_dict_is_accepted()",
@@ -2633,7 +3457,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L333",
       "id": "test_tools_test_extra_data_dict_is_accepted",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_service_call_for_cover_domain()",
@@ -2641,7 +3465,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L348",
       "id": "test_tools_test_service_call_for_cover_domain",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_response_text_included_in_http_error()",
@@ -2649,7 +3473,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L359",
       "id": "test_tools_test_response_text_included_in_http_error",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_timeout_returns_connection_error_string()",
@@ -2657,7 +3481,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L371",
       "id": "test_tools_test_timeout_returns_connection_error_string",
-      "community": 3
+      "community": 4
     },
     {
       "label": "TestHomeState",
@@ -2665,7 +3489,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L386",
       "id": "test_tools_testhomestate",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_success_with_full_attributes()",
@@ -2673,7 +3497,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L388",
       "id": "test_tools_test_success_with_full_attributes",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_friendly_name_not_duplicated_in_attributes()",
@@ -2681,7 +3505,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L411",
       "id": "test_tools_test_friendly_name_not_duplicated_in_attributes",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_entity_not_found_404()",
@@ -2689,7 +3513,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L433",
       "id": "test_tools_test_entity_not_found_404",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_connection_refused_returns_error_string()",
@@ -2697,7 +3521,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L446",
       "id": "test_tools_test_connection_refused_returns_error_string",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_attributes_summary_truncated_at_400_chars()",
@@ -2705,7 +3529,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L458",
       "id": "test_tools_test_attributes_summary_truncated_at_400_chars",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_entity_with_no_attributes()",
@@ -2713,7 +3537,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L477",
       "id": "test_tools_test_entity_with_no_attributes",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_polish_friendly_name_preserved()",
@@ -2721,7 +3545,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L491",
       "id": "test_tools_test_polish_friendly_name_preserved",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_missing_friendly_name_falls_back_to_entity_id()",
@@ -2729,7 +3553,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L507",
       "id": "test_tools_test_missing_friendly_name_falls_back_to_entity_id",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_http_401_returns_error_string()",
@@ -2737,7 +3561,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L521",
       "id": "test_tools_test_http_401_returns_error_string",
-      "community": 3
+      "community": 4
     },
     {
       "label": "test_tools.py \u2014 unit tests for tools.web_search, tools.home_service,\r and tools.",
@@ -2745,7 +3569,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L1",
       "id": "test_tools_rationale_1",
-      "community": 3
+      "community": 4
     },
     {
       "label": "Redirect all outgoing URLs to test doubles and inject a dummy HA token.\r     aut",
@@ -2753,7 +3577,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L59",
       "id": "test_tools_rationale_59",
-      "community": 3
+      "community": 4
     },
     {
       "label": "SearXNG 200 with results produces a numbered list prefixed by query.",
@@ -2761,7 +3585,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L81",
       "id": "test_tools_rationale_81",
-      "community": 18
+      "community": 26
     },
     {
       "label": "Only `search_results` (3) results are included even if SearXNG returns more.",
@@ -2769,7 +3593,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L103",
       "id": "test_tools_rationale_103",
-      "community": 19
+      "community": 27
     },
     {
       "label": "SearXNG 200 with empty results list returns a 'no results' string.",
@@ -2777,7 +3601,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L121",
       "id": "test_tools_rationale_121",
-      "community": 20
+      "community": 28
     },
     {
       "label": "When 'content' is absent, 'snippet' is used instead.",
@@ -2785,7 +3609,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L132",
       "id": "test_tools_rationale_132",
-      "community": 21
+      "community": 29
     },
     {
       "label": "A query containing Polish diacritics appears verbatim in the output.",
@@ -2793,7 +3617,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L148",
       "id": "test_tools_rationale_148",
-      "community": 22
+      "community": 30
     },
     {
       "label": "A 500 from SearXNG triggers a silent fallback to Brave Search.",
@@ -2801,7 +3625,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L172",
       "id": "test_tools_rationale_172",
-      "community": 23
+      "community": 31
     },
     {
       "label": "A ConnectError from SearXNG triggers the Brave fallback.",
@@ -2809,7 +3633,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L193",
       "id": "test_tools_rationale_193",
-      "community": 24
+      "community": 32
     },
     {
       "label": "When searxng_url is empty, Brave is the only path attempted.",
@@ -2817,7 +3641,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L214",
       "id": "test_tools_rationale_214",
-      "community": 25
+      "community": 33
     },
     {
       "label": "Brave 200 with empty web results returns 'No results found.",
@@ -2825,7 +3649,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L233",
       "id": "test_tools_rationale_233",
-      "community": 26
+      "community": 34
     },
     {
       "label": "When SearXNG is down and no Brave key, return an unavailability notice.",
@@ -2833,7 +3657,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L254",
       "id": "test_tools_rationale_254",
-      "community": 27
+      "community": 35
     },
     {
       "label": "The original query string appears in the unavailability fallback message.",
@@ -2841,7 +3665,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L267",
       "id": "test_tools_rationale_267",
-      "community": 28
+      "community": 36
     },
     {
       "label": "A 200 from HA services endpoint returns a success confirmation string.",
@@ -2849,7 +3673,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L287",
       "id": "test_tools_rationale_287",
-      "community": 29
+      "community": 37
     },
     {
       "label": "HA returning 401 Unauthorized is surfaced as a string with the status code.",
@@ -2857,7 +3681,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L299",
       "id": "test_tools_rationale_299",
-      "community": 30
+      "community": 38
     },
     {
       "label": "HA returning 403 Forbidden surfaces the status code in the return string.",
@@ -2865,7 +3689,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L312",
       "id": "test_tools_rationale_312",
-      "community": 31
+      "community": 39
     },
     {
       "label": "A ConnectError is returned as a human-readable connection-error string.",
@@ -2873,7 +3697,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L324",
       "id": "test_tools_rationale_324",
-      "community": 32
+      "community": 40
     },
     {
       "label": "Extra `data` kwargs are forwarded without error and success is reported.",
@@ -2881,7 +3705,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L334",
       "id": "test_tools_rationale_334",
-      "community": 33
+      "community": 41
     },
     {
       "label": "home_service works for arbitrary HA domains (e.g., cover/open_cover).",
@@ -2889,7 +3713,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L349",
       "id": "test_tools_rationale_349",
-      "community": 34
+      "community": 42
     },
     {
       "label": "The first 300 chars of HA error body appear in the returned error string.",
@@ -2897,7 +3721,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L360",
       "id": "test_tools_rationale_360",
-      "community": 35
+      "community": 43
     },
     {
       "label": "A ReadTimeout is treated as a RequestError and returns a connection-error string",
@@ -2905,7 +3729,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L372",
       "id": "test_tools_rationale_372",
-      "community": 36
+      "community": 44
     },
     {
       "label": "200 response is formatted as 'friendly_name (entity): state=X | attrs'.",
@@ -2913,7 +3737,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L389",
       "id": "test_tools_rationale_389",
-      "community": 37
+      "community": 45
     },
     {
       "label": "friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.",
@@ -2921,7 +3745,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L412",
       "id": "test_tools_rationale_412",
-      "community": 38
+      "community": 46
     },
     {
       "label": "A 404 from HA is surfaced as a string containing the status code.",
@@ -2929,7 +3753,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L434",
       "id": "test_tools_rationale_434",
-      "community": 39
+      "community": 47
     },
     {
       "label": "ConnectError returns a human-readable HA connection error string.",
@@ -2937,7 +3761,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L447",
       "id": "test_tools_rationale_447",
-      "community": 40
+      "community": 48
     },
     {
       "label": "Attribute summary JSON is capped at 400 characters.",
@@ -2945,7 +3769,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L459",
       "id": "test_tools_rationale_459",
-      "community": 41
+      "community": 49
     },
     {
       "label": "Entity with empty attributes dict returns state without crashing.",
@@ -2953,7 +3777,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L478",
       "id": "test_tools_rationale_478",
-      "community": 42
+      "community": 50
     },
     {
       "label": "Entity friendly_name containing Polish characters is not mangled.",
@@ -2961,7 +3785,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L492",
       "id": "test_tools_rationale_492",
-      "community": 43
+      "community": 51
     },
     {
       "label": "When friendly_name is absent, the entity_id is used as the display name.",
@@ -2969,7 +3793,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L508",
       "id": "test_tools_rationale_508",
-      "community": 44
+      "community": 52
     },
     {
       "label": "A 401 from the states endpoint surfaces the status code.",
@@ -2977,7 +3801,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L522",
       "id": "test_tools_rationale_522",
-      "community": 45
+      "community": 53
     },
     {
       "label": "tools.py",
@@ -2985,7 +3809,7 @@
       "source_file": "tools.py",
       "source_location": "L1",
       "id": "tools",
-      "community": 4
+      "community": 3
     },
     {
       "label": "web_search()",
@@ -2993,7 +3817,7 @@
       "source_file": "tools.py",
       "source_location": "L25",
       "id": "tools_web_search",
-      "community": 4
+      "community": 3
     },
     {
       "label": "home_service()",
@@ -3001,7 +3825,7 @@
       "source_file": "tools.py",
       "source_location": "L83",
       "id": "tools_home_service",
-      "community": 4
+      "community": 3
     },
     {
       "label": "home_state()",
@@ -3009,7 +3833,7 @@
       "source_file": "tools.py",
       "source_location": "L105",
       "id": "tools_home_state",
-      "community": 4
+      "community": 3
     },
     {
       "label": "DEPRECATED \u2014 use src/homeai/tools/ package instead.\r \r Legacy tools module with",
@@ -3017,7 +3841,7 @@
       "source_file": "tools.py",
       "source_location": "L1",
       "id": "tools_rationale_1",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Search the web for real-time information. Supports Polish and English queries.",
@@ -3025,7 +3849,7 @@
       "source_file": "tools.py",
       "source_location": "L26",
       "id": "tools_rationale_26",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Call a Home Assistant service (e.g. light/turn_on, climate/set_temperature).",
@@ -3033,7 +3857,7 @@
       "source_file": "tools.py",
       "source_location": "L89",
       "id": "tools_rationale_89",
-      "community": 4
+      "community": 3
     },
     {
       "label": "Get the current state and attributes of a Home Assistant entity.",
@@ -3041,7 +3865,7 @@
       "source_file": "tools.py",
       "source_location": "L106",
       "id": "tools_rationale_106",
-      "community": 4
+      "community": 3
     },
     {
       "label": "update_graph.py",
@@ -3049,7 +3873,7 @@
       "source_file": "update_graph.py",
       "source_location": "L1",
       "id": "update_graph",
-      "community": 15
+      "community": 22
     },
     {
       "label": "One-off utility: merge infrastructure-plan nodes into the knowledge graph.\r \r Re",
@@ -3057,7 +3881,7 @@
       "source_file": "update_graph.py",
       "source_location": "L1",
       "id": "update_graph_rationale_1",
-      "community": 15
+      "community": 22
     }
   ],
   "links": [
@@ -5342,6 +6166,1518 @@
       "confidence_score": 0.5
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_now",
+      "source": "app",
+      "target": "app_now",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_db",
+      "source": "app",
+      "target": "app_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_init_db",
+      "source": "app",
+      "target": "app_init_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_require_token",
+      "source": "app",
+      "target": "app_require_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_factin",
+      "source": "app",
+      "target": "app_factin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_fact",
+      "source": "app",
+      "target": "app_fact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_memorycontext",
+      "source": "app",
+      "target": "app_memorycontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_transcriptturn",
+      "source": "app",
+      "target": "app_transcriptturn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_extractin",
+      "source": "app",
+      "target": "app_extractin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_extractout",
+      "source": "app",
+      "target": "app_extractout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_on_startup",
+      "source": "app",
+      "target": "app_on_startup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_health",
+      "source": "app",
+      "target": "app_health",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_upsert_fact",
+      "source": "app",
+      "target": "app_upsert_fact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_search_facts",
+      "source": "app",
+      "target": "app_search_facts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L193",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_load_context",
+      "source": "app",
+      "target": "app_load_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L206",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_get_context",
+      "source": "app",
+      "target": "app_get_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L244",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_run_extraction",
+      "source": "app",
+      "target": "app_run_extraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L274",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_extract",
+      "source": "app",
+      "target": "app_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L314",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_processedruncheck",
+      "source": "app",
+      "target": "app_processedruncheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L320",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_is_run_processed",
+      "source": "app",
+      "target": "app_is_run_processed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L330",
+      "weight": 1.0,
+      "_src": "app",
+      "_tgt": "app_mark_run_processed",
+      "source": "app",
+      "target": "app_mark_run_processed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "app_rationale_1",
+      "_tgt": "app",
+      "source": "app",
+      "target": "app_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L150",
+      "weight": 0.8,
+      "_src": "app_upsert_fact",
+      "_tgt": "app_now",
+      "source": "app_now",
+      "target": "app_upsert_fact",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L281",
+      "weight": 0.8,
+      "_src": "app_extract",
+      "_tgt": "app_now",
+      "source": "app_now",
+      "target": "app_extract",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L334",
+      "weight": 0.8,
+      "_src": "app_mark_run_processed",
+      "_tgt": "app_now",
+      "source": "app_now",
+      "target": "app_mark_run_processed",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L52",
+      "weight": 0.8,
+      "_src": "app_init_db",
+      "_tgt": "app_db",
+      "source": "app_db",
+      "target": "app_init_db",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L151",
+      "weight": 0.8,
+      "_src": "app_upsert_fact",
+      "_tgt": "app_db",
+      "source": "app_db",
+      "target": "app_upsert_fact",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L180",
+      "weight": 0.8,
+      "_src": "app_search_facts",
+      "_tgt": "app_db",
+      "source": "app_db",
+      "target": "app_search_facts",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L207",
+      "weight": 0.8,
+      "_src": "app_get_context",
+      "_tgt": "app_db",
+      "source": "app_db",
+      "target": "app_get_context",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L275",
+      "weight": 0.8,
+      "_src": "app_extract",
+      "_tgt": "app_db",
+      "source": "app_db",
+      "target": "app_extract",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L321",
+      "weight": 0.8,
+      "_src": "app_is_run_processed",
+      "_tgt": "app_db",
+      "source": "app_db",
+      "target": "app_is_run_processed",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L331",
+      "weight": 0.8,
+      "_src": "app_mark_run_processed",
+      "_tgt": "app_db",
+      "source": "app_db",
+      "target": "app_mark_run_processed",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L140",
+      "weight": 0.8,
+      "_src": "app_on_startup",
+      "_tgt": "app_init_db",
+      "source": "app_init_db",
+      "target": "app_on_startup",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "app_factin",
+      "_tgt": "basemodel",
+      "source": "app_factin",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_src": "app_fact",
+      "_tgt": "basemodel",
+      "source": "basemodel",
+      "target": "app_fact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_src": "app_memorycontext",
+      "_tgt": "basemodel",
+      "source": "basemodel",
+      "target": "app_memorycontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "app_transcriptturn",
+      "_tgt": "basemodel",
+      "source": "basemodel",
+      "target": "app_transcriptturn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_src": "app_extractin",
+      "_tgt": "basemodel",
+      "source": "basemodel",
+      "target": "app_extractin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_src": "app_extractout",
+      "_tgt": "basemodel",
+      "source": "basemodel",
+      "target": "app_extractout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L314",
+      "weight": 1.0,
+      "_src": "app_processedruncheck",
+      "_tgt": "basemodel",
+      "source": "basemodel",
+      "target": "app_processedruncheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L190",
+      "weight": 0.8,
+      "_src": "app_search_facts",
+      "_tgt": "app_fact",
+      "source": "app_fact",
+      "target": "app_search_facts",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L209",
+      "weight": 0.8,
+      "_src": "app_get_context",
+      "_tgt": "app_fact",
+      "source": "app_fact",
+      "target": "app_get_context",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L220",
+      "weight": 0.8,
+      "_src": "app_get_context",
+      "_tgt": "app_memorycontext",
+      "source": "app_memorycontext",
+      "target": "app_get_context",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L311",
+      "weight": 0.8,
+      "_src": "app_extract",
+      "_tgt": "app_extractout",
+      "source": "app_extractout",
+      "target": "app_extract",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L208",
+      "weight": 0.8,
+      "_src": "app_get_context",
+      "_tgt": "app_load_context",
+      "source": "app_load_context",
+      "target": "app_get_context",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L276",
+      "weight": 0.8,
+      "_src": "app_extract",
+      "_tgt": "app_load_context",
+      "source": "app_load_context",
+      "target": "app_extract",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\memory_service\\app.py",
+      "source_location": "L278",
+      "weight": 0.8,
+      "_src": "app_extract",
+      "_tgt": "app_run_extraction",
+      "source": "app_run_extraction",
+      "target": "app_extract",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_src": "bakeoff_harness",
+      "_tgt": "bakeoff_harness_promptresult",
+      "source": "bakeoff_harness",
+      "target": "bakeoff_harness_promptresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L163",
+      "weight": 1.0,
+      "_src": "bakeoff_harness",
+      "_tgt": "bakeoff_harness_call_ollama",
+      "source": "bakeoff_harness",
+      "target": "bakeoff_harness_call_ollama",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L185",
+      "weight": 1.0,
+      "_src": "bakeoff_harness",
+      "_tgt": "bakeoff_harness_evaluate",
+      "source": "bakeoff_harness",
+      "target": "bakeoff_harness_evaluate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L230",
+      "weight": 1.0,
+      "_src": "bakeoff_harness",
+      "_tgt": "bakeoff_harness_run_bakeoff",
+      "source": "bakeoff_harness",
+      "target": "bakeoff_harness_run_bakeoff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L256",
+      "weight": 1.0,
+      "_src": "bakeoff_harness",
+      "_tgt": "bakeoff_harness_write_results_md",
+      "source": "bakeoff_harness",
+      "target": "bakeoff_harness_write_results_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L310",
+      "weight": 1.0,
+      "_src": "bakeoff_harness",
+      "_tgt": "bakeoff_harness_main",
+      "source": "bakeoff_harness",
+      "target": "bakeoff_harness_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L216",
+      "weight": 0.8,
+      "_src": "bakeoff_harness_evaluate",
+      "_tgt": "bakeoff_harness_promptresult",
+      "source": "bakeoff_harness_promptresult",
+      "target": "bakeoff_harness_evaluate",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L238",
+      "weight": 0.8,
+      "_src": "bakeoff_harness_run_bakeoff",
+      "_tgt": "bakeoff_harness_promptresult",
+      "source": "bakeoff_harness_promptresult",
+      "target": "bakeoff_harness_run_bakeoff",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L235",
+      "weight": 0.8,
+      "_src": "bakeoff_harness_run_bakeoff",
+      "_tgt": "bakeoff_harness_call_ollama",
+      "source": "bakeoff_harness_call_ollama",
+      "target": "bakeoff_harness_run_bakeoff",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L236",
+      "weight": 0.8,
+      "_src": "bakeoff_harness_run_bakeoff",
+      "_tgt": "bakeoff_harness_evaluate",
+      "source": "bakeoff_harness_evaluate",
+      "target": "bakeoff_harness_run_bakeoff",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L324",
+      "weight": 0.8,
+      "_src": "bakeoff_harness_main",
+      "_tgt": "bakeoff_harness_run_bakeoff",
+      "source": "bakeoff_harness_run_bakeoff",
+      "target": "bakeoff_harness_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\bakeoff_harness.py",
+      "source_location": "L325",
+      "weight": 0.8,
+      "_src": "bakeoff_harness_main",
+      "_tgt": "bakeoff_harness_write_results_md",
+      "source": "bakeoff_harness_write_results_md",
+      "target": "bakeoff_harness_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_benchmarkresult",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_benchmarkresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_parse_args",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_parse_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_expected_language",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_expected_language",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_collect_samples",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_collect_samples",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_load_model",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_load_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_transcribe_sample",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_transcribe_sample",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_print_result",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_print_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "benchmark_stt_latency",
+      "_tgt": "benchmark_stt_latency_main",
+      "source": "benchmark_stt_latency",
+      "target": "benchmark_stt_latency_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L82",
+      "weight": 0.8,
+      "_src": "benchmark_stt_latency_transcribe_sample",
+      "_tgt": "benchmark_stt_latency_benchmarkresult",
+      "source": "benchmark_stt_latency_benchmarkresult",
+      "target": "benchmark_stt_latency_transcribe_sample",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L101",
+      "weight": 0.8,
+      "_src": "benchmark_stt_latency_main",
+      "_tgt": "benchmark_stt_latency_parse_args",
+      "source": "benchmark_stt_latency_parse_args",
+      "target": "benchmark_stt_latency_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L84",
+      "weight": 0.8,
+      "_src": "benchmark_stt_latency_transcribe_sample",
+      "_tgt": "benchmark_stt_latency_expected_language",
+      "source": "benchmark_stt_latency_expected_language",
+      "target": "benchmark_stt_latency_transcribe_sample",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L104",
+      "weight": 0.8,
+      "_src": "benchmark_stt_latency_main",
+      "_tgt": "benchmark_stt_latency_collect_samples",
+      "source": "benchmark_stt_latency_collect_samples",
+      "target": "benchmark_stt_latency_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L105",
+      "weight": 0.8,
+      "_src": "benchmark_stt_latency_main",
+      "_tgt": "benchmark_stt_latency_load_model",
+      "source": "benchmark_stt_latency_load_model",
+      "target": "benchmark_stt_latency_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L115",
+      "weight": 0.8,
+      "_src": "benchmark_stt_latency_main",
+      "_tgt": "benchmark_stt_latency_transcribe_sample",
+      "source": "benchmark_stt_latency_transcribe_sample",
+      "target": "benchmark_stt_latency_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
+      "source_location": "L116",
+      "weight": 0.8,
+      "_src": "benchmark_stt_latency_main",
+      "_tgt": "benchmark_stt_latency_print_result",
+      "source": "benchmark_stt_latency_print_result",
+      "target": "benchmark_stt_latency_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "check_no_alarm_exposure",
+      "_tgt": "check_no_alarm_exposure_collect_paths",
+      "source": "check_no_alarm_exposure",
+      "target": "check_no_alarm_exposure_collect_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_src": "check_no_alarm_exposure",
+      "_tgt": "check_no_alarm_exposure_main",
+      "source": "check_no_alarm_exposure",
+      "target": "check_no_alarm_exposure_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
+      "source_location": "L44",
+      "weight": 0.8,
+      "_src": "check_no_alarm_exposure_main",
+      "_tgt": "check_no_alarm_exposure_collect_paths",
+      "source": "check_no_alarm_exposure_collect_paths",
+      "target": "check_no_alarm_exposure_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_src": "create_assist_pipeline",
+      "_tgt": "create_assist_pipeline_hawebsocket",
+      "source": "create_assist_pipeline",
+      "target": "create_assist_pipeline_hawebsocket",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_src": "create_assist_pipeline",
+      "_tgt": "create_assist_pipeline_authenticate",
+      "source": "create_assist_pipeline",
+      "target": "create_assist_pipeline_authenticate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_src": "create_assist_pipeline",
+      "_tgt": "create_assist_pipeline_main",
+      "source": "create_assist_pipeline",
+      "target": "create_assist_pipeline_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "create_assist_pipeline_hawebsocket",
+      "_tgt": "create_assist_pipeline_hawebsocket_init",
+      "source": "create_assist_pipeline_hawebsocket",
+      "target": "create_assist_pipeline_hawebsocket_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "create_assist_pipeline_hawebsocket",
+      "_tgt": "create_assist_pipeline_hawebsocket_call",
+      "source": "create_assist_pipeline_hawebsocket",
+      "target": "create_assist_pipeline_hawebsocket_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L121",
+      "weight": 0.8,
+      "_src": "create_assist_pipeline_main",
+      "_tgt": "create_assist_pipeline_hawebsocket",
+      "source": "create_assist_pipeline_hawebsocket",
+      "target": "create_assist_pipeline_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_src": "create_assist_pipeline_rationale_80",
+      "_tgt": "create_assist_pipeline_hawebsocket",
+      "source": "create_assist_pipeline_hawebsocket",
+      "target": "create_assist_pipeline_rationale_80",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L123",
+      "weight": 0.8,
+      "_src": "create_assist_pipeline_main",
+      "_tgt": "create_assist_pipeline_hawebsocket_call",
+      "source": "create_assist_pipeline_hawebsocket_call",
+      "target": "create_assist_pipeline_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
+      "source_location": "L120",
+      "weight": 0.8,
+      "_src": "create_assist_pipeline_main",
+      "_tgt": "create_assist_pipeline_authenticate",
+      "source": "create_assist_pipeline_authenticate",
+      "target": "create_assist_pipeline_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "create_local_pipelines",
+      "_tgt": "create_local_pipelines_hawebsocket",
+      "source": "create_local_pipelines",
+      "target": "create_local_pipelines_hawebsocket",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_src": "create_local_pipelines",
+      "_tgt": "create_local_pipelines_authenticate",
+      "source": "create_local_pipelines",
+      "target": "create_local_pipelines_authenticate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "create_local_pipelines",
+      "_tgt": "create_local_pipelines_main",
+      "source": "create_local_pipelines",
+      "target": "create_local_pipelines_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_src": "create_local_pipelines_hawebsocket",
+      "_tgt": "create_local_pipelines_hawebsocket_init",
+      "source": "create_local_pipelines_hawebsocket",
+      "target": "create_local_pipelines_hawebsocket_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_src": "create_local_pipelines_hawebsocket",
+      "_tgt": "create_local_pipelines_hawebsocket_call",
+      "source": "create_local_pipelines_hawebsocket",
+      "target": "create_local_pipelines_hawebsocket_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L118",
+      "weight": 0.8,
+      "_src": "create_local_pipelines_main",
+      "_tgt": "create_local_pipelines_hawebsocket",
+      "source": "create_local_pipelines_hawebsocket",
+      "target": "create_local_pipelines_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_src": "create_local_pipelines_rationale_77",
+      "_tgt": "create_local_pipelines_hawebsocket",
+      "source": "create_local_pipelines_hawebsocket",
+      "target": "create_local_pipelines_rationale_77",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L120",
+      "weight": 0.8,
+      "_src": "create_local_pipelines_main",
+      "_tgt": "create_local_pipelines_hawebsocket_call",
+      "source": "create_local_pipelines_hawebsocket_call",
+      "target": "create_local_pipelines_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\create_local_pipelines.py",
+      "source_location": "L117",
+      "weight": 0.8,
+      "_src": "create_local_pipelines_main",
+      "_tgt": "create_local_pipelines_authenticate",
+      "source": "create_local_pipelines_authenticate",
+      "target": "create_local_pipelines_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_src": "expose_entities",
+      "_tgt": "expose_entities_assert_no_alarm_entities",
+      "source": "expose_entities",
+      "target": "expose_entities_assert_no_alarm_entities",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_src": "expose_entities",
+      "_tgt": "expose_entities_hawebsocket",
+      "source": "expose_entities",
+      "target": "expose_entities_hawebsocket",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "expose_entities",
+      "_tgt": "expose_entities_authenticate",
+      "source": "expose_entities",
+      "target": "expose_entities_authenticate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_src": "expose_entities",
+      "_tgt": "expose_entities_main",
+      "source": "expose_entities",
+      "target": "expose_entities_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L147",
+      "weight": 0.8,
+      "_src": "expose_entities_main",
+      "_tgt": "expose_entities_assert_no_alarm_entities",
+      "source": "expose_entities_assert_no_alarm_entities",
+      "target": "expose_entities_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_src": "expose_entities_hawebsocket",
+      "_tgt": "expose_entities_hawebsocket_init",
+      "source": "expose_entities_hawebsocket",
+      "target": "expose_entities_hawebsocket_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_src": "expose_entities_hawebsocket",
+      "_tgt": "expose_entities_hawebsocket_call",
+      "source": "expose_entities_hawebsocket",
+      "target": "expose_entities_hawebsocket_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L161",
+      "weight": 0.8,
+      "_src": "expose_entities_main",
+      "_tgt": "expose_entities_hawebsocket",
+      "source": "expose_entities_hawebsocket",
+      "target": "expose_entities_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_src": "expose_entities_rationale_113",
+      "_tgt": "expose_entities_hawebsocket",
+      "source": "expose_entities_hawebsocket",
+      "target": "expose_entities_rationale_113",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L163",
+      "weight": 0.8,
+      "_src": "expose_entities_main",
+      "_tgt": "expose_entities_hawebsocket_call",
+      "source": "expose_entities_hawebsocket_call",
+      "target": "expose_entities_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\expose_entities.py",
+      "source_location": "L160",
+      "weight": 0.8,
+      "_src": "expose_entities_main",
+      "_tgt": "expose_entities_authenticate",
+      "source": "expose_entities_authenticate",
+      "target": "expose_entities_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_hawebsocket",
+      "source": "memory_poller",
+      "target": "memory_poller_hawebsocket",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_authenticate",
+      "source": "memory_poller",
+      "target": "memory_poller_authenticate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_reconstruct_transcript",
+      "source": "memory_poller",
+      "target": "memory_poller_reconstruct_transcript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_is_processed",
+      "source": "memory_poller",
+      "target": "memory_poller_is_processed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_mark_processed",
+      "source": "memory_poller",
+      "target": "memory_poller_mark_processed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_extract",
+      "source": "memory_poller",
+      "target": "memory_poller_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_poll_once",
+      "source": "memory_poller",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L215",
+      "weight": 1.0,
+      "_src": "memory_poller",
+      "_tgt": "memory_poller_main",
+      "source": "memory_poller",
+      "target": "memory_poller_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_src": "memory_poller_hawebsocket",
+      "_tgt": "memory_poller_hawebsocket_init",
+      "source": "memory_poller_hawebsocket",
+      "target": "memory_poller_hawebsocket_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "memory_poller_hawebsocket",
+      "_tgt": "memory_poller_hawebsocket_call",
+      "source": "memory_poller_hawebsocket",
+      "target": "memory_poller_hawebsocket_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L160",
+      "weight": 0.8,
+      "_src": "memory_poller_poll_once",
+      "_tgt": "memory_poller_hawebsocket",
+      "source": "memory_poller_hawebsocket",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "memory_poller_rationale_58",
+      "_tgt": "memory_poller_hawebsocket",
+      "source": "memory_poller_hawebsocket",
+      "target": "memory_poller_rationale_58",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L162",
+      "weight": 0.8,
+      "_src": "memory_poller_poll_once",
+      "_tgt": "memory_poller_hawebsocket_call",
+      "source": "memory_poller_hawebsocket_call",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L159",
+      "weight": 0.8,
+      "_src": "memory_poller_poll_once",
+      "_tgt": "memory_poller_authenticate",
+      "source": "memory_poller_authenticate",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L198",
+      "weight": 0.8,
+      "_src": "memory_poller_poll_once",
+      "_tgt": "memory_poller_reconstruct_transcript",
+      "source": "memory_poller_reconstruct_transcript",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_src": "memory_poller_rationale_87",
+      "_tgt": "memory_poller_reconstruct_transcript",
+      "source": "memory_poller_reconstruct_transcript",
+      "target": "memory_poller_rationale_87",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L184",
+      "weight": 0.8,
+      "_src": "memory_poller_poll_once",
+      "_tgt": "memory_poller_is_processed",
+      "source": "memory_poller_is_processed",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L212",
+      "weight": 0.8,
+      "_src": "memory_poller_poll_once",
+      "_tgt": "memory_poller_mark_processed",
+      "source": "memory_poller_mark_processed",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L207",
+      "weight": 0.8,
+      "_src": "memory_poller_poll_once",
+      "_tgt": "memory_poller_extract",
+      "source": "memory_poller_extract",
+      "target": "memory_poller_poll_once",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\memory_poller.py",
+      "source_location": "L234",
+      "weight": 0.8,
+      "_src": "memory_poller_main",
+      "_tgt": "memory_poller_poll_once",
+      "source": "memory_poller_poll_once",
+      "target": "memory_poller_main",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "run.py",
@@ -5471,6 +7807,342 @@
       "_tgt": "main_main",
       "source": "main_main",
       "target": "main_rationale_44",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_violation",
+      "source": "guardrails",
+      "target": "guardrails_violation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_alarmexposureerror",
+      "source": "guardrails",
+      "target": "guardrails_alarmexposureerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_iter_patterns",
+      "source": "guardrails",
+      "target": "guardrails_iter_patterns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_scan_text",
+      "source": "guardrails",
+      "target": "guardrails_scan_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_scan_path",
+      "source": "guardrails",
+      "target": "guardrails_scan_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_scan_paths",
+      "source": "guardrails",
+      "target": "guardrails_scan_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_scan_any",
+      "source": "guardrails",
+      "target": "guardrails_scan_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_scan_payload",
+      "source": "guardrails",
+      "target": "guardrails_scan_payload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_src": "guardrails",
+      "_tgt": "guardrails_assert_no_alarm_exposure",
+      "source": "guardrails",
+      "target": "guardrails_assert_no_alarm_exposure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "guardrails_violation",
+      "_tgt": "guardrails_violation_format",
+      "source": "guardrails_violation",
+      "target": "guardrails_violation_format",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L52",
+      "weight": 0.8,
+      "_src": "guardrails_scan_text",
+      "_tgt": "guardrails_violation",
+      "source": "guardrails_violation",
+      "target": "guardrails_scan_text",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L93",
+      "weight": 0.8,
+      "_src": "guardrails_scan_any",
+      "_tgt": "guardrails_violation",
+      "source": "guardrails_violation",
+      "target": "guardrails_scan_any",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "guardrails_rationale_16",
+      "_tgt": "guardrails_violation",
+      "source": "guardrails_violation",
+      "target": "guardrails_rationale_16",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L130",
+      "weight": 0.8,
+      "_src": "guardrails_assert_no_alarm_exposure",
+      "_tgt": "guardrails_violation_format",
+      "source": "guardrails_violation_format",
+      "target": "guardrails_assert_no_alarm_exposure",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "guardrails_alarmexposureerror",
+      "_tgt": "valueerror",
+      "source": "guardrails_alarmexposureerror",
+      "target": "valueerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L131",
+      "weight": 0.8,
+      "_src": "guardrails_assert_no_alarm_exposure",
+      "_tgt": "guardrails_alarmexposureerror",
+      "source": "guardrails_alarmexposureerror",
+      "target": "guardrails_assert_no_alarm_exposure",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "guardrails_rationale_34",
+      "_tgt": "guardrails_alarmexposureerror",
+      "source": "guardrails_alarmexposureerror",
+      "target": "guardrails_rationale_34",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L49",
+      "weight": 0.8,
+      "_src": "guardrails_scan_text",
+      "_tgt": "guardrails_iter_patterns",
+      "source": "guardrails_iter_patterns",
+      "target": "guardrails_scan_text",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L67",
+      "weight": 0.8,
+      "_src": "guardrails_scan_path",
+      "_tgt": "guardrails_scan_text",
+      "source": "guardrails_scan_text",
+      "target": "guardrails_scan_path",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L100",
+      "weight": 0.8,
+      "_src": "guardrails_scan_any",
+      "_tgt": "guardrails_scan_text",
+      "source": "guardrails_scan_text",
+      "target": "guardrails_scan_any",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "guardrails_rationale_46",
+      "_tgt": "guardrails_scan_text",
+      "source": "guardrails_scan_text",
+      "target": "guardrails_rationale_46",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L74",
+      "weight": 0.8,
+      "_src": "guardrails_scan_paths",
+      "_tgt": "guardrails_scan_path",
+      "source": "guardrails_scan_path",
+      "target": "guardrails_scan_paths",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_src": "guardrails_rationale_63",
+      "_tgt": "guardrails_scan_path",
+      "source": "guardrails_scan_path",
+      "target": "guardrails_rationale_63",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_src": "guardrails_rationale_71",
+      "_tgt": "guardrails_scan_paths",
+      "source": "guardrails_scan_paths",
+      "target": "guardrails_rationale_71",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L123",
+      "weight": 0.8,
+      "_src": "guardrails_scan_payload",
+      "_tgt": "guardrails_scan_any",
+      "source": "guardrails_scan_any",
+      "target": "guardrails_scan_payload",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L128",
+      "weight": 0.8,
+      "_src": "guardrails_assert_no_alarm_exposure",
+      "_tgt": "guardrails_scan_payload",
+      "source": "guardrails_scan_payload",
+      "target": "guardrails_assert_no_alarm_exposure",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "guardrails_rationale_122",
+      "_tgt": "guardrails_scan_payload",
+      "source": "guardrails_scan_payload",
+      "target": "guardrails_rationale_122",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\homeai\\guardrails.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_src": "guardrails_rationale_127",
+      "_tgt": "guardrails_assert_no_alarm_exposure",
+      "source": "guardrails_assert_no_alarm_exposure",
+      "target": "guardrails_rationale_127",
       "confidence_score": 1.0
     },
     {
@@ -8171,6 +10843,54 @@
       "_tgt": "test_config_testsettingsedgecases_test_react_max_iterations_large",
       "source": "test_config_testsettingsedgecases_test_react_max_iterations_large",
       "target": "test_config_rationale_283",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "test_guardrails",
+      "_tgt": "test_guardrails_test_scan_text_flags_forbidden_alarm_entity",
+      "source": "test_guardrails",
+      "target": "test_guardrails_test_scan_text_flags_forbidden_alarm_entity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "test_guardrails",
+      "_tgt": "test_guardrails_test_scan_payload_flags_satel_and_critical_reference",
+      "source": "test_guardrails",
+      "target": "test_guardrails_test_scan_payload_flags_satel_and_critical_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "test_guardrails",
+      "_tgt": "test_guardrails_test_assert_no_alarm_exposure_allows_clean_payload",
+      "source": "test_guardrails",
+      "target": "test_guardrails_test_assert_no_alarm_exposure_allows_clean_payload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests\\test_guardrails.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "test_guardrails",
+      "_tgt": "test_guardrails_test_assert_no_alarm_exposure_raises_with_details",
+      "source": "test_guardrails",
+      "target": "test_guardrails_test_assert_no_alarm_exposure_raises_with_details",
       "confidence_score": 1.0
     },
     {
