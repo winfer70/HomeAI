@@ -1,0 +1,88 @@
+[
+  {
+    "id": "light-en",
+    "language": "en",
+    "category": "light_command",
+    "prompt": "Turn on the main light in the office.",
+    "expected_tool": "control_switch",
+    "expected_entity_id": "switch.0x54ef4410016759d1_up",
+    "expected_state": "on"
+  },
+  {
+    "id": "light-pl",
+    "language": "pl",
+    "category": "light_command",
+    "prompt": "Włącz główne światło w biurze.",
+    "expected_tool": "control_switch",
+    "expected_entity_id": "switch.0x54ef4410016759d1_up",
+    "expected_state": "on"
+  },
+  {
+    "id": "climate-en",
+    "language": "en",
+    "category": "climate_command",
+    "prompt": "Set the office radiator to 21 degrees.",
+    "expected_tool": "set_climate_temperature",
+    "expected_entity_id": "climate.0xa4c138c7970d8809",
+    "expected_temperature": 21
+  },
+  {
+    "id": "climate-pl",
+    "language": "pl",
+    "category": "climate_command",
+    "prompt": "Ustaw grzejnik w biurze na 21 stopni.",
+    "expected_tool": "set_climate_temperature",
+    "expected_entity_id": "climate.0xa4c138c7970d8809",
+    "expected_temperature": 21
+  },
+  {
+    "id": "aquarium-read-en",
+    "language": "en",
+    "category": "aquarium_read",
+    "prompt": "What's the temperature in the aquarium?",
+    "expected_tool": "get_sensor_state",
+    "expected_entity_id": "sensor.0xa4c138060885ffff_temperature"
+  },
+  {
+    "id": "aquarium-read-pl",
+    "language": "pl",
+    "category": "aquarium_read",
+    "prompt": "Jaka jest temperatura w akwarium?",
+    "expected_tool": "get_sensor_state",
+    "expected_entity_id": "sensor.0xa4c138060885ffff_temperature"
+  },
+  {
+    "id": "aquarium-write-en",
+    "language": "en",
+    "category": "aquarium_write",
+    "prompt": "Turn off the aquarium heater.",
+    "expected_tool": "control_switch",
+    "expected_entity_id": "switch.grzalka",
+    "expected_state": "off"
+  },
+  {
+    "id": "aquarium-write-pl",
+    "language": "pl",
+    "category": "aquarium_write",
+    "prompt": "Wyłącz grzałkę w akwarium.",
+    "expected_tool": "control_switch",
+    "expected_entity_id": "switch.grzalka",
+    "expected_state": "off"
+  },
+  {
+    "id": "calendar-en",
+    "language": "en",
+    "category": "calendar_create",
+    "prompt": "Add a dentist appointment tomorrow at 3pm to my calendar.",
+    "expected_tool": "create_calendar_event",
+    "expected_title_contains": "dentist"
+  },
+  {
+    "id": "calendar-pl",
+    "language": "pl",
+    "category": "calendar_create",
+    "prompt": "Dodaj wizytę u dentysty jutro o 15:00 do mojego kalendarza.",
+    "expected_tool": "create_calendar_event",
+    "expected_title_contains": "dentyst"
+  }
+]
