@@ -71,5 +71,57 @@ Checklist at `/home/user/MIGRATION_CHECKLIST.md`
 ---
 
 # HomeAI Project
+
+## Heimdall (bilingual PL/EN Home Assistant voice assistant, `heimdall/` subdir)
+**Status as of 2026-08-20: all 8 original brief tasks + 1 add-on complete.**
+Task 7 pushed (`feature/heimdall-task7-test-matrix`), PR not yet
+merged — everything else (Tasks 0, 1, 2, 3, 4, 5, 6, 8) merged to `dev`.
+Full detail lives in `HomeAI/HANDOFF.md` and `heimdall/*.md` (one doc per
+task: `BENCHMARKS.md`, `BAKEOFF_RESULTS.md`, `HA_CONFIG_CHANGES.md`,
+`PROJECTNEMO_API.md`, `N8N_ROUTER.md`, `TEST_MATRIX.md`). Quick index:
+
+- **Task 0** — alarm-exposure CI guardrail (`check_no_alarm_exposure.py` +
+  GH Action) — never touch anything Satel/alarm-related, enforced in CI.
+- **Task 1 (M0)** — GPU/STT baseline benchmark on jaskier.
+- **Task 2 (M1)** — Wyoming faster-whisper/piper containers + HA Assist
+  pipelines (`Heimdall-EN`/`Heimdall-PL`, Gemini-backed).
+- **Task 3 (M2)** — local tool-calling agent bake-off (winner:
+  `qwen2.5:7b-instruct`) + full entity exposure to Assist, incl. the gate
+  relay (re-exposed at user's explicit request after a risk discussion —
+  no per-agent exposure scoping in HA).
+- **Task 4 (M3)** — aquarium tools (temp read/history, filter switch) via
+  ProjectNemo's real REST API (`heimdall/PROJECTNEMO_API.md`).
+- **Task 5 (M4)** — Google Calendar integration. Built a custom
+  `heimdall_llm_api` HA component so qwen keeps every tool except
+  calendar-write (Gemini keeps full read+write) — HA has no
+  per-conversation-agent tool scoping otherwise. 3 real qwen date/tool bugs
+  found and fixed (wrong year, wrong tool selection, wrong PL relative-date
+  math).
+- **Task 6 (M5)** — n8n AI task router on `labserver`
+  (`https://n8n.kamilon8n.win`, not the stale `swiss-knife`/`node-a` in
+  older infra docs) — bilingual keyword classifier routes to local Ollama
+  (open-domain/no-tools) or Gemini via HA `conversation.process`
+  (device-control).
+- **Task 7 (M6)** — automated live test matrix
+  (`heimdall/tests/test_matrix.py`, standalone, not pytest-collected) +
+  ntfy-based soak-failure logger (`ntfy_failure_logger.py`, topic
+  `heimdall-failures` on `nemo-ntfy`/vesemir). First live run found and
+  fixed a real entity-naming bug (phantom Tuya light winning fuzzy-match
+  over the real relay); two qwen-only resolution gaps
+  (`switch.office_led` ambiguity, climate-alias garbling) were diagnosed
+  and accepted as permanent, documented limitations rather than chased
+  further. Final result: 25/25 implementable checks passed.
+- **Task 8 (M7, add-on, not in original brief)** — persistent
+  cross-session conversation memory: FastAPI+SQLite service on jaskier,
+  hybrid capture (explicit HA tool calls + a WS-transcript-mining poller
+  safety net), injected into both agents' system prompts via a `rest:`
+  sensor. Verified cross-session recall in both languages.
+
+**Outstanding, not yet done:** open/merge the Task 7 PR; manually delete a
+stray test calendar event ("Gemini regression check", 2026-08-20) via
+Google Calendar's UI (no `calendar.delete_event` service exists in this HA
+version to automate it).
+
+## Public-repo security remediation (2026-08-15, superseded by above but still relevant)
 - **2026-08-15** — Public-repo safety remediation completed: second full `git-filter-repo` pass covered all remaining branches/history, GitHub `main` was aligned to sanitized `dev`, sanitized `feature/matter-server` was left unmerged intentionally, and stale secret-bearing remote branches were deleted. Repo is now safe to make public.
-- **Follow-up:** rotate the real WiFi password that was previously exposed in GitHub history; rewritten history may still persist in caches, forks, or scrapers.
+- **Follow-up:** rotate the real WiFi password that was previously exposed in GitHub history; rewritten history may still persist in caches, forks, or scrapers. Re-confirm this was actually done if not independently verified since.
