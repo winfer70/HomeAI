@@ -780,4 +780,70 @@ decisions). HA's per-pipeline VAD sensitivity control was investigated (see
 10.1) and found not applicable to this satellite-less setup, not bypassed or
 worked around.
 
+## 11. Heating "boost" feature (2026-08-20, ad hoc — no M-number)
+
+New voice feature: turn a radiator on to a comfort temperature for a fixed
+duration, then auto-revert — the "boost" button on old thermostatic radiator
+valves. Added as two `script:` entries in `heimdall.yaml`.
+
+### 11.1 Why two scripts, not one
+
+Calling a script directly by its own domain service blocks the caller until
+it completes. If the boost logic (set temp → delay → revert) lived in one
+script, the voice-tool call would hang for the entire boost duration
+(up to 4 hours) before Assist could respond — broken UX. Split instead:
+
+- `heimdall_boost_heating` (exposed to Assist): captures the entity's
+  current `hvac_mode`/`temperature`, applies the boost, fires
+  `heimdall_boost_revert_worker` via `script.turn_on` (fire-and-forget —
+  does NOT wait for it, unlike calling a script by its own domain service),
+  then returns immediately with a `reverts_at` time in its response.
+- `heimdall_boost_revert_worker` (NOT exposed —
+  `options.conversation.should_expose: false`, confirmed via
+  `config/entity_registry/get`): delays for the requested duration, then
+  restores the original `hvac_mode` (including back to `off` if that was
+  the original state) and `temperature`.
+
+Both scripts use `mode: parallel, max: 10` so boosting multiple different
+radiators concurrently doesn't queue/block on each other.
+
+### 11.2 Fields (`heimdall_boost_heating`)
+
+- `entity_id` (required, `selector: entity: domain: climate`)
+- `duration_minutes` (optional, number 5-240, default 60)
+- `temperature` (optional, number 15-28°C step 0.5, default 22)
+
+### 11.3 Known limitation, not fixed in v1
+
+Boosting the **same** entity a second time while a boost is already active
+starts a second independent revert worker rather than replacing the first —
+the first worker still fires at its original scheduled time, potentially
+reverting/cutting the second boost short partway through. Fixing this
+properly needs a per-entity "boost generation" token (e.g. an
+`input_text`/counter that each worker checks before reverting, aborting if a
+newer boost has superseded it) — not implemented, since it adds a real
+helper-entity + logic to review, and isn't needed for the common case
+(boosting different radiators, or one radiator once).
+
+### 11.4 Deployment
+
+Applied via `heimdall.yaml` (same package file as all other Heimdall
+scripts) — backed up as `heimdall.yaml.bak-boost-feature-20260820` before
+the edit. Validated with `check_config` (exit code 0) before reload;
+applied live via `script.reload` (no full HA restart needed for
+`script:` changes). Confirmed both scripts registered
+(`script.heimdall_boost_heating`, `script.heimdall_boost_revert_worker`) and
+exposure set correctly for each via the entity registry.
+
+### 11.5 Verification status
+
+**Untested** — no boost has been triggered live yet (added same night as the
+VAD tuning work in section 10; deliberately not actuated). Before relying on
+this: trigger one boost with a short duration (e.g. 5 minutes) on a
+non-critical radiator, confirm (a) the voice response returns immediately
+rather than hanging, (b) the entity actually reaches heat/target
+temperature, and (c) it correctly reverts to its prior state at the
+`reverts_at` time.
+
+
 
