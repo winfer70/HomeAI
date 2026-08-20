@@ -109,11 +109,14 @@ HA directly, not from a file diff.
 
 - Stray "Gemini regression check" calendar event (2026-08-20) needs manual deletion — no
   `delete_event` service exists in this HA version.
+  > **Still open, by design.** No automated `calendar.delete_event` service exists, and
+  > extracting the Google OAuth refresh token out of HA's internal storage to call the
+  > Calendar API directly was judged more risk than a one-off delete is worth. User will
+  > delete it manually in Google Calendar's UI.
 - The Google OAuth `client_secret_*.json` on the Desktop should move to a password manager
   or get deleted now that its contents are registered in HA.
-  > **Confirmed still present** at `Kamil/client_secret_914645144271-....json` on the
-  > Desktop root as of 2026-08-20 — flagged as an open security item, action pending user
-  > confirmation (see session notes).
+  > **DONE (2026-08-20).** Deleted (`Kamil/client_secret_914645144271-....json`) — only the
+  > app-level client_id/secret, already registered inside HA, not a live user token.
 
 **9. Secrets handling during this build was ad hoc** — HA tokens and the n8n API key got
 staged through `$env:TEMP` files per-session rather than a consistent local secrets store.
