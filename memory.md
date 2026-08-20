@@ -122,6 +122,31 @@ stray test calendar event ("Gemini regression check", 2026-08-20) via
 Google Calendar's UI (no `calendar.delete_event` service exists in this HA
 version to automate it).
 
+## Heimdall Phase 1.5 (hardening) + Phase 2 (voice hardware) — plan locked 2026-08-20
+Full plan: `heimdall/PHASE1_5_HARDENING_AND_PHASE2_PLAN.md`. Key points:
+- **Phase 1.5 backlog (10 items, priority-ordered)** surfaced during Phase 1 build-out.
+  Two already resolved during planning recon: #4 (kamilo-assistant stays a separate
+  general-purpose assistant, not folded into Heimdall) and #7 (expose_entities.py already
+  has a runtime `assert_no_alarm_entities()` check, not just the CI file-scan).
+- **Backlog #1 DONE (2026-08-20):** vesemir's ProjectNemo clone was stale/orphaned since the
+  2026-08-15 `git-filter-repo` rewrite (zero common ancestor with `origin/dev`). Reset to
+  `origin/dev`, committed the real Heimdall config drift, split it into `heimdall.yaml` (HA
+  `packages` mechanism), deleted 49 ad hoc `.bak-*` files (one had plaintext secrets),
+  gitignored the pattern. Pushed `feature/heimdall-config-sync-20260820` — PR needs manual
+  open+merge: https://github.com/winfer70/ProjectNemo/pull/new/feature/heimdall-config-sync-20260820
+  **Rotate `heimdall_memory_token`, `influxdb_token`, and the Satel `alarm_code`** — briefly
+  printed in plaintext during `check_config --secrets` validation this session (mistake, not
+  to be repeated). Also found (not fixed): pre-existing `influxdb.include.component_config`
+  schema placement bug, predates this session.
+- Still open: exposed Google OAuth `client_secret_*.json` on Desktop root
+  (`Kamil/client_secret_914645144271-....json`) needs moving to a password manager or
+  deletion — flagged, action pending user confirmation.
+- **Phase 2 (M7-M11):** M7 phone/watch quick-trigger (build first, near-zero cost) → M8
+  custom "Heimdall" wake word via openWakeWord on jaskier's RTX 3060 → M9 first satellite
+  (Raspberry Pi + ReSpeaker, not ESP32 — openWakeWord toolchain more mature) → M10 speaker-ID
+  (pyannote/SpeechBrain) → M11 always-listening privacy/security hardening. Sequencing
+  decision: M7 now, M8 onward later — not competing approaches.
+
 ## Public-repo security remediation (2026-08-15, superseded by above but still relevant)
 - **2026-08-15** — Public-repo safety remediation completed: second full `git-filter-repo` pass covered all remaining branches/history, GitHub `main` was aligned to sanitized `dev`, sanitized `feature/matter-server` was left unmerged intentionally, and stale secret-bearing remote branches were deleted. Repo is now safe to make public.
 - **Follow-up:** rotate the real WiFi password that was previously exposed in GitHub history; rewritten history may still persist in caches, forks, or scrapers. Re-confirm this was actually done if not independently verified since.
