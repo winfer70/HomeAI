@@ -61,6 +61,17 @@ confirmed rather than silently assumed:
     pipeline doesn't hard-error; exact entity resolution isn't required given
     the input is genuinely ambiguous by design.
 
+  - **light_switch / climate / aquarium_write / ambiguous_mixed_language**:
+    physical actuation is SKIPPED BY DEFAULT (added 2026-08-20, after the
+    daily-scheduled timer made unattended real toggling of the office
+    light/radiator/aquarium filter a real annoyance, not just a theoretical
+    concern - this includes ambiguous_mixed_language, whose test phrase is
+    also a real "turn on the office light" command that previously left the
+    light on with no restore step). Pass `--allow-physical-actuation` to
+    actually flip these and verify end-to-end - state is still restored
+    afterward when it runs, same as before, but now opt-in rather than every
+    run.
+
 Write-type rows (light_switch, climate, aquarium_write) capture the entity's
 state before speaking the command, verify it changed, then restore the
 original value directly via HA's REST API (not via voice) so repeated runs
@@ -293,7 +304,19 @@ def check_toggle(
     agent_label: str,
     phrase_on: str,
     phrase_off: str,
+    allow_actuation: bool,
 ) -> RowResult:
+    if not allow_actuation:
+        return RowResult(
+            row,
+            language,
+            agent_label,
+            True,
+            f"SKIPPED by default: {entity} toggling flips a real physical device. Rerun with "
+            "--allow-physical-actuation to actually exercise this row.",
+            skipped=True,
+        )
+
     before = ha.get_state(entity)["state"]
     phrase = phrase_off if before == "on" else phrase_on
     ha.process(phrase, language, agent_id)
@@ -314,7 +337,20 @@ def check_toggle(
 # ---------------------------------------------------------------------------
 
 
-def check_climate(ha: HaClient, language: str, agent_id: str, agent_label: str, phrase: str) -> RowResult:
+def check_climate(
+    ha: HaClient, language: str, agent_id: str, agent_label: str, phrase: str, allow_actuation: bool
+) -> RowResult:
+    if not allow_actuation:
+        return RowResult(
+            "climate",
+            language,
+            agent_label,
+            True,
+            f"SKIPPED by default: {CLIMATE_ENTITY} setpoint change affects a real radiator. Rerun with "
+            "--allow-physical-actuation to actually exercise this row.",
+            skipped=True,
+        )
+
     before = ha.get_state(CLIMATE_ENTITY)["attributes"].get("temperature")
     ha.process(phrase, language, agent_id)
     after = _wait_for_attr_change(ha, CLIMATE_ENTITY, "temperature", before)
@@ -429,13 +465,33 @@ def check_open_domain(ha: HaClient, language: str, agent_id: str, agent_label: s
 # ---------------------------------------------------------------------------
 
 
-def check_ambiguous_mixed(ha: HaClient, agent_id: str, agent_label: str) -> RowResult:
+def check_ambiguous_mixed(ha: HaClient, agent_id: str, agent_label: str, allow_actuation: bool) -> RowResult:
+    if not allow_actuation:
+        return RowResult(
+            "ambiguous_mixed_language",
+            "mixed",
+            agent_label,
+            True,
+            "SKIPPED by default: this phrase is a real 'turn on the office light' command "
+            "(deliberately code-switched EN/PL), same physical device as light_switch. Rerun with "
+            "--allow-physical-actuation to actually exercise this row.",
+            skipped=True,
+        )
+
     phrase = "Turn on światło w biurze please"  # deliberately code-switched EN/PL
+    before = ha.get_state(LIGHT_ENTITY)["state"]
     resp = ha.process(phrase, "en", agent_id)
     response_type = resp["response"]["response_type"]
     speech = resp["response"]["speech"]["plain"]["speech"]
     passed = response_type != "error"  # soft check: must not hard-error; exact entity match not required
     detail = f"response_type={response_type}, response={speech!r} (soft check only)"
+
+    # This phrase is a real actuation command, not a read - restore the light the same way
+    # check_toggle does, so this row doesn't leave it on/off differently than it found it.
+    after = ha.get_state(LIGHT_ENTITY)["state"]
+    if after != before:
+        ha.call_service("switch", "turn_on" if before == "on" else "turn_off", LIGHT_ENTITY)
+
     return RowResult("ambiguous_mixed_language", "mixed", agent_label, passed, detail)
 
 
@@ -444,7 +500,9 @@ def check_ambiguous_mixed(ha: HaClient, agent_id: str, agent_label: str) -> RowR
 # ---------------------------------------------------------------------------
 
 
-def run_matrix(ha: HaClient, ws_url: str, token: str, allow_calendar_write: bool) -> list[RowResult]:
+def run_matrix(
+    ha: HaClient, ws_url: str, token: str, allow_calendar_write: bool, allow_physical_actuation: bool
+) -> list[RowResult]:
     results: list[RowResult] = [check_gate_exposure(ws_url, token)]
 
     for lang in ("en", "pl"):
@@ -462,10 +520,20 @@ def run_matrix(ha: HaClient, ws_url: str, token: str, allow_calendar_write: bool
                 aq_on, aq_off = "Włącz filtr w akwarium", "Wyłącz filtr w akwarium"
                 cal_read_phrase = "Co mam w kalendarzu w tym tygodniu?"
 
-            results.append(check_toggle(ha, "light_switch", LIGHT_ENTITY, lang, agent_id, agent_label, on_phrase, off_phrase))
-            results.append(check_climate(ha, lang, agent_id, agent_label, climate_phrase))
+            results.append(
+                check_toggle(
+                    ha, "light_switch", LIGHT_ENTITY, lang, agent_id, agent_label, on_phrase, off_phrase,
+                    allow_physical_actuation,
+                )
+            )
+            results.append(check_climate(ha, lang, agent_id, agent_label, climate_phrase, allow_physical_actuation))
             results.append(check_aquarium_read(ha, lang, agent_id, agent_label, aq_read_phrase))
-            results.append(check_toggle(ha, "aquarium_write", AQUARIUM_SWITCH, lang, agent_id, agent_label, aq_on, aq_off))
+            results.append(
+                check_toggle(
+                    ha, "aquarium_write", AQUARIUM_SWITCH, lang, agent_id, agent_label, aq_on, aq_off,
+                    allow_physical_actuation,
+                )
+            )
             results.append(check_calendar_read(ha, lang, agent_id, agent_label, cal_read_phrase))
             results.append(check_calendar_write(ha, lang, agent_id, agent_label, allow_calendar_write))
             results.append(check_open_domain(ha, lang, agent_id, agent_label))
@@ -484,7 +552,7 @@ def run_matrix(ha: HaClient, ws_url: str, token: str, allow_calendar_write: bool
     )
 
     for agent_label, agent_id in AGENTS.items():
-        results.append(check_ambiguous_mixed(ha, agent_id, agent_label))
+        results.append(check_ambiguous_mixed(ha, agent_id, agent_label, allow_physical_actuation))
 
     return _apply_known_limitations(results)
 
@@ -517,6 +585,12 @@ def main() -> int:
         action="store_true",
         help="Actually exercise Gemini's calendar-write row (leaves a permanent test event — see docstring).",
     )
+    parser.add_argument(
+        "--allow-physical-actuation",
+        action="store_true",
+        help="Actually toggle the office light/aquarium filter and change the bedroom radiator setpoint "
+        "(restored afterward, but briefly real - annoying for unattended/scheduled runs, so off by default).",
+    )
     args = parser.parse_args()
 
     token = os.environ.get("HEIMDALL_HA_TOKEN")
@@ -527,7 +601,7 @@ def main() -> int:
     ntfy_token = os.environ.get("HEIMDALL_NTFY_TOKEN")
 
     ha = HaClient(args.ha_url, token)
-    results = run_matrix(ha, args.ha_ws_url, token, args.allow_calendar_write)
+    results = run_matrix(ha, args.ha_ws_url, token, args.allow_calendar_write, args.allow_physical_actuation)
 
     print(f"\n{'ROW':<24}{'LANG':<7}{'AGENT':<8}{'RESULT':<11}DETAIL")
     print("-" * 110)

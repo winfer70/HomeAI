@@ -1,6 +1,41 @@
 # HANDOFF — HomeAI
 Date: 2026-08-20
 
+## Heimdall Phase 1.5 & Phase 2 planning (this session, latest)
+- Locked in a full plan: `heimdall/PHASE1_5_HARDENING_AND_PHASE2_PLAN.md` — a 10-item
+  hardening backlog (Phase 1.5) plus milestones M7-M11 (Phase 2: phone/watch quick-trigger,
+  custom wake word, satellite hardware, speaker-ID, privacy hardening).
+- Recon confirmed backlog #1 concretely: vesemir's `homeassistant/config/configuration.yaml`
+  + `automations.yaml` (tracked in ProjectNemo repo, `dev` branch) have uncommitted local
+  changes since 2026-06-07 — every Heimdall-era config edit (Tasks 0-8) was never committed.
+  40+ untracked `.bak-*` files also present in the config dir.
+- Backlog #4 (kamilo-assistant scoping) resolved: it's a separate general-purpose assistant,
+  not folded into Heimdall — no code change needed.
+- Backlog #7 (runtime guardrail) confirmed already implemented: `expose_entities.py` calls
+  `assert_no_alarm_entities()` before any HA API call, not just relying on Task 0's CI scan.
+- **Still open, needs user decision before executing:** how to handle vesemir's config drift
+  (commit as-is / split into `heimdall.yaml` via `!include` first / what to do with the
+  `.bak-*` pile) — this touches live production HA config, so it's not something to just do
+  without a go-ahead.
+- Exposed OAuth secret (`Kamil/client_secret_914645144271-....json` on Desktop root) still
+  present — flagged, not yet deleted/moved pending user confirmation.
+
+## Backlog #1 executed (same session, later)
+- vesemir's ProjectNemo clone was stale/orphaned since the 2026-08-15 `git-filter-repo`
+  rewrite (zero common ancestor with `origin/dev`, last real local commit 2026-07-26).
+  Backed up live config, reset local `dev` to `origin/dev`, branched
+  `feature/heimdall-config-sync-20260820`, committed the real Heimdall config drift (diff
+  scanned clean for secrets), split Heimdall's `rest_command`/`script`/`rest`/
+  `heimdall_llm_api` entries into `heimdall.yaml` via HA's `packages` mechanism, validated
+  with `check_config` (clean, except one unrelated pre-existing `influxdb.include.
+  component_config` schema bug — not fixed, flagged separately), deleted 49 ad hoc `.bak-*`
+  files (one had plaintext secrets) and gitignored the pattern, pushed the branch.
+- **PR needs manual open+merge** (no `gh` CLI in this environment):
+  https://github.com/winfer70/ProjectNemo/pull/new/feature/heimdall-config-sync-20260820
+- **URGENT — rotate 3 secrets**: `heimdall_memory_token`, `influxdb_token`, and the Satel
+  `alarm_code` were briefly printed in plaintext to a terminal during config validation
+  (`check_config --secrets`, a mistake — won't repeat). Rotate all three.
+
 ## What Was Accomplished
 
 ### Heimdall — Task 7 (M6: automated test matrix + soak-test logging) shipped

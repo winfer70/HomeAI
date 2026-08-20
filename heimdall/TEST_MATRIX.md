@@ -26,7 +26,9 @@ python heimdall/tests/test_matrix.py
 docstring for the exact host) and `HEIMDALL_NTFY_TOPIC` (default
 `heimdall-failures`) can all be overridden. Pass `--allow-calendar-write` to
 also exercise a real Gemini calendar write (see below for why this is
-opt-in).
+opt-in). Pass `--allow-physical-actuation` to also actually toggle the
+office light/aquarium filter and change the bedroom radiator setpoint (see
+below — also opt-in, off by default since 2026-08-20).
 
 ### Documented deviations from the original brief
 
@@ -55,10 +57,14 @@ opt-in).
 - **`ambiguous_mixed_language`**: a single soft check per agent (not
   multiplied by language, since the row is inherently about mixed-language
   input).
-- Write-type rows (`light_switch`, `climate`, `aquarium_write`) capture
-  state before speaking the command, verify the change, then restore the
-  original value directly via REST (not via voice) so repeated runs stay
-  idempotent regardless of which state they started in.
+- Write-type rows (`light_switch`, `climate`, `aquarium_write`) are
+  **skipped by default** (added 2026-08-20, once the daily systemd timer
+  made unattended real toggling of the office light/radiator/aquarium
+  filter an actual nuisance rather than a one-off manual run). Pass
+  `--allow-physical-actuation` to exercise them for real - when they do run,
+  they still capture state before speaking the command, verify the change,
+  then restore the original value directly via REST (not via voice) so
+  repeated runs stay idempotent regardless of which state they started in.
 
 ### Real bugs found and fixed by this test's first live run (2026-08-20)
 
