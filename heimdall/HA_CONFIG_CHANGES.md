@@ -875,5 +875,70 @@ rather than hanging, (b) the entity actually reaches heat/target
 temperature, and (c) it correctly reverts to its prior state at the
 `reverts_at` time.
 
+## 12. Dashboard radiator cards: bug fix + 3 missing rooms (2026-08-20, same night)
+
+User reported a "connection error" on the bedroom radiator's thermostat card
+on the Dom dashboard specifically, while other cards worked fine. Investigated
+by pulling the live `lovelace.dashboard_biuro` storage file directly (grep for
+all `climate.*` references) rather than guessing.
+
+### 12.1 Root cause found: malformed nested card, not a device/network issue
+
+`climate.0xa4c138b1ad7dfd57`'s (Sypialnia Góra bedroom radiator - the same
+entity whose intent-matching alias bug was fixed earlier tonight, see section
+9.5; this is a separate, unrelated bug) `tile` card had a full second `tile`
+card definition (for `sensor.0xa4c138b1ad7dfd57_error_status`, an error-status
+sensor) mistakenly nested **inside** its `features` array:
+
+```json
+"features": [
+  { "type": "target-temperature" },
+  { "type": "climate-hvac-modes", "hvac_modes": ["off", "heat", "auto"] },
+  { "type": "tile", "entity": "sensor.0xa4c138b1ad7dfd57_error_status", ... }
+]
+```
+
+`features` may only contain feature-type objects (`target-temperature`,
+`climate-hvac-modes`, etc.) - a full card definition doesn't belong there and
+almost certainly broke that card's rendering, which the frontend surfaces as
+a generic "connection error". No other radiator card had this malformation.
+
+**Fix**: moved the error-status tile out of `features` to be a proper sibling
+card in the same `vertical-stack`, alongside (not inside) the climate tile.
+
+### 12.2 Missing rooms added
+
+Of the 7 individual TRV radiators, 4 already had dashboard cards (bedroom
+upstairs, both bathroom units, office) but 3 didn't, despite their rooms
+already having dashboard sections with other controls:
+
+- `climate.0xa4c13842240065f9` → "Gościnny" (guest room) section
+- `climate.0xa4c138b90fef70c7` → "Salon" (living room) section
+- `climate.0xa4c138d920585e93` → "Sypialnia Dół" (downstairs bedroom) section
+
+Added a `tile` card to each (matching the corrected bedroom pattern -
+`target-temperature` + `climate-hvac-modes` features only, no preset-mode
+button grid or error-status tile, to keep scope to "radiator control" as
+requested rather than replicating every custom extra). All 8 climate
+entities (7 TRVs + the kitchen Hive from section 11.4b) now have exactly one
+dashboard card each - confirmed via `lovelace/config` WS query string-matching
+each entity_id and card name after deploy.
+
+### 12.3 Deployment
+
+Same process as 11.4b: backed up as
+`lovelace.dashboard_biuro.bak-all-radiators-20260820`, deployed via
+`sudo cp`, full HA restart required (same storage-mode-dashboard limitation
+as before) and performed with the user's go-ahead. Confirmed live post-restart.
+
+### 12.4 Verification status
+
+**Bug fix untested by the user** — the malformed-card fix should resolve the
+reported connection error, but this hasn't been re-confirmed by the user
+looking at the dashboard yet. **New room cards untested** - same as the
+kitchen boost buttons, these display/control real devices but haven't been
+interacted with live yet.
+
+
 
 
