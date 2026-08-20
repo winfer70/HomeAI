@@ -71,6 +71,20 @@ loaded full-time, the memory-extraction poller periodically calls Ollama, and Fr
 still running. Worth a fresh `nvidia-smi` snapshot during a busy moment before adding
 wake-word processing on top, which will add its own (smaller but nonzero) load.
 
+> **DONE (2026-08-20).** Idle baseline (qwen2.5:7b-instruct loaded, Frigate + memory poller
+> running): 6328/12288 MiB VRAM used (5582 MiB free), 0% GPU utilization, 46°C, ~42W. Under
+> an actual live inference burst (real `conversation.process` call to the qwen agent via HA):
+> GPU utilization spiked to 98-100%, memory utilization to 100%, power draw peaked at ~170W
+> (the 3060's rated TDP - i.e. compute-bound, not memory-bound, during a burst), 58°C, back
+> down to idle within ~4 seconds of the response completing. VRAM **used** stayed flat at
+> 6328 MiB throughout - inference on an already-loaded model doesn't need much extra memory
+> beyond the resident weights + per-request KV cache. Conclusion: 5.5GB of free VRAM is
+> comfortable headroom for M8's wake-word model (openWakeWord's models are tiny, low
+> single-digit MB, INT8) - GPU compute contention during simultaneous wake-word + qwen
+> inference is the more relevant risk than memory pressure, but wake-word inference is cheap
+> enough continuously that it's unlikely to meaningfully compete with qwen's few-second
+> bursts. No action needed before starting M8.
+
 **6. qwen's two known limitations are documented, not fixed.**
 `switch.office_led` name-ambiguity and the climate-entity alias not reaching qwen's tool
 schema are both currently accepted as permanent weaknesses. Two real options instead of
@@ -105,6 +119,14 @@ HA directly, not from a file diff.
 staged through `$env:TEMP` files per-session rather than a consistent local secrets store.
 Worth consolidating into a single gitignored `.env.local` (or a proper secrets manager) that
 every script reads from the same place.
+
+> **DONE (2026-08-20).** Added `.env.local.example` (repo root, safe to commit) listing every
+> var every `heimdall/scripts/*.py` and `test_matrix.py` already read via `os.environ.get`,
+> plus `heimdall/scripts/Load-EnvLocal.ps1` to load a real `.env.local` (gitignored) into the
+> current PowerShell session in one line (`. .\heimdall\scripts\Load-EnvLocal.ps1`). Migrated
+> the existing ad hoc `$env:TEMP\ha_token.txt` into it and deleted the temp file. Also fixed
+> `deploy_n8n_workflow.py`, which used bare `HA_TOKEN`/`HA_URL` instead of every other
+> script's `HEIMDALL_HA_TOKEN`/`HEIMDALL_HA_URL` convention - renamed for consistency.
 
 **10. `HA_CONFIG_CHANGES.md` is now 9+ sections and growing.** Fine for now; if Phase 2 adds
 several more sections, consider splitting by integration (calendar / memory / aquarium /

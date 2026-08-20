@@ -5,8 +5,8 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 541 nodes · 785 edges · 61 communities detected
-- Extraction: 62% EXTRACTED · 38% INFERRED · 0% AMBIGUOUS · INFERRED: 296 edges (avg confidence: 0.5)
+- 541 nodes · 787 edges · 61 communities detected
+- Extraction: 62% EXTRACTED · 38% INFERRED · 0% AMBIGUOUS · INFERRED: 298 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## God Nodes (most connected - your core abstractions)
@@ -60,7 +60,7 @@ Cohesion: 0.1
 Nodes (17): API, Return the text representation of this result for LLM consumption., Encapsulates the outcome of a single tool invocation., ToolResult, _ha_headers(), home_service(), home_state(), Build standard Home Assistant API authorisation headers. (+9 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.24
+Cohesion: 0.25
 Nodes (17): _apply_known_limitations(), check_ambiguous_mixed(), check_aquarium_read(), check_calendar_read(), check_calendar_write(), check_climate(), _check_exposure_ws(), check_gate_exposure() (+9 more)
 
 ### Community 7 - "Community 7"

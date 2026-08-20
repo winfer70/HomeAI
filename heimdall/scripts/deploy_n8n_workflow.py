@@ -18,12 +18,15 @@ Idempotent:
 Usage:
     N8N_URL=https://n8n.kamilon8n.win \
     N8N_API_KEY=<n8n API key, Settings > API> \
-    HA_URL=http://192.168.0.108:8123 \
-    HA_TOKEN=<Home Assistant long-lived access token> \
+    HEIMDALL_HA_URL=http://192.168.0.108:8123 \
+    HEIMDALL_HA_TOKEN=<Home Assistant long-lived access token> \
     python deploy_n8n_workflow.py
 
 Defaults assume the live Heimdall infra (n8n on labserver, HA on vesemir) if
-the URL env vars aren't set - only HA_TOKEN and N8N_API_KEY are required.
+the URL env vars aren't set - only HEIMDALL_HA_TOKEN and N8N_API_KEY are required.
+(Renamed from bare HA_TOKEN/HA_URL 2026-08-20 to match every other heimdall/
+script's HEIMDALL_-prefixed convention - see backlog #9 in
+heimdall/PHASE1_5_HARDENING_AND_PHASE2_PLAN.md.)
 """
 
 from __future__ import annotations
@@ -146,15 +149,15 @@ def activate_workflow(n8n_url: str, api_key: str, workflow_id: str) -> None:
 
 def main() -> int:
     n8n_url = os.environ.get("N8N_URL", DEFAULT_N8N_URL).rstrip("/")
-    ha_url = os.environ.get("HA_URL", DEFAULT_HA_URL).rstrip("/")
+    ha_url = os.environ.get("HEIMDALL_HA_URL", DEFAULT_HA_URL).rstrip("/")
     api_key = os.environ.get("N8N_API_KEY")
-    ha_token = os.environ.get("HA_TOKEN")
+    ha_token = os.environ.get("HEIMDALL_HA_TOKEN")
 
     if not api_key:
         print("ERROR: N8N_API_KEY environment variable is required.", file=sys.stderr)
         return 1
     if not ha_token:
-        print("ERROR: HA_TOKEN environment variable is required.", file=sys.stderr)
+        print("ERROR: HEIMDALL_HA_TOKEN environment variable is required.", file=sys.stderr)
         return 1
     if not WORKFLOW_FILE.exists():
         print(f"ERROR: workflow definition not found at {WORKFLOW_FILE}", file=sys.stderr)
