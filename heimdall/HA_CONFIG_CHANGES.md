@@ -835,6 +835,36 @@ applied live via `script.reload` (no full HA restart needed for
 (`script.heimdall_boost_heating`, `script.heimdall_boost_revert_worker`) and
 exposure set correctly for each via the entity registry.
 
+### 11.4b Dashboard UI buttons added (2026-08-20, same night)
+
+Clarified after the fact: "heating" in this whole feature meant the
+kitchen's Hive thermostat/burner (`climate.0x001e5e0902ce8e9a`, "Ogrzewanie
+Kuchnia"), which already had a `thermostat` card on the "Dom" dashboard
+(`lovelace.dashboard_biuro` storage file, url-path `dashboard-biuro`,
+confusingly titled "Dom" not "Biuro" - that's a different dashboard,
+`dashboard_biuro_2`). Added a 3-button grid (Boost 30 min / 1h / 1.5h, all
+fixed at 22°C) directly below the existing thermostat card, calling
+`script.heimdall_boost_heating` with `entity_id: climate.0x001e5e0902ce8e9a`
+hardcoded per button - matches the "physical boost button with fixed
+presets" feel of old thermostats rather than exposing a free-text duration
+field in the UI.
+
+**Important operational note discovered**: editing a storage-mode Lovelace
+dashboard's `.storage/lovelace.dashboard_*` JSON file directly on disk while
+HA is running does **not** take effect live - confirmed via `lovelace/config`
+WS query still returning the old content after the file was already
+overwritten. Unlike `script:`/`automation:` YAML, there is no reload service
+for storage-mode dashboards; a full HA container restart was required and
+performed (with the user's explicit go-ahead, since this is more disruptive
+than the container-only restarts used earlier tonight - it briefly drops
+all live states/automations/voice, not just one integration). Confirmed
+live after restart via the same WS query, and confirmed the boost scripts
+and climate entities survived the restart cleanly.
+
+Backed up as `lovelace.dashboard_biuro.bak-kitchen-boost-20260820` (root-owned
+file, required `sudo cp`/`sudo chown` - passwordless sudo confirmed
+available on vesemir, same as jaskier) before the edit.
+
 ### 11.5 Verification status
 
 **Untested** — no boost has been triggered live yet (added same night as the
