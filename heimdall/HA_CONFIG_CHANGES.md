@@ -650,3 +650,134 @@ during a full-suite run isn't mistaken for a real regression. Soak-cadence
 runs (via `ntfy_failure_logger.py`'s poller, not a tight test-matrix loop)
 run far slower than this ceiling and are not expected to trigger it.
 
+### 9.5 Correction (2026-08-20): 9.1 and 9.2/9.3 conclusions superseded
+
+Two follow-up sessions found the actual root causes behind 9.1 and 9.2/9.3,
+which had reached wrong or incomplete conclusions at the time:
+
+- **9.1 was wrong that `light.office_light`/`fan.office_light` are junk.**
+  The user confirmed both are real, legitimate controls for the office
+  light+fan combo unit (only functional when the upstream relay/switch is
+  on) — hiding them removed real functionality rather than fixing a bug.
+  Both were **re-exposed** (`options.conversation.should_expose: true`) via
+  `heimdall/scripts/expose_missing_entities.py`, alongside two other
+  entities found missing from Assist entirely: `alarm_control_panel.glowne`
+  (main alarm panel) and `siren.driveway_siren`. None had the alias bug
+  below, so no further fix was needed for them — untested by voice yet
+  (alarm/siren deliberately deferred to daytime, not tested at night).
+
+- **9.2/9.3's "accepted qwen limitation" conclusion for the climate alias
+  was wrong** — the real root cause was found by reading HA core source
+  directly (`helpers/entity_registry.py::async_get_entity_aliases` and
+  `helpers/intent.py::_filter_by_name`): HA's intent name-matcher **only**
+  checks an entity's `aliases` list, never its registry `name` field.
+  Untouched entities default to an internal `COMPUTED_NAME` sentinel alias
+  (serializes as `aliases: [null]` over the WS API) that expands to the
+  entity's full computed name — that's why every *other* radiator matched
+  by name "for free" without ever having an explicit alias. The Task 5
+  alias experiment (9.2) had overwritten this sentinel with a literal
+  `["Bedroom radiator"]`, permanently breaking name-matching for Polish
+  voice commands regardless of language — it was never actually a qwen-only
+  limitation, and Gemini's "fuzzier matching" theory in 9.3 was also a
+  misdiagnosis of the same underlying bug.
+
+  Fix: set `aliases: ["GrzejnikSypialniaGóra"]` (the entity's own name,
+  as a literal explicit alias) via `config/entity_registry/update`. This
+  bypasses the sentinel mechanism entirely and is guaranteed to match.
+  Confirmed working live via voice ("Ustaw temperaturę w sypialni górze na
+  25 stopni" — resolved correctly where it previously failed with
+  `MatchFailedReason.NAME`).
+
+  The `switch.office_led` bullet in 9.3 (a real, separate, distinct device)
+  remains accurate and unaffected by this correction.
+
+## 10. STT VAD tuning — background noise producing hallucinated transcripts
+
+Reported symptom: voice commands intermittently producing garbled/unrelated
+text, worse with background noise (TV, ambient conversation) present. No
+`assist_satellite` entities exist in this setup (confirmed via `/api/states`
+— zero entities of that domain) and all 4 Assist pipelines have
+`wake_word_entity: null`/`wake_word_id: null` — voice is invoked via the HA
+app/tablet's tap-to-talk Assist widget, not always-listening satellite
+hardware.
+
+### 10.1 Investigation — confirmed live, not assumed
+
+- **Image version**: `heimdall-whisper` is still `rhasspy/wyoming-whisper:3.6.0`
+  (unchanged since Task 2), confirmed via `docker inspect`.
+- **Actual supported flags**: pulled directly via
+  `docker exec heimdall-whisper /usr/src/.venv/bin/python3 -m wyoming_faster_whisper --help`
+  (the plain `python3 -m wyoming_faster_whisper --help` at the container's
+  default interpreter fails with `ModuleNotFoundError` — the real venv is at
+  `/usr/src/.venv`, per `/usr/src/docker_run.sh`). Relevant flags confirmed
+  present: `--vad-filter`, `--vad-threshold` (default 0.5), 
+  `--vad-min-speech-ms` (default 250), `--vad-min-silence-ms` (default 2000),
+  `--vad-clip`, `--vad-clip-threshold` (default 0.5), `--vad-clip-pad-ms`
+  (default 400), and separately `--hass-token`/`--hass-api` (entity-name
+  transcription biasing, unrelated to VAD but found in the same investigation).
+- **HA pipeline-level VAD**: HA's `assist_pipeline/vad.py` defines a
+  `VadSensitivity` enum (`default`=0.7s silence, `relaxed`=1.25s,
+  `aggressive`=0.25s) controlling end-of-command silence detection, but
+  `assist_pipeline/select.py::get_vad_sensitivity()` reads it from a
+  per-satellite `select.<unique_id_prefix>-vad_sensitivity` entity and
+  **falls back to `VadSensitivity.DEFAULT` when no such entity exists**.
+  Since this setup has zero `assist_satellite` entities, **this control does
+  not apply here at all** — there is nothing to tune on the HA-pipeline side
+  for this setup; the tablet/app's own client-side push-to-talk handles its
+  own start/stop, not HA's server-side segmenter. Confirmed by reading
+  source, not assumed.
+
+### 10.2 Change applied — confirmed value before/after
+
+**Before** (unchanged since initial deployment):
+```yaml
+command: --model small-int8 --language auto --uri tcp://0.0.0.0:10300 --data-dir /data --download-dir /data
+```
+No VAD filtering of any kind was active — confirmed via the flag's own
+`--help` text: "(default: false, faster-whisper only)". This is the direct,
+confirmed cause of the reported symptom: with VAD off, faster-whisper
+transcribes silence and non-speech audio too, and its well-documented
+failure mode there is hallucinating plausible-sounding text.
+
+**After**:
+```yaml
+command: --model small-int8 --language auto --uri tcp://0.0.0.0:10300 --data-dir /data --download-dir /data --vad-filter --hass-token ${HEIMDALL_HA_TOKEN} --hass-api http://192.168.0.108:8123/api
+env_file:
+  - .env
+```
+New file `/home/kamilo/heimdall/.env` (mode 600, not a git repo — no
+gitignore risk) holds `HEIMDALL_HA_TOKEN`, copied from the existing
+`heimdall-testmatrix/.env` on the same host.
+
+**Deviation from the incremental-application principle, noted honestly**:
+`--vad-filter` and `--hass-token`/`--hass-api` were applied in the *same*
+deploy, before this task's formal brief (which asked for incremental,
+separately-attributable changes) was received. Both are confirmed live
+(container restarted cleanly; log shows `Biasing toward names from
+http://192.168.0.108:8123/api` and `Ready`), but if a regression shows up,
+isolating which flag caused it will require temporarily removing
+`--hass-token`/`--hass-api` and re-testing with `--vad-filter` alone.
+
+**Not yet touched** (left at library defaults, available as the next
+incremental knob if `--vad-filter` alone proves insufficient):
+`--vad-threshold` (0.5), `--vad-min-speech-ms` (250),
+`--vad-min-silence-ms` (2000), `--vad-clip*`.
+
+### 10.3 Verification status
+
+- Regression check (`test_matrix.py` light/switch/climate rows) and manual
+  noise/silence tests: **pending** — deliberately not run yet, since both
+  require `--allow-physical-actuation` and it's nighttime; scheduled for
+  daytime alongside the alarm/siren voice test from section 9.5.
+- Container-level sanity check only, done: clean restart, no errors, both
+  new flags confirmed active in logs.
+
+### 10.4 Non-goals confirmed untouched
+
+No speaker verification/enrollment, no wake-word engine changes, no
+hardware changes — all explicitly out of scope for this task (separate M10/M8
+decisions). HA's per-pipeline VAD sensitivity control was investigated (see
+10.1) and found not applicable to this satellite-less setup, not bypassed or
+worked around.
+
+
