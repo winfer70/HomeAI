@@ -839,7 +839,7 @@
       "label": "_request()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L56",
+      "source_location": "L59",
       "id": "deploy_n8n_workflow_request",
       "community": 13
     },
@@ -847,7 +847,7 @@
       "label": "find_credential_id()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L78",
+      "source_location": "L81",
       "id": "deploy_n8n_workflow_find_credential_id",
       "community": 13
     },
@@ -855,7 +855,7 @@
       "label": "ensure_credential()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L86",
+      "source_location": "L89",
       "id": "deploy_n8n_workflow_ensure_credential",
       "community": 13
     },
@@ -863,7 +863,7 @@
       "label": "find_workflow_id()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L109",
+      "source_location": "L112",
       "id": "deploy_n8n_workflow_find_workflow_id",
       "community": 13
     },
@@ -871,7 +871,7 @@
       "label": "load_workflow_definition()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L117",
+      "source_location": "L120",
       "id": "deploy_n8n_workflow_load_workflow_definition",
       "community": 13
     },
@@ -879,7 +879,7 @@
       "label": "deploy_workflow()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L123",
+      "source_location": "L126",
       "id": "deploy_n8n_workflow_deploy_workflow",
       "community": 13
     },
@@ -887,7 +887,7 @@
       "label": "activate_workflow()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L142",
+      "source_location": "L145",
       "id": "deploy_n8n_workflow_activate_workflow",
       "community": 13
     },
@@ -895,7 +895,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L147",
+      "source_location": "L150",
       "id": "deploy_n8n_workflow_main",
       "community": 13
     },
@@ -962,6 +962,14 @@
       "source_location": "L168",
       "id": "expose_entities_rationale_168",
       "community": 14
+    },
+    {
+      "label": "Load-EnvLocal.ps1",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\Load-EnvLocal.ps1",
+      "source_location": "L1",
+      "id": "load_envlocal",
+      "community": 31
     },
     {
       "label": "memory_poller.py",
@@ -1505,7 +1513,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L48",
       "id": "config_rationale_48",
-      "community": 31
+      "community": 32
     },
     {
       "label": "Emit a warning when no web-search backend is configured.",
@@ -1513,7 +1521,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L58",
       "id": "config_rationale_58",
-      "community": 32
+      "community": 33
     },
     {
       "label": "guardrails.py",
@@ -4033,7 +4041,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L81",
       "id": "test_tools_rationale_81",
-      "community": 33
+      "community": 34
     },
     {
       "label": "Only `search_results` (3) results are included even if SearXNG returns more.",
@@ -4041,7 +4049,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L103",
       "id": "test_tools_rationale_103",
-      "community": 34
+      "community": 35
     },
     {
       "label": "SearXNG 200 with empty results list returns a 'no results' string.",
@@ -4049,7 +4057,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L121",
       "id": "test_tools_rationale_121",
-      "community": 35
+      "community": 36
     },
     {
       "label": "When 'content' is absent, 'snippet' is used instead.",
@@ -4057,7 +4065,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L132",
       "id": "test_tools_rationale_132",
-      "community": 36
+      "community": 37
     },
     {
       "label": "A query containing Polish diacritics appears verbatim in the output.",
@@ -4065,7 +4073,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L148",
       "id": "test_tools_rationale_148",
-      "community": 37
+      "community": 38
     },
     {
       "label": "A 500 from SearXNG triggers a silent fallback to Brave Search.",
@@ -4073,7 +4081,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L172",
       "id": "test_tools_rationale_172",
-      "community": 38
+      "community": 39
     },
     {
       "label": "A ConnectError from SearXNG triggers the Brave fallback.",
@@ -4081,7 +4089,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L193",
       "id": "test_tools_rationale_193",
-      "community": 39
+      "community": 40
     },
     {
       "label": "When searxng_url is empty, Brave is the only path attempted.",
@@ -4089,7 +4097,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L214",
       "id": "test_tools_rationale_214",
-      "community": 40
+      "community": 41
     },
     {
       "label": "Brave 200 with empty web results returns 'No results found.",
@@ -4097,7 +4105,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L233",
       "id": "test_tools_rationale_233",
-      "community": 41
+      "community": 42
     },
     {
       "label": "When SearXNG is down and no Brave key, return an unavailability notice.",
@@ -4105,7 +4113,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L254",
       "id": "test_tools_rationale_254",
-      "community": 42
+      "community": 43
     },
     {
       "label": "The original query string appears in the unavailability fallback message.",
@@ -4113,7 +4121,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L267",
       "id": "test_tools_rationale_267",
-      "community": 43
+      "community": 44
     },
     {
       "label": "A 200 from HA services endpoint returns a success confirmation string.",
@@ -4121,7 +4129,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L287",
       "id": "test_tools_rationale_287",
-      "community": 44
+      "community": 45
     },
     {
       "label": "HA returning 401 Unauthorized is surfaced as a string with the status code.",
@@ -4129,7 +4137,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L299",
       "id": "test_tools_rationale_299",
-      "community": 45
+      "community": 46
     },
     {
       "label": "HA returning 403 Forbidden surfaces the status code in the return string.",
@@ -4137,7 +4145,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L312",
       "id": "test_tools_rationale_312",
-      "community": 46
+      "community": 47
     },
     {
       "label": "A ConnectError is returned as a human-readable connection-error string.",
@@ -4145,7 +4153,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L324",
       "id": "test_tools_rationale_324",
-      "community": 47
+      "community": 48
     },
     {
       "label": "Extra `data` kwargs are forwarded without error and success is reported.",
@@ -4153,7 +4161,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L334",
       "id": "test_tools_rationale_334",
-      "community": 48
+      "community": 49
     },
     {
       "label": "home_service works for arbitrary HA domains (e.g., cover/open_cover).",
@@ -4161,7 +4169,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L349",
       "id": "test_tools_rationale_349",
-      "community": 49
+      "community": 50
     },
     {
       "label": "The first 300 chars of HA error body appear in the returned error string.",
@@ -4169,7 +4177,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L360",
       "id": "test_tools_rationale_360",
-      "community": 50
+      "community": 51
     },
     {
       "label": "A ReadTimeout is treated as a RequestError and returns a connection-error string",
@@ -4177,7 +4185,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L372",
       "id": "test_tools_rationale_372",
-      "community": 51
+      "community": 52
     },
     {
       "label": "200 response is formatted as 'friendly_name (entity): state=X | attrs'.",
@@ -4185,7 +4193,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L389",
       "id": "test_tools_rationale_389",
-      "community": 52
+      "community": 53
     },
     {
       "label": "friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.",
@@ -4193,7 +4201,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L412",
       "id": "test_tools_rationale_412",
-      "community": 53
+      "community": 54
     },
     {
       "label": "A 404 from HA is surfaced as a string containing the status code.",
@@ -4201,7 +4209,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L434",
       "id": "test_tools_rationale_434",
-      "community": 54
+      "community": 55
     },
     {
       "label": "ConnectError returns a human-readable HA connection error string.",
@@ -4209,7 +4217,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L447",
       "id": "test_tools_rationale_447",
-      "community": 55
+      "community": 56
     },
     {
       "label": "Attribute summary JSON is capped at 400 characters.",
@@ -4217,7 +4225,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L459",
       "id": "test_tools_rationale_459",
-      "community": 56
+      "community": 57
     },
     {
       "label": "Entity with empty attributes dict returns state without crashing.",
@@ -4225,7 +4233,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L478",
       "id": "test_tools_rationale_478",
-      "community": 57
+      "community": 58
     },
     {
       "label": "Entity friendly_name containing Polish characters is not mangled.",
@@ -4233,7 +4241,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L492",
       "id": "test_tools_rationale_492",
-      "community": 58
+      "community": 59
     },
     {
       "label": "When friendly_name is absent, the entity_id is used as the display name.",
@@ -4241,7 +4249,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L508",
       "id": "test_tools_rationale_508",
-      "community": 59
+      "community": 60
     },
     {
       "label": "A 401 from the states endpoint surfaces the status code.",
@@ -4249,7 +4257,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L522",
       "id": "test_tools_rationale_522",
-      "community": 60
+      "community": 61
     },
     {
       "label": "tools.py",
@@ -7925,7 +7933,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L56",
+      "source_location": "L59",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_request",
@@ -7937,7 +7945,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L78",
+      "source_location": "L81",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_find_credential_id",
@@ -7949,7 +7957,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L86",
+      "source_location": "L89",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_ensure_credential",
@@ -7961,7 +7969,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L109",
+      "source_location": "L112",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_find_workflow_id",
@@ -7973,7 +7981,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L117",
+      "source_location": "L120",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_load_workflow_definition",
@@ -7985,7 +7993,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L123",
+      "source_location": "L126",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_deploy_workflow",
@@ -7997,7 +8005,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L142",
+      "source_location": "L145",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_activate_workflow",
@@ -8009,7 +8017,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L147",
+      "source_location": "L150",
       "weight": 1.0,
       "_src": "deploy_n8n_workflow",
       "_tgt": "deploy_n8n_workflow_main",
@@ -8021,7 +8029,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L79",
+      "source_location": "L82",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_find_credential_id",
       "_tgt": "deploy_n8n_workflow_request",
@@ -8033,7 +8041,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L101",
+      "source_location": "L104",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_ensure_credential",
       "_tgt": "deploy_n8n_workflow_request",
@@ -8045,7 +8053,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L110",
+      "source_location": "L113",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_find_workflow_id",
       "_tgt": "deploy_n8n_workflow_request",
@@ -8057,7 +8065,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L130",
+      "source_location": "L133",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_deploy_workflow",
       "_tgt": "deploy_n8n_workflow_request",
@@ -8069,7 +8077,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L143",
+      "source_location": "L146",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_activate_workflow",
       "_tgt": "deploy_n8n_workflow_request",
@@ -8081,7 +8089,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L87",
+      "source_location": "L90",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_ensure_credential",
       "_tgt": "deploy_n8n_workflow_find_credential_id",
@@ -8093,7 +8101,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L165",
+      "source_location": "L168",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_main",
       "_tgt": "deploy_n8n_workflow_ensure_credential",
@@ -8105,7 +8113,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L124",
+      "source_location": "L127",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_deploy_workflow",
       "_tgt": "deploy_n8n_workflow_find_workflow_id",
@@ -8117,7 +8125,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L166",
+      "source_location": "L169",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_main",
       "_tgt": "deploy_n8n_workflow_load_workflow_definition",
@@ -8129,7 +8137,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L167",
+      "source_location": "L170",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_main",
       "_tgt": "deploy_n8n_workflow_deploy_workflow",
@@ -8141,7 +8149,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
-      "source_location": "L170",
+      "source_location": "L173",
       "weight": 0.8,
       "_src": "deploy_n8n_workflow_main",
       "_tgt": "deploy_n8n_workflow_activate_workflow",

@@ -92,6 +92,42 @@ schema are both currently accepted as permanent weaknesses. Two real options ins
 name clarity might), or have the n8n router's classifier route anything touching those two
 entities to Gemini specifically.
 
+> **Partially resolved (2026-08-20).** The n8n-routing option was ruled out first: confirmed
+> (via `N8N_ROUTER.md` + the workflow JSON) that n8n's router never touches the real voice
+> pipeline at all — its "local" branch calls Ollama directly with no HA/tool access, so
+> changing its classifier wouldn't affect real voice commands.
+>
+> **`light_switch` — FIXED.** Renamed `switch.0x54ef4410016759d1_up` → "Office Main Light"
+> and `switch.office_led` → "Office LED Strip" (confirmed with user: office_led is a real
+> LED strip, a separate device). Verified live: qwen now correctly resolves "office light" /
+> "Włącz światło w biurze" to the relay in both languages (was `KNOWN-LIM`, now `PASS`).
+>
+> **`climate` — NOT fixable by renaming, root cause found.** Renamed
+> `climate.0xa4c138b1ad7dfd57` to "Bedroom Radiator" - no effect (still fails identically).
+> User reverted it back to the original Polish name ("GrzejnikSypialniaGóra") - also no
+> effect. Two different names producing the identical failure confirms this isn't a naming
+> problem. Read HA core's actual source
+> (`homeassistant/components/climate/intent.py`): the `SetTemperature` intent's slot schema
+> has `temperature` as **required** but `name` as **optional**. With 8 climate entities
+> exposed (only 5 were ever intentionally curated - see the exposure scope-creep finding
+> below), qwen appears to not reliably include the `name` argument when a required numeric
+> argument is also present, so HA's matcher can't disambiguate among 8 candidates and the
+> call silently fails. This is a qwen2.5:7b tool-calling capability gap, not fixable via HA
+> config. Remaining options: (a) prompt-engineer qwen's system prompt to always include
+> `name`, (b) revisit the Task 3 model bake-off, (c) accept as permanent, well-understood
+> limitation. Not yet decided.
+>
+> **New finding, bigger than originally scoped: entity-exposure scope creep.** The live
+> exposed-entity list (fetched via `homeassistant/expose_entity/list`) has ~90 entities,
+> not the ~35 intentionally curated in `expose_entities.py`'s `ENTITIES_TO_EXPOSE` - HA
+> exposes entire domains by default unless explicitly hidden. Extras include 3 more climate
+> entities never mentioned in any task (`GrzejnikGoscinny` guest room, `GrzejnikSalom`
+> living room, `GrzejnikSypialniaDół` - a near-namesake of the intended bedroom radiator),
+> 20+ door/window contact sensors, `vacuum.robot_dol`, `todo.shopping_list`, monitors, a
+> docking station, and more. This directly compounds the climate disambiguation problem.
+> Not yet decided whether to explicitly hide the unintended extras (mirroring how the
+> phantom Tuya light was hidden) - flagged to user, no action taken yet.
+
 **7. Guardrail coverage stops at the `heimdall/` git tree.**
 Task 0's CI check only scans files under `heimdall/`. The actual dangerous action — an
 `expose_entity` call reaching HA's live API — happens at runtime from scripts that talk to

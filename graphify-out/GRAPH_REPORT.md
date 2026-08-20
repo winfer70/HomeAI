@@ -1,11 +1,11 @@
 # Graph Report - .  (2026-08-20)
 
 ## Corpus Check
-- 41 files · ~0 words
+- 42 files · ~0 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 541 nodes · 787 edges · 61 communities detected
+- 542 nodes · 787 edges · 62 communities detected
 - Extraction: 62% EXTRACTED · 38% INFERRED · 0% AMBIGUOUS · INFERRED: 298 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
@@ -161,121 +161,125 @@ Nodes (0):
 
 ### Community 31 - "Community 31"
 Cohesion: 1.0
-Nodes (1): Reject log_level values that are not recognised Python logging levels.
+Nodes (0): 
 
 ### Community 32 - "Community 32"
 Cohesion: 1.0
-Nodes (1): Emit a warning when no web-search backend is configured.
+Nodes (1): Reject log_level values that are not recognised Python logging levels.
 
 ### Community 33 - "Community 33"
 Cohesion: 1.0
-Nodes (1): SearXNG 200 with results produces a numbered list prefixed by query.
+Nodes (1): Emit a warning when no web-search backend is configured.
 
 ### Community 34 - "Community 34"
 Cohesion: 1.0
-Nodes (1): Only `search_results` (3) results are included even if SearXNG returns more.
+Nodes (1): SearXNG 200 with results produces a numbered list prefixed by query.
 
 ### Community 35 - "Community 35"
 Cohesion: 1.0
-Nodes (1): SearXNG 200 with empty results list returns a 'no results' string.
+Nodes (1): Only `search_results` (3) results are included even if SearXNG returns more.
 
 ### Community 36 - "Community 36"
 Cohesion: 1.0
-Nodes (1): When 'content' is absent, 'snippet' is used instead.
+Nodes (1): SearXNG 200 with empty results list returns a 'no results' string.
 
 ### Community 37 - "Community 37"
 Cohesion: 1.0
-Nodes (1): A query containing Polish diacritics appears verbatim in the output.
+Nodes (1): When 'content' is absent, 'snippet' is used instead.
 
 ### Community 38 - "Community 38"
 Cohesion: 1.0
-Nodes (1): A 500 from SearXNG triggers a silent fallback to Brave Search.
+Nodes (1): A query containing Polish diacritics appears verbatim in the output.
 
 ### Community 39 - "Community 39"
 Cohesion: 1.0
-Nodes (1): A ConnectError from SearXNG triggers the Brave fallback.
+Nodes (1): A 500 from SearXNG triggers a silent fallback to Brave Search.
 
 ### Community 40 - "Community 40"
 Cohesion: 1.0
-Nodes (1): When searxng_url is empty, Brave is the only path attempted.
+Nodes (1): A ConnectError from SearXNG triggers the Brave fallback.
 
 ### Community 41 - "Community 41"
 Cohesion: 1.0
-Nodes (1): Brave 200 with empty web results returns 'No results found.
+Nodes (1): When searxng_url is empty, Brave is the only path attempted.
 
 ### Community 42 - "Community 42"
 Cohesion: 1.0
-Nodes (1): When SearXNG is down and no Brave key, return an unavailability notice.
+Nodes (1): Brave 200 with empty web results returns 'No results found.
 
 ### Community 43 - "Community 43"
 Cohesion: 1.0
-Nodes (1): The original query string appears in the unavailability fallback message.
+Nodes (1): When SearXNG is down and no Brave key, return an unavailability notice.
 
 ### Community 44 - "Community 44"
 Cohesion: 1.0
-Nodes (1): A 200 from HA services endpoint returns a success confirmation string.
+Nodes (1): The original query string appears in the unavailability fallback message.
 
 ### Community 45 - "Community 45"
 Cohesion: 1.0
-Nodes (1): HA returning 401 Unauthorized is surfaced as a string with the status code.
+Nodes (1): A 200 from HA services endpoint returns a success confirmation string.
 
 ### Community 46 - "Community 46"
 Cohesion: 1.0
-Nodes (1): HA returning 403 Forbidden surfaces the status code in the return string.
+Nodes (1): HA returning 401 Unauthorized is surfaced as a string with the status code.
 
 ### Community 47 - "Community 47"
 Cohesion: 1.0
-Nodes (1): A ConnectError is returned as a human-readable connection-error string.
+Nodes (1): HA returning 403 Forbidden surfaces the status code in the return string.
 
 ### Community 48 - "Community 48"
 Cohesion: 1.0
-Nodes (1): Extra `data` kwargs are forwarded without error and success is reported.
+Nodes (1): A ConnectError is returned as a human-readable connection-error string.
 
 ### Community 49 - "Community 49"
 Cohesion: 1.0
-Nodes (1): home_service works for arbitrary HA domains (e.g., cover/open_cover).
+Nodes (1): Extra `data` kwargs are forwarded without error and success is reported.
 
 ### Community 50 - "Community 50"
 Cohesion: 1.0
-Nodes (1): The first 300 chars of HA error body appear in the returned error string.
+Nodes (1): home_service works for arbitrary HA domains (e.g., cover/open_cover).
 
 ### Community 51 - "Community 51"
 Cohesion: 1.0
-Nodes (1): A ReadTimeout is treated as a RequestError and returns a connection-error string
+Nodes (1): The first 300 chars of HA error body appear in the returned error string.
 
 ### Community 52 - "Community 52"
 Cohesion: 1.0
-Nodes (1): 200 response is formatted as 'friendly_name (entity): state=X | attrs'.
+Nodes (1): A ReadTimeout is treated as a RequestError and returns a connection-error string
 
 ### Community 53 - "Community 53"
 Cohesion: 1.0
-Nodes (1): friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.
+Nodes (1): 200 response is formatted as 'friendly_name (entity): state=X | attrs'.
 
 ### Community 54 - "Community 54"
 Cohesion: 1.0
-Nodes (1): A 404 from HA is surfaced as a string containing the status code.
+Nodes (1): friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.
 
 ### Community 55 - "Community 55"
 Cohesion: 1.0
-Nodes (1): ConnectError returns a human-readable HA connection error string.
+Nodes (1): A 404 from HA is surfaced as a string containing the status code.
 
 ### Community 56 - "Community 56"
 Cohesion: 1.0
-Nodes (1): Attribute summary JSON is capped at 400 characters.
+Nodes (1): ConnectError returns a human-readable HA connection error string.
 
 ### Community 57 - "Community 57"
 Cohesion: 1.0
-Nodes (1): Entity with empty attributes dict returns state without crashing.
+Nodes (1): Attribute summary JSON is capped at 400 characters.
 
 ### Community 58 - "Community 58"
 Cohesion: 1.0
-Nodes (1): Entity friendly_name containing Polish characters is not mangled.
+Nodes (1): Entity with empty attributes dict returns state without crashing.
 
 ### Community 59 - "Community 59"
 Cohesion: 1.0
-Nodes (1): When friendly_name is absent, the entity_id is used as the display name.
+Nodes (1): Entity friendly_name containing Polish characters is not mangled.
 
 ### Community 60 - "Community 60"
+Cohesion: 1.0
+Nodes (1): When friendly_name is absent, the entity_id is used as the display name.
+
+### Community 61 - "Community 61"
 Cohesion: 1.0
 Nodes (1): A 401 from the states endpoint surfaces the status code.
 
@@ -288,72 +292,74 @@ Nodes (1): A 401 from the states endpoint surfaces the status code.
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 30`** (1 nodes): `benchmark_gpu_baseline.ps1`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 31`** (1 nodes): `Reject log_level values that are not recognised Python logging levels.`
+- **Thin community `Community 31`** (1 nodes): `Load-EnvLocal.ps1`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 32`** (1 nodes): `Emit a warning when no web-search backend is configured.`
+- **Thin community `Community 32`** (1 nodes): `Reject log_level values that are not recognised Python logging levels.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 33`** (1 nodes): `SearXNG 200 with results produces a numbered list prefixed by query.`
+- **Thin community `Community 33`** (1 nodes): `Emit a warning when no web-search backend is configured.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 34`** (1 nodes): `Only `search_results` (3) results are included even if SearXNG returns more.`
+- **Thin community `Community 34`** (1 nodes): `SearXNG 200 with results produces a numbered list prefixed by query.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (1 nodes): `SearXNG 200 with empty results list returns a 'no results' string.`
+- **Thin community `Community 35`** (1 nodes): `Only `search_results` (3) results are included even if SearXNG returns more.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (1 nodes): `When 'content' is absent, 'snippet' is used instead.`
+- **Thin community `Community 36`** (1 nodes): `SearXNG 200 with empty results list returns a 'no results' string.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 37`** (1 nodes): `A query containing Polish diacritics appears verbatim in the output.`
+- **Thin community `Community 37`** (1 nodes): `When 'content' is absent, 'snippet' is used instead.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 38`** (1 nodes): `A 500 from SearXNG triggers a silent fallback to Brave Search.`
+- **Thin community `Community 38`** (1 nodes): `A query containing Polish diacritics appears verbatim in the output.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (1 nodes): `A ConnectError from SearXNG triggers the Brave fallback.`
+- **Thin community `Community 39`** (1 nodes): `A 500 from SearXNG triggers a silent fallback to Brave Search.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 40`** (1 nodes): `When searxng_url is empty, Brave is the only path attempted.`
+- **Thin community `Community 40`** (1 nodes): `A ConnectError from SearXNG triggers the Brave fallback.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 41`** (1 nodes): `Brave 200 with empty web results returns 'No results found.`
+- **Thin community `Community 41`** (1 nodes): `When searxng_url is empty, Brave is the only path attempted.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 42`** (1 nodes): `When SearXNG is down and no Brave key, return an unavailability notice.`
+- **Thin community `Community 42`** (1 nodes): `Brave 200 with empty web results returns 'No results found.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 43`** (1 nodes): `The original query string appears in the unavailability fallback message.`
+- **Thin community `Community 43`** (1 nodes): `When SearXNG is down and no Brave key, return an unavailability notice.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 44`** (1 nodes): `A 200 from HA services endpoint returns a success confirmation string.`
+- **Thin community `Community 44`** (1 nodes): `The original query string appears in the unavailability fallback message.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 45`** (1 nodes): `HA returning 401 Unauthorized is surfaced as a string with the status code.`
+- **Thin community `Community 45`** (1 nodes): `A 200 from HA services endpoint returns a success confirmation string.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (1 nodes): `HA returning 403 Forbidden surfaces the status code in the return string.`
+- **Thin community `Community 46`** (1 nodes): `HA returning 401 Unauthorized is surfaced as a string with the status code.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (1 nodes): `A ConnectError is returned as a human-readable connection-error string.`
+- **Thin community `Community 47`** (1 nodes): `HA returning 403 Forbidden surfaces the status code in the return string.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 48`** (1 nodes): `Extra `data` kwargs are forwarded without error and success is reported.`
+- **Thin community `Community 48`** (1 nodes): `A ConnectError is returned as a human-readable connection-error string.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 49`** (1 nodes): `home_service works for arbitrary HA domains (e.g., cover/open_cover).`
+- **Thin community `Community 49`** (1 nodes): `Extra `data` kwargs are forwarded without error and success is reported.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (1 nodes): `The first 300 chars of HA error body appear in the returned error string.`
+- **Thin community `Community 50`** (1 nodes): `home_service works for arbitrary HA domains (e.g., cover/open_cover).`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 51`** (1 nodes): `A ReadTimeout is treated as a RequestError and returns a connection-error string`
+- **Thin community `Community 51`** (1 nodes): `The first 300 chars of HA error body appear in the returned error string.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 52`** (1 nodes): `200 response is formatted as 'friendly_name (entity): state=X | attrs'.`
+- **Thin community `Community 52`** (1 nodes): `A ReadTimeout is treated as a RequestError and returns a connection-error string`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 53`** (1 nodes): `friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.`
+- **Thin community `Community 53`** (1 nodes): `200 response is formatted as 'friendly_name (entity): state=X | attrs'.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 54`** (1 nodes): `A 404 from HA is surfaced as a string containing the status code.`
+- **Thin community `Community 54`** (1 nodes): `friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 55`** (1 nodes): `ConnectError returns a human-readable HA connection error string.`
+- **Thin community `Community 55`** (1 nodes): `A 404 from HA is surfaced as a string containing the status code.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 56`** (1 nodes): `Attribute summary JSON is capped at 400 characters.`
+- **Thin community `Community 56`** (1 nodes): `ConnectError returns a human-readable HA connection error string.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 57`** (1 nodes): `Entity with empty attributes dict returns state without crashing.`
+- **Thin community `Community 57`** (1 nodes): `Attribute summary JSON is capped at 400 characters.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 58`** (1 nodes): `Entity friendly_name containing Polish characters is not mangled.`
+- **Thin community `Community 58`** (1 nodes): `Entity with empty attributes dict returns state without crashing.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 59`** (1 nodes): `When friendly_name is absent, the entity_id is used as the display name.`
+- **Thin community `Community 59`** (1 nodes): `Entity friendly_name containing Polish characters is not mangled.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 60`** (1 nodes): `A 401 from the states endpoint surfaces the status code.`
+- **Thin community `Community 60`** (1 nodes): `When friendly_name is absent, the entity_id is used as the display name.`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 61`** (1 nodes): `A 401 from the states endpoint surfaces the status code.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Memory` connect `Community 0` to `Community 2`, `Community 5`, `Community 7`, `Community 9`, `Community 10`?**
-  _High betweenness centrality (0.253) - this node is a cross-community bridge._
+  _High betweenness centrality (0.252) - this node is a cross-community bridge._
 - **Why does `Settings` connect `Community 1` to `Community 2`, `Community 5`?**
   _High betweenness centrality (0.181) - this node is a cross-community bridge._
 - **Why does `Tool implementations for web search and Home Assistant integration.` connect `Community 5` to `Community 0`, `Community 1`?**
