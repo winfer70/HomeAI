@@ -1011,6 +1011,92 @@ the file that the added clause is gone. Lesson: when comparing two
 agent before root-causing a discrepancy - the deeper investigation here
 was thorough and well-reasoned, but built on a mislabeled data point.
 
+## 14. qwen "what's in the office" domain-omission - real fix (2026-08-21)
+
+Even after 13's siren fix, qwen's own "what's in the office" answers still
+consistently omitted every non-switch domain (climate, sensor,
+binary_sensor, fan, light) - listing only the 8 switch entities every time,
+never the radiator, its temperature sensor, or the two door contact
+sensors. User confirmed Gemini's answer was the complete, correct 14-entity
+list. This needed an actual fix, not just documentation.
+
+### 14.1 Root-caused via debug trace, not guesswork
+
+Enabled debug logging (`homeassistant.components.ollama`,
+`homeassistant.helpers.llm`) and called `conversation.process` directly
+against `conversation.heimdall_local_qwen2_5` (see
+`heimdall/scripts/trace_qwen_office_query.py`). Findings:
+
+- **`num_ctx` was 8192 and only ~4900-5300 tokens were actually used** -
+  ruled out simple context-window truncation.
+- **There is no dedicated "list devices in area" tool.** The full tool set
+  (`Tools:` log line) is identical between Gemini (`assist` API) and qwen
+  (`heimdall_restricted` API, which only ever hid the calendar-write tool -
+  see section 11's predecessor doc). Area questions rely entirely on
+  `GetLiveContext` (defined in
+  `homeassistant/components/homeassistant/llm.py`).
+- **`GetLiveContextTool` already supports server-side area filtering** -
+  its `parameters` schema accepts `area`, and `async_call` runs
+  `intent.async_match_targets(..., area_name=area_filter, ...)` before
+  building the result, when the model passes that argument. Gemini
+  reliably does; qwen frequently doesn't - it either answers straight from
+  the whole-house "Static Context" block already embedded in the system
+  prompt, or calls `GetLiveContext` with no filter, then tries to mentally
+  filter "office" entities out of a full-house dump and drops everything
+  except the simplest switch on/off lines.
+- **Confirmed via `heimdall/scripts/benchmark_office_query_models.py`**:
+  when qwen2.5:7b-instruct, qwen3:14b, and gemma4 were each given the
+  correct, pre-filtered 14-entity office context directly (no tool call,
+  no self-filtering needed), **all three listed all 14 entities
+  correctly**. This proved the problem is entirely upstream of the model's
+  summarization ability - it's a tool-usage/parameter-passing reliability
+  gap for the smaller local model, not a raw capability gap.
+
+### 14.2 Fix applied
+
+Two changes to the qwen (Ollama) conversation subentry, via
+`heimdall/scripts/fix_qwen_area_filter_and_model.py`:
+
+1. **Prompt**: added an explicit instruction that "what's in room/area X"
+   questions MUST call `GetLiveContext` with its `area` parameter set to
+   the room name - never with no filter, never answered from the static
+   list alone.
+2. **Model**: swapped from `qwen2.5:7b-instruct` to `qwen3:14b` (already
+   present on jaskier's Ollama, 8.6GB, fits the RTX 3060 12GB comfortably
+   alongside Frigate - see `BENCHMARKS.md`). Belt-and-suspenders alongside
+   the prompt fix, not required to fix this specific bug (the 7b model
+   handled the pre-filtered-context benchmark fine), but a reasonable
+   general quality upgrade since the hardware supports it.
+
+Backed up `core.config_entries` first
+(`core.config_entries.bak-qwen-area-filter-fix-20260821`, plus an earlier
+intermediate backup `core.config_entries.bak-qwen-domain-fix-20260821` from
+a first, less-precise prompt-only attempt that was superseded before
+restart).
+
+### 14.3 Operational finding: `homeassistant.reload_config_entry` does NOT re-read the storage file
+
+Tried the lighter-weight `homeassistant.reload_config_entry` service
+(targeting the `ollama` entry_id) to avoid a full restart. **It does not
+work for this kind of change** - the service reloads the config entry
+object already resident in memory (loaded at HA boot), it does not re-read
+`core.config_entries` from disk. Confirmed by testing right after reload:
+the live conversation entity was still using `qwen2.5:7b-instruct` even
+though the file on disk correctly showed `qwen3:14b`. A full
+`docker restart nemo-homeassistant` was required, same as every other
+direct storage-file edit in this doc (dashboards, subentry prompts, etc.)
+- there is no in-place reload path for config-entry *data* edited outside
+HA's own config flow.
+
+### 14.4 Verification status
+
+**Confirmed fixed.** Re-tested `conversation.process` against
+`conversation.heimdall_local_qwen2_5` post-restart with debug logging on:
+qwen3:14b now returns all 14 office entities across all domains (switches,
+climate, sensor, both binary_sensor door contacts, fan, light) - matching
+Gemini's list. A couple of entities show generic states like "nieznany"/
+"niedostępne" instead of a precise value, which is a minor phrasing
+difference, not a missing-entity problem.
 
 
 
