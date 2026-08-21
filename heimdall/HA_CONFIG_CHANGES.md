@@ -979,12 +979,38 @@ devices' `area_id` to `domballivor` via `config/device_registry/update`
 - entities inherit area from device, not set individually). Confirmed via
 the update response echoing back `area_id: domballivor` for both.
 
-### 13.3 Verification status
+### 13.3 Verification status — CONFIRMED FIXED, and a self-caught misdiagnosis corrected
 
-**Untested** - the fix should stop these entities floating with no area
-assignment, but whether that actually changes Gemini's "what's in the
-office" answer to stop including them hasn't been re-tested live yet (would
-require asking the same question again by voice).
+The user re-tested and initially reported a list still missing 3 of the 6
+Meross outlets (Listwa, Biurko_LED, StacjaDokująca), attributed to Gemini at
+the time. That triggered a deeper investigation (direct comparison of all 6
+outlets' registry entries - `should_expose`, `entity_category`,
+`disabled_by`, `labels` - all identical, ruling out a data cause) which
+concluded the omission must be Gemini's own response-generation dropping
+items, motivating a system-prompt edit (adding an explicit "list every item,
+never summarize" clause to the Google AI Conversation subentry's prompt in
+`core.config_entries`, applied and validated but **not yet activated** -
+still pending the HA restart storage-mode config entries require).
+
+**The user then clarified the "still missing 3 outlets" answer was actually
+qwen's, not Gemini's** - mislabeled in the prior turn. Gemini's real answer
+(provided immediately after) is complete and correct: all 6 outlets present,
+and critically, **no `Syrena+Światło`** - directly confirming the 13.2 area
+fix worked, with zero further action needed. qwen's incomplete answer is the
+same already-documented, accepted limitation (small local model, Polish
+compound-word tokenization/summarization quality) as `TEST_MATRIX.md`'s
+`KNOWN_QWEN_LIMITATIONS`, not a new bug.
+
+**The Gemini system-prompt edit was reverted** before ever taking effect
+(HA was never restarted with it loaded, so this was a clean no-op) - it was
+based on a false premise and isn't needed; Gemini's actual behavior for this
+query was already correct. Restored from
+`core.config_entries.bak-gemini-prompt-20260821`, confirmed via re-reading
+the file that the added clause is gone. Lesson: when comparing two
+"different agent" answers, confirm which literal answer came from which
+agent before root-causing a discrepancy - the deeper investigation here
+was thorough and well-reasoned, but built on a mislabeled data point.
+
 
 
 
