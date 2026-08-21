@@ -939,6 +939,54 @@ looking at the dashboard yet. **New room cards untested** - same as the
 kitchen boost buttons, these display/control real devices but haven't been
 interacted with live yet.
 
+## 13. "What's in the office" area-listing accuracy (2026-08-21)
+
+User compared qwen (phone) vs Gemini (laptop) answers to "what's in the
+office" - qwen's was garbled (expected, matches the well-understood
+Polish-compound-word tokenization limitation, not investigated further here)
+but Gemini's cleaner answer had two apparent defects: missing the Meross
+surge protector's outlets, and wrongly including `binary_sensor.syrena_swiatlo`
+("Syrena+Światło", an alarm siren+light) as if it were an office device.
+
+### 13.1 Investigated via direct area/device registry query
+
+- **Meross surge protector (`Office surge protector`, device_id
+  `d1aa4429ebc7654bf5b07ec632116aac`) is correctly `area_id: office`** - all 6
+  outlet entities (Listwa, Monitor_1, Monitor_2, Biurko_LED, StacjaDokująca,
+  LED_1) are correctly area-tagged and exposed to Assist. Gemini's answer
+  just didn't list all of them in its natural-language summary - this is a
+  response-generation completeness issue, not a registry/data bug. Nothing
+  fixed here; flagged to the user as a different (harder, LLM-behavior)
+  class of problem than the siren one below.
+
+- **`binary_sensor.syrena_swiatlo` and `binary_sensor.syrenazew` (both
+  "Syrena+Światło"/"SyrenaZew" alarm siren devices) had `device_area: None`**
+  - not assigned to office, or any area at all. So Gemini including them in
+  an "office" answer wasn't a registry misassignment either - there was no
+  area data to misassign in the first place. Likely cause: with no area
+  anchor, an LLM summarizing "devices in this area" has nothing constraining
+  it and can misattribute unassigned entities based on other context (e.g.
+  earlier conversation turns, name similarity, or just model error).
+
+### 13.2 Fix applied
+
+No dedicated "whole house" area existed. Asked the user where these siren
+devices are physically mounted; user chose the existing `domballivor` area
+(no floor assigned - a general/non-room-specific area already in the
+registry) over the two hall areas (`hall`, `hallgora`). Assigned both
+devices' `area_id` to `domballivor` via `config/device_registry/update`
+(device-level, matching how every other device in this house is area-tagged
+- entities inherit area from device, not set individually). Confirmed via
+the update response echoing back `area_id: domballivor` for both.
+
+### 13.3 Verification status
+
+**Untested** - the fix should stop these entities floating with no area
+assignment, but whether that actually changes Gemini's "what's in the
+office" answer to stop including them hasn't been re-tested live yet (would
+require asking the same question again by voice).
+
+
 
 
 
