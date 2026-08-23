@@ -1098,6 +1098,112 @@ Gemini's list. A couple of entities show generic states like "nieznany"/
 "niedostępne" instead of a precise value, which is a minor phrasing
 difference, not a missing-entity problem.
 
+## 15. Gate voice control was leaving the relay "on" instead of pulsing it (2026-08-21)
+
+User reported "open the gate" via voice reports success (Gemini correctly
+called `switch.turn_on` on `switch.brama_sonoff_100254194e_1` - confirmed
+in the logbook) but the physical gate never moved, and the switch was left
+"on" so a second attempt reported "already open."
+
+### 15.1 Root cause
+
+The gate relay is **momentary/impulse-triggered**, not a persistent on/off
+state - every pulse (energize briefly, then de-energize) toggles the
+physical gate open/closed, same as the existing wall-mounted Aqara button's
+`automation.gate_aqara_left_button_down_click_pulse_gate_relay`:
+`switch.turn_on` -> `delay: 1s` -> `switch.turn_off`. Voice control was
+directly exposing the raw switch entity and calling `HassTurnOn` on it,
+which energizes the relay and leaves it there - the switch's on/off
+**state** was never a proxy for the gate's open/closed state, so leaving it
+"on" both does nothing further physically and makes the entity look like
+it's already mid-action to the next voice query.
+
+### 15.2 Fix applied
+
+Added `script.heimdall_pulse_gate` to `heimdall.yaml` (mirrors the Aqara
+automation's exact sequence: `switch.turn_on` -> `delay: 1s` ->
+`switch.turn_off`, `mode: single` so an overlapping second call is
+rejected rather than double-pulsing). Deployed via
+`heimdall/scripts/add_pulse_gate_script.py`, validated, `script.reload`'d
+(no restart needed for script YAML).
+
+Exposed `script.heimdall_pulse_gate` to Assist and **un-exposed the raw
+switch** (`should_expose: false`) via
+`config/entity_registry/update` - this is a deterministic guarantee, not
+just a prompt request: neither conversation agent can call `turn_on`/
+`turn_off` on the raw switch anymore even if it wanted to, since it's no
+longer a tool either agent can see. Matches the lesson from section 14 -
+prefer fixing behavior via what the LLM is *able* to do over asking it
+nicely via the prompt.
+
+Updated `heimdall/tests/test_matrix.py`'s `GATE_ENTITY` and
+`heimdall/TEST_MATRIX.md`'s documented deviation to point at
+`script.heimdall_pulse_gate` instead of the raw switch, since that's now
+the actual voice-exposed gate control the exposure-check row verifies.
+
+### 15.3 Verification status
+
+**Deployed, not yet re-tested live by the user** with the actual voice
+phrase post-fix (the pulse genuinely operates the real driveway gate each
+time, so per the project's established rule against unattended repeated
+gate cycling, this needs the user to try it once when convenient rather
+than being soak-tested here).
+
+## 16. Automation list page 500 error - `!secret` not allowed in automations.yaml (2026-08-24)
+
+User reported the Automations page in HA had stopped loading, showing:
+`Error loading automation - 500 Internal Server Error - Server got itself
+in trouble`.
+
+### 16.1 Root cause
+
+`/config/automations.yaml` had two automations (`alarm_auto_arm_away_presence`,
+`alarm_auto_disarm_presence` - arm/disarm `alarm_control_panel.glowne` on
+presence) using `code: !secret alarm_code`. HA's config-editor HTTP
+endpoint (`homeassistant/components/config/view.py` -> `load_yaml(path)`)
+loads `automations.yaml` with a loader that has secrets support
+**intentionally disabled** (`annotatedyaml.exceptions.YAMLException:
+"Secrets not supported in this YAML file"`) - this endpoint backs the
+entire Automations list/editor UI, so a single `!secret` anywhere in that
+one file breaks loading for *every* automation, not just the two using it.
+Confirmed via full traceback: `config/view.py` `_read` -> `load_yaml` ->
+`annotatedyaml` raising on the `!secret` tag.
+
+This is a general, load-bearing HA restriction (not a bug specific to this
+setup) - `automations.yaml`/`scripts.yaml`/`scenes.yaml` are all editable
+via the visual UI, whose save-back path can't safely round-trip a
+`!secret` reference, so the loader used for the editor view refuses to
+even parse a file containing one.
+
+### 16.2 Fix applied
+
+Moved both alarm automations out of `automations.yaml` into
+`heimdall.yaml`'s new `automation:` package key, via
+`heimdall/scripts/move_alarm_secrets_to_package.py` (backs up both files
+first, idempotent). Packages load through the normal secrets-enabled
+config loader (same reason `heimdall.yaml`'s `rest:` sensor already uses
+`!secret heimdall_memory_token` without issue) - this preserves the exact
+`!secret alarm_code` reference and behavior, just relocates the two
+automations to a file the broken editor loader never touches. They're no
+longer editable via the visual automation editor as a result (same
+tradeoff as every other heimdall.yaml script/automation) - edit
+`heimdall.yaml` directly instead.
+
+Verified via `automation.reload` (no restart needed) that both automations
+reloaded correctly (`automation.alarm_auto_arm_away_presence` and
+`automation.alarm_auto_disarm_presence` both `on`, no duplicate IDs), then
+hit the same `/api/config/automation/config/{id}` endpoint the frontend
+uses directly: an automation still in `automations.yaml`
+(`gate_ring_notify_with_open_action`) now returns `200` (previously would
+have 500'd along with everything else in that file).
+
+### 16.3 Verification status
+
+**Confirmed fixed** - the specific endpoint that was 500ing now returns
+200 for automations still in `automations.yaml`. Not yet re-confirmed by
+the user actually opening the Automations page in the UI.
+
+
 
 
 

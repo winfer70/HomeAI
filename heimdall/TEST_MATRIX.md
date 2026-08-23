@@ -32,9 +32,10 @@ below — also opt-in, off by default since 2026-08-20).
 
 ### Documented deviations from the original brief
 
-- **`gate`**: exposure-check only (confirms
-  `switch.brama_sonoff_100254194e_1` is still `should_expose: true` via HA's
-  WebSocket `homeassistant/expose_entity/list`), not live physical
+- **`gate`**: exposure-check only (confirms `script.heimdall_pulse_gate` is
+  `should_expose: true` via HA's WebSocket `homeassistant/expose_entity/list`
+  — the raw `switch.brama_sonoff_100254194e_1` was intentionally un-exposed
+  2026-08-21, see `HA_CONFIG_CHANGES.md` section 15), not live physical
   actuation, and language-agnostic (a single check, not one per language).
   The user explicitly rejected repeatedly cycling a real gate unattended for
   soak testing.
