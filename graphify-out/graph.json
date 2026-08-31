@@ -9,7 +9,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L1",
       "id": "add_monitors",
-      "community": 20
+      "community": 19
     },
     {
       "label": "load_monitors()",
@@ -17,7 +17,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L25",
       "id": "add_monitors_load_monitors",
-      "community": 20
+      "community": 19
     },
     {
       "label": "main()",
@@ -25,7 +25,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L41",
       "id": "add_monitors_main",
-      "community": 20
+      "community": 19
     },
     {
       "label": "One-off utility: add HTTP and ping monitors to Uptime Kuma via socket.io.\r \r Con",
@@ -33,7 +33,7 @@
       "source_file": "add_monitors.py",
       "source_location": "L1",
       "id": "add_monitors_rationale_1",
-      "community": 20
+      "community": 19
     },
     {
       "label": "add_ping_monitors.py",
@@ -41,7 +41,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L1",
       "id": "add_ping_monitors",
-      "community": 21
+      "community": 20
     },
     {
       "label": "load_ping_monitors()",
@@ -49,7 +49,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L25",
       "id": "add_ping_monitors_load_ping_monitors",
-      "community": 21
+      "community": 20
     },
     {
       "label": "main()",
@@ -57,7 +57,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L41",
       "id": "add_ping_monitors_main",
-      "community": 21
+      "community": 20
     },
     {
       "label": "One-off utility: add ICMP ping monitors to Uptime Kuma via socket.io.\r \r Configu",
@@ -65,7 +65,7 @@
       "source_file": "add_ping_monitors.py",
       "source_location": "L1",
       "id": "add_ping_monitors_rationale_1",
-      "community": 21
+      "community": 20
     },
     {
       "label": "add_swarm_api_monitor.py",
@@ -73,7 +73,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L1",
       "id": "add_swarm_api_monitor",
-      "community": 22
+      "community": 21
     },
     {
       "label": "load_monitor()",
@@ -81,7 +81,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L25",
       "id": "add_swarm_api_monitor_load_monitor",
-      "community": 22
+      "community": 21
     },
     {
       "label": "main()",
@@ -89,7 +89,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L41",
       "id": "add_swarm_api_monitor_main",
-      "community": 22
+      "community": 21
     },
     {
       "label": "One-off utility: add an HTTP monitor for a swarm-api endpoint to Uptime Kuma.",
@@ -97,7 +97,7 @@
       "source_file": "add_swarm_api_monitor.py",
       "source_location": "L1",
       "id": "add_swarm_api_monitor_rationale_1",
-      "community": 22
+      "community": 21
     },
     {
       "label": "agent_brain.py",
@@ -265,7 +265,7 @@
       "source_file": "tests\\__init__.py",
       "source_location": "L1",
       "id": "init",
-      "community": 5
+      "community": 4
     },
     {
       "label": "HeimdallRestrictedAPI",
@@ -273,7 +273,7 @@
       "source_file": "heimdall\\ha_custom_components\\heimdall_llm_api\\__init__.py",
       "source_location": "L71",
       "id": "init_heimdallrestrictedapi",
-      "community": 5
+      "community": 4
     },
     {
       "label": "API",
@@ -281,7 +281,7 @@
       "source_file": "",
       "source_location": "",
       "id": "api",
-      "community": 5
+      "community": 4
     },
     {
       "label": ".__init__()",
@@ -289,7 +289,7 @@
       "source_file": "heimdall\\ha_custom_components\\heimdall_llm_api\\__init__.py",
       "source_location": "L74",
       "id": "init_heimdallrestrictedapi_init",
-      "community": 5
+      "community": 4
     },
     {
       "label": "async_get_api_instance()",
@@ -297,7 +297,7 @@
       "source_file": "heimdall\\ha_custom_components\\heimdall_llm_api\\__init__.py",
       "source_location": "L78",
       "id": "init_async_get_api_instance",
-      "community": 5
+      "community": 4
     },
     {
       "label": "async_setup()",
@@ -305,7 +305,7 @@
       "source_file": "heimdall\\ha_custom_components\\heimdall_llm_api\\__init__.py",
       "source_location": "L104",
       "id": "init_async_setup",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Tool implementations for web search and Home Assistant integration.",
@@ -313,7 +313,7 @@
       "source_file": "src\\homeai\\tools\\__init__.py",
       "source_location": "L1",
       "id": "init_rationale_1",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Same tools as \"assist\", minus HIDDEN_TOOL_NAMES.",
@@ -321,7 +321,7 @@
       "source_file": "heimdall\\ha_custom_components\\heimdall_llm_api\\__init__.py",
       "source_location": "L72",
       "id": "init_rationale_72",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Register the Heimdall restricted LLM API.",
@@ -329,7 +329,7 @@
       "source_file": "heimdall\\ha_custom_components\\heimdall_llm_api\\__init__.py",
       "source_location": "L105",
       "id": "init_rationale_105",
-      "community": 5
+      "community": 4
     },
     {
       "label": "app.py",
@@ -337,7 +337,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L1",
       "id": "app",
-      "community": 4
+      "community": 5
     },
     {
       "label": "_now()",
@@ -345,7 +345,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L35",
       "id": "app_now",
-      "community": 4
+      "community": 5
     },
     {
       "label": "_db()",
@@ -353,7 +353,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L40",
       "id": "app_db",
-      "community": 4
+      "community": 5
     },
     {
       "label": "_init_db()",
@@ -361,7 +361,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L51",
       "id": "app_init_db",
-      "community": 4
+      "community": 5
     },
     {
       "label": "_require_token()",
@@ -369,7 +369,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L90",
       "id": "app_require_token",
-      "community": 4
+      "community": 5
     },
     {
       "label": "FactIn",
@@ -377,7 +377,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L98",
       "id": "app_factin",
-      "community": 4
+      "community": 5
     },
     {
       "label": "BaseModel",
@@ -385,7 +385,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 4
+      "community": 5
     },
     {
       "label": "Fact",
@@ -393,7 +393,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L107",
       "id": "app_fact",
-      "community": 4
+      "community": 5
     },
     {
       "label": "MemoryContext",
@@ -401,7 +401,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L116",
       "id": "app_memorycontext",
-      "community": 4
+      "community": 5
     },
     {
       "label": "TranscriptTurn",
@@ -409,7 +409,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L122",
       "id": "app_transcriptturn",
-      "community": 4
+      "community": 5
     },
     {
       "label": "ExtractIn",
@@ -417,7 +417,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L127",
       "id": "app_extractin",
-      "community": 4
+      "community": 5
     },
     {
       "label": "ExtractOut",
@@ -425,7 +425,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L133",
       "id": "app_extractout",
-      "community": 4
+      "community": 5
     },
     {
       "label": "on_startup()",
@@ -433,7 +433,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L139",
       "id": "app_on_startup",
-      "community": 4
+      "community": 5
     },
     {
       "label": "health()",
@@ -441,7 +441,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L144",
       "id": "app_health",
-      "community": 4
+      "community": 5
     },
     {
       "label": "upsert_fact()",
@@ -449,7 +449,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L149",
       "id": "app_upsert_fact",
-      "community": 4
+      "community": 5
     },
     {
       "label": "search_facts()",
@@ -457,7 +457,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L178",
       "id": "app_search_facts",
-      "community": 4
+      "community": 5
     },
     {
       "label": "_load_context()",
@@ -465,7 +465,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L193",
       "id": "app_load_context",
-      "community": 4
+      "community": 5
     },
     {
       "label": "get_context()",
@@ -473,7 +473,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L206",
       "id": "app_get_context",
-      "community": 4
+      "community": 5
     },
     {
       "label": "_run_extraction()",
@@ -481,7 +481,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L244",
       "id": "app_run_extraction",
-      "community": 4
+      "community": 5
     },
     {
       "label": "extract()",
@@ -489,7 +489,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L274",
       "id": "app_extract",
-      "community": 4
+      "community": 5
     },
     {
       "label": "ProcessedRunCheck",
@@ -497,7 +497,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L314",
       "id": "app_processedruncheck",
-      "community": 4
+      "community": 5
     },
     {
       "label": "is_run_processed()",
@@ -505,7 +505,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L320",
       "id": "app_is_run_processed",
-      "community": 4
+      "community": 5
     },
     {
       "label": "mark_run_processed()",
@@ -513,7 +513,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L330",
       "id": "app_mark_run_processed",
-      "community": 4
+      "community": 5
     },
     {
       "label": "Heimdall memory service.\r \r FastAPI app backing Heimdall's persistent cross-sess",
@@ -521,7 +521,7 @@
       "source_file": "heimdall\\memory_service\\app.py",
       "source_location": "L1",
       "id": "app_rationale_1",
-      "community": 4
+      "community": 5
     },
     {
       "label": "add_google_calendar_credentials.py",
@@ -529,7 +529,7 @@
       "source_file": "heimdall\\scripts\\add_google_calendar_credentials.py",
       "source_location": "L1",
       "id": "add_google_calendar_credentials",
-      "community": 23
+      "community": 22
     },
     {
       "label": "add_credentials()",
@@ -537,7 +537,7 @@
       "source_file": "heimdall\\scripts\\add_google_calendar_credentials.py",
       "source_location": "L33",
       "id": "add_google_calendar_credentials_add_credentials",
-      "community": 23
+      "community": 22
     },
     {
       "label": "main()",
@@ -545,7 +545,7 @@
       "source_file": "heimdall\\scripts\\add_google_calendar_credentials.py",
       "source_location": "L75",
       "id": "add_google_calendar_credentials_main",
-      "community": 23
+      "community": 22
     },
     {
       "label": "Heimdall Task 5 (M4) \u2014 add Google Calendar OAuth Application Credentials to HA.",
@@ -553,7 +553,39 @@
       "source_file": "heimdall\\scripts\\add_google_calendar_credentials.py",
       "source_location": "L1",
       "id": "add_google_calendar_credentials_rationale_1",
-      "community": 23
+      "community": 22
+    },
+    {
+      "label": "add_pulse_gate_script.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\add_pulse_gate_script.py",
+      "source_location": "L1",
+      "id": "add_pulse_gate_script",
+      "community": 28
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\add_pulse_gate_script.py",
+      "source_location": "L55",
+      "id": "add_pulse_gate_script_main",
+      "community": 28
+    },
+    {
+      "label": "assign_siren_area.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\assign_siren_area.py",
+      "source_location": "L1",
+      "id": "assign_siren_area",
+      "community": 29
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\assign_siren_area.py",
+      "source_location": "L20",
+      "id": "assign_siren_area_main",
+      "community": 29
     },
     {
       "label": "bakeoff_harness.py",
@@ -561,7 +593,7 @@
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L1",
       "id": "bakeoff_harness",
-      "community": 15
+      "community": 13
     },
     {
       "label": "PromptResult",
@@ -569,7 +601,7 @@
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L149",
       "id": "bakeoff_harness_promptresult",
-      "community": 15
+      "community": 13
     },
     {
       "label": "call_ollama()",
@@ -577,7 +609,7 @@
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L163",
       "id": "bakeoff_harness_call_ollama",
-      "community": 15
+      "community": 13
     },
     {
       "label": "evaluate()",
@@ -585,7 +617,7 @@
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L185",
       "id": "bakeoff_harness_evaluate",
-      "community": 15
+      "community": 13
     },
     {
       "label": "run_bakeoff()",
@@ -593,7 +625,7 @@
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L230",
       "id": "bakeoff_harness_run_bakeoff",
-      "community": 15
+      "community": 13
     },
     {
       "label": "write_results_md()",
@@ -601,7 +633,7 @@
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L256",
       "id": "bakeoff_harness_write_results_md",
-      "community": 15
+      "community": 13
     },
     {
       "label": "main()",
@@ -609,7 +641,7 @@
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L310",
       "id": "bakeoff_harness_main",
-      "community": 15
+      "community": 13
     },
     {
       "label": "benchmark_gpu_baseline.ps1",
@@ -617,7 +649,47 @@
       "source_file": "heimdall\\scripts\\benchmark_gpu_baseline.ps1",
       "source_location": "L1",
       "id": "benchmark_gpu_baseline",
-      "community": 30
+      "community": 55
+    },
+    {
+      "label": "benchmark_office_query_models.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L1",
+      "id": "benchmark_office_query_models",
+      "community": 17
+    },
+    {
+      "label": "fetch_states()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L48",
+      "id": "benchmark_office_query_models_fetch_states",
+      "community": 17
+    },
+    {
+      "label": "build_context()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L68",
+      "id": "benchmark_office_query_models_build_context",
+      "community": 17
+    },
+    {
+      "label": "ask_model()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L76",
+      "id": "benchmark_office_query_models_ask_model",
+      "community": 17
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L90",
+      "id": "benchmark_office_query_models_main",
+      "community": 17
     },
     {
       "label": "benchmark_stt_latency.py",
@@ -625,7 +697,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L1",
       "id": "benchmark_stt_latency",
-      "community": 12
+      "community": 10
     },
     {
       "label": "BenchmarkResult",
@@ -633,7 +705,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L23",
       "id": "benchmark_stt_latency_benchmarkresult",
-      "community": 12
+      "community": 10
     },
     {
       "label": "_parse_args()",
@@ -641,7 +713,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L31",
       "id": "benchmark_stt_latency_parse_args",
-      "community": 12
+      "community": 10
     },
     {
       "label": "_expected_language()",
@@ -649,7 +721,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L47",
       "id": "benchmark_stt_latency_expected_language",
-      "community": 12
+      "community": 10
     },
     {
       "label": "_collect_samples()",
@@ -657,7 +729,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L52",
       "id": "benchmark_stt_latency_collect_samples",
-      "community": 12
+      "community": 10
     },
     {
       "label": "_load_model()",
@@ -665,7 +737,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L64",
       "id": "benchmark_stt_latency_load_model",
-      "community": 12
+      "community": 10
     },
     {
       "label": "_transcribe_sample()",
@@ -673,7 +745,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L76",
       "id": "benchmark_stt_latency_transcribe_sample",
-      "community": 12
+      "community": 10
     },
     {
       "label": "_print_result()",
@@ -681,7 +753,7 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L91",
       "id": "benchmark_stt_latency_print_result",
-      "community": 12
+      "community": 10
     },
     {
       "label": "main()",
@@ -689,7 +761,39 @@
       "source_file": "heimdall\\scripts\\benchmark_stt_latency.py",
       "source_location": "L100",
       "id": "benchmark_stt_latency_main",
-      "community": 12
+      "community": 10
+    },
+    {
+      "label": "check_boost_exposure.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_boost_exposure.py",
+      "source_location": "L1",
+      "id": "check_boost_exposure",
+      "community": 30
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_boost_exposure.py",
+      "source_location": "L16",
+      "id": "check_boost_exposure_main",
+      "community": 30
+    },
+    {
+      "label": "check_dashboard_reload.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_dashboard_reload.py",
+      "source_location": "L1",
+      "id": "check_dashboard_reload",
+      "community": 31
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_dashboard_reload.py",
+      "source_location": "L19",
+      "id": "check_dashboard_reload_main",
+      "community": 31
     },
     {
       "label": "check_no_alarm_exposure.py",
@@ -697,7 +801,7 @@
       "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
       "source_location": "L1",
       "id": "check_no_alarm_exposure",
-      "community": 26
+      "community": 25
     },
     {
       "label": "_collect_paths()",
@@ -705,7 +809,7 @@
       "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
       "source_location": "L16",
       "id": "check_no_alarm_exposure_collect_paths",
-      "community": 26
+      "community": 25
     },
     {
       "label": "main()",
@@ -713,7 +817,39 @@
       "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
       "source_location": "L38",
       "id": "check_no_alarm_exposure_main",
-      "community": 26
+      "community": 25
+    },
+    {
+      "label": "check_radiator_dashboard.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_radiator_dashboard.py",
+      "source_location": "L1",
+      "id": "check_radiator_dashboard",
+      "community": 32
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\check_radiator_dashboard.py",
+      "source_location": "L15",
+      "id": "check_radiator_dashboard_main",
+      "community": 32
+    },
+    {
+      "label": "clear_climate_alias.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\clear_climate_alias.py",
+      "source_location": "L1",
+      "id": "clear_climate_alias",
+      "community": 33
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\clear_climate_alias.py",
+      "source_location": "L35",
+      "id": "clear_climate_alias_main",
+      "community": 33
     },
     {
       "label": "create_assist_pipeline.py",
@@ -721,7 +857,7 @@
       "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
       "source_location": "L1",
       "id": "create_assist_pipeline",
-      "community": 16
+      "community": 14
     },
     {
       "label": "HaWebSocket",
@@ -729,7 +865,7 @@
       "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
       "source_location": "L79",
       "id": "create_assist_pipeline_hawebsocket",
-      "community": 16
+      "community": 14
     },
     {
       "label": ".__init__()",
@@ -737,7 +873,7 @@
       "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
       "source_location": "L82",
       "id": "create_assist_pipeline_hawebsocket_init",
-      "community": 16
+      "community": 14
     },
     {
       "label": ".call()",
@@ -745,7 +881,7 @@
       "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
       "source_location": "L86",
       "id": "create_assist_pipeline_hawebsocket_call",
-      "community": 16
+      "community": 14
     },
     {
       "label": "authenticate()",
@@ -753,7 +889,7 @@
       "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
       "source_location": "L97",
       "id": "create_assist_pipeline_authenticate",
-      "community": 16
+      "community": 14
     },
     {
       "label": "main()",
@@ -761,7 +897,7 @@
       "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
       "source_location": "L108",
       "id": "create_assist_pipeline_main",
-      "community": 16
+      "community": 14
     },
     {
       "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
@@ -769,7 +905,7 @@
       "source_file": "heimdall\\scripts\\create_assist_pipeline.py",
       "source_location": "L80",
       "id": "create_assist_pipeline_rationale_80",
-      "community": 16
+      "community": 14
     },
     {
       "label": "create_local_pipelines.py",
@@ -777,7 +913,7 @@
       "source_file": "heimdall\\scripts\\create_local_pipelines.py",
       "source_location": "L1",
       "id": "create_local_pipelines",
-      "community": 17
+      "community": 15
     },
     {
       "label": "HaWebSocket",
@@ -785,7 +921,7 @@
       "source_file": "heimdall\\scripts\\create_local_pipelines.py",
       "source_location": "L76",
       "id": "create_local_pipelines_hawebsocket",
-      "community": 17
+      "community": 15
     },
     {
       "label": ".__init__()",
@@ -793,7 +929,7 @@
       "source_file": "heimdall\\scripts\\create_local_pipelines.py",
       "source_location": "L79",
       "id": "create_local_pipelines_hawebsocket_init",
-      "community": 17
+      "community": 15
     },
     {
       "label": ".call()",
@@ -801,7 +937,7 @@
       "source_file": "heimdall\\scripts\\create_local_pipelines.py",
       "source_location": "L83",
       "id": "create_local_pipelines_hawebsocket_call",
-      "community": 17
+      "community": 15
     },
     {
       "label": "authenticate()",
@@ -809,7 +945,7 @@
       "source_file": "heimdall\\scripts\\create_local_pipelines.py",
       "source_location": "L94",
       "id": "create_local_pipelines_authenticate",
-      "community": 17
+      "community": 15
     },
     {
       "label": "main()",
@@ -817,7 +953,7 @@
       "source_file": "heimdall\\scripts\\create_local_pipelines.py",
       "source_location": "L105",
       "id": "create_local_pipelines_main",
-      "community": 17
+      "community": 15
     },
     {
       "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
@@ -825,7 +961,7 @@
       "source_file": "heimdall\\scripts\\create_local_pipelines.py",
       "source_location": "L77",
       "id": "create_local_pipelines_rationale_77",
-      "community": 17
+      "community": 15
     },
     {
       "label": "deploy_n8n_workflow.py",
@@ -833,7 +969,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L1",
       "id": "deploy_n8n_workflow",
-      "community": 13
+      "community": 11
     },
     {
       "label": "_request()",
@@ -841,7 +977,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L59",
       "id": "deploy_n8n_workflow_request",
-      "community": 13
+      "community": 11
     },
     {
       "label": "find_credential_id()",
@@ -849,7 +985,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L81",
       "id": "deploy_n8n_workflow_find_credential_id",
-      "community": 13
+      "community": 11
     },
     {
       "label": "ensure_credential()",
@@ -857,7 +993,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L89",
       "id": "deploy_n8n_workflow_ensure_credential",
-      "community": 13
+      "community": 11
     },
     {
       "label": "find_workflow_id()",
@@ -865,7 +1001,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L112",
       "id": "deploy_n8n_workflow_find_workflow_id",
-      "community": 13
+      "community": 11
     },
     {
       "label": "load_workflow_definition()",
@@ -873,7 +1009,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L120",
       "id": "deploy_n8n_workflow_load_workflow_definition",
-      "community": 13
+      "community": 11
     },
     {
       "label": "deploy_workflow()",
@@ -881,7 +1017,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L126",
       "id": "deploy_n8n_workflow_deploy_workflow",
-      "community": 13
+      "community": 11
     },
     {
       "label": "activate_workflow()",
@@ -889,7 +1025,7 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L145",
       "id": "deploy_n8n_workflow_activate_workflow",
-      "community": 13
+      "community": 11
     },
     {
       "label": "main()",
@@ -897,7 +1033,23 @@
       "source_file": "heimdall\\scripts\\deploy_n8n_workflow.py",
       "source_location": "L150",
       "id": "deploy_n8n_workflow_main",
-      "community": 13
+      "community": 11
+    },
+    {
+      "label": "expose_boost_heating.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_boost_heating.py",
+      "source_location": "L1",
+      "id": "expose_boost_heating",
+      "community": 34
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_boost_heating.py",
+      "source_location": "L19",
+      "id": "expose_boost_heating_main",
+      "community": 34
     },
     {
       "label": "expose_entities.py",
@@ -905,7 +1057,7 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L1",
       "id": "expose_entities",
-      "community": 14
+      "community": 12
     },
     {
       "label": "assert_no_alarm_entities()",
@@ -913,7 +1065,7 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L159",
       "id": "expose_entities_assert_no_alarm_entities",
-      "community": 14
+      "community": 12
     },
     {
       "label": "HaWebSocket",
@@ -921,7 +1073,7 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L167",
       "id": "expose_entities_hawebsocket",
-      "community": 14
+      "community": 12
     },
     {
       "label": ".__init__()",
@@ -929,7 +1081,7 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L170",
       "id": "expose_entities_hawebsocket_init",
-      "community": 14
+      "community": 12
     },
     {
       "label": ".call()",
@@ -937,7 +1089,7 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L174",
       "id": "expose_entities_hawebsocket_call",
-      "community": 14
+      "community": 12
     },
     {
       "label": "authenticate()",
@@ -945,7 +1097,7 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L185",
       "id": "expose_entities_authenticate",
-      "community": 14
+      "community": 12
     },
     {
       "label": "main()",
@@ -953,7 +1105,7 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L196",
       "id": "expose_entities_main",
-      "community": 14
+      "community": 12
     },
     {
       "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
@@ -961,7 +1113,247 @@
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L168",
       "id": "expose_entities_rationale_168",
-      "community": 14
+      "community": 12
+    },
+    {
+      "label": "expose_missing_entities.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_missing_entities.py",
+      "source_location": "L1",
+      "id": "expose_missing_entities",
+      "community": 35
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\expose_missing_entities.py",
+      "source_location": "L33",
+      "id": "expose_missing_entities_main",
+      "community": 35
+    },
+    {
+      "label": "fix_gemini_prompt_completeness.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\fix_gemini_prompt_completeness.py",
+      "source_location": "L1",
+      "id": "fix_gemini_prompt_completeness",
+      "community": 36
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\fix_gemini_prompt_completeness.py",
+      "source_location": "L30",
+      "id": "fix_gemini_prompt_completeness_main",
+      "community": 36
+    },
+    {
+      "label": "fix_qwen_area_filter_and_model.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\fix_qwen_area_filter_and_model.py",
+      "source_location": "L1",
+      "id": "fix_qwen_area_filter_and_model",
+      "community": 37
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\fix_qwen_area_filter_and_model.py",
+      "source_location": "L41",
+      "id": "fix_qwen_area_filter_and_model_main",
+      "community": 37
+    },
+    {
+      "label": "inspect_area_registry.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_area_registry.py",
+      "source_location": "L1",
+      "id": "inspect_area_registry",
+      "community": 38
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_area_registry.py",
+      "source_location": "L29",
+      "id": "inspect_area_registry_main",
+      "community": 38
+    },
+    {
+      "label": "inspect_climate_devices.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_devices.py",
+      "source_location": "L1",
+      "id": "inspect_climate_devices",
+      "community": 39
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_devices.py",
+      "source_location": "L30",
+      "id": "inspect_climate_devices_main",
+      "community": 39
+    },
+    {
+      "label": "inspect_climate_exposure.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_exposure.py",
+      "source_location": "L1",
+      "id": "inspect_climate_exposure",
+      "community": 40
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_exposure.py",
+      "source_location": "L29",
+      "id": "inspect_climate_exposure_main",
+      "community": 40
+    },
+    {
+      "label": "inspect_climate_features.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_features.py",
+      "source_location": "L1",
+      "id": "inspect_climate_features",
+      "community": 41
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_features.py",
+      "source_location": "L31",
+      "id": "inspect_climate_features_main",
+      "community": 41
+    },
+    {
+      "label": "inspect_climate_registry.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_registry.py",
+      "source_location": "L1",
+      "id": "inspect_climate_registry",
+      "community": 42
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_climate_registry.py",
+      "source_location": "L29",
+      "id": "inspect_climate_registry_main",
+      "community": 42
+    },
+    {
+      "label": "inspect_conversation_traces.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_conversation_traces.py",
+      "source_location": "L1",
+      "id": "inspect_conversation_traces",
+      "community": 43
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_conversation_traces.py",
+      "source_location": "L22",
+      "id": "inspect_conversation_traces_main",
+      "community": 43
+    },
+    {
+      "label": "inspect_exposed_entities.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_exposed_entities.py",
+      "source_location": "L1",
+      "id": "inspect_exposed_entities",
+      "community": 44
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_exposed_entities.py",
+      "source_location": "L23",
+      "id": "inspect_exposed_entities_main",
+      "community": 44
+    },
+    {
+      "label": "inspect_hidden_entities.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_hidden_entities.py",
+      "source_location": "L1",
+      "id": "inspect_hidden_entities",
+      "community": 45
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_hidden_entities.py",
+      "source_location": "L22",
+      "id": "inspect_hidden_entities_main",
+      "community": 45
+    },
+    {
+      "label": "inspect_meross_outlets.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_meross_outlets.py",
+      "source_location": "L1",
+      "id": "inspect_meross_outlets",
+      "community": 46
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_meross_outlets.py",
+      "source_location": "L28",
+      "id": "inspect_meross_outlets_main",
+      "community": 46
+    },
+    {
+      "label": "inspect_office_area.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_office_area.py",
+      "source_location": "L1",
+      "id": "inspect_office_area",
+      "community": 47
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_office_area.py",
+      "source_location": "L22",
+      "id": "inspect_office_area_main",
+      "community": 47
+    },
+    {
+      "label": "inspect_satellite_entities.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_satellite_entities.py",
+      "source_location": "L1",
+      "id": "inspect_satellite_entities",
+      "community": 48
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\inspect_satellite_entities.py",
+      "source_location": "L16",
+      "id": "inspect_satellite_entities_main",
+      "community": 48
+    },
+    {
+      "label": "list_areas.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\list_areas.py",
+      "source_location": "L1",
+      "id": "list_areas",
+      "community": 49
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\list_areas.py",
+      "source_location": "L17",
+      "id": "list_areas_main",
+      "community": 49
     },
     {
       "label": "Load-EnvLocal.ps1",
@@ -969,7 +1361,7 @@
       "source_file": "heimdall\\scripts\\Load-EnvLocal.ps1",
       "source_location": "L1",
       "id": "load_envlocal",
-      "community": 31
+      "community": 56
     },
     {
       "label": "memory_poller.py",
@@ -977,7 +1369,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L1",
       "id": "memory_poller",
-      "community": 11
+      "community": 9
     },
     {
       "label": "HaWebSocket",
@@ -985,7 +1377,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L57",
       "id": "memory_poller_hawebsocket",
-      "community": 11
+      "community": 9
     },
     {
       "label": ".__init__()",
@@ -993,7 +1385,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L60",
       "id": "memory_poller_hawebsocket_init",
-      "community": 11
+      "community": 9
     },
     {
       "label": ".call()",
@@ -1001,7 +1393,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L64",
       "id": "memory_poller_hawebsocket_call",
-      "community": 11
+      "community": 9
     },
     {
       "label": "authenticate()",
@@ -1009,7 +1401,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L76",
       "id": "memory_poller_authenticate",
-      "community": 11
+      "community": 9
     },
     {
       "label": "_reconstruct_transcript()",
@@ -1017,7 +1409,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L86",
       "id": "memory_poller_reconstruct_transcript",
-      "community": 11
+      "community": 9
     },
     {
       "label": "_is_processed()",
@@ -1025,7 +1417,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L113",
       "id": "memory_poller_is_processed",
-      "community": 11
+      "community": 9
     },
     {
       "label": "_mark_processed()",
@@ -1033,7 +1425,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L122",
       "id": "memory_poller_mark_processed",
-      "community": 11
+      "community": 9
     },
     {
       "label": "_extract()",
@@ -1041,7 +1433,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L130",
       "id": "memory_poller_extract",
-      "community": 11
+      "community": 9
     },
     {
       "label": "poll_once()",
@@ -1049,7 +1441,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L157",
       "id": "memory_poller_poll_once",
-      "community": 11
+      "community": 9
     },
     {
       "label": "main()",
@@ -1057,7 +1449,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L215",
       "id": "memory_poller_main",
-      "community": 11
+      "community": 9
     },
     {
       "label": "Tiny helper around HA's WebSocket API with auto-incrementing message ids.",
@@ -1065,7 +1457,7 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L58",
       "id": "memory_poller_rationale_58",
-      "community": 11
+      "community": 9
     },
     {
       "label": "Extract (user_text, assistant_text, language, conversation_id) from a\r     pipel",
@@ -1073,7 +1465,23 @@
       "source_file": "heimdall\\scripts\\memory_poller.py",
       "source_location": "L87",
       "id": "memory_poller_rationale_87",
-      "community": 11
+      "community": 9
+    },
+    {
+      "label": "move_alarm_secrets_to_package.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\move_alarm_secrets_to_package.py",
+      "source_location": "L1",
+      "id": "move_alarm_secrets_to_package",
+      "community": 50
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\move_alarm_secrets_to_package.py",
+      "source_location": "L25",
+      "id": "move_alarm_secrets_to_package_main",
+      "community": 50
     },
     {
       "label": "ntfy_failure_logger.py",
@@ -1081,7 +1489,7 @@
       "source_file": "heimdall\\scripts\\ntfy_failure_logger.py",
       "source_location": "L1",
       "id": "ntfy_failure_logger",
-      "community": 18
+      "community": 16
     },
     {
       "label": "_load_since()",
@@ -1089,7 +1497,7 @@
       "source_file": "heimdall\\scripts\\ntfy_failure_logger.py",
       "source_location": "L76",
       "id": "ntfy_failure_logger_load_since",
-      "community": 18
+      "community": 16
     },
     {
       "label": "_save_since()",
@@ -1097,7 +1505,7 @@
       "source_file": "heimdall\\scripts\\ntfy_failure_logger.py",
       "source_location": "L85",
       "id": "ntfy_failure_logger_save_since",
-      "community": 18
+      "community": 16
     },
     {
       "label": "_append_to_soak_log()",
@@ -1105,7 +1513,7 @@
       "source_file": "heimdall\\scripts\\ntfy_failure_logger.py",
       "source_location": "L89",
       "id": "ntfy_failure_logger_append_to_soak_log",
-      "community": 18
+      "community": 16
     },
     {
       "label": "poll_once()",
@@ -1113,7 +1521,7 @@
       "source_file": "heimdall\\scripts\\ntfy_failure_logger.py",
       "source_location": "L103",
       "id": "ntfy_failure_logger_poll_once",
-      "community": 18
+      "community": 16
     },
     {
       "label": "main()",
@@ -1121,7 +1529,63 @@
       "source_file": "heimdall\\scripts\\ntfy_failure_logger.py",
       "source_location": "L127",
       "id": "ntfy_failure_logger_main",
-      "community": 18
+      "community": 16
+    },
+    {
+      "label": "reload_and_verify_boost_scripts.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\reload_and_verify_boost_scripts.py",
+      "source_location": "L1",
+      "id": "reload_and_verify_boost_scripts",
+      "community": 51
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\reload_and_verify_boost_scripts.py",
+      "source_location": "L16",
+      "id": "reload_and_verify_boost_scripts_main",
+      "community": 51
+    },
+    {
+      "label": "rename_entities.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\rename_entities.py",
+      "source_location": "L1",
+      "id": "rename_entities",
+      "community": 52
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\rename_entities.py",
+      "source_location": "L43",
+      "id": "rename_entities_main",
+      "community": 52
+    },
+    {
+      "label": "trace_qwen_office_query.py",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\trace_qwen_office_query.py",
+      "source_location": "L1",
+      "id": "trace_qwen_office_query",
+      "community": 26
+    },
+    {
+      "label": "call()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\trace_qwen_office_query.py",
+      "source_location": "L20",
+      "id": "trace_qwen_office_query_call",
+      "community": 26
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "heimdall\\scripts\\trace_qwen_office_query.py",
+      "source_location": "L29",
+      "id": "trace_qwen_office_query_main",
+      "community": 26
     },
     {
       "label": "verify_aquarium_influx_write.py",
@@ -1129,7 +1593,7 @@
       "source_file": "heimdall\\scripts\\verify_aquarium_influx_write.py",
       "source_location": "L1",
       "id": "verify_aquarium_influx_write",
-      "community": 24
+      "community": 23
     },
     {
       "label": "call_ha_service()",
@@ -1137,7 +1601,7 @@
       "source_file": "heimdall\\scripts\\verify_aquarium_influx_write.py",
       "source_location": "L71",
       "id": "verify_aquarium_influx_write_call_ha_service",
-      "community": 24
+      "community": 23
     },
     {
       "label": "query_influx_recent_points()",
@@ -1145,7 +1609,7 @@
       "source_file": "heimdall\\scripts\\verify_aquarium_influx_write.py",
       "source_location": "L81",
       "id": "verify_aquarium_influx_write_query_influx_recent_points",
-      "community": 24
+      "community": 23
     },
     {
       "label": "main()",
@@ -1153,7 +1617,7 @@
       "source_file": "heimdall\\scripts\\verify_aquarium_influx_write.py",
       "source_location": "L116",
       "id": "verify_aquarium_influx_write_main",
-      "community": 24
+      "community": 23
     },
     {
       "label": "test_matrix.py",
@@ -1167,7 +1631,7 @@
       "label": "RowResult",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L154",
+      "source_location": "L158",
       "id": "test_matrix_rowresult",
       "community": 6
     },
@@ -1175,7 +1639,7 @@
       "label": "_apply_known_limitations()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L182",
+      "source_location": "L186",
       "id": "test_matrix_apply_known_limitations",
       "community": 6
     },
@@ -1183,7 +1647,7 @@
       "label": "HaClient",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L190",
+      "source_location": "L194",
       "id": "test_matrix_haclient",
       "community": 6
     },
@@ -1191,7 +1655,7 @@
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L191",
+      "source_location": "L195",
       "id": "test_matrix_haclient_init",
       "community": 6
     },
@@ -1199,7 +1663,7 @@
       "label": ".get_state()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L195",
+      "source_location": "L199",
       "id": "test_matrix_haclient_get_state",
       "community": 6
     },
@@ -1207,7 +1671,7 @@
       "label": ".call_service()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L200",
+      "source_location": "L204",
       "id": "test_matrix_haclient_call_service",
       "community": 6
     },
@@ -1215,7 +1679,7 @@
       "label": ".process()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L210",
+      "source_location": "L214",
       "id": "test_matrix_haclient_process",
       "community": 6
     },
@@ -1223,7 +1687,7 @@
       "label": ".list_calendar_events()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L220",
+      "source_location": "L224",
       "id": "test_matrix_haclient_list_calendar_events",
       "community": 6
     },
@@ -1231,7 +1695,7 @@
       "label": "_wait_for_state_change()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L232",
+      "source_location": "L236",
       "id": "test_matrix_wait_for_state_change",
       "community": 6
     },
@@ -1239,7 +1703,7 @@
       "label": "_wait_for_attr_change()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L243",
+      "source_location": "L247",
       "id": "test_matrix_wait_for_attr_change",
       "community": 6
     },
@@ -1247,7 +1711,7 @@
       "label": "_check_exposure_ws()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L259",
+      "source_location": "L263",
       "id": "test_matrix_check_exposure_ws",
       "community": 6
     },
@@ -1255,7 +1719,7 @@
       "label": "check_gate_exposure()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L279",
+      "source_location": "L283",
       "id": "test_matrix_check_gate_exposure",
       "community": 6
     },
@@ -1263,7 +1727,7 @@
       "label": "check_toggle()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L298",
+      "source_location": "L302",
       "id": "test_matrix_check_toggle",
       "community": 6
     },
@@ -1271,7 +1735,7 @@
       "label": "check_climate()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L340",
+      "source_location": "L344",
       "id": "test_matrix_check_climate",
       "community": 6
     },
@@ -1279,7 +1743,7 @@
       "label": "check_aquarium_read()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L371",
+      "source_location": "L375",
       "id": "test_matrix_check_aquarium_read",
       "community": 6
     },
@@ -1287,7 +1751,7 @@
       "label": "check_calendar_read()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L391",
+      "source_location": "L395",
       "id": "test_matrix_check_calendar_read",
       "community": 6
     },
@@ -1295,7 +1759,7 @@
       "label": "check_calendar_write()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L403",
+      "source_location": "L407",
       "id": "test_matrix_check_calendar_write",
       "community": 6
     },
@@ -1303,7 +1767,7 @@
       "label": "check_open_domain()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L451",
+      "source_location": "L455",
       "id": "test_matrix_check_open_domain",
       "community": 6
     },
@@ -1311,7 +1775,7 @@
       "label": "check_ambiguous_mixed()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L468",
+      "source_location": "L472",
       "id": "test_matrix_check_ambiguous_mixed",
       "community": 6
     },
@@ -1319,7 +1783,7 @@
       "label": "run_matrix()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L503",
+      "source_location": "L507",
       "id": "test_matrix_run_matrix",
       "community": 6
     },
@@ -1327,7 +1791,7 @@
       "label": "publish_failure()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L560",
+      "source_location": "L564",
       "id": "test_matrix_publish_failure",
       "community": 6
     },
@@ -1335,7 +1799,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L574",
+      "source_location": "L578",
       "id": "test_matrix_main",
       "community": 6
     },
@@ -1345,7 +1809,7 @@
       "source_file": "run.py",
       "source_location": "L1",
       "id": "run",
-      "community": 28
+      "community": 53
     },
     {
       "label": "Project-root convenience runner; delegates to the homeai package entry point.",
@@ -1353,7 +1817,7 @@
       "source_file": "run.py",
       "source_location": "L1",
       "id": "run_rationale_1",
-      "community": 28
+      "community": 53
     },
     {
       "label": "__main__.py",
@@ -1513,7 +1977,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L48",
       "id": "config_rationale_48",
-      "community": 32
+      "community": 57
     },
     {
       "label": "Emit a warning when no web-search backend is configured.",
@@ -1521,7 +1985,7 @@
       "source_file": "src\\homeai\\config.py",
       "source_location": "L58",
       "id": "config_rationale_58",
-      "community": 33
+      "community": 58
     },
     {
       "label": "guardrails.py",
@@ -1529,7 +1993,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L1",
       "id": "guardrails",
-      "community": 8
+      "community": 7
     },
     {
       "label": "Violation",
@@ -1537,7 +2001,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L15",
       "id": "guardrails_violation",
-      "community": 8
+      "community": 7
     },
     {
       "label": ".format()",
@@ -1545,7 +2009,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L24",
       "id": "guardrails_violation_format",
-      "community": 8
+      "community": 7
     },
     {
       "label": "AlarmExposureError",
@@ -1553,7 +2017,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L33",
       "id": "guardrails_alarmexposureerror",
-      "community": 8
+      "community": 7
     },
     {
       "label": "ValueError",
@@ -1561,7 +2025,7 @@
       "source_file": "",
       "source_location": "",
       "id": "valueerror",
-      "community": 8
+      "community": 7
     },
     {
       "label": "_iter_patterns()",
@@ -1569,7 +2033,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L37",
       "id": "guardrails_iter_patterns",
-      "community": 8
+      "community": 7
     },
     {
       "label": "scan_text()",
@@ -1577,7 +2041,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L45",
       "id": "guardrails_scan_text",
-      "community": 8
+      "community": 7
     },
     {
       "label": "scan_path()",
@@ -1585,7 +2049,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L62",
       "id": "guardrails_scan_path",
-      "community": 8
+      "community": 7
     },
     {
       "label": "scan_paths()",
@@ -1593,7 +2057,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L70",
       "id": "guardrails_scan_paths",
-      "community": 8
+      "community": 7
     },
     {
       "label": "_scan_any()",
@@ -1601,7 +2065,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L78",
       "id": "guardrails_scan_any",
-      "community": 8
+      "community": 7
     },
     {
       "label": "scan_payload()",
@@ -1609,7 +2073,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L121",
       "id": "guardrails_scan_payload",
-      "community": 8
+      "community": 7
     },
     {
       "label": "assert_no_alarm_exposure()",
@@ -1617,7 +2081,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L126",
       "id": "guardrails_assert_no_alarm_exposure",
-      "community": 8
+      "community": 7
     },
     {
       "label": "One forbidden alarm-reference match found during scanning.",
@@ -1625,7 +2089,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L16",
       "id": "guardrails_rationale_16",
-      "community": 8
+      "community": 7
     },
     {
       "label": "Raised when forbidden alarm-related content is detected.",
@@ -1633,7 +2097,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L34",
       "id": "guardrails_rationale_34",
-      "community": 8
+      "community": 7
     },
     {
       "label": "Scan raw text and return all forbidden matches.",
@@ -1641,7 +2105,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L46",
       "id": "guardrails_rationale_46",
-      "community": 8
+      "community": 7
     },
     {
       "label": "Scan one file path by reading it as text.",
@@ -1649,7 +2113,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L63",
       "id": "guardrails_rationale_63",
-      "community": 8
+      "community": 7
     },
     {
       "label": "Scan a sequence of file paths.",
@@ -1657,7 +2121,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L71",
       "id": "guardrails_rationale_71",
-      "community": 8
+      "community": 7
     },
     {
       "label": "Scan an arbitrary JSON-like payload for forbidden references.",
@@ -1665,7 +2129,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L122",
       "id": "guardrails_rationale_122",
-      "community": 8
+      "community": 7
     },
     {
       "label": "Raise if the payload contains any forbidden alarm references.",
@@ -1673,7 +2137,7 @@
       "source_file": "src\\homeai\\guardrails.py",
       "source_location": "L127",
       "id": "guardrails_rationale_127",
-      "community": 8
+      "community": 7
     },
     {
       "label": "prompts.py",
@@ -1681,7 +2145,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L1",
       "id": "prompts",
-      "community": 25
+      "community": 24
     },
     {
       "label": "build_tools_block()",
@@ -1689,7 +2153,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L78",
       "id": "prompts_build_tools_block",
-      "community": 25
+      "community": 24
     },
     {
       "label": "Tool schemas and system prompt template for the HomeAI ReAct agent.\r \r Defines T",
@@ -1697,7 +2161,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L1",
       "id": "prompts_rationale_1",
-      "community": 25
+      "community": 24
     },
     {
       "label": "Render the tool registry as an indented text block for inclusion in the system p",
@@ -1705,7 +2169,7 @@
       "source_file": "src\\homeai\\prompts.py",
       "source_location": "L79",
       "id": "prompts_rationale_79",
-      "community": 25
+      "community": 24
     },
     {
       "label": "base.py",
@@ -1713,7 +2177,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L1",
       "id": "base",
-      "community": 5
+      "community": 4
     },
     {
       "label": "ToolResult",
@@ -1721,7 +2185,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L7",
       "id": "base_toolresult",
-      "community": 5
+      "community": 4
     },
     {
       "label": ".to_llm_text()",
@@ -1729,7 +2193,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L14",
       "id": "base_toolresult_to_llm_text",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Encapsulates the outcome of a single tool invocation.",
@@ -1737,7 +2201,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L8",
       "id": "base_rationale_8",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Return the text representation of this result for LLM consumption.",
@@ -1745,7 +2209,7 @@
       "source_file": "src\\homeai\\tools\\base.py",
       "source_location": "L15",
       "id": "base_rationale_15",
-      "community": 5
+      "community": 4
     },
     {
       "label": "home_assistant.py",
@@ -1753,7 +2217,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L1",
       "id": "home_assistant",
-      "community": 5
+      "community": 4
     },
     {
       "label": "_ha_headers()",
@@ -1761,7 +2225,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L15",
       "id": "home_assistant_ha_headers",
-      "community": 5
+      "community": 4
     },
     {
       "label": "home_service()",
@@ -1769,7 +2233,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L23",
       "id": "home_assistant_home_service",
-      "community": 5
+      "community": 4
     },
     {
       "label": "home_state()",
@@ -1777,7 +2241,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L54",
       "id": "home_assistant_home_state",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Build standard Home Assistant API authorisation headers.",
@@ -1785,7 +2249,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L16",
       "id": "home_assistant_rationale_16",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Call a Home Assistant service (e.g. light/turn_on, climate/set_temperature).",
@@ -1793,7 +2257,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L30",
       "id": "home_assistant_rationale_30",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Get the current state and attributes of a Home Assistant entity.",
@@ -1801,7 +2265,7 @@
       "source_file": "src\\homeai\\tools\\home_assistant.py",
       "source_location": "L58",
       "id": "home_assistant_rationale_58",
-      "community": 5
+      "community": 4
     },
     {
       "label": "search.py",
@@ -1809,7 +2273,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L1",
       "id": "search",
-      "community": 5
+      "community": 4
     },
     {
       "label": "web_search()",
@@ -1817,7 +2281,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L13",
       "id": "search_web_search",
-      "community": 5
+      "community": 4
     },
     {
       "label": "Search the web for real-time information supporting Polish and English queries.",
@@ -1825,7 +2289,7 @@
       "source_file": "src\\homeai\\tools\\search.py",
       "source_location": "L14",
       "id": "search_rationale_14",
-      "community": 5
+      "community": 4
     },
     {
       "label": "conftest.py",
@@ -1921,7 +2385,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L68",
       "id": "test_agent_brain_testextractjson",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_plain_valid_json_object()",
@@ -1929,7 +2393,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L69",
       "id": "test_agent_brain_testextractjson_test_plain_valid_json_object",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_json_in_json_fences()",
@@ -1937,7 +2401,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L75",
       "id": "test_agent_brain_testextractjson_test_json_in_json_fences",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_json_in_plain_fences()",
@@ -1945,7 +2409,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L81",
       "id": "test_agent_brain_testextractjson_test_json_in_plain_fences",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_json_buried_in_prose_before_and_after()",
@@ -1953,7 +2417,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L87",
       "id": "test_agent_brain_testextractjson_test_json_buried_in_prose_before_and_after",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_nested_json_object_parsed_correctly()",
@@ -1961,7 +2425,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L93",
       "id": "test_agent_brain_testextractjson_test_nested_json_object_parsed_correctly",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_completely_invalid_text_raises_value_error()",
@@ -1969,7 +2433,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L108",
       "id": "test_agent_brain_testextractjson_test_completely_invalid_text_raises_value_error",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_empty_string_raises_value_error()",
@@ -1977,7 +2441,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L113",
       "id": "test_agent_brain_testextractjson_test_empty_string_raises_value_error",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_whitespace_only_raises_value_error()",
@@ -1985,7 +2449,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L118",
       "id": "test_agent_brain_testextractjson_test_whitespace_only_raises_value_error",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_polish_string_values_preserved()",
@@ -1993,7 +2457,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L123",
       "id": "test_agent_brain_testextractjson_test_polish_string_values_preserved",
-      "community": 7
+      "community": 0
     },
     {
       "label": "test_various_fence_and_whitespace_variants()",
@@ -2009,7 +2473,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L144",
       "id": "test_agent_brain_testextractjson_test_json_array_at_top_level_raises",
-      "community": 7
+      "community": 0
     },
     {
       "label": ".test_two_separate_json_objects_in_prose_raises()",
@@ -2017,7 +2481,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L152",
       "id": "test_agent_brain_testextractjson_test_two_separate_json_objects_in_prose_raises",
-      "community": 7
+      "community": 0
     },
     {
       "label": "mem()",
@@ -2297,7 +2761,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L70",
       "id": "test_agent_brain_rationale_70",
-      "community": 7
+      "community": 0
     },
     {
       "label": "JSON wrapped in ```json ... ``` markdown fences is extracted.",
@@ -2305,7 +2769,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L76",
       "id": "test_agent_brain_rationale_76",
-      "community": 7
+      "community": 0
     },
     {
       "label": "JSON wrapped in plain ``` ... ``` fences is extracted.",
@@ -2313,7 +2777,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L82",
       "id": "test_agent_brain_rationale_82",
-      "community": 7
+      "community": 0
     },
     {
       "label": "When prose surrounds a JSON block, the first {...} is extracted.",
@@ -2321,7 +2785,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L88",
       "id": "test_agent_brain_rationale_88",
-      "community": 7
+      "community": 0
     },
     {
       "label": "Nested dicts in action_input survive parsing intact.",
@@ -2329,7 +2793,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L94",
       "id": "test_agent_brain_rationale_94",
-      "community": 7
+      "community": 0
     },
     {
       "label": "Non-JSON text raises ValueError with a descriptive message.",
@@ -2337,7 +2801,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L109",
       "id": "test_agent_brain_rationale_109",
-      "community": 7
+      "community": 0
     },
     {
       "label": "An empty string raises ValueError.",
@@ -2345,7 +2809,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L114",
       "id": "test_agent_brain_rationale_114",
-      "community": 7
+      "community": 0
     },
     {
       "label": "A string containing only whitespace raises ValueError.",
@@ -2353,7 +2817,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L119",
       "id": "test_agent_brain_rationale_119",
-      "community": 7
+      "community": 0
     },
     {
       "label": "Polish characters inside JSON values survive extraction.",
@@ -2361,7 +2825,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L124",
       "id": "test_agent_brain_rationale_124",
-      "community": 7
+      "community": 0
     },
     {
       "label": "Several fence and whitespace variants all parse to the same dict.",
@@ -2377,7 +2841,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L145",
       "id": "test_agent_brain_rationale_145",
-      "community": 7
+      "community": 0
     },
     {
       "label": "Two separate JSON objects on the same line cause the greedy re.DOTALL\r         f",
@@ -2385,7 +2849,7 @@
       "source_file": "tests\\test_agent_brain.py",
       "source_location": "L153",
       "id": "test_agent_brain_rationale_153",
-      "community": 7
+      "community": 0
     },
     {
       "label": "Fresh in-memory Memory instance for pipeline tests.",
@@ -3313,7 +3777,7 @@
       "source_file": "tests\\test_guardrails.py",
       "source_location": "L1",
       "id": "test_guardrails",
-      "community": 19
+      "community": 18
     },
     {
       "label": "test_scan_text_flags_forbidden_alarm_entity()",
@@ -3321,7 +3785,7 @@
       "source_file": "tests\\test_guardrails.py",
       "source_location": "L8",
       "id": "test_guardrails_test_scan_text_flags_forbidden_alarm_entity",
-      "community": 19
+      "community": 18
     },
     {
       "label": "test_scan_payload_flags_satel_and_critical_reference()",
@@ -3329,7 +3793,7 @@
       "source_file": "tests\\test_guardrails.py",
       "source_location": "L15",
       "id": "test_guardrails_test_scan_payload_flags_satel_and_critical_reference",
-      "community": 19
+      "community": 18
     },
     {
       "label": "test_assert_no_alarm_exposure_allows_clean_payload()",
@@ -3337,7 +3801,7 @@
       "source_file": "tests\\test_guardrails.py",
       "source_location": "L27",
       "id": "test_guardrails_test_assert_no_alarm_exposure_allows_clean_payload",
-      "community": 19
+      "community": 18
     },
     {
       "label": "test_assert_no_alarm_exposure_raises_with_details()",
@@ -3345,7 +3809,7 @@
       "source_file": "tests\\test_guardrails.py",
       "source_location": "L31",
       "id": "test_guardrails_test_assert_no_alarm_exposure_raises_with_details",
-      "community": 19
+      "community": 18
     },
     {
       "label": "test_memory.py",
@@ -3361,7 +3825,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L34",
       "id": "test_memory_testmemoryaddrecent",
-      "community": 9
+      "community": 8
     },
     {
       "label": ".test_single_add_is_retrievable()",
@@ -3369,7 +3833,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L35",
       "id": "test_memory_testmemoryaddrecent_test_single_add_is_retrievable",
-      "community": 9
+      "community": 8
     },
     {
       "label": ".test_two_turns_returned_in_chronological_order()",
@@ -3377,7 +3841,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L42",
       "id": "test_memory_testmemoryaddrecent_test_two_turns_returned_in_chronological_order",
-      "community": 9
+      "community": 8
     },
     {
       "label": ".test_role_field_preserved_exactly()",
@@ -3385,7 +3849,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L50",
       "id": "test_memory_testmemoryaddrecent_test_role_field_preserved_exactly",
-      "community": 9
+      "community": 8
     },
     {
       "label": ".test_content_with_polish_characters()",
@@ -3393,7 +3857,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L57",
       "id": "test_memory_testmemoryaddrecent_test_content_with_polish_characters",
-      "community": 9
+      "community": 8
     },
     {
       "label": ".test_content_with_mixed_unicode()",
@@ -3401,7 +3865,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L64",
       "id": "test_memory_testmemoryaddrecent_test_content_with_mixed_unicode",
-      "community": 9
+      "community": 8
     },
     {
       "label": ".test_empty_content_string_is_accepted()",
@@ -3409,7 +3873,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L70",
       "id": "test_memory_testmemoryaddrecent_test_empty_content_string_is_accepted",
-      "community": 9
+      "community": 8
     },
     {
       "label": ".test_very_long_content_stored_without_truncation()",
@@ -3417,7 +3881,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L76",
       "id": "test_memory_testmemoryaddrecent_test_very_long_content_stored_without_truncation",
-      "community": 9
+      "community": 8
     },
     {
       "label": "TestMemoryEmptyState",
@@ -3449,7 +3913,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L104",
       "id": "test_memory_testmemoryslidingwindow",
-      "community": 10
+      "community": 0
     },
     {
       "label": ".test_window_limits_returned_turns()",
@@ -3457,7 +3921,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L105",
       "id": "test_memory_testmemoryslidingwindow_test_window_limits_returned_turns",
-      "community": 10
+      "community": 0
     },
     {
       "label": ".test_window_returns_most_recent_turns()",
@@ -3465,7 +3929,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L115",
       "id": "test_memory_testmemoryslidingwindow_test_window_returns_most_recent_turns",
-      "community": 10
+      "community": 0
     },
     {
       "label": ".test_window_three_with_fewer_messages()",
@@ -3473,7 +3937,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L128",
       "id": "test_memory_testmemoryslidingwindow_test_window_three_with_fewer_messages",
-      "community": 10
+      "community": 0
     },
     {
       "label": ".test_window_exactly_full()",
@@ -3481,7 +3945,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L135",
       "id": "test_memory_testmemoryslidingwindow_test_window_exactly_full",
-      "community": 10
+      "community": 0
     },
     {
       "label": ".test_window_one_returns_at_most_two_messages()",
@@ -3489,7 +3953,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L145",
       "id": "test_memory_testmemoryslidingwindow_test_window_one_returns_at_most_two_messages",
-      "community": 10
+      "community": 0
     },
     {
       "label": ".test_window_zero_returns_empty_list()",
@@ -3497,7 +3961,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L158",
       "id": "test_memory_testmemoryslidingwindow_test_window_zero_returns_empty_list",
-      "community": 10
+      "community": 0
     },
     {
       "label": ".test_chronological_order_preserved_after_clamping()",
@@ -3505,7 +3969,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L166",
       "id": "test_memory_testmemoryslidingwindow_test_chronological_order_preserved_after_clamping",
-      "community": 10
+      "community": 0
     },
     {
       "label": "TestMemoryPersistence",
@@ -3577,7 +4041,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L36",
       "id": "test_memory_rationale_36",
-      "community": 9
+      "community": 8
     },
     {
       "label": "Two turns come back oldest-first (chronological), not newest-first.",
@@ -3585,7 +4049,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L43",
       "id": "test_memory_rationale_43",
-      "community": 9
+      "community": 8
     },
     {
       "label": "Role strings are stored and returned verbatim.",
@@ -3593,7 +4057,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L51",
       "id": "test_memory_rationale_51",
-      "community": 9
+      "community": 8
     },
     {
       "label": "Polish diacritics in content are stored and retrieved without corruption.",
@@ -3601,7 +4065,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L58",
       "id": "test_memory_rationale_58",
-      "community": 9
+      "community": 8
     },
     {
       "label": "Emoji and non-Latin characters round-trip correctly.",
@@ -3609,7 +4073,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L65",
       "id": "test_memory_rationale_65",
-      "community": 9
+      "community": 8
     },
     {
       "label": "add() with an empty string does not raise and is retrievable.",
@@ -3617,7 +4081,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L71",
       "id": "test_memory_rationale_71",
-      "community": 9
+      "community": 8
     },
     {
       "label": "Strings longer than typical column sizes are stored in full.",
@@ -3625,7 +4089,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L77",
       "id": "test_memory_rationale_77",
-      "community": 9
+      "community": 8
     },
     {
       "label": "recent() on a freshly created Memory returns [].",
@@ -3649,7 +4113,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L106",
       "id": "test_memory_rationale_106",
-      "community": 10
+      "community": 0
     },
     {
       "label": "The returned turns are the N most recent, not the oldest.",
@@ -3657,7 +4121,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L116",
       "id": "test_memory_rationale_116",
-      "community": 10
+      "community": 0
     },
     {
       "label": "When fewer messages exist than window*2, all messages are returned.",
@@ -3665,7 +4129,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L129",
       "id": "test_memory_rationale_129",
-      "community": 10
+      "community": 0
     },
     {
       "label": "When the number of messages equals window*2, all are returned.",
@@ -3673,7 +4137,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L136",
       "id": "test_memory_rationale_136",
-      "community": 10
+      "community": 0
     },
     {
       "label": "window=1 means at most 1 user + 1 assistant message returned.",
@@ -3681,7 +4145,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L146",
       "id": "test_memory_rationale_146",
-      "community": 10
+      "community": 0
     },
     {
       "label": "window=0 edge case: LIMIT 0 returns no rows.",
@@ -3689,7 +4153,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L159",
       "id": "test_memory_rationale_159",
-      "community": 10
+      "community": 0
     },
     {
       "label": "After window clamping the surviving turns are still oldest-first.",
@@ -3697,7 +4161,7 @@
       "source_file": "tests\\test_memory.py",
       "source_location": "L167",
       "id": "test_memory_rationale_167",
-      "community": 10
+      "community": 0
     },
     {
       "label": "Turns added by one Memory instance are visible to a second instance\r         ope",
@@ -4041,7 +4505,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L81",
       "id": "test_tools_rationale_81",
-      "community": 34
+      "community": 59
     },
     {
       "label": "Only `search_results` (3) results are included even if SearXNG returns more.",
@@ -4049,7 +4513,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L103",
       "id": "test_tools_rationale_103",
-      "community": 35
+      "community": 60
     },
     {
       "label": "SearXNG 200 with empty results list returns a 'no results' string.",
@@ -4057,7 +4521,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L121",
       "id": "test_tools_rationale_121",
-      "community": 36
+      "community": 61
     },
     {
       "label": "When 'content' is absent, 'snippet' is used instead.",
@@ -4065,7 +4529,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L132",
       "id": "test_tools_rationale_132",
-      "community": 37
+      "community": 62
     },
     {
       "label": "A query containing Polish diacritics appears verbatim in the output.",
@@ -4073,7 +4537,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L148",
       "id": "test_tools_rationale_148",
-      "community": 38
+      "community": 63
     },
     {
       "label": "A 500 from SearXNG triggers a silent fallback to Brave Search.",
@@ -4081,7 +4545,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L172",
       "id": "test_tools_rationale_172",
-      "community": 39
+      "community": 64
     },
     {
       "label": "A ConnectError from SearXNG triggers the Brave fallback.",
@@ -4089,7 +4553,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L193",
       "id": "test_tools_rationale_193",
-      "community": 40
+      "community": 65
     },
     {
       "label": "When searxng_url is empty, Brave is the only path attempted.",
@@ -4097,7 +4561,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L214",
       "id": "test_tools_rationale_214",
-      "community": 41
+      "community": 66
     },
     {
       "label": "Brave 200 with empty web results returns 'No results found.",
@@ -4105,7 +4569,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L233",
       "id": "test_tools_rationale_233",
-      "community": 42
+      "community": 67
     },
     {
       "label": "When SearXNG is down and no Brave key, return an unavailability notice.",
@@ -4113,7 +4577,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L254",
       "id": "test_tools_rationale_254",
-      "community": 43
+      "community": 68
     },
     {
       "label": "The original query string appears in the unavailability fallback message.",
@@ -4121,7 +4585,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L267",
       "id": "test_tools_rationale_267",
-      "community": 44
+      "community": 69
     },
     {
       "label": "A 200 from HA services endpoint returns a success confirmation string.",
@@ -4129,7 +4593,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L287",
       "id": "test_tools_rationale_287",
-      "community": 45
+      "community": 70
     },
     {
       "label": "HA returning 401 Unauthorized is surfaced as a string with the status code.",
@@ -4137,7 +4601,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L299",
       "id": "test_tools_rationale_299",
-      "community": 46
+      "community": 71
     },
     {
       "label": "HA returning 403 Forbidden surfaces the status code in the return string.",
@@ -4145,7 +4609,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L312",
       "id": "test_tools_rationale_312",
-      "community": 47
+      "community": 72
     },
     {
       "label": "A ConnectError is returned as a human-readable connection-error string.",
@@ -4153,7 +4617,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L324",
       "id": "test_tools_rationale_324",
-      "community": 48
+      "community": 73
     },
     {
       "label": "Extra `data` kwargs are forwarded without error and success is reported.",
@@ -4161,7 +4625,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L334",
       "id": "test_tools_rationale_334",
-      "community": 49
+      "community": 74
     },
     {
       "label": "home_service works for arbitrary HA domains (e.g., cover/open_cover).",
@@ -4169,7 +4633,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L349",
       "id": "test_tools_rationale_349",
-      "community": 50
+      "community": 75
     },
     {
       "label": "The first 300 chars of HA error body appear in the returned error string.",
@@ -4177,7 +4641,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L360",
       "id": "test_tools_rationale_360",
-      "community": 51
+      "community": 76
     },
     {
       "label": "A ReadTimeout is treated as a RequestError and returns a connection-error string",
@@ -4185,7 +4649,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L372",
       "id": "test_tools_rationale_372",
-      "community": 52
+      "community": 77
     },
     {
       "label": "200 response is formatted as 'friendly_name (entity): state=X | attrs'.",
@@ -4193,7 +4657,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L389",
       "id": "test_tools_rationale_389",
-      "community": 53
+      "community": 78
     },
     {
       "label": "friendly_name is in the prefix but NOT repeated inside the attr_summary JSON.",
@@ -4201,7 +4665,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L412",
       "id": "test_tools_rationale_412",
-      "community": 54
+      "community": 79
     },
     {
       "label": "A 404 from HA is surfaced as a string containing the status code.",
@@ -4209,7 +4673,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L434",
       "id": "test_tools_rationale_434",
-      "community": 55
+      "community": 80
     },
     {
       "label": "ConnectError returns a human-readable HA connection error string.",
@@ -4217,7 +4681,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L447",
       "id": "test_tools_rationale_447",
-      "community": 56
+      "community": 81
     },
     {
       "label": "Attribute summary JSON is capped at 400 characters.",
@@ -4225,7 +4689,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L459",
       "id": "test_tools_rationale_459",
-      "community": 57
+      "community": 82
     },
     {
       "label": "Entity with empty attributes dict returns state without crashing.",
@@ -4233,7 +4697,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L478",
       "id": "test_tools_rationale_478",
-      "community": 58
+      "community": 83
     },
     {
       "label": "Entity friendly_name containing Polish characters is not mangled.",
@@ -4241,7 +4705,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L492",
       "id": "test_tools_rationale_492",
-      "community": 59
+      "community": 84
     },
     {
       "label": "When friendly_name is absent, the entity_id is used as the display name.",
@@ -4249,7 +4713,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L508",
       "id": "test_tools_rationale_508",
-      "community": 60
+      "community": 85
     },
     {
       "label": "A 401 from the states endpoint surfaces the status code.",
@@ -4257,7 +4721,7 @@
       "source_file": "tests\\test_tools.py",
       "source_location": "L522",
       "id": "test_tools_rationale_522",
-      "community": 61
+      "community": 86
     },
     {
       "label": "tools.py",
@@ -4329,7 +4793,7 @@
       "source_file": "update_graph.py",
       "source_location": "L1",
       "id": "update_graph",
-      "community": 29
+      "community": 54
     },
     {
       "label": "One-off utility: merge infrastructure-plan nodes into the knowledge graph.\r \r Re",
@@ -4337,7 +4801,7 @@
       "source_file": "update_graph.py",
       "source_location": "L1",
       "id": "update_graph_rationale_1",
-      "community": 29
+      "community": 54
     }
   ],
   "links": [
@@ -7356,6 +7820,30 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\add_pulse_gate_script.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_src": "add_pulse_gate_script",
+      "_tgt": "add_pulse_gate_script_main",
+      "source": "add_pulse_gate_script",
+      "target": "add_pulse_gate_script_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\assign_siren_area.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "assign_siren_area",
+      "_tgt": "assign_siren_area_main",
+      "source": "assign_siren_area",
+      "target": "assign_siren_area_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\bakeoff_harness.py",
       "source_location": "L149",
       "weight": 1.0,
@@ -7495,6 +7983,90 @@
       "_tgt": "bakeoff_harness_write_results_md",
       "source": "bakeoff_harness_write_results_md",
       "target": "bakeoff_harness_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_src": "benchmark_office_query_models",
+      "_tgt": "benchmark_office_query_models_fetch_states",
+      "source": "benchmark_office_query_models",
+      "target": "benchmark_office_query_models_fetch_states",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "benchmark_office_query_models",
+      "_tgt": "benchmark_office_query_models_build_context",
+      "source": "benchmark_office_query_models",
+      "target": "benchmark_office_query_models_build_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "benchmark_office_query_models",
+      "_tgt": "benchmark_office_query_models_ask_model",
+      "source": "benchmark_office_query_models",
+      "target": "benchmark_office_query_models_ask_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_src": "benchmark_office_query_models",
+      "_tgt": "benchmark_office_query_models_main",
+      "source": "benchmark_office_query_models",
+      "target": "benchmark_office_query_models_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L91",
+      "weight": 0.8,
+      "_src": "benchmark_office_query_models_main",
+      "_tgt": "benchmark_office_query_models_fetch_states",
+      "source": "benchmark_office_query_models_fetch_states",
+      "target": "benchmark_office_query_models_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L93",
+      "weight": 0.8,
+      "_src": "benchmark_office_query_models_main",
+      "_tgt": "benchmark_office_query_models_build_context",
+      "source": "benchmark_office_query_models_build_context",
+      "target": "benchmark_office_query_models_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\benchmark_office_query_models.py",
+      "source_location": "L101",
+      "weight": 0.8,
+      "_src": "benchmark_office_query_models_main",
+      "_tgt": "benchmark_office_query_models_ask_model",
+      "source": "benchmark_office_query_models_ask_model",
+      "target": "benchmark_office_query_models_main",
       "confidence_score": 0.5
     },
     {
@@ -7680,6 +8252,30 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\check_boost_exposure.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "check_boost_exposure",
+      "_tgt": "check_boost_exposure_main",
+      "source": "check_boost_exposure",
+      "target": "check_boost_exposure_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\check_dashboard_reload.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "check_dashboard_reload",
+      "_tgt": "check_dashboard_reload_main",
+      "source": "check_dashboard_reload",
+      "target": "check_dashboard_reload_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\check_no_alarm_exposure.py",
       "source_location": "L16",
       "weight": 1.0,
@@ -7712,6 +8308,30 @@
       "source": "check_no_alarm_exposure_collect_paths",
       "target": "check_no_alarm_exposure_main",
       "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\check_radiator_dashboard.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "check_radiator_dashboard",
+      "_tgt": "check_radiator_dashboard_main",
+      "source": "check_radiator_dashboard",
+      "target": "check_radiator_dashboard_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\clear_climate_alias.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_src": "clear_climate_alias",
+      "_tgt": "clear_climate_alias_main",
+      "source": "clear_climate_alias",
+      "target": "clear_climate_alias_main",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8160,6 +8780,18 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_boost_heating.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "expose_boost_heating",
+      "_tgt": "expose_boost_heating_main",
+      "source": "expose_boost_heating",
+      "target": "expose_boost_heating_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\expose_entities.py",
       "source_location": "L159",
       "weight": 1.0,
@@ -8288,6 +8920,186 @@
       "source": "expose_entities_authenticate",
       "target": "expose_entities_main",
       "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\expose_missing_entities.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "expose_missing_entities",
+      "_tgt": "expose_missing_entities_main",
+      "source": "expose_missing_entities",
+      "target": "expose_missing_entities_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\fix_gemini_prompt_completeness.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "fix_gemini_prompt_completeness",
+      "_tgt": "fix_gemini_prompt_completeness_main",
+      "source": "fix_gemini_prompt_completeness",
+      "target": "fix_gemini_prompt_completeness_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\fix_qwen_area_filter_and_model.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "fix_qwen_area_filter_and_model",
+      "_tgt": "fix_qwen_area_filter_and_model_main",
+      "source": "fix_qwen_area_filter_and_model",
+      "target": "fix_qwen_area_filter_and_model_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_area_registry.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "inspect_area_registry",
+      "_tgt": "inspect_area_registry_main",
+      "source": "inspect_area_registry",
+      "target": "inspect_area_registry_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_climate_devices.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "inspect_climate_devices",
+      "_tgt": "inspect_climate_devices_main",
+      "source": "inspect_climate_devices",
+      "target": "inspect_climate_devices_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_climate_exposure.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "inspect_climate_exposure",
+      "_tgt": "inspect_climate_exposure_main",
+      "source": "inspect_climate_exposure",
+      "target": "inspect_climate_exposure_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_climate_features.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "inspect_climate_features",
+      "_tgt": "inspect_climate_features_main",
+      "source": "inspect_climate_features",
+      "target": "inspect_climate_features_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_climate_registry.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "inspect_climate_registry",
+      "_tgt": "inspect_climate_registry_main",
+      "source": "inspect_climate_registry",
+      "target": "inspect_climate_registry_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_conversation_traces.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "inspect_conversation_traces",
+      "_tgt": "inspect_conversation_traces_main",
+      "source": "inspect_conversation_traces",
+      "target": "inspect_conversation_traces_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_exposed_entities.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "inspect_exposed_entities",
+      "_tgt": "inspect_exposed_entities_main",
+      "source": "inspect_exposed_entities",
+      "target": "inspect_exposed_entities_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_hidden_entities.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "inspect_hidden_entities",
+      "_tgt": "inspect_hidden_entities_main",
+      "source": "inspect_hidden_entities",
+      "target": "inspect_hidden_entities_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_meross_outlets.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "inspect_meross_outlets",
+      "_tgt": "inspect_meross_outlets_main",
+      "source": "inspect_meross_outlets",
+      "target": "inspect_meross_outlets_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_office_area.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "inspect_office_area",
+      "_tgt": "inspect_office_area_main",
+      "source": "inspect_office_area",
+      "target": "inspect_office_area_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\inspect_satellite_entities.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "inspect_satellite_entities",
+      "_tgt": "inspect_satellite_entities_main",
+      "source": "inspect_satellite_entities",
+      "target": "inspect_satellite_entities_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\list_areas.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "list_areas",
+      "_tgt": "list_areas_main",
+      "source": "list_areas",
+      "target": "list_areas_main",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8532,6 +9344,18 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\move_alarm_secrets_to_package.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "move_alarm_secrets_to_package",
+      "_tgt": "move_alarm_secrets_to_package_main",
+      "source": "move_alarm_secrets_to_package",
+      "target": "move_alarm_secrets_to_package_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\ntfy_failure_logger.py",
       "source_location": "L76",
       "weight": 1.0,
@@ -8640,6 +9464,66 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\reload_and_verify_boost_scripts.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "reload_and_verify_boost_scripts",
+      "_tgt": "reload_and_verify_boost_scripts_main",
+      "source": "reload_and_verify_boost_scripts",
+      "target": "reload_and_verify_boost_scripts_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\rename_entities.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "rename_entities",
+      "_tgt": "rename_entities_main",
+      "source": "rename_entities",
+      "target": "rename_entities_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\trace_qwen_office_query.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "trace_qwen_office_query",
+      "_tgt": "trace_qwen_office_query_call",
+      "source": "trace_qwen_office_query",
+      "target": "trace_qwen_office_query_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "heimdall\\scripts\\trace_qwen_office_query.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "trace_qwen_office_query",
+      "_tgt": "trace_qwen_office_query_main",
+      "source": "trace_qwen_office_query",
+      "target": "trace_qwen_office_query_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "source_file": "heimdall\\scripts\\trace_qwen_office_query.py",
+      "source_location": "L47",
+      "weight": 0.8,
+      "_src": "trace_qwen_office_query_main",
+      "_tgt": "trace_qwen_office_query_call",
+      "source": "trace_qwen_office_query_call",
+      "target": "trace_qwen_office_query_main",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "heimdall\\scripts\\verify_aquarium_influx_write.py",
       "source_location": "L71",
       "weight": 1.0,
@@ -8701,7 +9585,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L154",
+      "source_location": "L158",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_rowresult",
@@ -8713,7 +9597,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L182",
+      "source_location": "L186",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_apply_known_limitations",
@@ -8725,7 +9609,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L190",
+      "source_location": "L194",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_haclient",
@@ -8737,7 +9621,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L232",
+      "source_location": "L236",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_wait_for_state_change",
@@ -8749,7 +9633,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L243",
+      "source_location": "L247",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_wait_for_attr_change",
@@ -8761,7 +9645,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L259",
+      "source_location": "L263",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_exposure_ws",
@@ -8773,7 +9657,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L279",
+      "source_location": "L283",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_gate_exposure",
@@ -8785,7 +9669,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L298",
+      "source_location": "L302",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_toggle",
@@ -8797,7 +9681,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L340",
+      "source_location": "L344",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_climate",
@@ -8809,7 +9693,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L371",
+      "source_location": "L375",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_aquarium_read",
@@ -8821,7 +9705,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L391",
+      "source_location": "L395",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_calendar_read",
@@ -8833,7 +9717,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L403",
+      "source_location": "L407",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_calendar_write",
@@ -8845,7 +9729,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L451",
+      "source_location": "L455",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_open_domain",
@@ -8857,7 +9741,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L468",
+      "source_location": "L472",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_check_ambiguous_mixed",
@@ -8869,7 +9753,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L503",
+      "source_location": "L507",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_run_matrix",
@@ -8881,7 +9765,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L560",
+      "source_location": "L564",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_publish_failure",
@@ -8893,7 +9777,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L574",
+      "source_location": "L578",
       "weight": 1.0,
       "_src": "test_matrix",
       "_tgt": "test_matrix_main",
@@ -8905,7 +9789,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L283",
+      "source_location": "L287",
       "weight": 0.8,
       "_src": "test_matrix_check_gate_exposure",
       "_tgt": "test_matrix_rowresult",
@@ -8917,7 +9801,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L310",
+      "source_location": "L314",
       "weight": 0.8,
       "_src": "test_matrix_check_toggle",
       "_tgt": "test_matrix_rowresult",
@@ -8929,7 +9813,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L344",
+      "source_location": "L348",
       "weight": 0.8,
       "_src": "test_matrix_check_climate",
       "_tgt": "test_matrix_rowresult",
@@ -8941,7 +9825,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L383",
+      "source_location": "L387",
       "weight": 0.8,
       "_src": "test_matrix_check_aquarium_read",
       "_tgt": "test_matrix_rowresult",
@@ -8953,7 +9837,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L395",
+      "source_location": "L399",
       "weight": 0.8,
       "_src": "test_matrix_check_calendar_read",
       "_tgt": "test_matrix_rowresult",
@@ -8965,7 +9849,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L409",
+      "source_location": "L413",
       "weight": 0.8,
       "_src": "test_matrix_check_calendar_write",
       "_tgt": "test_matrix_rowresult",
@@ -8977,7 +9861,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L460",
+      "source_location": "L464",
       "weight": 0.8,
       "_src": "test_matrix_check_open_domain",
       "_tgt": "test_matrix_rowresult",
@@ -8989,7 +9873,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L470",
+      "source_location": "L474",
       "weight": 0.8,
       "_src": "test_matrix_check_ambiguous_mixed",
       "_tgt": "test_matrix_rowresult",
@@ -9001,7 +9885,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L542",
+      "source_location": "L546",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_rowresult",
@@ -9013,7 +9897,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L557",
+      "source_location": "L561",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_apply_known_limitations",
@@ -9025,7 +9909,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L191",
+      "source_location": "L195",
       "weight": 1.0,
       "_src": "test_matrix_haclient",
       "_tgt": "test_matrix_haclient_init",
@@ -9037,7 +9921,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L195",
+      "source_location": "L199",
       "weight": 1.0,
       "_src": "test_matrix_haclient",
       "_tgt": "test_matrix_haclient_get_state",
@@ -9049,7 +9933,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L200",
+      "source_location": "L204",
       "weight": 1.0,
       "_src": "test_matrix_haclient",
       "_tgt": "test_matrix_haclient_call_service",
@@ -9061,7 +9945,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L210",
+      "source_location": "L214",
       "weight": 1.0,
       "_src": "test_matrix_haclient",
       "_tgt": "test_matrix_haclient_process",
@@ -9073,7 +9957,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L220",
+      "source_location": "L224",
       "weight": 1.0,
       "_src": "test_matrix_haclient",
       "_tgt": "test_matrix_haclient_list_calendar_events",
@@ -9085,7 +9969,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L603",
+      "source_location": "L607",
       "weight": 0.8,
       "_src": "test_matrix_main",
       "_tgt": "test_matrix_haclient",
@@ -9097,7 +9981,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L237",
+      "source_location": "L241",
       "weight": 0.8,
       "_src": "test_matrix_wait_for_state_change",
       "_tgt": "test_matrix_haclient_get_state",
@@ -9109,7 +9993,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L248",
+      "source_location": "L252",
       "weight": 0.8,
       "_src": "test_matrix_wait_for_attr_change",
       "_tgt": "test_matrix_haclient_get_state",
@@ -9121,7 +10005,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L320",
+      "source_location": "L324",
       "weight": 0.8,
       "_src": "test_matrix_check_toggle",
       "_tgt": "test_matrix_haclient_get_state",
@@ -9133,7 +10017,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L354",
+      "source_location": "L358",
       "weight": 0.8,
       "_src": "test_matrix_check_climate",
       "_tgt": "test_matrix_haclient_get_state",
@@ -9145,7 +10029,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L372",
+      "source_location": "L376",
       "weight": 0.8,
       "_src": "test_matrix_check_aquarium_read",
       "_tgt": "test_matrix_haclient_get_state",
@@ -9157,7 +10041,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L482",
+      "source_location": "L486",
       "weight": 0.8,
       "_src": "test_matrix_check_ambiguous_mixed",
       "_tgt": "test_matrix_haclient_get_state",
@@ -9169,7 +10053,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L330",
+      "source_location": "L334",
       "weight": 0.8,
       "_src": "test_matrix_check_toggle",
       "_tgt": "test_matrix_haclient_call_service",
@@ -9181,7 +10065,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L361",
+      "source_location": "L365",
       "weight": 0.8,
       "_src": "test_matrix_check_climate",
       "_tgt": "test_matrix_haclient_call_service",
@@ -9193,7 +10077,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L493",
+      "source_location": "L497",
       "weight": 0.8,
       "_src": "test_matrix_check_ambiguous_mixed",
       "_tgt": "test_matrix_haclient_call_service",
@@ -9205,7 +10089,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L322",
+      "source_location": "L326",
       "weight": 0.8,
       "_src": "test_matrix_check_toggle",
       "_tgt": "test_matrix_haclient_process",
@@ -9217,7 +10101,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L355",
+      "source_location": "L359",
       "weight": 0.8,
       "_src": "test_matrix_check_climate",
       "_tgt": "test_matrix_haclient_process",
@@ -9229,7 +10113,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L373",
+      "source_location": "L377",
       "weight": 0.8,
       "_src": "test_matrix_check_aquarium_read",
       "_tgt": "test_matrix_haclient_process",
@@ -9241,7 +10125,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L392",
+      "source_location": "L396",
       "weight": 0.8,
       "_src": "test_matrix_check_calendar_read",
       "_tgt": "test_matrix_haclient_process",
@@ -9253,7 +10137,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L426",
+      "source_location": "L430",
       "weight": 0.8,
       "_src": "test_matrix_check_calendar_write",
       "_tgt": "test_matrix_haclient_process",
@@ -9265,7 +10149,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L457",
+      "source_location": "L461",
       "weight": 0.8,
       "_src": "test_matrix_check_open_domain",
       "_tgt": "test_matrix_haclient_process",
@@ -9277,7 +10161,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L483",
+      "source_location": "L487",
       "weight": 0.8,
       "_src": "test_matrix_check_ambiguous_mixed",
       "_tgt": "test_matrix_haclient_process",
@@ -9289,7 +10173,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L431",
+      "source_location": "L435",
       "weight": 0.8,
       "_src": "test_matrix_check_calendar_write",
       "_tgt": "test_matrix_haclient_list_calendar_events",
@@ -9301,7 +10185,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L323",
+      "source_location": "L327",
       "weight": 0.8,
       "_src": "test_matrix_check_toggle",
       "_tgt": "test_matrix_wait_for_state_change",
@@ -9313,7 +10197,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L356",
+      "source_location": "L360",
       "weight": 0.8,
       "_src": "test_matrix_check_climate",
       "_tgt": "test_matrix_wait_for_attr_change",
@@ -9325,7 +10209,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L281",
+      "source_location": "L285",
       "weight": 0.8,
       "_src": "test_matrix_check_gate_exposure",
       "_tgt": "test_matrix_check_exposure_ws",
@@ -9337,7 +10221,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L506",
+      "source_location": "L510",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_gate_exposure",
@@ -9349,7 +10233,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L524",
+      "source_location": "L528",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_toggle",
@@ -9361,7 +10245,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L529",
+      "source_location": "L533",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_climate",
@@ -9373,7 +10257,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L530",
+      "source_location": "L534",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_aquarium_read",
@@ -9385,7 +10269,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L537",
+      "source_location": "L541",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_calendar_read",
@@ -9397,7 +10281,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L538",
+      "source_location": "L542",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_calendar_write",
@@ -9409,7 +10293,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L539",
+      "source_location": "L543",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_open_domain",
@@ -9421,7 +10305,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L555",
+      "source_location": "L559",
       "weight": 0.8,
       "_src": "test_matrix_run_matrix",
       "_tgt": "test_matrix_check_ambiguous_mixed",
@@ -9433,7 +10317,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L604",
+      "source_location": "L608",
       "weight": 0.8,
       "_src": "test_matrix_main",
       "_tgt": "test_matrix_run_matrix",
@@ -9445,7 +10329,7 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "source_file": "heimdall\\tests\\test_matrix.py",
-      "source_location": "L621",
+      "source_location": "L625",
       "weight": 0.8,
       "_src": "test_matrix_main",
       "_tgt": "test_matrix_publish_failure",
