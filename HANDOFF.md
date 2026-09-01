@@ -57,8 +57,8 @@ Before the PR can be opened, all Task 7 files must be staged and committed first
 - n8n workflow `k8tTX2TbnsCm69NC` (`Heimdall AI Task Router`) live at `https://n8n.kamilon8n.win/webhook/heimdall/route`.
 
 ## Urgent (not code)
-- Rotate `heimdall_memory_token`, `influxdb_token`, Satel `alarm_code` (briefly exposed 2026-08-20).
-- Confirm WiFi password rotated post git-filter-repo sanitization.
+- Rotate `heimdall_memory_token`, `influxdb_token`, Satel `alarm_code` — **DONE 2026-09-01** (live files only, not git). Satel keypad PIN must be changed to match HA; see local `C:\Users\koter\.cursor\rotated-alarm-pin.txt` then delete that file.
+- Confirm WiFi password rotated post git-filter-repo sanitization — **NOT CONFIRMED.** Git history is clean (placeholders only). Live ESPHome `firmware/secrets.yaml` on vesemir is still placeholders. Cannot verify the Vodafone/LabLAN AP password without router login.
 - Delete stray "Gemini regression check" Google Calendar event (manual, no API).
 - Move ntfy `heimdall_bot` token from `%TEMP%\heimdall_ntfy_token.txt` to `.env.local`.
 

@@ -136,8 +136,9 @@ Full plan: `heimdall/PHASE1_5_HARDENING_AND_PHASE2_PLAN.md`. Key points:
   open+merge: https://github.com/winfer70/ProjectNemo/pull/new/feature/heimdall-config-sync-20260820
   **Rotate `heimdall_memory_token`, `influxdb_token`, and the Satel `alarm_code`** — briefly
   printed in plaintext during `check_config --secrets` validation this session (mistake, not
-  to be repeated). Also found (not fixed): pre-existing `influxdb.include.component_config`
-  schema placement bug, predates this session.
+  to be repeated). **Rotated live 2026-09-01.** Satel keypad still needs the new PIN applied
+  (HA secrets.yaml already updated). Also found (not fixed): pre-existing
+  `influxdb.include.component_config` schema placement bug, predates this session.
 - Still open: exposed Google OAuth `client_secret_*.json` on Desktop root
   (`Kamil/client_secret_914645144271-....json`) needs moving to a password manager or
   deletion — flagged, action pending user confirmation.

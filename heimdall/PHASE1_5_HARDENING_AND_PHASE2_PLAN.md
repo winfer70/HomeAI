@@ -31,9 +31,11 @@ of patch history by hand.
 > `influxdb.include.component_config` schema bug found, not fixed, flagged separately).
 > Deleted 49 ad hoc `.bak-*` files (incl. one with plaintext secrets) and gitignored the
 > pattern. Pushed to origin: https://github.com/winfer70/ProjectNemo/pull/new/feature/heimdall-config-sync-20260820
-> (PR still needs manual open+merge). **Action needed: rotate `heimdall_memory_token`,
-> `influxdb_token`, and the Satel `alarm_code`** — briefly printed in plaintext to a terminal
-> during config validation this session.
+> (PR still needs manual open+merge). **Secrets rotation DONE 2026-09-01:** `heimdall_memory_token`
+> (jaskier memory stack + HA secrets.yaml + HomeAI `.env.local`), `influxdb_token` (new Influx
+> all-access auth; leaked/previous auths deleted; HA + nemo-api switched), Satel `alarm_code`
+> (HA secrets.yaml only — keypad PIN must be updated to match). WiFi AP password rotation after
+> the 2026-08-15 git-filter-repo pass is **not independently confirmed**.
 
 - Pull the actual `configuration.yaml` (or split Heimdall's additions into a dedicated
   `heimdall.yaml` included via `!include`) into git as the source of truth going forward,
