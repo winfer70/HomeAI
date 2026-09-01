@@ -119,6 +119,13 @@ ENTITIES_TO_EXPOSE = {
     # calendar.create_event so writes are possible too, same pattern as
     # the aquarium history tool and Task 8's memory tools.
     "script.heimdall_create_calendar_event": "Heimdall: Create calendar event",
+    # Plant health tools (ProjectNemo). Read tool summarizes pending
+    # deficiency events; write tool ONLY marks an existing pending issue as
+    # treated by spoken plant name - it cannot create/diagnose issues or
+    # touch any switch/device, consistent with this project's guardrail
+    # around voice-triggered device control.
+    "script.heimdall_plant_health_status": "Heimdall: Plant health status",
+    "script.heimdall_plant_health_treat": "Heimdall: Mark plant issue as treated",
 }
 
 # HA exposes entire domains (switch, climate, light, ...) to Assist by
