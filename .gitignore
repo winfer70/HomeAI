@@ -8,9 +8,14 @@ venv/
 dist/
 build/
 
-# Env
+# Env / secrets
 .env
 .env.local
+secrets.yaml
+secrets.yaml.bak
+*.token
+google-oauth-*.json
+*service-account*.json
 
 # graphify
 graphify-out/cache/
