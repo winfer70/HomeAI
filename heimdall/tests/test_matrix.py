@@ -141,7 +141,11 @@ AGENTS = {"gemini": GEMINI_AGENT, "qwen": QWEN_AGENT}
 # Entity IDs below match heimdall/scripts/expose_entities.py exactly.
 LIGHT_ENTITY = "switch.0x54ef4410016759d1_up"  # BiuroSwiatłoGłówne (office light)
 CLIMATE_ENTITY = "climate.0xa4c138b1ad7dfd57"  # GrzejnikSypialniaGóra (bedroom radiator)
-GATE_ENTITY = "switch.brama_sonoff_100254194e_1"  # Brama (gate relay)
+# Gate (2026-08-21): the relay is impulse-triggered, so voice control was
+# switched from the raw switch to script.heimdall_pulse_gate (turn_on ->
+# wait 1s -> turn_off), which is now the only gate entity exposed to
+# Assist - the raw switch was un-exposed (see HA_CONFIG_CHANGES.md).
+GATE_ENTITY = "script.heimdall_pulse_gate"  # Heimdall: Pulse gate relay (open/close)
 AQUARIUM_TEMP_SENSOR = "sensor.0xa4c138060885ffff_temperature"  # Termometr
 AQUARIUM_SWITCH = "switch.filtr"  # same choice as Task 4's Influx-write verification (observable, low-risk)
 CALENDAR_ENTITY = "calendar.kamil_koterba95_gmail_com"

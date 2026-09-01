@@ -71,12 +71,56 @@ loaded full-time, the memory-extraction poller periodically calls Ollama, and Fr
 still running. Worth a fresh `nvidia-smi` snapshot during a busy moment before adding
 wake-word processing on top, which will add its own (smaller but nonzero) load.
 
+> **DONE (2026-08-20).** Idle baseline (qwen2.5:7b-instruct loaded, Frigate + memory poller
+> running): 6328/12288 MiB VRAM used (5582 MiB free), 0% GPU utilization, 46°C, ~42W. Under
+> an actual live inference burst (real `conversation.process` call to the qwen agent via HA):
+> GPU utilization spiked to 98-100%, memory utilization to 100%, power draw peaked at ~170W
+> (the 3060's rated TDP - i.e. compute-bound, not memory-bound, during a burst), 58°C, back
+> down to idle within ~4 seconds of the response completing. VRAM **used** stayed flat at
+> 6328 MiB throughout - inference on an already-loaded model doesn't need much extra memory
+> beyond the resident weights + per-request KV cache. Conclusion: 5.5GB of free VRAM is
+> comfortable headroom for M8's wake-word model (openWakeWord's models are tiny, low
+> single-digit MB, INT8) - GPU compute contention during simultaneous wake-word + qwen
+> inference is the more relevant risk than memory pressure, but wake-word inference is cheap
+> enough continuously that it's unlikely to meaningfully compete with qwen's few-second
+> bursts. No action needed before starting M8.
+
 **6. qwen's two known limitations are documented, not fixed.**
 `switch.office_led` name-ambiguity and the climate-entity alias not reaching qwen's tool
 schema are both currently accepted as permanent weaknesses. Two real options instead of
 "accepted forever": rename the ambiguous entities outright (aliases don't help qwen — direct
 name clarity might), or have the n8n router's classifier route anything touching those two
 entities to Gemini specifically.
+
+> **Partially resolved (2026-08-20).** The n8n-routing option was ruled out first: confirmed
+> (via `N8N_ROUTER.md` + the workflow JSON) that n8n's router never touches the real voice
+> pipeline at all — its "local" branch calls Ollama directly with no HA/tool access, so
+> changing its classifier wouldn't affect real voice commands.
+>
+> **`light_switch` — FIXED.** Renamed `switch.0x54ef4410016759d1_up` → "Office Main Light"
+> and `switch.office_led` → "Office LED Strip" (confirmed with user: office_led is a real
+> LED strip, a separate device). Verified live: qwen now correctly resolves "office light" /
+> "Włącz światło w biurze" to the relay in both languages (was `KNOWN-LIM`, now `PASS`).
+>
+> **`climate` — ROOT CAUSE FOUND AND FIXED (2026-08-20, later same session).** The
+> `SetTemperature`-slot theory above was superseded by reading the actual matching code
+> (`helpers/entity_registry.py::async_get_entity_aliases` +
+> `helpers/intent.py::_filter_by_name`): HA's intent name-matcher only ever checks an
+> entity's `aliases` list, never its registry `name` field. Untouched entities default to an
+> internal `COMPUTED_NAME` sentinel alias that expands to their full computed name - that's
+> why every *other* radiator matched by name for free without ever having an explicit alias.
+> The earlier rename experiment (`aliases: ["Bedroom radiator"]`) had overwritten that
+> sentinel, permanently breaking name-matching regardless of language - never actually a
+> qwen-only limitation. Fixed by setting `aliases: ["GrzejnikSypialniaGóra"]` (the entity's
+> own name, as a literal explicit alias), bypassing the sentinel mechanism entirely.
+> Confirmed working live by voice. **Backlog #6 is now fully resolved**, not just partially.
+>
+> **Entity-exposure scope creep — resolved as accepted, not a bug.** Re-audited the full
+> exposed-entity list (83 entities, not ~90 as originally estimated) domain-by-domain. The
+> "extra" climate entities (`GrzejnikGoscinny`, `GrzejnikSalon`, `GrzejnikSypialniaDół`) are
+> real, wanted radiators the user actively uses - not scope creep, just previously
+> undocumented in this plan. No entities hidden as a result; dashboard cards were later added
+> for all 8 climate entities instead (see `HA_CONFIG_CHANGES.md` section 12).
 
 **7. Guardrail coverage stops at the `heimdall/` git tree.**
 Task 0's CI check only scans files under `heimdall/`. The actual dangerous action — an
@@ -95,16 +139,27 @@ HA directly, not from a file diff.
 
 - Stray "Gemini regression check" calendar event (2026-08-20) needs manual deletion — no
   `delete_event` service exists in this HA version.
+  > **Still open, by design.** No automated `calendar.delete_event` service exists, and
+  > extracting the Google OAuth refresh token out of HA's internal storage to call the
+  > Calendar API directly was judged more risk than a one-off delete is worth. User will
+  > delete it manually in Google Calendar's UI.
 - The Google OAuth `client_secret_*.json` on the Desktop should move to a password manager
   or get deleted now that its contents are registered in HA.
-  > **Confirmed still present** at `Kamil/client_secret_914645144271-....json` on the
-  > Desktop root as of 2026-08-20 — flagged as an open security item, action pending user
-  > confirmation (see session notes).
+  > **DONE (2026-08-20).** Deleted (`Kamil/client_secret_914645144271-....json`) — only the
+  > app-level client_id/secret, already registered inside HA, not a live user token.
 
 **9. Secrets handling during this build was ad hoc** — HA tokens and the n8n API key got
 staged through `$env:TEMP` files per-session rather than a consistent local secrets store.
 Worth consolidating into a single gitignored `.env.local` (or a proper secrets manager) that
 every script reads from the same place.
+
+> **DONE (2026-08-20).** Added `.env.local.example` (repo root, safe to commit) listing every
+> var every `heimdall/scripts/*.py` and `test_matrix.py` already read via `os.environ.get`,
+> plus `heimdall/scripts/Load-EnvLocal.ps1` to load a real `.env.local` (gitignored) into the
+> current PowerShell session in one line (`. .\heimdall\scripts\Load-EnvLocal.ps1`). Migrated
+> the existing ad hoc `$env:TEMP\ha_token.txt` into it and deleted the temp file. Also fixed
+> `deploy_n8n_workflow.py`, which used bare `HA_TOKEN`/`HA_URL` instead of every other
+> script's `HEIMDALL_HA_TOKEN`/`HEIMDALL_HA_URL` convention - renamed for consistency.
 
 **10. `HA_CONFIG_CHANGES.md` is now 9+ sections and growing.** Fine for now; if Phase 2 adds
 several more sections, consider splitting by integration (calendar / memory / aquarium /

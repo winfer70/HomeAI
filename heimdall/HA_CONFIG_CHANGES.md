@@ -650,3 +650,561 @@ during a full-suite run isn't mistaken for a real regression. Soak-cadence
 runs (via `ntfy_failure_logger.py`'s poller, not a tight test-matrix loop)
 run far slower than this ceiling and are not expected to trigger it.
 
+### 9.5 Correction (2026-08-20): 9.1 and 9.2/9.3 conclusions superseded
+
+Two follow-up sessions found the actual root causes behind 9.1 and 9.2/9.3,
+which had reached wrong or incomplete conclusions at the time:
+
+- **9.1 was wrong that `light.office_light`/`fan.office_light` are junk.**
+  The user confirmed both are real, legitimate controls for the office
+  light+fan combo unit (only functional when the upstream relay/switch is
+  on) — hiding them removed real functionality rather than fixing a bug.
+  Both were **re-exposed** (`options.conversation.should_expose: true`) via
+  `heimdall/scripts/expose_missing_entities.py`, alongside two other
+  entities found missing from Assist entirely: `alarm_control_panel.glowne`
+  (main alarm panel) and `siren.driveway_siren`. None had the alias bug
+  below, so no further fix was needed for them — untested by voice yet
+  (alarm/siren deliberately deferred to daytime, not tested at night).
+
+- **9.2/9.3's "accepted qwen limitation" conclusion for the climate alias
+  was wrong** — the real root cause was found by reading HA core source
+  directly (`helpers/entity_registry.py::async_get_entity_aliases` and
+  `helpers/intent.py::_filter_by_name`): HA's intent name-matcher **only**
+  checks an entity's `aliases` list, never its registry `name` field.
+  Untouched entities default to an internal `COMPUTED_NAME` sentinel alias
+  (serializes as `aliases: [null]` over the WS API) that expands to the
+  entity's full computed name — that's why every *other* radiator matched
+  by name "for free" without ever having an explicit alias. The Task 5
+  alias experiment (9.2) had overwritten this sentinel with a literal
+  `["Bedroom radiator"]`, permanently breaking name-matching for Polish
+  voice commands regardless of language — it was never actually a qwen-only
+  limitation, and Gemini's "fuzzier matching" theory in 9.3 was also a
+  misdiagnosis of the same underlying bug.
+
+  Fix: set `aliases: ["GrzejnikSypialniaGóra"]` (the entity's own name,
+  as a literal explicit alias) via `config/entity_registry/update`. This
+  bypasses the sentinel mechanism entirely and is guaranteed to match.
+  Confirmed working live via voice ("Ustaw temperaturę w sypialni górze na
+  25 stopni" — resolved correctly where it previously failed with
+  `MatchFailedReason.NAME`).
+
+  The `switch.office_led` bullet in 9.3 (a real, separate, distinct device)
+  remains accurate and unaffected by this correction.
+
+## 10. STT VAD tuning — background noise producing hallucinated transcripts
+
+Reported symptom: voice commands intermittently producing garbled/unrelated
+text, worse with background noise (TV, ambient conversation) present. No
+`assist_satellite` entities exist in this setup (confirmed via `/api/states`
+— zero entities of that domain) and all 4 Assist pipelines have
+`wake_word_entity: null`/`wake_word_id: null` — voice is invoked via the HA
+app/tablet's tap-to-talk Assist widget, not always-listening satellite
+hardware.
+
+### 10.1 Investigation — confirmed live, not assumed
+
+- **Image version**: `heimdall-whisper` is still `rhasspy/wyoming-whisper:3.6.0`
+  (unchanged since Task 2), confirmed via `docker inspect`.
+- **Actual supported flags**: pulled directly via
+  `docker exec heimdall-whisper /usr/src/.venv/bin/python3 -m wyoming_faster_whisper --help`
+  (the plain `python3 -m wyoming_faster_whisper --help` at the container's
+  default interpreter fails with `ModuleNotFoundError` — the real venv is at
+  `/usr/src/.venv`, per `/usr/src/docker_run.sh`). Relevant flags confirmed
+  present: `--vad-filter`, `--vad-threshold` (default 0.5), 
+  `--vad-min-speech-ms` (default 250), `--vad-min-silence-ms` (default 2000),
+  `--vad-clip`, `--vad-clip-threshold` (default 0.5), `--vad-clip-pad-ms`
+  (default 400), and separately `--hass-token`/`--hass-api` (entity-name
+  transcription biasing, unrelated to VAD but found in the same investigation).
+- **HA pipeline-level VAD**: HA's `assist_pipeline/vad.py` defines a
+  `VadSensitivity` enum (`default`=0.7s silence, `relaxed`=1.25s,
+  `aggressive`=0.25s) controlling end-of-command silence detection, but
+  `assist_pipeline/select.py::get_vad_sensitivity()` reads it from a
+  per-satellite `select.<unique_id_prefix>-vad_sensitivity` entity and
+  **falls back to `VadSensitivity.DEFAULT` when no such entity exists**.
+  Since this setup has zero `assist_satellite` entities, **this control does
+  not apply here at all** — there is nothing to tune on the HA-pipeline side
+  for this setup; the tablet/app's own client-side push-to-talk handles its
+  own start/stop, not HA's server-side segmenter. Confirmed by reading
+  source, not assumed.
+
+### 10.2 Change applied — confirmed value before/after
+
+**Before** (unchanged since initial deployment):
+```yaml
+command: --model small-int8 --language auto --uri tcp://0.0.0.0:10300 --data-dir /data --download-dir /data
+```
+No VAD filtering of any kind was active — confirmed via the flag's own
+`--help` text: "(default: false, faster-whisper only)". This is the direct,
+confirmed cause of the reported symptom: with VAD off, faster-whisper
+transcribes silence and non-speech audio too, and its well-documented
+failure mode there is hallucinating plausible-sounding text.
+
+**After**:
+```yaml
+command: --model small-int8 --language auto --uri tcp://0.0.0.0:10300 --data-dir /data --download-dir /data --vad-filter --hass-token ${HEIMDALL_HA_TOKEN} --hass-api http://192.168.0.108:8123/api
+env_file:
+  - .env
+```
+New file `/home/kamilo/heimdall/.env` (mode 600, not a git repo — no
+gitignore risk) holds `HEIMDALL_HA_TOKEN`, copied from the existing
+`heimdall-testmatrix/.env` on the same host.
+
+**Deviation from the incremental-application principle, noted honestly**:
+`--vad-filter` and `--hass-token`/`--hass-api` were applied in the *same*
+deploy, before this task's formal brief (which asked for incremental,
+separately-attributable changes) was received. Both are confirmed live
+(container restarted cleanly; log shows `Biasing toward names from
+http://192.168.0.108:8123/api` and `Ready`), but if a regression shows up,
+isolating which flag caused it will require temporarily removing
+`--hass-token`/`--hass-api` and re-testing with `--vad-filter` alone.
+
+**Not yet touched** (left at library defaults, available as the next
+incremental knob if `--vad-filter` alone proves insufficient):
+`--vad-threshold` (0.5), `--vad-min-speech-ms` (250),
+`--vad-min-silence-ms` (2000), `--vad-clip*`.
+
+### 10.3 Verification status
+
+- Regression check (`test_matrix.py` light/switch/climate rows) and manual
+  noise/silence tests: **pending** — deliberately not run yet, since both
+  require `--allow-physical-actuation` and it's nighttime; scheduled for
+  daytime alongside the alarm/siren voice test from section 9.5.
+- Container-level sanity check only, done: clean restart, no errors, both
+  new flags confirmed active in logs.
+
+### 10.4 Non-goals confirmed untouched
+
+No speaker verification/enrollment, no wake-word engine changes, no
+hardware changes — all explicitly out of scope for this task (separate M10/M8
+decisions). HA's per-pipeline VAD sensitivity control was investigated (see
+10.1) and found not applicable to this satellite-less setup, not bypassed or
+worked around.
+
+## 11. Heating "boost" feature (2026-08-20, ad hoc — no M-number)
+
+New voice feature: turn a radiator on to a comfort temperature for a fixed
+duration, then auto-revert — the "boost" button on old thermostatic radiator
+valves. Added as two `script:` entries in `heimdall.yaml`.
+
+### 11.1 Why two scripts, not one
+
+Calling a script directly by its own domain service blocks the caller until
+it completes. If the boost logic (set temp → delay → revert) lived in one
+script, the voice-tool call would hang for the entire boost duration
+(up to 4 hours) before Assist could respond — broken UX. Split instead:
+
+- `heimdall_boost_heating` (exposed to Assist): captures the entity's
+  current `hvac_mode`/`temperature`, applies the boost, fires
+  `heimdall_boost_revert_worker` via `script.turn_on` (fire-and-forget —
+  does NOT wait for it, unlike calling a script by its own domain service),
+  then returns immediately with a `reverts_at` time in its response.
+- `heimdall_boost_revert_worker` (NOT exposed —
+  `options.conversation.should_expose: false`, confirmed via
+  `config/entity_registry/get`): delays for the requested duration, then
+  restores the original `hvac_mode` (including back to `off` if that was
+  the original state) and `temperature`.
+
+Both scripts use `mode: parallel, max: 10` so boosting multiple different
+radiators concurrently doesn't queue/block on each other.
+
+### 11.2 Fields (`heimdall_boost_heating`)
+
+- `entity_id` (required, `selector: entity: domain: climate`)
+- `duration_minutes` (optional, number 5-240, default 60)
+- `temperature` (optional, number 15-28°C step 0.5, default 22)
+
+### 11.3 Known limitation, not fixed in v1
+
+Boosting the **same** entity a second time while a boost is already active
+starts a second independent revert worker rather than replacing the first —
+the first worker still fires at its original scheduled time, potentially
+reverting/cutting the second boost short partway through. Fixing this
+properly needs a per-entity "boost generation" token (e.g. an
+`input_text`/counter that each worker checks before reverting, aborting if a
+newer boost has superseded it) — not implemented, since it adds a real
+helper-entity + logic to review, and isn't needed for the common case
+(boosting different radiators, or one radiator once).
+
+### 11.4 Deployment
+
+Applied via `heimdall.yaml` (same package file as all other Heimdall
+scripts) — backed up as `heimdall.yaml.bak-boost-feature-20260820` before
+the edit. Validated with `check_config` (exit code 0) before reload;
+applied live via `script.reload` (no full HA restart needed for
+`script:` changes). Confirmed both scripts registered
+(`script.heimdall_boost_heating`, `script.heimdall_boost_revert_worker`) and
+exposure set correctly for each via the entity registry.
+
+### 11.4b Dashboard UI buttons added (2026-08-20, same night)
+
+Clarified after the fact: "heating" in this whole feature meant the
+kitchen's Hive thermostat/burner (`climate.0x001e5e0902ce8e9a`, "Ogrzewanie
+Kuchnia"), which already had a `thermostat` card on the "Dom" dashboard
+(`lovelace.dashboard_biuro` storage file, url-path `dashboard-biuro`,
+confusingly titled "Dom" not "Biuro" - that's a different dashboard,
+`dashboard_biuro_2`). Added a 3-button grid (Boost 30 min / 1h / 1.5h, all
+fixed at 22°C) directly below the existing thermostat card, calling
+`script.heimdall_boost_heating` with `entity_id: climate.0x001e5e0902ce8e9a`
+hardcoded per button - matches the "physical boost button with fixed
+presets" feel of old thermostats rather than exposing a free-text duration
+field in the UI.
+
+**Important operational note discovered**: editing a storage-mode Lovelace
+dashboard's `.storage/lovelace.dashboard_*` JSON file directly on disk while
+HA is running does **not** take effect live - confirmed via `lovelace/config`
+WS query still returning the old content after the file was already
+overwritten. Unlike `script:`/`automation:` YAML, there is no reload service
+for storage-mode dashboards; a full HA container restart was required and
+performed (with the user's explicit go-ahead, since this is more disruptive
+than the container-only restarts used earlier tonight - it briefly drops
+all live states/automations/voice, not just one integration). Confirmed
+live after restart via the same WS query, and confirmed the boost scripts
+and climate entities survived the restart cleanly.
+
+Backed up as `lovelace.dashboard_biuro.bak-kitchen-boost-20260820` (root-owned
+file, required `sudo cp`/`sudo chown` - passwordless sudo confirmed
+available on vesemir, same as jaskier) before the edit.
+
+### 11.5 Verification status
+
+**Untested** — no boost has been triggered live yet (added same night as the
+VAD tuning work in section 10; deliberately not actuated). Before relying on
+this: trigger one boost with a short duration (e.g. 5 minutes) on a
+non-critical radiator, confirm (a) the voice response returns immediately
+rather than hanging, (b) the entity actually reaches heat/target
+temperature, and (c) it correctly reverts to its prior state at the
+`reverts_at` time.
+
+## 12. Dashboard radiator cards: bug fix + 3 missing rooms (2026-08-20, same night)
+
+User reported a "connection error" on the bedroom radiator's thermostat card
+on the Dom dashboard specifically, while other cards worked fine. Investigated
+by pulling the live `lovelace.dashboard_biuro` storage file directly (grep for
+all `climate.*` references) rather than guessing.
+
+### 12.1 Root cause found: malformed nested card, not a device/network issue
+
+`climate.0xa4c138b1ad7dfd57`'s (Sypialnia Góra bedroom radiator - the same
+entity whose intent-matching alias bug was fixed earlier tonight, see section
+9.5; this is a separate, unrelated bug) `tile` card had a full second `tile`
+card definition (for `sensor.0xa4c138b1ad7dfd57_error_status`, an error-status
+sensor) mistakenly nested **inside** its `features` array:
+
+```json
+"features": [
+  { "type": "target-temperature" },
+  { "type": "climate-hvac-modes", "hvac_modes": ["off", "heat", "auto"] },
+  { "type": "tile", "entity": "sensor.0xa4c138b1ad7dfd57_error_status", ... }
+]
+```
+
+`features` may only contain feature-type objects (`target-temperature`,
+`climate-hvac-modes`, etc.) - a full card definition doesn't belong there and
+almost certainly broke that card's rendering, which the frontend surfaces as
+a generic "connection error". No other radiator card had this malformation.
+
+**Fix**: moved the error-status tile out of `features` to be a proper sibling
+card in the same `vertical-stack`, alongside (not inside) the climate tile.
+
+### 12.2 Missing rooms added
+
+Of the 7 individual TRV radiators, 4 already had dashboard cards (bedroom
+upstairs, both bathroom units, office) but 3 didn't, despite their rooms
+already having dashboard sections with other controls:
+
+- `climate.0xa4c13842240065f9` → "Gościnny" (guest room) section
+- `climate.0xa4c138b90fef70c7` → "Salon" (living room) section
+- `climate.0xa4c138d920585e93` → "Sypialnia Dół" (downstairs bedroom) section
+
+Added a `tile` card to each (matching the corrected bedroom pattern -
+`target-temperature` + `climate-hvac-modes` features only, no preset-mode
+button grid or error-status tile, to keep scope to "radiator control" as
+requested rather than replicating every custom extra). All 8 climate
+entities (7 TRVs + the kitchen Hive from section 11.4b) now have exactly one
+dashboard card each - confirmed via `lovelace/config` WS query string-matching
+each entity_id and card name after deploy.
+
+### 12.3 Deployment
+
+Same process as 11.4b: backed up as
+`lovelace.dashboard_biuro.bak-all-radiators-20260820`, deployed via
+`sudo cp`, full HA restart required (same storage-mode-dashboard limitation
+as before) and performed with the user's go-ahead. Confirmed live post-restart.
+
+### 12.4 Verification status
+
+**Bug fix untested by the user** — the malformed-card fix should resolve the
+reported connection error, but this hasn't been re-confirmed by the user
+looking at the dashboard yet. **New room cards untested** - same as the
+kitchen boost buttons, these display/control real devices but haven't been
+interacted with live yet.
+
+## 13. "What's in the office" area-listing accuracy (2026-08-21)
+
+User compared qwen (phone) vs Gemini (laptop) answers to "what's in the
+office" - qwen's was garbled (expected, matches the well-understood
+Polish-compound-word tokenization limitation, not investigated further here)
+but Gemini's cleaner answer had two apparent defects: missing the Meross
+surge protector's outlets, and wrongly including `binary_sensor.syrena_swiatlo`
+("Syrena+Światło", an alarm siren+light) as if it were an office device.
+
+### 13.1 Investigated via direct area/device registry query
+
+- **Meross surge protector (`Office surge protector`, device_id
+  `d1aa4429ebc7654bf5b07ec632116aac`) is correctly `area_id: office`** - all 6
+  outlet entities (Listwa, Monitor_1, Monitor_2, Biurko_LED, StacjaDokująca,
+  LED_1) are correctly area-tagged and exposed to Assist. Gemini's answer
+  just didn't list all of them in its natural-language summary - this is a
+  response-generation completeness issue, not a registry/data bug. Nothing
+  fixed here; flagged to the user as a different (harder, LLM-behavior)
+  class of problem than the siren one below.
+
+- **`binary_sensor.syrena_swiatlo` and `binary_sensor.syrenazew` (both
+  "Syrena+Światło"/"SyrenaZew" alarm siren devices) had `device_area: None`**
+  - not assigned to office, or any area at all. So Gemini including them in
+  an "office" answer wasn't a registry misassignment either - there was no
+  area data to misassign in the first place. Likely cause: with no area
+  anchor, an LLM summarizing "devices in this area" has nothing constraining
+  it and can misattribute unassigned entities based on other context (e.g.
+  earlier conversation turns, name similarity, or just model error).
+
+### 13.2 Fix applied
+
+No dedicated "whole house" area existed. Asked the user where these siren
+devices are physically mounted; user chose the existing `domballivor` area
+(no floor assigned - a general/non-room-specific area already in the
+registry) over the two hall areas (`hall`, `hallgora`). Assigned both
+devices' `area_id` to `domballivor` via `config/device_registry/update`
+(device-level, matching how every other device in this house is area-tagged
+- entities inherit area from device, not set individually). Confirmed via
+the update response echoing back `area_id: domballivor` for both.
+
+### 13.3 Verification status — CONFIRMED FIXED, and a self-caught misdiagnosis corrected
+
+The user re-tested and initially reported a list still missing 3 of the 6
+Meross outlets (Listwa, Biurko_LED, StacjaDokująca), attributed to Gemini at
+the time. That triggered a deeper investigation (direct comparison of all 6
+outlets' registry entries - `should_expose`, `entity_category`,
+`disabled_by`, `labels` - all identical, ruling out a data cause) which
+concluded the omission must be Gemini's own response-generation dropping
+items, motivating a system-prompt edit (adding an explicit "list every item,
+never summarize" clause to the Google AI Conversation subentry's prompt in
+`core.config_entries`, applied and validated but **not yet activated** -
+still pending the HA restart storage-mode config entries require).
+
+**The user then clarified the "still missing 3 outlets" answer was actually
+qwen's, not Gemini's** - mislabeled in the prior turn. Gemini's real answer
+(provided immediately after) is complete and correct: all 6 outlets present,
+and critically, **no `Syrena+Światło`** - directly confirming the 13.2 area
+fix worked, with zero further action needed. qwen's incomplete answer is the
+same already-documented, accepted limitation (small local model, Polish
+compound-word tokenization/summarization quality) as `TEST_MATRIX.md`'s
+`KNOWN_QWEN_LIMITATIONS`, not a new bug.
+
+**The Gemini system-prompt edit was reverted** before ever taking effect
+(HA was never restarted with it loaded, so this was a clean no-op) - it was
+based on a false premise and isn't needed; Gemini's actual behavior for this
+query was already correct. Restored from
+`core.config_entries.bak-gemini-prompt-20260821`, confirmed via re-reading
+the file that the added clause is gone. Lesson: when comparing two
+"different agent" answers, confirm which literal answer came from which
+agent before root-causing a discrepancy - the deeper investigation here
+was thorough and well-reasoned, but built on a mislabeled data point.
+
+## 14. qwen "what's in the office" domain-omission - real fix (2026-08-21)
+
+Even after 13's siren fix, qwen's own "what's in the office" answers still
+consistently omitted every non-switch domain (climate, sensor,
+binary_sensor, fan, light) - listing only the 8 switch entities every time,
+never the radiator, its temperature sensor, or the two door contact
+sensors. User confirmed Gemini's answer was the complete, correct 14-entity
+list. This needed an actual fix, not just documentation.
+
+### 14.1 Root-caused via debug trace, not guesswork
+
+Enabled debug logging (`homeassistant.components.ollama`,
+`homeassistant.helpers.llm`) and called `conversation.process` directly
+against `conversation.heimdall_local_qwen2_5` (see
+`heimdall/scripts/trace_qwen_office_query.py`). Findings:
+
+- **`num_ctx` was 8192 and only ~4900-5300 tokens were actually used** -
+  ruled out simple context-window truncation.
+- **There is no dedicated "list devices in area" tool.** The full tool set
+  (`Tools:` log line) is identical between Gemini (`assist` API) and qwen
+  (`heimdall_restricted` API, which only ever hid the calendar-write tool -
+  see section 11's predecessor doc). Area questions rely entirely on
+  `GetLiveContext` (defined in
+  `homeassistant/components/homeassistant/llm.py`).
+- **`GetLiveContextTool` already supports server-side area filtering** -
+  its `parameters` schema accepts `area`, and `async_call` runs
+  `intent.async_match_targets(..., area_name=area_filter, ...)` before
+  building the result, when the model passes that argument. Gemini
+  reliably does; qwen frequently doesn't - it either answers straight from
+  the whole-house "Static Context" block already embedded in the system
+  prompt, or calls `GetLiveContext` with no filter, then tries to mentally
+  filter "office" entities out of a full-house dump and drops everything
+  except the simplest switch on/off lines.
+- **Confirmed via `heimdall/scripts/benchmark_office_query_models.py`**:
+  when qwen2.5:7b-instruct, qwen3:14b, and gemma4 were each given the
+  correct, pre-filtered 14-entity office context directly (no tool call,
+  no self-filtering needed), **all three listed all 14 entities
+  correctly**. This proved the problem is entirely upstream of the model's
+  summarization ability - it's a tool-usage/parameter-passing reliability
+  gap for the smaller local model, not a raw capability gap.
+
+### 14.2 Fix applied
+
+Two changes to the qwen (Ollama) conversation subentry, via
+`heimdall/scripts/fix_qwen_area_filter_and_model.py`:
+
+1. **Prompt**: added an explicit instruction that "what's in room/area X"
+   questions MUST call `GetLiveContext` with its `area` parameter set to
+   the room name - never with no filter, never answered from the static
+   list alone.
+2. **Model**: swapped from `qwen2.5:7b-instruct` to `qwen3:14b` (already
+   present on jaskier's Ollama, 8.6GB, fits the RTX 3060 12GB comfortably
+   alongside Frigate - see `BENCHMARKS.md`). Belt-and-suspenders alongside
+   the prompt fix, not required to fix this specific bug (the 7b model
+   handled the pre-filtered-context benchmark fine), but a reasonable
+   general quality upgrade since the hardware supports it.
+
+Backed up `core.config_entries` first
+(`core.config_entries.bak-qwen-area-filter-fix-20260821`, plus an earlier
+intermediate backup `core.config_entries.bak-qwen-domain-fix-20260821` from
+a first, less-precise prompt-only attempt that was superseded before
+restart).
+
+### 14.3 Operational finding: `homeassistant.reload_config_entry` does NOT re-read the storage file
+
+Tried the lighter-weight `homeassistant.reload_config_entry` service
+(targeting the `ollama` entry_id) to avoid a full restart. **It does not
+work for this kind of change** - the service reloads the config entry
+object already resident in memory (loaded at HA boot), it does not re-read
+`core.config_entries` from disk. Confirmed by testing right after reload:
+the live conversation entity was still using `qwen2.5:7b-instruct` even
+though the file on disk correctly showed `qwen3:14b`. A full
+`docker restart nemo-homeassistant` was required, same as every other
+direct storage-file edit in this doc (dashboards, subentry prompts, etc.)
+- there is no in-place reload path for config-entry *data* edited outside
+HA's own config flow.
+
+### 14.4 Verification status
+
+**Confirmed fixed.** Re-tested `conversation.process` against
+`conversation.heimdall_local_qwen2_5` post-restart with debug logging on:
+qwen3:14b now returns all 14 office entities across all domains (switches,
+climate, sensor, both binary_sensor door contacts, fan, light) - matching
+Gemini's list. A couple of entities show generic states like "nieznany"/
+"niedostępne" instead of a precise value, which is a minor phrasing
+difference, not a missing-entity problem.
+
+## 15. Gate voice control was leaving the relay "on" instead of pulsing it (2026-08-21)
+
+User reported "open the gate" via voice reports success (Gemini correctly
+called `switch.turn_on` on `switch.brama_sonoff_100254194e_1` - confirmed
+in the logbook) but the physical gate never moved, and the switch was left
+"on" so a second attempt reported "already open."
+
+### 15.1 Root cause
+
+The gate relay is **momentary/impulse-triggered**, not a persistent on/off
+state - every pulse (energize briefly, then de-energize) toggles the
+physical gate open/closed, same as the existing wall-mounted Aqara button's
+`automation.gate_aqara_left_button_down_click_pulse_gate_relay`:
+`switch.turn_on` -> `delay: 1s` -> `switch.turn_off`. Voice control was
+directly exposing the raw switch entity and calling `HassTurnOn` on it,
+which energizes the relay and leaves it there - the switch's on/off
+**state** was never a proxy for the gate's open/closed state, so leaving it
+"on" both does nothing further physically and makes the entity look like
+it's already mid-action to the next voice query.
+
+### 15.2 Fix applied
+
+Added `script.heimdall_pulse_gate` to `heimdall.yaml` (mirrors the Aqara
+automation's exact sequence: `switch.turn_on` -> `delay: 1s` ->
+`switch.turn_off`, `mode: single` so an overlapping second call is
+rejected rather than double-pulsing). Deployed via
+`heimdall/scripts/add_pulse_gate_script.py`, validated, `script.reload`'d
+(no restart needed for script YAML).
+
+Exposed `script.heimdall_pulse_gate` to Assist and **un-exposed the raw
+switch** (`should_expose: false`) via
+`config/entity_registry/update` - this is a deterministic guarantee, not
+just a prompt request: neither conversation agent can call `turn_on`/
+`turn_off` on the raw switch anymore even if it wanted to, since it's no
+longer a tool either agent can see. Matches the lesson from section 14 -
+prefer fixing behavior via what the LLM is *able* to do over asking it
+nicely via the prompt.
+
+Updated `heimdall/tests/test_matrix.py`'s `GATE_ENTITY` and
+`heimdall/TEST_MATRIX.md`'s documented deviation to point at
+`script.heimdall_pulse_gate` instead of the raw switch, since that's now
+the actual voice-exposed gate control the exposure-check row verifies.
+
+### 15.3 Verification status
+
+**Deployed, not yet re-tested live by the user** with the actual voice
+phrase post-fix (the pulse genuinely operates the real driveway gate each
+time, so per the project's established rule against unattended repeated
+gate cycling, this needs the user to try it once when convenient rather
+than being soak-tested here).
+
+## 16. Automation list page 500 error - `!secret` not allowed in automations.yaml (2026-08-24)
+
+User reported the Automations page in HA had stopped loading, showing:
+`Error loading automation - 500 Internal Server Error - Server got itself
+in trouble`.
+
+### 16.1 Root cause
+
+`/config/automations.yaml` had two automations (`alarm_auto_arm_away_presence`,
+`alarm_auto_disarm_presence` - arm/disarm `alarm_control_panel.glowne` on
+presence) using `code: !secret alarm_code`. HA's config-editor HTTP
+endpoint (`homeassistant/components/config/view.py` -> `load_yaml(path)`)
+loads `automations.yaml` with a loader that has secrets support
+**intentionally disabled** (`annotatedyaml.exceptions.YAMLException:
+"Secrets not supported in this YAML file"`) - this endpoint backs the
+entire Automations list/editor UI, so a single `!secret` anywhere in that
+one file breaks loading for *every* automation, not just the two using it.
+Confirmed via full traceback: `config/view.py` `_read` -> `load_yaml` ->
+`annotatedyaml` raising on the `!secret` tag.
+
+This is a general, load-bearing HA restriction (not a bug specific to this
+setup) - `automations.yaml`/`scripts.yaml`/`scenes.yaml` are all editable
+via the visual UI, whose save-back path can't safely round-trip a
+`!secret` reference, so the loader used for the editor view refuses to
+even parse a file containing one.
+
+### 16.2 Fix applied
+
+Moved both alarm automations out of `automations.yaml` into
+`heimdall.yaml`'s new `automation:` package key, via
+`heimdall/scripts/move_alarm_secrets_to_package.py` (backs up both files
+first, idempotent). Packages load through the normal secrets-enabled
+config loader (same reason `heimdall.yaml`'s `rest:` sensor already uses
+`!secret heimdall_memory_token` without issue) - this preserves the exact
+`!secret alarm_code` reference and behavior, just relocates the two
+automations to a file the broken editor loader never touches. They're no
+longer editable via the visual automation editor as a result (same
+tradeoff as every other heimdall.yaml script/automation) - edit
+`heimdall.yaml` directly instead.
+
+Verified via `automation.reload` (no restart needed) that both automations
+reloaded correctly (`automation.alarm_auto_arm_away_presence` and
+`automation.alarm_auto_disarm_presence` both `on`, no duplicate IDs), then
+hit the same `/api/config/automation/config/{id}` endpoint the frontend
+uses directly: an automation still in `automations.yaml`
+(`gate_ring_notify_with_open_action`) now returns `200` (previously would
+have 500'd along with everything else in that file).
+
+### 16.3 Verification status
+
+**Confirmed fixed** - the specific endpoint that was 500ing now returns
+200 for automations still in `automations.yaml`. Not yet re-confirmed by
+the user actually opening the Automations page in the UI.
+
+
+
+
+
+
