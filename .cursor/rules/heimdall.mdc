@@ -7,12 +7,12 @@ alwaysApply: true
 
 Bilingual PL/EN Home Assistant assistant. Repo: winfer70/HomeAI. Work on `feature/*` from `dev`.
 
-**Agents:** Gemini pipelines `Heimdall-EN`/`Heimdall-PL` (full assist, calendar write). Local `qwen2.5:7b-instruct` via `conversation.heimdall_local_qwen2_5` + custom `heimdall_restricted` LLM API (no calendar write). Pipelines `Heimdall-Local-EN`/`Heimdall-Local-PL`.
+**Agents (2026-09-01):** HA Assist uses **Kamilo** (`conversation.kamilo`, custom component on vesemir) for PL+EN in one pipeline. Whisper medium-int8 + Piper on jaskier. Gemini Heimdall-EN/PL pipelines were removed in favor of that single agent. Heimdall memory `:10400` and n8n router still exist; n8n is **not** the voice path.
 
 **Never:** Satel/alarm exposure. **Keep exposed:** gate relay (user decision). Hide phantom Tuya `light.office_light`/`fan.office_light`.
 
-**Live HA config** is in ProjectNemo on vesemir (`heimdall.yaml` package). Docs: `heimdall/HA_CONFIG_CHANGES.md`. Memory service on jaskier `:10400`. n8n router is **not** the voice path.
+**Live HA config** is in ProjectNemo on vesemir (`heimdall.yaml` package + live `automations.yaml`). Docs: `heimdall/HA_CONFIG_CHANGES.md`.
 
 **Test matrix** (`heimdall/tests/test_matrix.py`) is standalone, not pytest-collected. Gate = exposure-check only. Calendar write Gemini = `--allow-calendar-write`. Known Gemini free-tier ~15 req/min.
 
-**Now:** merge Task 7 PR; Phase 1.5 #2/#3; Phase 2 M7. Read `HANDOFF.md` + `heimdall/PHASE1_5_HARDENING_AND_PHASE2_PLAN.md`.
+**Now:** Phase 1.5 #2/#3; Phase 2 M7; Satel keypad PIN vs rotated `alarm_code`. Read `HANDOFF.md` + `heimdall/PHASE1_5_HARDENING_AND_PHASE2_PLAN.md`.

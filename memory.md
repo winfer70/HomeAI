@@ -150,4 +150,11 @@ Full plan: `heimdall/PHASE1_5_HARDENING_AND_PHASE2_PLAN.md`. Key points:
 
 ## Public-repo security remediation (2026-08-15, superseded by above but still relevant)
 - **2026-08-15** — Public-repo safety remediation completed: second full `git-filter-repo` pass covered all remaining branches/history, GitHub `main` was aligned to sanitized `dev`, sanitized `feature/matter-server` was left unmerged intentionally, and stale secret-bearing remote branches were deleted. Repo is now safe to make public.
-- **Follow-up:** rotate the real WiFi password that was previously exposed in GitHub history; rewritten history may still persist in caches, forks, or scrapers. Re-confirm this was actually done if not independently verified since.
+- **Follow-up:** rotate the real WiFi password that was previously exposed in GitHub history; rewritten history may still persist in caches, forks, or scrapers. **Still not independently confirmed as of 2026-09-01** (git history is placeholders only; Vodafone/LabLAN AP not checked).
+
+## Session 2026-09-01 (Cursor wrap)
+- Kamilo v0.1.0 merged to `main` (PR #2). Voice (Whisper medium-int8) + HA control tested. `KAMILO_FULL_TOKENS` leaked in HANDOFF, redacted, rotated on jaskier.
+- HomeAI PR #22 merged to `dev`. Task 7 already on `dev`.
+- Rotated live `heimdall_memory_token`, `influxdb_token`; Satel `alarm_code` in HA secrets only — **keypad PIN still must be applied**.
+- Office automations moved AkwariumSalon → ListwaBiuro (live vesemir YAML, not in git).
+- Product split: Kamilo is the HA conversation agent; Heimdall memory/whisper/piper remain supporting services on jaskier.
